@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lexml-nonstat"
+version = "0.1.0"
+description = "LexML parser for Brazilian non-statutory legal documents"
+requires-python = ">=3.10"
+dependencies = [
+    "lxml>=5.0",
+    "python-docx>=1.0",
+]
+
+[project.optional-dependencies]
+# The referee is consulted over an OpenAI-compatible HTTP API (plan §7.2).
+# Never required by the regression suite, which pins --referee=none.
+referee = ["httpx>=0.27"]
+# Saxon drives the reference XSLT stylesheets (plan §6.2). Optional: the
+# Python segmentation API is the primary path, XSLT tests skip without it.
+xslt = ["saxonche>=12"]
+dev = ["pytest>=8", "pytest-cov>=5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+lexml_nonstat = ["validate/stubs/*.xsd"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "live: hits a real network service; excluded by default (plan §9.3)",
+    "slow: long-running",
+]
+addopts = "-m 'not live'"

@@ -620,7 +620,7 @@ Each cycle is independently verifiable and leaves the repository green. Tests ac
 
 ### Cycle 0 — Scaffolding and the schema harness
 
-Package skeleton; `pyproject.toml` (`lxml`, `python-docx`, `pytest`, `pytest-cov`, `httpx`, optional `saxonche`); vendored **offline** `xml.xsd` stub plus the `schemaLocation` rewrite required to compile the schemas without network; `validate.schema` compiling **both** schemas; `ValidationReport` with per-schema results; `--schema=both|rigido|flexivel`.
+Package skeleton; `pyproject.toml` (`lxml`, `python-docx`, `pytest`, `pytest-cov`, `httpx`, optional `saxonche`); **three** vendored offline stubs (`xml.xsd`, `xlink-href.xsd`, `mathml2.xsd`) resolved through a custom `lxml` resolver — see Amendment A-0.1; `validate.schema` compiling **both** schemas; `ValidationReport` with per-schema results; `--schema=both|rigido|flexivel`.
 
 Tests
 - both schemas compile offline
@@ -629,6 +629,15 @@ Tests
 - `ValidationReport.ok` iff both pass; per-schema errors surfaced
 
 Exit: `pytest` green; the investigation is now executable, so schema drift immediately shows which assumptions broke.
+
+**Amendment A-0.1 (Cycle 0, 2026-08-02) — the offline harness needs three stubs and a resolver, not one stub and a rewrite.**
+
+Two corrections to the description above and to `docs/20260801_004745_…` §11, both found by executing the recipe:
+
+1. **Three remote imports, not one.** `lexml-base.xsd` imports `xml.xsd`, `xlink-href.xsd` **and** `mathml2.xsd` from w3.org, and all three are genuinely fetched during compilation. §11 stubbed only `xml.xsd`; its recipe therefore *fails on a machine without internet* — the exact condition Cycle 0 must guarantee. It appeared to work only because the investigation ran on a connected machine. Cycle 0 vendors all three.
+2. **Resolver instead of in-place rewrite.** §11 rewrote `schemaLocation` inside `lexml/*.xsd` on disk. Cycle 0 uses an `lxml` `Resolver` mapping those URLs onto the vendored stubs at parse time, leaving `lexml/` byte-identical to upstream, so a future `git diff` there shows LexML's changes and nothing of ours. A regression test asserts the vendored files are unmodified. *(Decided with the user during Cycle 0 reconciliation.)*
+
+A third point, discovered while implementing: **a missing stub is silently masked**, because libxml2 answers an unreadable local `schemaLocation` by fetching the URL. Neither banning Python's `socket` (libxml2's HTTP is in C) nor `XMLParser(no_network=True)` (does not reach the schema-import loader) prevents this. `OfflineResolver` therefore raises `MissingStubError` when a mapped stub is absent, rather than declining and letting libxml2 fall back.
 
 ### Cycle 1 — DOCX ingestion → `StyledDoc`
 

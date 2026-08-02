@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Offline stub for http://www.w3.org/2001/xml.xsd
+
+  Declares only the xml: attributes referenced by lexml-base.xsd, so that the
+  LexML schemas compile with no network access. See the Cycle 0 spec, §4.1.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3.org/XML/1998/namespace"
+           xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+  <xs:attribute name="lang"  type="xs:string"/>
+  <xs:attribute name="space" type="xs:string"/>
+  <xs:attribute name="base"  type="xs:anyURI"/>
+  <xs:attribute name="id"    type="xs:ID"/>
+
+</xs:schema>

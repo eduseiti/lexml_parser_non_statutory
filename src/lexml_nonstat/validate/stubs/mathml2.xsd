@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Offline stub for http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd
+
+  lexml-base.xsd references exactly one MathML element: mathml:math, as the
+  content of the inline Formula element. The real MathML 2 schema is large and
+  irrelevant here, so <math> accepts any content.
+
+  KNOWN LIMITATION (Cycle 0 spec §3): MathML interiors are therefore not
+  deeply validated. Accepted because the non-statutory corpus contains no
+  MathML and no emitter produces <Formula>. Revisit if that changes.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3.org/1998/Math/MathML"
+           xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+           elementFormDefault="qualified">
+
+  <xs:element name="math">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:any namespace="##any" processContents="skip"
+                minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##any" processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
