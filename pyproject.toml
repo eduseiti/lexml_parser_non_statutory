@@ -9,7 +9,10 @@ description = "LexML parser for Brazilian non-statutory legal documents"
 requires-python = ">=3.10"
 dependencies = [
     "lxml>=5.0",
-    "python-docx>=1.0",
+    # Cycle 1's reader uses docx.styles.BabelFish to map Word's internal style
+    # names ("heading 1") onto the UI names everything else uses ("Heading 1").
+    # Verified against 1.2.0; the floor tracks the API we actually touch.
+    "python-docx>=1.1",
 ]
 
 [project.optional-dependencies]

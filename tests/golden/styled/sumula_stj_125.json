@@ -1,0 +1,6122 @@
+{
+  "source": "sumula_stj_125.docx",
+  "blocks": [
+    {
+      "kind": "para",
+      "index": 0,
+      "inlines": [
+        {
+          "text": "SÚMULA N. 125"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 1,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 2,
+      "inlines": [
+        {
+          "text": "O pagamento de férias não gozadas por necessidade do serviço não está sujeito à incidência do Imposto de Renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 3,
+      "inlines": [
+        {
+          "text": "Referência:",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 449,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": 449
+    },
+    {
+      "kind": "para",
+      "index": 4,
+      "inlines": [
+        {
+          "text": "CF/1998, art. 153, III."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 5,
+      "inlines": [
+        {
+          "text": "CTN, art. 43, I e II."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 6,
+      "inlines": [
+        {
+          "text": "CC/1916, arts. 1.056 e 1.534."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 7,
+      "inlines": [
+        {
+          "text": "Lei n. 7.713/1988, arts. 3º, § 4º, 6º, IV e V."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 8,
+      "inlines": [
+        {
+          "text": "Lei n. 8.112/1990, art. 78, § 1º."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 9,
+      "inlines": [
+        {
+          "text": "Precedentes:",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 449,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": 449
+    },
+    {
+      "kind": "table",
+      "index": 10,
+      "rows": [
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "AgRg no Ag"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "46.146-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(2 T, 03.08.1994 — DJ 22.08.1994)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "REsp"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "34.988-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(1 T, 06.10.1993 — DJ 08.11.1993)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "REsp"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "36.084-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(1 T, 06.06.1994 — DJ 27.06.1994)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "REsp"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "40.136-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(2 T, 21.02.1994 — DJ 21.03.1994)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "REsp"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "40.921-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(2 T, 03.08.1994 — DJ 22.08.1994)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "REsp"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "47.102-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(2 T, 20.06.1994 — DJ 15.08.1994)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "REsp"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "52.208-SP"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "(1 T, 19.09.1994 — DJ 10.10.1994)"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "para",
+      "index": 11,
+      "inlines": [
+        {
+          "text": "Primeira Seção, em 06.12.1994 DJ 15.12.1994, p. 34.815"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 4781,
+      "hanging": 539,
+      "indent_effective": 4781
+    },
+    {
+      "kind": "para",
+      "index": 12,
+      "inlines": [],
+      "style": "Normal",
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 13,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 14,
+      "inlines": [],
+      "style": "Normal",
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 15,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 16,
+      "inlines": [
+        {
+          "text": "AGRAVO REGIMENTAL NO AGRAVO DE INSTRUMENTO N. 46.146-SP (93.0033207-4)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 17,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 18,
+      "inlines": [
+        {
+          "text": "Relator: Ministro Antônio de Pádua Ribeiro"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 19,
+      "inlines": [
+        {
+          "text": "Agravante: Estado de São Paulo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 20,
+      "inlines": [
+        {
+          "text": "Procuradores: Armando de Oliveira Pimentel, Maria Luísa de Oliveira e outros"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 21,
+      "inlines": [
+        {
+          "text": "Agravado: Paulo Guimarães Leite"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 22,
+      "inlines": [
+        {
+          "text": "Advogados: Paulo Guimarães Leite e outros"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 23,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 24,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1371,
+      "indent_effective": 1371
+    },
+    {
+      "kind": "para",
+      "index": 25,
+      "inlines": [
+        {
+          "text": "Tributário. Imposto de renda. Férias indenizadas. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 26,
+      "inlines": [
+        {
+          "text": "- O imposto de renda não incide sobre o pagamento de férias não gozadas, em razão do seu caráter indenizatório. Precedentes."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "1",
+      "ilvl": 0,
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 27,
+      "inlines": [
+        {
+          "text": "- Recurso especial não conhecido."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "1",
+      "ilvl": 0,
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 28,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 29,
+      "inlines": [
+        {
+          "text": "Vistos, relatados e discutidos estes autos, em que são partes as acima indicadas, decide a Segunda Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas anexas, por unanimidade, negar provimento ao agravo regimental, nos termos do voto do Sr. Ministro Relator. Participaram do julgamento os Srs. Ministros José de Jesus, Hélio Mosimann, Peçanha Martins e Américo Luz."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 30,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 03 de agosto de 1994 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 31,
+      "inlines": [
+        {
+          "text": "Ministro Hélio Mosimann, Presidente"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 32,
+      "inlines": [
+        {
+          "text": "Ministro Antônio de Pádua Ribeiro, Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 33,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 34,
+      "inlines": [
+        {
+          "text": "DJ 22.08.1994"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 35,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 36,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Antônio de Pádua Ribeiro: Trata-se de agravo regimental, interposto pelo Estado de São Paulo, contra o seguinte despacho (fl . 113):"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 37,
+      "inlines": [
+        {
+          "text": "Decidiu o acórdão recorrido que o pagamento das férias, em pecúnia, por sua natureza indenizatória, não está sujeito a imposto de renda. Daí o recurso especial, em que alega ofensa à Lei n. 7.713, de 1988, e ao art. 43 e incisos, do CTN."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 38,
+      "inlines": [
+        {
+          "text": "Mesmo que se dê por superado o óbice da Súmula n. 284-STF, em que se apóia o despacho agravado (fl . 102), ainda assim o recurso especial não merece prosperar, porquanto o aresto atacado acha-se em harmonia com os precedentes desta Corte sobre a matéria (REsp n. 27.487-8-SP, 30.978-9-SP e 34.988-0-SP)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 39,
+      "inlines": [
+        {
+          "text": "Isto posto, nego provimento ao agravo."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1135,
+      "first_line": 0,
+      "indent_effective": 1135
+    },
+    {
+      "kind": "para",
+      "index": 40,
+      "inlines": [
+        {
+          "text": "Sustenta o agravante (fl s. 115/118):"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 41,
+      "inlines": [
+        {
+          "text": "Assim, alegou-se nas razões do agravo de instrumento que a decisão recorrida não podia subsistir porque a matéria em discussão foi amplamente ventilada no recurso de revista, inocorrendo as defi ciências que não p ermitissem a exata compreensão da controvérsia. Tanto é que o próprio despacho de fl . 113 pode identifi car a matéria em discussão, rejeitando a tese sustentada pelo agravante, em razão dos precedentes da Casa sobre a matéria."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 42,
+      "inlines": [
+        {
+          "text": "Ocorre que, apesar de constar da petição de encaminhamento do recurso especial, tão-somente, o art. 105, inciso III, da Constituição Federal, é bem verdade que no corpo do recurso, no título “"
+        },
+        {
+          "text": "Cabimento do Recurso”",
+          "italic": true
+        },
+        {
+          "text": ", fi cou e xpresso que era pela alínea "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": "."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 43,
+      "inlines": [
+        {
+          "text": "Por outro lado, estão bem claros os artigos de lei federal que foram ofendidos pelo acórdão recorrido, tendo sido os mesmos analisados pelo v. acórdão proferido pela Quinta Câmara Civil do Tribunal de Justiça de São Paulo. Entre outras menções de ofensa à Lei Federal n. 7.713/1988, no recurso especial, temos o seguinte parágrafo:"
+        }
+      ],
+      "style": "Normal",
+      "num_id": "2",
+      "ilvl": 0,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 44,
+      "inlines": [
+        {
+          "text": "E, notamos que isto não se dá no presente caso. Dentre as hipóteses de não incidência previstas nos parágrafos do art. 6 da Lei n. 7.713/1988, não encontramos menção às férias ou licença-prêmio convertidas em pecúnia. Assim, querer evitar a incidência do tributo sobre tais r endimentos na esfera do Poder Judiciário, seria o mesmo que conceder uma isenção tributária judicialmente, quando é sabido que ao Poder J udiciário não compete criar isenções; as isenções somente podem ser concedidas por lei. A criação de uma isenção por este órgão c onfi guraria uma anomalia, que além de patentemente nula, estaria, também, infringindo um dos princípios basilares de nossa ordem constitucional, a tripartição de poderes."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1362,
+      "indent_effective": 1362
+    },
+    {
+      "kind": "para",
+      "index": 45,
+      "inlines": [
+        {
+          "text": "Em conseqüência, contrariamente ao afi rmado na r. decisão, ora agravada, inaplicável "
+        },
+        {
+          "text": "data venia",
+          "italic": true
+        },
+        {
+          "text": ", ao presente caso a Súmula n. 284 do Pretório Excelso."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 46,
+      "inlines": [
+        {
+          "text": "Na certeza de que venham a ser superadas essas questões, a a preciação do agravo se impõe quanto à matéria de mérito, tendo em vista, f undamentalmente, recente aresto da Primeira Turma desse egrégio Tribunal, ( publicado no DJ 21.02.1994) o qual, decidindo questão idêntica, proclamou o seguinte:"
+        }
+      ],
+      "style": "Normal",
+      "num_id": "2",
+      "ilvl": 0,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 47,
+      "inlines": [
+        {
+          "text": "Tributário. Imposto de renda. Indenização pecuniária referente a licença prêmio não gozada por necessidade do serviço. Incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 48,
+      "inlines": [
+        {
+          "text": "Incide imposto de renda auferida de indenização pecuniária relativa a período de licença-prêmio não gozada em face da necessidade do s erviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 49,
+      "inlines": [
+        {
+          "text": "(REsp n. 39.627-1-SP)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "first_line": 0,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 50,
+      "inlines": [
+        {
+          "text": "Acresce, Srs. Ministros, que do voto condutor consta a seguinte conjectura:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1134,
+      "first_line": 0,
+      "indent_effective": 1134
+    },
+    {
+      "kind": "para",
+      "index": 51,
+      "inlines": [
+        {
+          "text": "Chego até a admitir que seria de justiça isentar-se do pagamento do imposto sobre a renda a indenização pecuniária paga a funcionário relativa a licença-prêmio ou "
+        },
+        {
+          "text": "férias indeferidas por necessidade de serviço",
+          "italic": true
+        },
+        {
+          "text": " (g.n.), uma vez que tal verba não se consubstancia em rendimento do trabalho, não se confundindo com o produto do trabalho do recorrido, "
+        },
+        {
+          "text": "mas de mera indenização",
+          "italic": true
+        },
+        {
+          "text": " (g.n.) que visa, de maneira razoável, a recompor o patrimônio do interessado para, na medida do possível, torná-lo indene, íntegro, após a consumação da lesão, conforme anotado no r. acórdão hostilizado."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 52,
+      "inlines": [
+        {
+          "text": "5. Por todo o exposto, espera o Estado de São Paulo que seja provido o agravo regimental, de forma a fazer chegar o especial ao exame desse colendo Tribunal, para, em julgamento colegiado, dar-se-lhe a solução mais condizente com o direito federal."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 53,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 54,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 55,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Antônio de Pádua Ribeiro (Relator): A jurisprudência das Primeira e Segunda Turmas, especializadas em Direito Público, é no sentido de que o imposto de renda não incide sobre o pagamento de férias não gozadas, em razão do seu caráter indenizatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 56,
+      "inlines": [
+        {
+          "text": "Eis as ementas de alguns precedentes:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 57,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas por necessidade do serviço. I ndenização. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 58,
+      "inlines": [
+        {
+          "text": "- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer n atureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita à incidência do imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "3",
+      "ilvl": 1,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 59,
+      "inlines": [
+        {
+          "text": "- Recurso desprovido."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "3",
+      "ilvl": 1,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 60,
+      "inlines": [
+        {
+          "text": "(REsp n. 26.998-6-SP (92.0022615-9); Rel. Min. "
+        },
+        {
+          "text": "José de Jesus Filho",
+          "italic": true
+        },
+        {
+          "text": "; julgado em"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 61,
+      "inlines": [
+        {
+          "text": "06.12.1993 e Publ. DJ 28.02.1994)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 62,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas indenizadas. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1135,
+      "first_line": 0,
+      "indent_effective": 1135
+    },
+    {
+      "kind": "para",
+      "index": 63,
+      "inlines": [
+        {
+          "text": "O pagamento em dinheiro das férias não gozadas, porque indeferidas por necessidade do serviço, não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial, não e stando, portanto, sujeitas à incidência do Imposto de Renda. Recurso improvido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 64,
+      "inlines": [
+        {
+          "text": "(REsp n. 34.988-0-SP (93.0013182-6) Rel. Min. "
+        },
+        {
+          "text": "Garcia Vieira",
+          "italic": true
+        },
+        {
+          "text": ", julgado em"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 65,
+      "inlines": [
+        {
+          "text": "06.10.1993 e publicado DJ 08.11.1993)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 66,
+      "inlines": [
+        {
+          "text": "Isto posto, nego provimento ao agravo."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 67,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 3176,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 3176
+    },
+    {
+      "kind": "para",
+      "index": 68,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 69,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 34.988-SP (93.0013182-6)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 70,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 71,
+      "inlines": [
+        {
+          "text": "Relator: Ministro Garcia Vieira"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 72,
+      "inlines": [
+        {
+          "text": "Recorrente: Fazenda do Estado de São Paulo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 73,
+      "inlines": [
+        {
+          "text": "Recorridos: Décio Antônio Piola e outros"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 74,
+      "inlines": [
+        {
+          "text": "Interessado: Instituto de Previdência do Estado de São Paulo — Ipesp"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 75,
+      "inlines": [
+        {
+          "text": "Advogados: Flávia C. Piovesan e outros, João Lopes Guimarães e outros e Jorge Atique Sobrinho"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 76,
+      "inlines": [],
+      "style": "Normal",
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 77,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1372,
+      "indent_effective": 1372
+    },
+    {
+      "kind": "para",
+      "index": 78,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas indenizadas. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 79,
+      "inlines": [
+        {
+          "text": "O pagamento em dinheiro das férias não gozadas, porque indeferidas por necessidade do serviço, não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial, não estando, portanto, sujeitas à incidência do Imposto de Renda."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 80,
+      "inlines": [
+        {
+          "text": "Recurso improvido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "first_line": 0,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 81,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 82,
+      "inlines": [
+        {
+          "text": "Vistos, relatados e discutidos estes autos, acordam os Exmos Srs. Ministros da Primeira Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por maioria, vencido o Exmo Sr. Ministro Cesar Rocha, negar provimento ao recurso. Votaram com o Relator os Exmos Srs. Ministros Demócrito Reinaldo, Gomes de Barros e Milton Pereira."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 83,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 06 de outubro de 1993 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 84,
+      "inlines": [
+        {
+          "text": "Ministro Garcia Vieira, Presidente e Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 85,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 86,
+      "inlines": [
+        {
+          "text": "DJ 08.11.1993"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 87,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 88,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Garcia Vieira: Trata-se de ação ordinária de repetição de indébito ajuizada por Promotores Públicos contra a Fazenda do Estado e o Instituto de Previdência do Estado de São Paulo, visando ao recebimento de importâncias descontadas, a título de Imposto de Renda na Fonte e Contribuição Previdenciária do Ipesp, sobre indenização decorrente de férias não gozadas."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 89,
+      "inlines": [
+        {
+          "text": "Em primeira instância a ação foi julgada parcialmente procedente, acolhido o p edido quanto ao desconto na fonte do Imposto de Renda e afastado quanto à contribuição previdenciária ao Ipesp. (fl s. 295/303)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 90,
+      "inlines": [
+        {
+          "text": "Apreciando o feito, o E. Tribunal de Justiça do Estado de São Paulo negou provimento ao recurso da Fazenda e deu provimento ao apelo dos autores para afastar, também, a incidência da contribuição devida ao Ipesp sobre a indenização de férias não gozadas. Considerou aquela E. Corte que “retenção ou percentual sobre verba que não tem correspondência com futuro benefício não é contribuição previdenciária, é imposto, ou confi sco ...”"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 91,
+      "inlines": [
+        {
+          "text": "Com relação ao desconto relativo ao Imposto de Renda, entendeu o E. Tribunal "
+        },
+        {
+          "text": "a quo",
+          "italic": true
+        },
+        {
+          "text": " que as quantias recebidas à guisa de férias e licenças prêmio em pecúnia, por confi gurarem indenizações e, não rendimentos, estão constitucionalmente a salvo da tributação por via de IR (fl s. 379/388)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 92,
+      "inlines": [
+        {
+          "text": "Inconformada, a Fazenda do Estado de São Paulo interpôs o presente recurso especial, com apoio na alínea "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": " do permissivo constitucional, sob alegação de violação à Lei n. 7.713/1988, art. 43 do CTN, e art. 135 da Lei Complementar Estadual n. 180/1978."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 93,
+      "inlines": [
+        {
+          "text": "Sustenta, em síntese, que “ao não integrar o exaustivo rol de isenções, não há como objetivar que as férias pagas em pecúnia não sejam tributadas, porque estão abrangidas pelo conceito de renda, universo de incidência do referido imposto”, ainda mais considerando que as isenções hão de ser interpretadas restritivamente."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 94,
+      "inlines": [
+        {
+          "text": "Alega, ainda, que a contribuição previdenciária tem como base de cálculo vantagens remuneratórias de qualquer natureza percebidas dos cofres públicos, incluindo-se aí, as férias em pecúnia, nos justos termos do art. 133 da Lei Complementar n. 180 (fl s. 405/413)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 95,
+      "inlines": [
+        {
+          "text": "Oferecidas contra-razões, foi o recurso admitido (fl s. 427/431), subindo os autos a este C. Tribunal."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 96,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 97,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 98,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Garcia Vieira (Relator): Discute-se neste recurso especial se o imposto de renda e a contribuição previdenciária para o Instituto de Previdência do Estado de São Paulo, incidem ou não sobre o pagamento em dinheiro de férias não gozadas por interesse do serviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 99,
+      "inlines": [
+        {
+          "text": "Com referência à contribuição previdenciária, o recurso não foi admitido (fl s. 427/431), tendo o eminente 3 Vice-Presidente do egrégio Tribunal de Justiça afi rmado que:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 100,
+      "inlines": [
+        {
+          "text": "Todavia, tocante à devolução das importâncias descontadas a título de contribuição previdenciária, o recurso não merece prosperar."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 101,
+      "inlines": [
+        {
+          "text": "É que o exame da questão como feito, não evidencia violação flagrante, direta de lei federal, dependendo sua verifi cação, no caso, de interpretação da lei estadual especifi camente considerada, o que inviabiliza a seqüência recursal."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 102,
+      "inlines": [
+        {
+          "text": "Sabe-se que a interpretação de direito local é insusceptível de revisão especial pretendida, conforme anuncia a Súmula n. 280 do Pretório Excelso, aqui aplicável."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 103,
+      "inlines": [
+        {
+          "text": "De fato, com referência à incidência ou não da contribuição previdenciária, nenhuma lei federal foi apontada como violada e a única norma legal invocada é a Lei Complementar Estadual n. 180/1978 e por ofensa a direito local não cabe o especial (Súmula n. 280 do STF). Por isso, não conheço do recurso na parte referente à contribuição previdenciária."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 104,
+      "inlines": [
+        {
+          "text": "Com referência ao imposto de renda, vários dispositivos legais, inclusive o art. 3, § 4 da Lei n. 7.713/1988, e o art. 43, incisos I e II, do CTN, são apontados como atingidos pelo venerando aresto recorrido e houve o prequestionamento."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 105,
+      "inlines": [
+        {
+          "text": "Conheço do recurso no concernente ao imposto de renda, com base na letra "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": "."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 106,
+      "inlines": [
+        {
+          "text": "Nesta parte, o recurso é admissível mas, a meu ver, não merece provimento."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 107,
+      "inlines": [
+        {
+          "text": "Compete à União instituir o imposto sobre “renda e proventos de qualquer natureza” (Constituição Federal, art. 153, inciso III) e o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de qualquer natureza. O fato gerador do imposto de renda é a aquisição da disponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto do capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 108,
+      "inlines": [
+        {
+          "text": "Ora, o pagamento em dinheiro das férias não gozadas porque indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da a dministração pública o pagamento de férias não gozadas constitui uma indenização. Estabelece a Súmula n. 39 do TFR, que:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 109,
+      "inlines": [
+        {
+          "text": "Não está sujeita ao imposto de renda a indenização recebida por pessoa jurídica em decorrência de desapropriação amigável ou judicial."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 110,
+      "inlines": [
+        {
+          "text": "É claro que, quando uma pessoa recebe uma indenização como pagamento de seu imóvel atingido pela desapropriação ou pelos danos sofridos em decorrência de acidente envolvendo veículo oficial ou por qualquer outro dano a ela causado por agente público ou lhe paga as férias não gozadas, não está ele recebendo nenhuma renda ou proventos de qualquer natureza. Estas indenizações não são o produto do capital ou de trabalho e não representam qualquer acréscimo patrimonial, b enefício, vantagem ou rendimentos. Se não é renda nem proventos, não pode lei nenhuma determinar a cobrança de imposto de renda sobre a indenização de férias não gozadas, porque isto é vedado pela Constituição (art. 153, item III)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 111,
+      "inlines": [
+        {
+          "text": "O eminente Juiz singular, em sua bem lançada sentença de fl s. 295/303, com razão, acentuou que:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 112,
+      "inlines": [
+        {
+          "text": "Entende o respeitado Amauri Mascaro Nascimento"
+        },
+        {
+          "text": " ",
+          "bold": true
+        },
+        {
+          "text": "que o pagamento de férias vencidas tem natureza indenizatória, como se vê em seu “Curso de Direito do Trabalho”, 2 edição, 2 volume, p. 156, e no seu “Compêndio do Direito do Trabalho”, Ed. LTr, 1976, p. 465, em que, inclusive, discorre sobre a “"
+        },
+        {
+          "text": "indenização substitutiva e proporcional",
+          "italic": true
+        },
+        {
+          "text": "” pelas férias não gozadas."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 113,
+      "inlines": [
+        {
+          "text": "Corroborando tal ensinamento, vê-se decisão do egrégio Tribunal Superior do Trabalho nesse sentido, em que o ínclito Ministro Barata Silva referiu-se expressamente ao pagamento de férias não gozadas como sendo "
+        },
+        {
+          "text": "indenização",
+          "italic": true
+        },
+        {
+          "text": " (Recurso de Revista n. 1.251/1977). E, por derradeiro, é de ser, aqui, e xpressamente citado o enunciado da Súmula n. 7 do Colendo Tribunal S uperior do Trabalho: “A indenização pelo não deferimento das férias no tempo oportuno será calculada com base na remuneração devida ao empregado à época da reclamação ou, se for o caso, a extinção do contrato”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 114,
+      "inlines": [
+        {
+          "text": "O acatado jurista Roque Antônio Carrazza afirma, em seu parecer, que as férias constituem direito que a lei deu aos servidores, que preenchem os requisitos. Em nome do superior interesse público, também pode ter seu desfruto temporariamente adiado, mas, nunca, anulado ou eliminado."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 115,
+      "inlines": [
+        {
+          "text": "A conseqüência da não-concessão, por necessidade de serviço, das férias, seria a necessidade de uma reparação patrimonial, deixando o agente público indene."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 116,
+      "inlines": [
+        {
+          "text": "Como já foi dito anteriormente, a Administração freqüentemente susta o direito de seus agentes ao gozo de férias, invocando razões de necessidade de serviço. Com isto, viola os princípios gerais referentes ao Direito Social (que preconizam o direito ao descanso e a recomposicão das condições físicas do trabalhador), além do preceito constitucional que escuda tal direito (art. 124, § 3, da atual Constituição Estadual). Com isto, gera o direito do agente público — "
+        },
+        {
+          "text": "in casu",
+          "italic": true
+        },
+        {
+          "text": ", o promotor — "
+        },
+        {
+          "text": "ser indenizado",
+          "italic": true
+        },
+        {
+          "text": " pelo não-gozo de tais direitos."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 117,
+      "inlines": [
+        {
+          "text": "A cobrança do Imposto de Renda sobre o dito pagamento, defende-se a ré, é autorizada pela legislação; tanto pela Constituição Federal (art. 153, inciso III), como pela Lei Federal n. 7.713/1988. Já o Código Tributário Nacional dispõe, em seu art. 43, sobre o tributo em pauta, que ele tem como fato gerador a aquisição de disponibilidade econômica jurídica: “I - de Renda, assim entendido o produto do capital, do trabalho ou da combinação de ambos; II - de proventos de qualquer natureza, assim entendidos os acréscimos patrimoniais não compreendidos no inciso anterior”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 118,
+      "inlines": [
+        {
+          "text": "Deve o tributo incidir sobre ganhos ou proventos que causem aumento de patrimônio; ou seja, sobre numerário que venha a somar àquele que já seja propriedade do contribuinte. Mas as indenizações, pela própria natureza j urídica, não causam aumento de patrimônio algum, pois correspondem a uma "
+        },
+        {
+          "text": "r ecomposição",
+          "italic": true
+        },
+        {
+          "text": "; a um "
+        },
+        {
+          "text": "prejuízo anteriormente sofrido pela pessoa que as recebe",
+          "italic": true
+        },
+        {
+          "text": ". Não pode ser considerada renda, pois "
+        },
+        {
+          "text": "não redunda em aumento de patrimônio",
+          "italic": true
+        },
+        {
+          "text": "."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 119,
+      "inlines": [
+        {
+          "text": "É do ilustre Geraldo Ataliba, em seu parecer anteriormente mencionado, a seguinte observação: “Indenizar” implica a noção de - “compensar ou recompensar o dano ou prejuízo sofrido; reparar” e “Compensar é estabelecer o equilíbrio entre; contrabalancear; substituir” (A. Morais Silva). O patrimônio deve fi car "
+        },
+        {
+          "text": "indene,",
+          "italic": true
+        },
+        {
+          "text": " intocado, igual. Semanticamente, indenização é, portanto, reposição de patrimônio no estado em que se encontrava, antes do dano, ou desfalque sofrido. E conclui, mais adiante: “Como nas indenizações não ocorre acréscimo patrimonial, não há lugar para incidência de imposto de renda. Doutrina e jurisprudência roboram inteiramente a inteligência exposta, ao realizar a exegese da competência tributária da União, inserta no inciso III do art. 153 da Lei Maior (e preceitos homólogos dos textos constitucionais anteriores)”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 120,
+      "inlines": [
+        {
+          "text": "Absurdo, assim, que se aluda à necessidade da existência de lei infraconstitucional que venha a outorgar isenções para os casos de indenizações, pura e simplesmente porque não são elas tributáveis."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 121,
+      "inlines": [
+        {
+          "text": "A hipótese cabível, em verdade, é a da "
+        },
+        {
+          "text": "não-incidência",
+          "italic": true
+        },
+        {
+          "text": ", que é o e quivalente, no Direito Tributário, ao não-crime do Direito Penal. Ou, como ensina José Souto Maior Borges: “A expressão ‘não-incidência’, usada comumente pela doutrina de Direito Tributário em sentido genérico, para abranger todos os casos de inexigibilidade de tributos, pode ser empregada no sentido específico de inexistência de disposição prevendo o fato gerador” (“Isenções Tributárias”; Ed. Sugestões Literárias S/A, 1969, p. 182). E, mais adiante: “não-incidência é conceito correlacionado com o de incidência. Ocorre incidência de lei tributária quando determinada pessoa ou coisa se encontra "
+        },
+        {
+          "text": "dentro",
+          "italic": true
+        },
+        {
+          "text": " do campo coberto pela tributação; dá-se não incidência, diversamente, quando determinada pessoa ou coisa se encontra "
+        },
+        {
+          "text": "fora",
+          "italic": true
+        },
+        {
+          "text": " do campo de incidência da regra jurídica de tributação” ("
+        },
+        {
+          "text": "op. cit.",
+          "italic": true
+        },
+        {
+          "text": ", p. 183)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 122,
+      "inlines": [
+        {
+          "text": "Argumentar-se-á que a Lei n. 7.713/1988 tratou de isenções a respeito de indenizações, no seu art. 62, IV e V. Entretanto, fê-lo, desnecessariamente; ou, como decidiu o ilustre magistrado Venício Antônio de Paula Salles, ao sentenciar, brilhantemente, o Processo n. 472/1990, da egrégia 9 Vara da Fazenda Pública: “... o legislador ordinário não poderia escolher estes fatos como desencadeadores do imposto de renda. O legislador ordinário foi totalmente ‘atécnico’, mas isto é absolutamente normal em nossa legislação, pois ‘a ele é dado cometer erros não permitidos no estudante de direito’” (Professor Geraldo Ataliba)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 123,
+      "inlines": [
+        {
+          "text": "Houve, prossegue o magistrado, uma “falha legal”, e dela não se pode extrair “um raciocínio correto. Este (raciocínio) há de estar contaminado por igual vício."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 124,
+      "inlines": [
+        {
+          "text": "Portanto, o fato de haver previsão legal de isenção para algumas indenizações, não significa que todas as demais se encontram submetidas à cobrança de tributos”. E conclui, com absoluto acerto: “fosse correto este entendimento e as reparações de danos provocadas por acidentes a utomobilísticos, ou as indenizações decorrentes de desapropriações, e stariam sujeitas ao pagamento do imposto federal”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 125,
+      "inlines": [
+        {
+          "text": "E de onde provém a diferença? Justamente daquilo que já foi dito; ou seja, de que as "
+        },
+        {
+          "text": "indenizações constituem recomposição de patrimônio anteriormente desfalcado",
+          "italic": true
+        },
+        {
+          "text": ". Pura e simplesmente, não podem ser considerados como "
+        },
+        {
+          "text": "renda",
+          "italic": true
+        },
+        {
+          "text": ". Ou como conclui Geraldo Ataliba no já mencionado estudo: “Como as indenizações não se submetem ao conceito constitucional legal e doutrinário de renda, são intributáveis”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 126,
+      "inlines": [
+        {
+          "text": "No mesmo sentido, a opinião do Professor Roque Antônio Carrazza: “A quantia recebida pelo servidor público, a título de ressarcimento, pelas férias e licenças-prêmio vencidas e não gozadas, por absoluta necessidade de serviço, é simples indenização. É medida reparatória que recompõe seu p atrimônio, mas que absolutamente não lhe cria, sob o aspecto jurídico, riquezas novas, é dizer, rendimentos ou ganhos de capital (proventos). T emos por indisputável, pois, que o pagamento, em dinheiro, das férias e licenças-prêmio não gozadas por necessidade de serviço, tem caráter indenizatório. E — reprisemos — indenizações não podem ser objeto de tributação, por via de IR”. (fl s. 298/302)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 127,
+      "inlines": [
+        {
+          "text": "Nego provimento ao recurso."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 128,
+      "inlines": [
+        {
+          "text": "VOTO-VISTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 129,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Milton Pereira: Compelido por dúvidas, pareceu-me aconselhável solicitar vista, pórtico regimental propiciador de oportunidade para refl exões mais demoradas. Concluídas, à guisa de registro que se cuida de ação objetivando a repetição de indébito, conseqüente a importâncias descontadas a título de Imposto de Renda, incidente sobre a indenização pecuniária de férias não gozadas."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 130,
+      "inlines": [
+        {
+          "text": "No seu substancioso voto, o Sr. Ministro-Relator averbou:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 131,
+      "inlines": [
+        {
+          "text": "Omissis",
+          "italic": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1130,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": 1130
+    },
+    {
+      "kind": "para",
+      "index": 132,
+      "inlines": [
+        {
+          "text": "... o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de qualquer natureza. O fato gerador do imposto de renda é a aquisição da disponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto do capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 133,
+      "inlines": [
+        {
+          "text": "Ora, o pagamento em dinheiro das férias não gozadas porque indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da Administração Pública o pagamento de férias não gozadas constitui uma indenização."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 134,
+      "inlines": [
+        {
+          "text": "Deveras, a questão não se prende às férias “vendidas” (art. 78, § 1, Lei n. 8.112/1990), hipótese em que, constituindo-se em anômala fonte de renda, parece-me que ocorrerá a incidência do tributo."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 135,
+      "inlines": [
+        {
+          "text": "Acertada essa exclusão, a trato de pagamento substitutivo e proporcional das férias, não gozadas no tempo oportuno por inquestionado interesse do serviço, seguindo-se as lições doutrinárias colacionadas pelo eminente Ministro Garcia Vieira, consubstanciou-se o direito a uma reparação, pecuniária, gerando a correspondente "
+        },
+        {
+          "text": "indenização",
+          "italic": true
+        },
+        {
+          "text": "; daí por que:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 136,
+      "inlines": [
+        {
+          "text": "... Deve o tributo incidir sobre ganhos ou proventos que causem aumento de patrimônio; ou seja, sobre numerário que venha a somar àquele que já seja propriedade do contribuinte. Mas as indenizações, pela própria natureza j urídica, não causam aumento de patrimônio algum, pois correspondem a "
+        },
+        {
+          "text": "uma recomposição;",
+          "italic": true
+        },
+        {
+          "text": " a um "
+        },
+        {
+          "text": "prejuízo anteriormente sofrido pela pessoa que as recebe",
+          "italic": true
+        },
+        {
+          "text": ". Não pode ser considerada renda, pois "
+        },
+        {
+          "text": "não",
+          "italic": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "redunda em aumento de patrimônio",
+          "italic": true
+        },
+        {
+          "text": "."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 137,
+      "inlines": [
+        {
+          "text": "É do ilustre Geraldo Ataliba, em seu parecer anteriormente m encionado, a seguinte observação: “Indenizar” implica a noção de “compensar ou recompensar o dano ou prejuízo sofridos; reparar” e “Compensar é e stabelecer o equilíbrio entre o contrabalancear; substituir...”. (Voto — grifos originais)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 138,
+      "inlines": [
+        {
+          "text": "Esse lineamento, ao derredor de que as férias "
+        },
+        {
+          "text": "indenizadas",
+          "italic": true
+        },
+        {
+          "text": " não constituem salário, tem o precioso apoio do pranteado "
+        },
+        {
+          "text": "Orlando Gomes,",
+          "italic": true
+        },
+        {
+          "text": " a dizer: “qualquer remuneração paga ao empregado sem trabalho não é tecnicamente salário” (“O Salário no Direito Brasileiro” - , p. 353, ed. 1957 - ). Em assim afi rmado, calham à fi veleta estas anotações:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 139,
+      "inlines": [
+        {
+          "text": "... no mesmo campo do salário e da indenização, se aquele é típico e específi co do contrato-de-emprego e, portanto, do Direito do Trabalho, esta, da indenização, tem conteúdo conceitual, também típico e específi co, no Direito Comum. E o preceito legal está expresso no art. 1.534 do Código Civil, assim enunciado: “Se o devedor não puder cumprir a prestação na espécie ajustada, substituir-se-á pelo seu valor, em moeda corrente, no lugar onde se execute a obrigação”. Contudo, o princípio mesmo da indenização está consagrado no art. 1.056 do Código Civil, a saber: “Não cumprindo a obrigação ou deixando de cumpri-la pelo modo e no tempo devido, responde o devedor por perdas e danos”. Os dois preceitos legais invocados, dão-nos, de maneira irretorquível, as medidas certas e adequadas para conceituação de indenização do Direito Comum, e que deve ser aplicada ao Direito do Trabalho, como ramo da mesma Ciência Jurídica."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 140,
+      "inlines": [
+        {
+          "text": "(...)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1135,
+      "first_line": 0,
+      "indent_effective": 1135
+    },
+    {
+      "kind": "para",
+      "index": 141,
+      "inlines": [
+        {
+          "text": "Serão tais verbas indenizatórias entendidas como “rendimentos de t rabalho assalariado”, para os efeitos da incidência do I. Renda, na fonte?"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 142,
+      "inlines": [
+        {
+          "text": "Segundo a Coordenadoria do Sistema de Tributação, sim."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1135,
+      "first_line": 0,
+      "indent_effective": 1135
+    },
+    {
+      "kind": "para",
+      "index": 143,
+      "inlines": [
+        {
+          "text": "Deixando de lado o aspecto abrangente dado pela aludida C oordenadoria, sempre no sentido de arrecadar cada vez mais, há que se ater ao princípio maior que regula a tributação sobre rendimentos do trabalho, no sentido de que as indenizações trabalhistas estão isentas sem restrições, a não ser que houvesse lei declarando o contrário, não sendo lícito ao intérprete distinguir se o texto legal não distinguiu. O que há são Pareceres Normativos e Acórdãos isolados, quase todos, na esfera administrativa... ("
+        },
+        {
+          "text": "Irany Ferrari",
+          "italic": true
+        },
+        {
+          "text": ", “Férias indenizadas — Tempo de serviço — Incidência de IAPAS, Imp. Renda e FGTS”, "
+        },
+        {
+          "text": "in",
+          "italic": true
+        },
+        {
+          "text": " Rev. LTr, vol. 46, n. 1, 1982, p. 49 a 51)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 144,
+      "inlines": [
+        {
+          "text": "Some-se:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 145,
+      "inlines": [
+        {
+          "text": "Omissis",
+          "italic": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1130,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": 1130
+    },
+    {
+      "kind": "para",
+      "index": 146,
+      "inlines": [
+        {
+          "text": "... que signifi ca a expressão “renda e proventos de qualquer natureza”? Ou, por outro giro verbal: será que qualquer importância recebida, seja a que título for, pode ser alcançada pelo IR? entendemos que "
+        },
+        {
+          "text": "não",
+          "italic": true
+        },
+        {
+          "text": "."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 147,
+      "inlines": [
+        {
+          "text": "Obviamente, o art. 21, IV, da Lei Maior, não deu ao legislador o rdinário da União liberdade para tributar o que lhe aprouver. Pelo contrário, conferiu-lhe apenas o direito de tributar a renda e os proventos de qualquer natureza."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 148,
+      "inlines": [
+        {
+          "text": "Melhor esclarecendo, o IR só pode alcançar a aquisição de d isponibilidade de riqueza nova, vale dizer, o acréscimo patrimonial, experimentado durante certo período."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 149,
+      "inlines": [
+        {
+          "text": "Logo, não é qualquer entrada de dinheiro nos cofres de uma pessoa (física ou jurídica) que pode ser alcançada pelo "
+        },
+        {
+          "text": "IR",
+          "italic": true
+        },
+        {
+          "text": ", mas, tão-somente, os “acréscimos patrimoniais”, isto é, “a aquisição de disponibilidade de riqueza nova”, como averba, com precisão, Rubens Gomes de Souza. Tudo que não tipifi car "
+        },
+        {
+          "text": "ganhos durante um período",
+          "italic": true
+        },
+        {
+          "text": ", mas simples "
+        },
+        {
+          "text": "transformações de r iqueza",
+          "italic": true
+        },
+        {
+          "text": ", não se enquadra na área traçada pelo art. 21, IV, da CF."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 150,
+      "inlines": [
+        {
+          "text": "É o caso das indenizações. Nelas, não há geração de rendas ou acréscimos patrimoniais (proventos) de qualquer espécie. Não há riquezas novas d isponíveis, mas reparações, em pecúnia, por perdas de direitos."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 151,
+      "inlines": [
+        {
+          "text": "Na indenização, como todos aceitam, há "
+        },
+        {
+          "text": "compensação",
+          "italic": true
+        },
+        {
+          "text": ", em pecúnia, por dano sofrido. Em outros termos, o direito ferido é transformado numa quantia de dinheiro. O patrimônio da pessoa lesada não aumenta de valor, mas simplesmente é reposto no estado em que se encontrava antes do advento do gravame ("
+        },
+        {
+          "text": "status quo ante",
+          "italic": true
+        },
+        {
+          "text": ")."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 152,
+      "inlines": [
+        {
+          "text": "Em apertada síntese, na indenização inexiste"
+        },
+        {
+          "text": " riqueza nova",
+          "italic": true
+        },
+        {
+          "text": ". E, sem "
+        },
+        {
+          "text": " ",
+          "italic": true
+        },
+        {
+          "text": "riqueza nova, não pode haver incidência do "
+        },
+        {
+          "text": "IR",
+          "italic": true
+        },
+        {
+          "text": " ou de qualquer outro imposto da c ompetência residual da União (neste caso, por ausência de indício de "
+        },
+        {
+          "text": " capacidade contributiva",
+          "italic": true
+        },
+        {
+          "text": ")."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 153,
+      "inlines": [
+        {
+          "text": "Assim, conquanto reinem dúvidas sobre o significado, o conteúdo e o alcance da expressão “renda e proventos de qualquer natureza”, a doutrina e a jurisprudência de há muito vêm entendendo que "
+        },
+        {
+          "text": "ela não compreende as i mportâncias percebidas a título de indenização",
+          "italic": true
+        },
+        {
+          "text": ". A respeito, já se pacifi caram as inteligências, motivo pelo qual julgamos dispensável ampliar estas c onsiderações."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 154,
+      "inlines": [
+        {
+          "text": "Enfi m, as indenizações não são — e nem podem vir a ser — tributáveis por meio de "
+        },
+        {
+          "text": "IR",
+          "italic": true
+        },
+        {
+          "text": " ... ("
+        },
+        {
+          "text": "Roque Antônio Carrazza",
+          "italic": true
+        },
+        {
+          "text": ", “Intributabilidade por Via de Imposto sobre a Renda — Férias e Licenças-Prêmio em Pecúnia”, "
+        },
+        {
+          "text": "in",
+          "italic": true
+        },
+        {
+          "text": " Rev. Direito Tributário, vol. 39, pp. 165 e 166)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 155,
+      "inlines": [
+        {
+          "text": "A quantia recebida pelo servidor público, a título de ressarcimento, pelas férias e licenças-prêmio vencidas e não gozadas, por absoluta necessidade de serviço, é simples indenização. É medida reparatória que recompõe seu patrimônio, mas que absolutamente não lhe cria, "
+        },
+        {
+          "text": "sob o aspecto jurídico, riquezas novas",
+          "italic": true
+        },
+        {
+          "text": ", é dizer, "
+        },
+        {
+          "text": "rendimentos",
+          "italic": true
+        },
+        {
+          "text": " ou "
+        },
+        {
+          "text": "ganhos de capital",
+          "italic": true
+        },
+        {
+          "text": " (proventos)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 156,
+      "inlines": [
+        {
+          "text": "Temos por indisputável, pois, que o pagamento, em dinheiro, das "
+        },
+        {
+          "text": "f érias",
+          "italic": true
+        },
+        {
+          "text": " e licenças-prêmio não gozadas, por necessidade de serviço, têm caráter indenizatório. E — repisamos — indenizações não podem ser objeto de tributação, por via de IR .... (Roque Antônio Carrazza, “Novas Considerações sobre a Intributabilidade, por Via de Imposto sobre a Renda, das Férias e Licenças Prêmio Recebidas em Pecúnia”, "
+        },
+        {
+          "text": "in",
+          "italic": true
+        },
+        {
+          "text": " Rev. de Direito Tributário, n. 52 p. 181 — grifo)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 157,
+      "inlines": [
+        {
+          "text": "Conforme, pois, essas eméritas considerações, pagamento das "
+        },
+        {
+          "text": "férias",
+          "italic": true
+        },
+        {
+          "text": ", indeferido o seu aproveitamento por necessidade do serviço, as verbas percebidas têm a natureza jurídica de "
+        },
+        {
+          "text": "indenização",
+          "italic": true
+        },
+        {
+          "text": ". Ilógico seria Interpretação diversa, inclusive porque, além do sacrifício à saúde, impedido o gozo do descanso, seria duplamente apenado com a incidência do Imposto de Renda sobre a compensação monetária."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 158,
+      "inlines": [
+        {
+          "text": "Enfi m, exprimindo o pagamento das férias não gozadas por necessidade de serviço a reparação pecuniária, tem a natureza de indenização e seria injusto, com a anulação parcial dos seus efeitos, de diminuída no seu valor pela incidência do Imposto de Renda. A rigor, seria modifi car o conceito da reparação sofrida pelo servidor, decorrente de lesão ao seu direito constitucional de férias anuais remuneradas (arts. 7, XVIII, e 39, § 2, CF)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 159,
+      "inlines": [
+        {
+          "text": "Amarradas as razões, na espécie examinada, convencido da não incidência do Imposto de Renda, acompanho o voto do eminente Relator Garcia Vieira, "
+        },
+        {
+          "text": "improvendo o recurso.",
+          "italic": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 160,
+      "inlines": [
+        {
+          "text": "É o meu voto-vista."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 161,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 162,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Cesar Rocha: "
+        },
+        {
+          "text": "Data venia",
+          "italic": true
+        },
+        {
+          "text": " do Sr. Ministro Relator, fi co vencido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 163,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 3176,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 3176
+    },
+    {
+      "kind": "para",
+      "index": 164,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 165,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 36.084-SP"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 166,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 167,
+      "inlines": [
+        {
+          "text": "Relator: Ministro Humberto Gomes de Barros"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 168,
+      "inlines": [
+        {
+          "text": "Recorrente: Estado de São Paulo (Fazenda Estadual)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 169,
+      "inlines": [
+        {
+          "text": "Recorrida: Flora Maria Borelli Gonçalves"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 170,
+      "inlines": [
+        {
+          "text": "Advogados: Denize Piovani, Marcelo Saraiva de Oliveira Ribeiro e outro"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 171,
+      "inlines": [],
+      "style": "Normal",
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 172,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1372,
+      "indent_effective": 1372
+    },
+    {
+      "kind": "para",
+      "index": 173,
+      "inlines": [
+        {
+          "text": "Tributário. Imposto de renda. Pagamento de indenização a servidor público. Férias indeferidas por necessidade do serviço. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 174,
+      "inlines": [
+        {
+          "text": "O pagamento em pecúnia a servidor público, referente a períodos de férias não gozadas, por necessidade do serviço não constitui renda ou proventos, pois não caracteriza acréscimo patrimonial, dado o caráter compensatório da verba."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "4",
+      "ilvl": 0,
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 175,
+      "inlines": [
+        {
+          "text": "Recurso desprovido."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "4",
+      "ilvl": 0,
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 176,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 177,
+      "inlines": [
+        {
+          "text": "Vistos, relatados e discutidos estes autos, acordam os Ministros da Primeira Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por unanimidade, negar provimento ao recurso. Votaram com o Sr. Ministro Relator os Srs. Ministros Milton Luiz Pereira, Garcia Vieira e Demócrito Reinaldo. Ausente, justifi cadamente, o Sr. Ministro Cesar Asfor Rocha."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 178,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 06 de junho de 1994 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 179,
+      "inlines": [
+        {
+          "text": "Ministro Demócrito Reinaldo, Presidente"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 180,
+      "inlines": [
+        {
+          "text": "Ministro Humberto Gomes de Barros, Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 181,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 182,
+      "inlines": [
+        {
+          "text": "DJ 27.06.1994"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 183,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 184,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Humberto Gomes de Barros: Recurso especial interposto pelo Estado de São Paulo, com base na alínea "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": " da permissão constitucional, contra acórdão que decidiu pela não incidência de imposto de renda sobre o pagamento de férias indeferidas por necessidade do serviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 185,
+      "inlines": [
+        {
+          "text": "O recorrente sustenta contrariedade aos arts. 43, I e II, do CTN, e 3º e 6º, da Lei n. 7.713/1988."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 186,
+      "inlines": [
+        {
+          "text": "Admitido, na origem, o processamento do apelo, subiram os autos a esta Corte."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 187,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 188,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 189,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Humberto Gomes de Barros (Relator): Discute-se, no presente recurso especial, questão dirimida na jurisprudência da Corte, a saber: se o p agamento em pecúnia, a servidor público, referente a períodos de férias não g ozados, por imperativos de necessidade do serviço, confi gura fato gerador do imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 190,
+      "inlines": [
+        {
+          "text": "Esta Turma, no julgamento do REsp n. 36.088-9, DJ 29.11.1993, sob o voto condutor do eminente Ministro Garcia Vieira decidiu, "
+        },
+        {
+          "text": "verbis",
+          "italic": true
+        },
+        {
+          "text": ":"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 191,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas indenizadas. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1135,
+      "first_line": 0,
+      "indent_effective": 1135
+    },
+    {
+      "kind": "para",
+      "index": 192,
+      "inlines": [
+        {
+          "text": "O pagamento em dinheiro das férias não gozadas, porque indeferidas por necessidade do serviço, não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial, não e stando, portanto, sujeitas à incidência do Imposto de Renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 193,
+      "inlines": [
+        {
+          "text": "Recurso improvido. (No mesmo sentido os Recursos Especiais n. 2 7.487-8, DJ"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 194,
+      "inlines": [
+        {
+          "text": "29.11.1993; 34.988-0, DJ 08.11.1993; e 36.050-1, DJ 29.11.1993)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 195,
+      "inlines": [
+        {
+          "text": "Diverso não é o entendimento fi rmado pela Segunda Turma, consoante se depreende do seguinte julgado:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 196,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas por necessidade do serviço. I ndenização."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 197,
+      "inlines": [
+        {
+          "text": "Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 198,
+      "inlines": [
+        {
+          "text": "- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer n atureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita a incidência do imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "5",
+      "ilvl": 0,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 199,
+      "inlines": [
+        {
+          "text": "- Recurso desprovido. (REsp n. 26.998, DJ 28.02.1994, Relator o e minente Ministro José de Jesus)."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "5",
+      "ilvl": 0,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 200,
+      "inlines": [
+        {
+          "text": "Efetivamente, a indenização paga a servidor público, concernente a férias indeferidas por necessidade do serviço, não constitui renda ou proventos, porquanto não caracteriza acréscimo patrimonial, dado o caráter c ompensatório da verba."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 201,
+      "inlines": [
+        {
+          "text": "Nego provimento ao recurso."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 202,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 3176,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 3176
+    },
+    {
+      "kind": "para",
+      "index": 203,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 204,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 40.136-SP (93.0030048-2)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 205,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 206,
+      "inlines": [
+        {
+          "text": "Relator: Ministro José de Jesus Filho"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 207,
+      "inlines": [
+        {
+          "text": "Recorrente: Fazenda do Estado de São Paulo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 208,
+      "inlines": [
+        {
+          "text": "Recorrido: Vicente de Paulo Machado Almeida"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 209,
+      "inlines": [
+        {
+          "text": "Advogados: Maria Luisa de Oliveira e outros e Roberto Tortorelli"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 210,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 211,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1371,
+      "indent_effective": 1371
+    },
+    {
+      "kind": "para",
+      "index": 212,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas por necessidade do serviço. Indenização. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 213,
+      "inlines": [
+        {
+          "text": "- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer natureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita à incidência do imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "6",
+      "ilvl": 0,
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 214,
+      "inlines": [
+        {
+          "text": "- Recurso não conhecido."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "6",
+      "ilvl": 0,
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 215,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 216,
+      "inlines": [
+        {
+          "text": "Vistos e relatados estes autos, em que são partes as acima indicadas, decide a Segunda Turma do Superior Tribunal de Justiça, por unanimidade, não conhecer do recurso, na forma do relatório e notas taquigráfi cas constantes dos autos, que fi cam fazendo parte integrante do presente julgado. Participaram do julgamento os Srs. Ministros Hélio Mosimann, Peçanha Martins, Américo Luz e Antônio de Pádua Ribeiro."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 217,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 21 de fevereiro de 1994 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 218,
+      "inlines": [
+        {
+          "text": "Ministro Antônio de Pádua Ribeiro, Presidente"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 219,
+      "inlines": [
+        {
+          "text": "Ministro José de Jesus Filho, Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 220,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 221,
+      "inlines": [
+        {
+          "text": "DJ 21.03.1994"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 222,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 223,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro José de Jesus Filho: Trata-se de recurso especial interposto pela "
+        },
+        {
+          "text": "Fazenda do Estado de São Paulo",
+          "italic": true
+        },
+        {
+          "text": ", com fundamento no art. 105, III, alínea "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": ", do permissivo constitucional, contra o v. acórdão proferido pela Terceira Câmara Civil do Tribunal de Justiça daquele Estado, que concedeu a segurança impetrada por membro do M inistério Público Estadual, objetivando afastar a incidência do imposto de renda retido na fonte sobre o pagamento de férias não gozadas por necessidade de serviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 224,
+      "inlines": [
+        {
+          "text": "Sustenta a recorrente, em síntese, que o v. aresto hostilizado contrariou dispositivos da Constituição Federal (arts. 150 e 153), assim como do CTN (art. 43, I e II) e da Lei Federal n. 7.713/1988 (arts. 1º, 3º e 6º), uma vez que indenização paga por férias não gozadas constitui fato gerador da incidência do imposto sobre a renda, pois de renda se trata."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 225,
+      "inlines": [
+        {
+          "text": "Às fl s. 203-211, recurso extraordinário."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 226,
+      "inlines": [
+        {
+          "text": "Admitidos ambos os recursos, subiram os autos a esta egrégia Corte, onde dispensei a manifestação da douta Subprocuradoria Geral da República."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 227,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 228,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 229,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro José de Jesus Filho (Relator): Discute-se, na espécie, a respeito de desconto de imposto de renda na fonte sobre o pagamento de indenização correspondente a férias não gozadas por necessidade do serviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 230,
+      "inlines": [
+        {
+          "text": "O v. acórdão perseguido decidiu a espécie nestes termos:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 231,
+      "inlines": [
+        {
+          "text": "O art. 153, III, da Constituição Federal ofereceu ao legislador ordinário o direito de tributar a renda e os proventos de qualquer natureza."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 232,
+      "inlines": [
+        {
+          "text": "O imposto em questão, segundo ressalta o ilustre Procurador de Justiça, Osni de Souza, não incide sobre qualquer percepção em dinheiro, mas apenas sobre aquelas que impliquem geração de rendas ou acréscimos patrimoniais (proventos) de qualquer espécie. Em outras palavras, “não é qualquer entrada de dinheiro nos cofres de uma pessoa (física ou jurídica) que pode ser alcançada pelo IR, mas, tão-somente, ‘os acréscimos patrimoniais’, isto é, ‘a aquisição de disponibilidade de riqueza nova’, como averbava, com precisão Rubens Gomes de Souza. Tudo que não tipificar ganhos durante um período, mas simples transformações de riqueza, não se enquadra na área traçada pelo art. 153, III, da Constituição Federal”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 233,
+      "inlines": [
+        {
+          "text": "Nas indenizações não há geração de rendas ou acréscimos patrimoniais, mas tão só a reposição do patrimônio no estado em que se encontrava antes do dano ou desfalque sofrido. Nada acresce ao patrimônio expropriado, pois simplesmente substitui o valor que dele anteriormente foi subtraído, como mera compensação."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 234,
+      "inlines": [
+        {
+          "text": "A riqueza nova, segundo ressalta Gilberto de Ulhoa Canto, com menção ao Decreto n. 21.554, de 20.06.1932, conduz a que o imposto de renda não incide sobre hipótese que não importa em acréscimo patrimonial. Assim, já em seus primórdios, a legislação do imposto de renda cuidava de tributar tão somente o que se constituísse acréscimo patrimonial (“Estudos e Pareceres de Direito Tributário”, Ed. Alba, RJ)."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 227,
+      "alignment": "left",
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 235,
+      "inlines": [
+        {
+          "text": "Não ocorrendo acréscimo algum, mas apenas reposição do patrimônio na parte injustamente desfalcada, em que se busca a restituição ao estado anterior, o servidor, como todo trabalhador, tem garantido o direito às férias anuais, sendo o gozo obrigatório, sem possibilidade de negociação com a Administração Pública."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 236,
+      "inlines": [
+        {
+          "text": "Preponderando o interesse público ao particular, pode o Poder Público indeferir pretensão de servidor às férias, em nome da continuidade do serviço, que não pode ser interrompido, mormente havendo quadro restrito de pessoal, como sabidamente ocorre com o Ministério Público e a Magistratura, de forma que o servidor muitas vezes fi ca impedido de gozar suas férias. Impedido, pois, de auferir tal benefício, à vista da defi ciência apontada, tem seu direito lesado pela Administração, experimentando prejuízo, fi cando, portanto, reduzido o seu patrimônio funcional."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 237,
+      "inlines": [
+        {
+          "text": "Afastada a possibilidade no concernente ao gozo imediato de férias, permitida, conseqüentemente, a reposição patrimonial em pecúnia, sem a créscimo algum (riqueza nova), não há como proceder ao reconhecimento quanto à licitude de desconto na fonte."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 238,
+      "inlines": [
+        {
+          "text": "Em suma, a natureza jurídica do pagamento de férias que não foram gozadas nas ocasiões devidas ostenta caráter indenizatório, constituindo r ecompensa pelo que não experimentou o funcionário, já que o seu patrimônio era formado também pelo direito ao gozo de férias, que lhe era garantido, mas que, pela necessidade do serviço, não foi exercido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 239,
+      "inlines": [
+        {
+          "text": "Assentou a egrégia Oitava Câmara Civil deste Tribunal, em acórdão r elatado pelo Des. Jorge Almeida, proferido no Mandado de Segurança n. 143.348-1, julgamento de 27.03.1991: “A indenização não acarreta acréscimo patrimonial. É sim reposição dele. É a substituição da perda sofrida, por c orrespondente valor econômico, guardando, como não se controverte no caso examinado, estrita correspondência. O equivalente pecuniário de ressarcimento de dano, não retrata hipótese de acréscimo patrimonial”. Em arremate: “Sem a renda-acréscimo não pode haver cobrança de imposto, por se tratar de relação jurídica extravagante ao fenômeno tributário defi nido no art. 43, II, CTN. Sem o acréscimo patrimonial, porque não instituído como renda o ato de recomposição patrimonial"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 240,
+      "inlines": [
+        {
+          "text": "(indenização), incorre a pressuposta hipótese de incidência (art. 114, CTN)”."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 241,
+      "inlines": [
+        {
+          "text": "Em igual sentido os seguintes julgados deste Pretório: AC n. 143.811-1,"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 242,
+      "inlines": [
+        {
+          "text": "Quarta Câmara, Relator Desembargador Cunha de Abreu (RT 667/96); 144.7151, Segunda Câmara, Relator Desembargador Urbano Ruiz; 145.063-1, Terceira Câmara, Relator Desembargador Yussef Cahali; 145.487-1, Terceira Câmara, Relator Desembargador Toledo Cesar; 147.873-1, Primeira Câmara, Relator Desembargador Euclides de Oliveira, e 159.890-1, Terceira Câmara, Relator Desembargador José Malerbi; MS n. 140.933-1, Relator Desembargador Franklin Nogueira (RJTJESP 133/204)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "first_line": 0,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 243,
+      "inlines": [
+        {
+          "text": "O Superior Tribunal de Justiça já considerou que as importâncias pagas a empregados quando da resilição contratual, dizentes a férias não gozadas, não tem color de salário, por isso não há falar em contribuição previdenciária (Embargos de declaração no Recurso Especial n. 3.794, julgamento de 13.03.1991)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 244,
+      "inlines": [
+        {
+          "text": "Em face do exposto, dá-se provimento ao recurso interposto, para c oncessão da segurança, nos termos pretendidos na inicial. Sem verba h onorária, reembolsando a Fazenda as despesas de fl s. 98 e 144, corrigidas desde as datas dos respectivos recolhimentos, ofi ciando-se. (fl s. 181-184)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 245,
+      "inlines": [
+        {
+          "text": "Tenho como incensuráveis os fundamentos alinhados na decisão supratranscrita, pois também entendo que o pagamento de férias não gozadas por necessidade de serviço tem natureza indenizatória, portanto, não é renda e nem proventos de qualquer natureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em aumento de patrimônio. Aliás, o eminente Ministro Garcia Vieira, ao apreciar matéria idêntica, quando do julgamento do Recurso Especial n. 34.988-0-SP, na sessão do dia 6 de outubro do corrente ano, acórdão publicado no DJ 08.11.1993, assim discorreu sobre a "
+        },
+        {
+          "text": "quaestio juris",
+          "italic": true
+        },
+        {
+          "text": ":"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 246,
+      "inlines": [
+        {
+          "text": "Compete à União instituir o imposto sobre “renda e proventos de q ualquer natureza” (Constituição Federal, art. 153, inciso III) e o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de q ualquer natureza. O fato gerador do imposto de renda é a aquisição da d isponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 247,
+      "inlines": [
+        {
+          "text": "Ora, o pagamento em dinheiro das férias não gozadas porque i ndeferidas por necessidade do serviço não é produto de capital, do trabalho ou da c ombinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da Administração Pública o pagamento de férias não gozadas constitui uma indenização."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 248,
+      "inlines": [
+        {
+          "text": "Destarte, por compartilhar do mesmo entendimento, isto é, que a indenização de férias não gozadas não constitui renda e, portanto, não está sujeita à incidência do imposto em tela, é que não conheço do recurso no âmbito desta Corte."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 249,
+      "inlines": [
+        {
+          "text": "É o meu voto."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 250,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 251,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 40.921-SP (1993/0032428-4)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 252,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 253,
+      "inlines": [
+        {
+          "text": "Relator: Ministro Américo Luz"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 254,
+      "inlines": [
+        {
+          "text": "Recorrente: Fazenda do Estado de São Paulo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 255,
+      "inlines": [
+        {
+          "text": "Recorrida: Eloisa de Souza Arruda"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 256,
+      "inlines": [
+        {
+          "text": "Advogados: Luis Claudio Manfi o e outros e Francisco Egysto Siviero"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 257,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 258,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1371,
+      "indent_effective": 1371
+    },
+    {
+      "kind": "para",
+      "index": 259,
+      "inlines": [
+        {
+          "text": "Férias não gozadas por necessidade do serviço. Indenização. Imposto de renda. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 260,
+      "inlines": [
+        {
+          "text": "O pagamento decorrente de férias não gozadas por absoluta necessidade do serviço, não está sujeito à incidência do imposto sobre a renda, vez que tem caráter indenizatório, não se constituindo, assim, em acréscimo patrimonial. Precedentes."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 261,
+      "inlines": [
+        {
+          "text": "Recurso não conhecido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "first_line": 0,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 262,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 263,
+      "inlines": [
+        {
+          "text": "Vistos, relatados e discutidos estes autos, acordam os Ministros da Segunda Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por unanimidade, não conhecer do recurso. Votaram com o Relator os Srs. Ministros Antônio de Pádua Ribeiro, José de Jesus, Hélio Mosimann e Peçanha Martins."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 264,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 03 de agosto de 1994 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 265,
+      "inlines": [
+        {
+          "text": "Ministro Hélio Mosimann, Presidente"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 266,
+      "inlines": [
+        {
+          "text": "Ministro Américo Luz, Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 267,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 268,
+      "inlines": [
+        {
+          "text": "DJ 22.08.1994"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 269,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 270,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Américo Luz: Contra acórdão da Segunda Câmara Civil do Tribunal de Justiça de São Paulo, concedendo a segurança para afastar a incidência do imposto de renda sobre a indenização por férias não gozadas por estrita necessidade do serviço, a Fazenda paulista interpôs recurso especial, com fundamento no art. 105, III, "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": ", da Constituição Federal."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 271,
+      "inlines": [
+        {
+          "text": "A recorrente sustenta, em síntese, que o acórdão atacado, ao assim decidir, violou os arts. 153, III, da Carta Magna; 43, I e II, do CTN; 3º e 6º da Lei n. 7.713/1988, vez que a indenização paga em razão de férias não gozadas “constitui fato gerador da incidência do imposto sobre a renda, uma vez que de renda se trata” (173)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 272,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 273,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 274,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Américo Luz (Relator): A discussão, na espécie, consiste em saber se a indenização paga em razão de férias não gozadas, por absoluta necessidade do serviço, é ou não fato gerador da incidência do imposto sobre a renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 275,
+      "inlines": [
+        {
+          "text": "Do v. acórdão recorrido, destaco o seguinte trecho, que bem delineia a questão (fl s. 146-147):"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 276,
+      "inlines": [
+        {
+          "text": "Decorre daí que, se o funcionário público tem indeferidas suas férias por absoluta necessidade de serviço, como foi o caso, sofre ele um dano que está a merecer indenização. Daí os pagamentos de férias atrasadas em pecúnia, em nada semelhantes à “renda”, tal como legalmente conceituada, ou a “proventos”. Não colhe, com o devido respeito, o argumento da Fazenda de que, em se tratando de dano, o indeferimento das férias por necessidade absoluta de serviço traria, como conseqüência, a desobrigação de indenizar. Ao contrário, a necessidade absoluta de serviço não pode servir de base para subtrair do servidor o direito a férias, já incorporado em seu patrimônio j urídico. Se é obrigado a sacrifi cá-las em proveito da Administração, deverão ser convertidas em perdas e danos, na pior das hipóteses."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 277,
+      "inlines": [
+        {
+          "text": "Verifi ca-se, então, que mesmo de uma interpretação literal dos textos legais não decorre a conclusão de que incida o Imposto de Renda sobre as indenizações. É bem verdade que no art. 6º da Lei n. 7.713 o legislador, ao dispor sobre as isenções, fez com que elas também incidissem sobre certas indenizações. Interpretando os dispositivos em pauta a "
+        },
+        {
+          "text": "contrario senso",
+          "italic": true
+        },
+        {
+          "text": " p oder-se-ia chegar à conclusão de que as demais indenizações não estariam isentas, completando-se a idéia de que, por isso, elas integravam o conceito de renda ou proventos. Ora, consoante já se viu, as indenizações não são renda e nem proventos. Não são renda porque não se encartam no conceito legal de renda, tal como está expresso nos diplomas acima mencionados. E não se encartam no conceito de proventos por tudo o que se conhece do signifi cado da palavra “provento”. As isenções em epígrafe, assim, são inócuas vez que, de qualquer forma, a hipótese, quanto a elas, seria de não-incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 278,
+      "inlines": [
+        {
+          "text": "Creio que não assiste razão à recorrente. Isto por entender que, efetivamente, o pagamento decorrente de férias não gozadas por necessidade do serviço não constitui renda ou provento de qualquer natureza, não sendo, também, acréscimo patrimonial, ao contrário, tem caráter indenizatório, visando apenas reparar o dano sofrido pelo servidor, decorrente da não usufruição do descanso garantido por lei."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 279,
+      "inlines": [
+        {
+          "text": "Assim, o entendimento da Turma esposado quando do julgamento dos Recursos Especiais n. 26.998 e 39.872, ambos de São Paulo, relatados pelos eminentes Ministros José de Jesus e Hélio Mosimann, acórdãos assim ementados, r espectivamente, "
+        },
+        {
+          "text": "verbis",
+          "italic": true
+        },
+        {
+          "text": ":"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 280,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas por necessidade do serviço. I ndenização. Não incidência."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 281,
+      "inlines": [
+        {
+          "text": "- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer n atureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita à incidência do imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "7",
+      "ilvl": 0,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 282,
+      "inlines": [
+        {
+          "text": "- Recurso desprovido. (DJ 28.02.1994)"
+        }
+      ],
+      "style": "Normal",
+      "num_id": "7",
+      "ilvl": 0,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 283,
+      "inlines": [
+        {
+          "text": "Recurso especial. Licença-prêmio não gozada por necessidade do serviço. Pagamento de natureza indenizatória. Não incidência do imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 284,
+      "inlines": [
+        {
+          "text": "O pagamento da licença-prêmio, como das férias, não gozadas por necessidade do serviço, pela sua natureza indenizatória, não está sujeito à incidência do imposto de renda. (DJ 20.06.1994)"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 285,
+      "inlines": [
+        {
+          "text": "Não conheço do recurso."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 286,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 3175,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 3175
+    },
+    {
+      "kind": "para",
+      "index": 287,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 288,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 47.102-SP (94.11552-0)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 289,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 290,
+      "inlines": [
+        {
+          "text": "Relator: Ministro Peçanha Martins"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 291,
+      "inlines": [
+        {
+          "text": "Recorrente: Fazenda do Estado de São Paulo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 292,
+      "inlines": [
+        {
+          "text": "Recorrido: Sebastião Sérgio da Silveira"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 293,
+      "inlines": [
+        {
+          "text": "Advogados: Lilian Rodrigues Gonçalves e outros e José Sidnei Rosada e"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 294,
+      "inlines": [
+        {
+          "text": "outro"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 295,
+      "inlines": [],
+      "style": "Normal",
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 296,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1372,
+      "indent_effective": 1372
+    },
+    {
+      "kind": "para",
+      "index": 297,
+      "inlines": [
+        {
+          "text": "Imposto de renda. Férias não gozadas. Indenização. Não incidência. Precedentes STJ."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 298,
+      "inlines": [
+        {
+          "text": "O pagamento de férias indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da combinação de ambos, não resultando em acréscimo patrimonial, por isso que não está sujeita ao imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 299,
+      "inlines": [
+        {
+          "text": "Recurso não conhecido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1362,
+      "first_line": 0,
+      "indent_effective": 1362
+    },
+    {
+      "kind": "para",
+      "index": 300,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 301,
+      "inlines": [
+        {
+          "text": "Vistos, relatados e discutidos estes autos, acordam os Ministros da Segunda Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por unanimidade, não conhecer do recurso. Votaram com o Relator os Ministros Américo Luz, Antônio de Pádua Ribeiro, José de Jesus e Hélio Mosimann."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 302,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 20 de junho de 1994 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 303,
+      "inlines": [
+        {
+          "text": "Ministro Hélio Mosimann, Presidente"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 304,
+      "inlines": [
+        {
+          "text": "Ministro Peçanha Martins, Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 305,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 306,
+      "inlines": [
+        {
+          "text": "DJ 15.08.1994"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 307,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 308,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Peçanha Martins: Trata-se de recurso especial manifestado pela Fazenda do Estado de São Paulo, fundado no art. 105, III, "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": " e "
+        },
+        {
+          "text": "c",
+          "bold": true
+        },
+        {
+          "text": " da Constituição Federal, contra acórdão do Tribunal de Justiça do Estado de São Paulo proferido nos autos de ação de repetição de indébito proposta por Sebastião Sérgio da Silveira, membro do Ministério Público Estadual, visando a restituição do valor retido na fonte a título de imposto de renda incidente sobre o pagamento de férias em pecúnia, que lhe haviam sido indeferidas por necessidade de serviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 309,
+      "inlines": [
+        {
+          "text": "Sustenta ter o v. acórdão recorrido, ao determinar a restituição das importâncias reclamadas, violado os arts. 535, inciso II e 267, inciso VI do CPC; 3º, 6º e 7º da Lei n. 7.713/1988, art. 45, parágrafo único, art. 4º e art. 121, II do CTN. Contra-razões oferecidas às fl s. 220-228."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 310,
+      "inlines": [
+        {
+          "text": "O Tribunal "
+        },
+        {
+          "text": "a quo",
+          "italic": true
+        },
+        {
+          "text": " admitiu o recurso especial, pela alínea "
+        },
+        {
+          "text": "a ",
+          "bold": true
+        },
+        {
+          "text": "do permissivo constitucional."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 311,
+      "inlines": [
+        {
+          "text": "Dispensei a manifestação da Subprocuradoria Geral da República, nos termos regimentais."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 312,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 313,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 314,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Peçanha Martins (Relator): Sobre a questão preliminar, ilegitimidade da Fazenda do Estado para integrar a lide, assim decidiu a v. decisão recorrida (fl . 200):"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 315,
+      "inlines": [
+        {
+          "text": "Preliminarmente, não se vislumbra, no caso, o interesse da União, pois o art. 157, inciso I, da Constituição Federal, diz pertencer aos Estados e ao Distrito Federal o produto da arrecadação do imposto de renda incidente na fonte sobre rendimentos pagos a qualquer título por eles, suas autarquias e fundações. Legitimado passivamente, portanto, é o Estado, que se benefi ciou da arrecadação e, se esta foi feita erradamente, é quem está obrigado a r estituir. Conseqüentemente, não há falar em incompetência da Justiça Estadual."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 316,
+      "inlines": [
+        {
+          "text": "Correto o entendimento, rejeito a preliminar argüida."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 317,
+      "inlines": [
+        {
+          "text": "Quanto ao mérito, também entendo que o pagamento de férias não gozadas por necessidade do serviço, não é renda e nem proventos de qualquer natureza e nem representa acréscimo patrimonial."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 318,
+      "inlines": [
+        {
+          "text": "Tem, sim, natureza indenizatória."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 319,
+      "inlines": [
+        {
+          "text": "Sobre a matéria vale transcrever trecho do voto proferido pelo eminente Ministro Garcia Vieira, no REsp n. 43.717-2-SP:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 320,
+      "inlines": [
+        {
+          "text": "Compete à União instituir o imposto sobre “renda e proventos de q ualquer natureza” (Constituição Federal, art. 153, inciso III) e o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de qualquer natureza. O fato gerador do imposto de renda é a aquisição da d isponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto do capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 321,
+      "inlines": [
+        {
+          "text": "Ora, o pagamento em dinheiro das férias não gozadas porque indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da c ombinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da Administração Pública o pagamento de férias não gozadas c onstitui uma indenização. Estabelece a Súmula n. 39 do TFR, que:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 322,
+      "inlines": [
+        {
+          "text": "Não está sujeita ao imposto de renda a indenização recebida por pessoa jurídica em decorrência de desapropriação amigável ou judicial."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1362,
+      "indent_effective": 1362
+    },
+    {
+      "kind": "para",
+      "index": 323,
+      "inlines": [
+        {
+          "text": "É claro que, quando uma pessoa recebe uma indenização como p agamento de seu imóvel atingido pela desapropriação ou pelos danos sofridos em d ecorrência de acidente envolvendo veículo ofi cial ou por qualquer outro dano a ela causado por agente público ou lhe paga as férias não gozadas, não está ele recebendo nenhuma renda ou proventos de qualquer natureza. Estas indenizações não são o produto do capital ou do trabalho e não representam qualquer acréscimo patrimonial, benefício, vantagem ou rendimentos. Se não é renda nem proventos, não pode lei nenhuma determinar a cobrança de imposto de renda sobre a indenização de férias não gozadas, porque isto é vedado pela Constituição (art. 153, item III)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 324,
+      "inlines": [
+        {
+          "text": "Neste sentido vem decidindo, reiteradamente esta colenda Turma, bastando citar as decisões proferidas nos Recursos Especiais n. 34.988-SP, DJ 08.11.1993; 27.487-SP, DJ 29.11.1993; 30.978-SP, DJ 29.11.1993; 36.050-SP, DJ 29.11.1993, dentre inúmeros outros."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 325,
+      "inlines": [
+        {
+          "text": "Também comungo desse entendimento, razão por que não conheço do recurso."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 326,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 3176,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 3176
+    },
+    {
+      "kind": "para",
+      "index": 327,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 328,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 52.208-SP (1994/0023969-6)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 329,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 330,
+      "inlines": [
+        {
+          "text": "Relator: Ministro Demócrito Reinaldo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 331,
+      "inlines": [
+        {
+          "text": "Recorrente: Fazenda do Estado de São Paulo"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 332,
+      "inlines": [
+        {
+          "text": "Recorrido: Leandro Pereira Leite"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 333,
+      "inlines": [
+        {
+          "text": "Advogados: João Carlos Lopes de Souza e outros e Marcelo Saraiva de"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "right",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 334,
+      "inlines": [
+        {
+          "text": "Oliveira Ribeiro"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    },
+    {
+      "kind": "para",
+      "index": 335,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 336,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 1371,
+      "indent_effective": 1371
+    },
+    {
+      "kind": "para",
+      "index": 337,
+      "inlines": [
+        {
+          "text": "Tributário. Funcionário público. Férias não gozadas. Indenização. Incidência do imposto de renda. Impossibilidade."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 338,
+      "inlines": [
+        {
+          "text": "Consoante entendimento que se cristalizou, na jurisprudência, o pagamento ("
+        },
+        {
+          "text": "in pecunia",
+          "italic": true
+        },
+        {
+          "text": ") de férias não gozadas — por necessidade do serviço — ao servidor público, tem a natureza jurídica de indenização, não constituindo espécie de remuneração, mas, mera reparação do dano econômico sofrido pelo funcionário."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 339,
+      "inlines": [
+        {
+          "text": "Erigindo-se em reparação, a conversão, em pecúnia, das férias a que a conveniência da Administração impediu o auferimento, visa, apenas, a restabelecer a integridade patrimonial desfalcada pelo dano. A percepção dessa quantia indenizatória não induz em acréscimo patrimonial e nem em renda tributável, na defi nição da legislação pertinente."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 340,
+      "inlines": [
+        {
+          "text": "O tributo, na disciplina da lei, só deve incidir sobre ganhos que causem aumento de patrimônio, ou, em outras palavras: sobre numerário que se venha a somar àquele que já seja propriedade do contribuinte."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "alignment": "left",
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 341,
+      "inlines": [
+        {
+          "text": "Recurso a que se nega provimento, por maioria."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "center",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 342,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 343,
+      "inlines": [
+        {
+          "text": "Vistos e relatados os autos em que são partes as acima indicadas, decide a Primeira Turma do Superior Tribunal de Justiça, por maioria, vencido o Sr. Ministro Cesar Asfor Rocha, negar provimento ao recurso, nos termos do voto do Sr. Ministro-Relator, na forma do relatório e das notas taquigráfi cas constantes dos autos, que fi cam fazendo parte integrante do presente julgado. Participaram do julgamento os Srs. Ministros Humberto Gomes de Barros, Milton Luiz Pereira, Cesar Asfor Rocha e Garcia Vieira. Custas como de lei."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 344,
+      "inlines": [
+        {
+          "text": "Brasília (DF), 19 de setembro de 1994 (data do julgamento)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 345,
+      "inlines": [
+        {
+          "text": "Ministro Demócrito Reinaldo, Presidente e Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 346,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 1,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 1
+    },
+    {
+      "kind": "para",
+      "index": 347,
+      "inlines": [
+        {
+          "text": "DJ 10.10.1994"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -4,
+      "hanging": 10,
+      "alignment": "left",
+      "indent_effective": -4
+    },
+    {
+      "kind": "para",
+      "index": 348,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 349,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Demócrito Reinaldo:"
+        },
+        {
+          "text": " Leandro Pereira Leite",
+          "italic": true
+        },
+        {
+          "text": ", promotor de justiça da capital do "
+        },
+        {
+          "text": "Estado de São Paulo",
+          "italic": true
+        },
+        {
+          "text": " impetrou mandado de segurança contra ato do "
+        },
+        {
+          "text": "Secretário da Fazenda ",
+          "italic": true
+        },
+        {
+          "text": "daquele Estado, visando a que na indenização das suas férias não gozadas por necessidade do serviço deixasse de incidir o imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 350,
+      "inlines": [
+        {
+          "text": "Denegada a segurança, em primeira instância, em grau de apelação, a egrégia Sexta Câmara Civil do Tribunal de Justiça de São Paulo concedeu o "
+        },
+        {
+          "text": "mandamus,",
+          "italic": true
+        },
+        {
+          "text": " ao fundamento basilar de que não se configura hipótese de incidência de imposto de renda, porquanto da indenização por férias não gozadas não decorre acréscimo patrimonial (fl s. 259-261)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 351,
+      "inlines": [
+        {
+          "text": "Irresignada, a "
+        },
+        {
+          "text": "Fazenda Estadual",
+          "italic": true
+        },
+        {
+          "text": " manifesta recurso especial, sob o pálio da letra "
+        },
+        {
+          "text": "a",
+          "bold": true
+        },
+        {
+          "text": " do admissivo constitucional, alegando violação ao art. 1º da Lei n. 5.021/1966 (fl s. 317-321)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 352,
+      "inlines": [
+        {
+          "text": "Admitido na origem e contra-arrazoado (fl s. 323-326), subiram os autos e me vieram conclusos para julgamento."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 353,
+      "inlines": [
+        {
+          "text": "É o relatório."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 354,
+      "inlines": [
+        {
+          "text": "VOTO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 355,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Demócrito Reinaldo (Relator): A matéria já se encontra pacifi cada no âmbito das duas Turmas de Direito Público deste egrégio Tribunal. Em recente decisão do REsp n. 43.393-2-SP, da minha relatoria, esta egrégia Corte decidiu conforme acórdão assim ementado:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 356,
+      "inlines": [
+        {
+          "text": "Tributário. Funcionário público. Férias não gozadas. Indenização. I ncidência do imposto de renda. Impossibilidade."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 357,
+      "inlines": [
+        {
+          "text": "Consoante entendimento que se cristalizou, na jurisprudência, o pagamento ("
+        },
+        {
+          "text": "in pecunia",
+          "italic": true
+        },
+        {
+          "text": ") de férias não gozadas — por necessidade do serviço — ao servidor público, tem a natureza jurídica de indenização, não constituindo espécie de remuneração, mas, mera reparação do dano econômico sofrido pelo funcionário."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 358,
+      "inlines": [
+        {
+          "text": "Erigindo-se em reparação, a conversão, em pecúnia, das férias a que a conveniência da Administração impediu o auferimento, visa, apenas, a restabelecer a integridade patrimonial desfalcada pelo dano. A percepção dessa quantia indenizatória não induz em acréscimo patrimonial e nem em renda tributável, na defi nição da legislação pertinente."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 359,
+      "inlines": [
+        {
+          "text": "O tributo, na disciplina da lei, só deve incidir sobre ganhos que causem aumento de patrimônio, ou, em outras palavras: sobre numerário que se venha a somar àquele que já seja propriedade do contribuinte."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 360,
+      "inlines": [
+        {
+          "text": "Recurso especial a que se nega provimento. Decisão por maioria de votos."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1134,
+      "first_line": 0,
+      "indent_effective": 1134
+    },
+    {
+      "kind": "para",
+      "index": 361,
+      "inlines": [
+        {
+          "text": "Nessa mesma linha de orientação, não me parece que assista razão à recorrente. É que, o entendimento que se fi rmou nos Tribunais, inclusive, na jurisprudência desta egrégia Primeira Turma, é o de que, “o pagamento de férias não gozadas (por necessidade do serviço), ao servidor público, pela Administração, tem a natureza jurídica de indenização”. Quanto a este aspecto, o v. acórdão objurgado, se houve nos limites da interpretação mais consentânea com o espírito da lei, ao asseverar: “aquilo que a expressão vulgar chama férias "
+        },
+        {
+          "text": "in pecunia",
+          "italic": true
+        },
+        {
+          "text": " é uma equivalência ou conversão. Férias gozam-se com remuneração especial. E, se impedido o respectivo gozo, indeniza-se a perda, de acordo com antiga criação pretoriana. Tratando-se de indenização, a orientação jurisprudencial não confl ita com o CTN ou com a Lei n. 7.713/1988. Indenização não é espécie de remuneração, senão reparação de dano econômico de que é vítima alguém — no caso, o funcionário público. Sendo reparação, signifi ca que aquele pagamento irá restabelecer a integridade patrimonial desfalcada pelo dano: algo que saiu do patrimônio pessoal (o período de descanso anual) e que voltará traduzido em prestação pecuniária” (fl . 183). Assim, a p ercepção da quantia indenizatória não induz em acréscimo patrimonial, "
+        },
+        {
+          "text": "em renda",
+          "italic": true
+        },
+        {
+          "text": ", mas da integração pecuniária, daquilo que sofreu desfalque, por determinação e por conveniência da Administração Pública. O eminente Ministro "
+        },
+        {
+          "text": "Garcia Vieira",
+          "italic": true
+        },
+        {
+          "text": ", ao julgar o REsp n. 34.988-0-SP, citando jurisprudência e doutrina, assim se posicionou:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 362,
+      "inlines": [
+        {
+          "text": "O jurista Roque Antônio Carrazza afirma, em seu parecer, que as férias constituem direito que a lei deu aos servidores. Em nome do interesse público, pode ter seu desfruto temporariamente adiado, mas, nunca, anulado ou eliminado. A conseqüência da não concessão das férias, por necessidade do serviço, seria a reparação patrimonial, deixando o agente público indene. Deve o tributo incidir sobre ganhos que causem aumento de patrimônio; ou seja, sobre numerário que venha a somar àquele que já seja propriedade do contribuinte. Mas, as indenizações, pela própria natureza jurídica, não c ausam a umento de patrimônio algum, pois, correspondem a uma recomposição; a um prejuízo anteriormente sofrido pela pessoa que as recebe. Não pode ser considerada renda, pois, não redunda em aumento de patrimônio. E continua citando o jurista "
+        },
+        {
+          "text": "Geraldo Ataliba",
+          "italic": true
+        },
+        {
+          "text": ", esposando o seguinte escólio:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 363,
+      "inlines": [
+        {
+          "text": "Indenizar implica a noção de compensar ou recompensar o dano ou prejuízo sofrido. Reparar e compensar é estabelecer o equilíbrio e ntre contrabalançar, substituir (A. Morais Silva). O patrimônio deve fi car indene, intocado, igual. Semanticamente, indenização é, portanto, a reposição de patrimônio no estado em que se encontrava antes do dano ou do prejuízo sofrido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1362,
+      "indent_effective": 1362
+    },
+    {
+      "kind": "para",
+      "index": 364,
+      "inlines": [
+        {
+          "text": "Diante das lições doutrinárias e dos precedentes, observa-se que o decisório "
+        },
+        {
+          "text": "a quo",
+          "italic": true
+        },
+        {
+          "text": ", ao invés de tratear os preceitos de lei invocados, deu-lhes a interpretação mais consentânea com o direito e a Justiça, não merecendo, portanto, reparo."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 365,
+      "inlines": [
+        {
+          "text": "Nego, pois, provimento ao recurso."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 366,
+      "inlines": [
+        {
+          "text": "É como voto."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 367,
+      "inlines": [
+        {
+          "text": "VOTO VENCIDO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_direct": 450,
+      "indent_effective": 450
+    },
+    {
+      "kind": "para",
+      "index": 368,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Cesar Asfor Rocha: Sr. Presidente, o meu entendimento é de que cabe imposto de renda nos dois casos. Juntarei voto proferido em caso análogo."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 369,
+      "inlines": [
+        {
+          "text": "ANEXO",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "center",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 370,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL N. 47.692-SP",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "center",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 371,
+      "inlines": [
+        {
+          "text": "VOTO VENCIDO EM PARTE",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 10,
+      "hanging": 10,
+      "alignment": "center",
+      "indent_effective": 10
+    },
+    {
+      "kind": "para",
+      "index": 372,
+      "inlines": [
+        {
+          "text": "O Sr. Ministro Cesar Asfor Rocha (Relator):"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 373,
+      "inlines": [
+        {
+          "text": "Tributário. Imposto de renda. Indenização pecuniária referente a férias e licença-prêmio não gozadas por necessidade do serviço. Incidência."
+        }
+      ],
+      "style": "Normal",
+      "first_line": 444,
+      "indent_effective": 908
+    },
+    {
+      "kind": "para",
+      "index": 374,
+      "inlines": [
+        {
+          "text": "Incide imposto sobre a renda auferida de indenização pecuniária relativa a períodos de licença-prêmio e férias não gozadas em face da necessidade do serviço."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 907,
+      "first_line": 444,
+      "indent_effective": 907
+    },
+    {
+      "kind": "para",
+      "index": 375,
+      "inlines": [
+        {
+          "text": "Recurso provido."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1361,
+      "first_line": 0,
+      "indent_effective": 1361
+    },
+    {
+      "kind": "para",
+      "index": 376,
+      "inlines": [
+        {
+          "text": "A questão posta consiste em saber se a indenização pecuniária paga a funcionário relativa a períodos de férias e licença-prêmio indeferidos por necessidade do serviço constitui fato gerador para que sobre ela incida o imposto sobre a renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 377,
+      "inlines": [
+        {
+          "text": "O r. aresto hostilizado fi xou o entendimento de que tais verbas não se consubstanciariam em rendimento do trabalho, nem se confundiriam com o produto do trabalho do recorrido, mas seriam mera indenização que visa, de maneira razoável, a recompor o patrimônio do interessado para, na medida do possível, torná-lo indene, íntegro, após a consumação da lesão, e como tal não sofreria a incidência do imposto sobre a renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 378,
+      "inlines": [
+        {
+          "text": "Luciano Amaro",
+          "italic": true
+        },
+        {
+          "text": ", em precioso artigo denominado “Imposto de Renda: Regimes Jurídicos” (na obra “Curso e Direito Tributário”, Coordenada por "
+        },
+        {
+          "text": "Ives Gandra",
+          "italic": true
+        },
+        {
+          "text": ", Cejup, Belém, 1993, Vol. I, 2ª ed., p. 307-332), expõe razões bastante pertinentes sobre o tema em tablado e é dele em que e xtraio, numa versão livre, pedindo a sua permissão, as considerações adiante e xpostas."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 379,
+      "inlines": [
+        {
+          "text": "Assim, é preciso observar, de logo, que o imposto sobre a renda além de sujeitar-se aos princípios constitucionais tributários gerais, tais como os da legalidade, da isonomia ou igualdade jurídica, da capacidade contributiva, da anterioridade, da irretroatividade etc., também está submetido a p rincípios específi cos, decorrentes do disposto no art. 153, § 2º, I, da Constituição Federal, a saber: generalidade, universalidade e progressividade."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 380,
+      "inlines": [
+        {
+          "text": "Do art. 153, III, da Carta Política, decorre que o imposto de renda tem como fato gerador “"
+        },
+        {
+          "text": "renda e proventos de qualquer natureza",
+          "italic": true
+        },
+        {
+          "text": "”, ainda que sendo certo que a Carta Magna excepciona — ora expressamente, ora remetendo à lei — da incidência desse imposto diversas situações."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 381,
+      "inlines": [
+        {
+          "text": "Com base nessa premissa constitucional, o Código Tributário Nacional, pelos incisos I e II do seu art. 43, explicita que o fato gerador desse imposto é a aquisição da disponibilidade econômica ou jurídica de rendas ou proventos de qualquer natureza, defi nindo ambos."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 382,
+      "inlines": [
+        {
+          "text": "Em verdade, rendas e proventos de qualquer natureza são espécies do gênero acréscimo patrimonial. A rigor, nem haveria necessidade de o detalhamento legal descer a tanto, mas o propósito parece não ter sido outro senão o de espancar qualquer dúvida que pudesse surgir de que todo aumento patrimonial, salvo os expressamente excepcionados pela lei, consubstancia fato gerador para a exação em comento."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 383,
+      "inlines": [
+        {
+          "text": "Destarte, o fato gerador sobre a renda e proventos de qualquer natureza é a aquisição de riqueza nova (acréscimo de patrimônio), quer decorra do capital ou do trabalho, quer não."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "alignment": "left",
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 384,
+      "inlines": [
+        {
+          "text": "Ives Gandra",
+          "italic": true
+        },
+        {
+          "text": " prestigia esse entendimento, quando assim leciona:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 455,
+      "first_line": 0,
+      "indent_effective": 455
+    },
+    {
+      "kind": "para",
+      "index": 385,
+      "inlines": [
+        {
+          "text": "O fato gerador é a aquisição da disponibilidade econômica ou jurídica, que se realiza na ocorrência da elevação patrimonial de valores, bens ou direitos relativos."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 386,
+      "inlines": [
+        {
+          "text": "Por esta razão, explicita o legislador complementar que a renda e os proventos implicam, necessariamente, uma aquisição. A aquisição corresponde a algo que se acrescenta, que aumenta a patrimonialidade anterior, embora outros fatores possam diminuí-la ("
+        },
+        {
+          "text": "“Cadernos de Pesquisas Tributárias”",
+          "italic": true
+        },
+        {
+          "text": ", v. 11, CEEU, 1986, p. 265)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 387,
+      "inlines": [
+        {
+          "text": "É certo, conforme observei acima, que nem toda aquisição de disponibilidade econômica ou jurídica é tributável. Assim, estão fora do foco de incidência do tributo em análise várias indenizações. Todavia, há de ser ressaltado que isso d ecorre de isenção explicitamente concedida pela lei, de que são exemplos as tratadas pela Lei n. 7.713/1988."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 388,
+      "inlines": [
+        {
+          "text": "Chego até a admitir que seria de justiça isentar-se do pagamento do imposto sobre a renda a indenização pecuniária paga a funcionário relativa a licença-prêmio ou férias indeferidas por necessidade de serviço, uma vez que tal verba não se consubstancia em rendimento do trabalho, não se c onfundindo com o produto do trabalho do recorrido, mas de mera indenização que visa, de maneira razoável, a recompor o patrimônio do interessado para, na m edida do possível, torná-lo indene, íntegro, após a consumação da lesão, conforme anotado no r. acórdão hostilizado."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 389,
+      "inlines": [
+        {
+          "text": "Todavia, tal isenção estaria a depender "
+        },
+        {
+          "text": "de lege ferenda",
+          "italic": true
+        },
+        {
+          "text": ". Enquanto não houver diploma legal nesse sentido, é incidente o imposto na espécie."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 390,
+      "inlines": [
+        {
+          "text": "Merecem destaque, por derradeiro, as judiciosas considerações do eminente Desembargador "
+        },
+        {
+          "text": "Silva Ferreira",
+          "italic": true
+        },
+        {
+          "text": ", que adotei e transcrevi no voto por mim proferido quando do julgamento do REsp n. 39.627-1-SP:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": -14,
+      "first_line": 444,
+      "indent_effective": -14
+    },
+    {
+      "kind": "para",
+      "index": 391,
+      "inlines": [
+        {
+          "text": "Entendo devido o Imposto de Renda na transformação de l icença-prêmio, ou férias, em dinheiro, visto que, inegavelmente, há aumento patrimonial para o benefi ciado. Antes receberia, no ano, somente 13 salários, compreendido o 13º. Agora, com o recebimento dos três meses de licença prêmio, passará a receber em pecúnia, portanto, com a umento de seu patrimônio monetário, possível de transformação em bens de consumo, duráveis ou não, ou mesmo de lazer, de mais três meses, fi xando excepcionalmente naquele ano com 16 salários."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 392,
+      "inlines": [
+        {
+          "text": "Com estes três salários poderá quitar dívidas, viajar, adquirir bens, o que não poderia com seus salários normais. Logo, aumentou sua renda e deve pagar o imposto devido, conforme o Código Tributário Nacional."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 393,
+      "inlines": [
+        {
+          "text": "Dizem que nada deve por ser indenização, por não poderem gozar de licença prêmio no tempo devido. Sabe-se, porém, com segurança, que se pedissem a mesma, ser-lhe-ia concedida, sendo que o pedido já é feito, normalmente, com o sentido da denegação. Tanto assim que, q uase que diariamente, o Diário Ofi cial está a publicar concessão de licença-prêmio referente aos anos de 1978/1988, cujo pagamento não se fez, a desembargadores e juízes, sem qualquer problema operacional."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 394,
+      "inlines": [
+        {
+          "text": "Finalmente observe-se que, com aplicação do Estatuto dos Funcionários Públicos, que é aplicado supletivamente, por exemplo para abono de faltas, poderia, perfeitamente, o Apelante usar tal licença para se aposentar mais cedo, permanece ou seja, se retirar do serviço três meses antes de completar seu tempo, sem prejuízo de seus vencimentos, sendo obrigatório o uso do tempo, ou em outras palavras, computar tal p eríodo, indiretamente, para completar o tempo de aposentadoria."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 395,
+      "inlines": [
+        {
+          "text": "Assim não se vê como considerar o pagamento de licença-prêmio não gozada como indenização, de algo que não houve, de prejuízo que não existiu, visto que não usados os meios normais para conseguir seu uso, na forma da lei. Além disto não está revogada a lei que permite pagamento de metade dela, por exclusiva deliberação do benefi ciado, sem se falar em rejeição ou negativa de fruição. (fl s. 196-197)."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 893,
+      "indent_effective": 893
+    },
+    {
+      "kind": "para",
+      "index": 396,
+      "inlines": [
+        {
+          "text": "Diante de tais pressupostos, dou provimento ao recurso"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 454,
+      "first_line": 0,
+      "indent_effective": 454
+    }
+  ]
+}

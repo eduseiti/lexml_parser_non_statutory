@@ -641,17 +641,48 @@ A third point, discovered while implementing: **a missing stub is silently maske
 
 ### Cycle 1 — DOCX ingestion → `StyledDoc`
 
-`ingest/docx_reader.py`: paragraphs, `pStyle` (with `basedOn` inheritance), `numPr` (`numId`/`ilvl`), **`w:ind/@w:left` indentation**, `w:jc` alignment, runs (bold/italic/sup/sub), tables; NFC normalisation and whitespace collapse mirroring `DOCXReader.breakText`; `--dump-styled`.
+`ingest/docx_reader.py`: paragraphs, `pStyle` (with `basedOn` inheritance), `numPr` (`numId`/`ilvl`), **`w:ind/@w:left` indentation — both direct and style-resolved, see Amendment A-1.1**, `w:jc` alignment, runs (bold/italic/sup/sub), tables, **struck runs dropped, soft breaks split, hyperlink targets captured — see Amendment A-1.2**; NFC normalisation and whitespace collapse mirroring `DOCXReader.breakText`; `--dump-styled`.
 
 Tests
 - golden `StyledDoc` JSON for all 15 samples
 - `Heading1/2` detected in `CARNE_LEAO`; `sumula_stj_125` heading styles detected
 - list `ilvl` captured; nested levels distinguished
-- **indentation captured — the 21 quoted articles in `parecer_93` show `ind≈2880–2930` vs modal 0**
-- NFC unifies composed/decomposed accents; NBSP and runs of spaces collapse
+- **indentation captured — the 21 quoted articles in `parecer_93` show `ind≈2880–2930` (20 of the 21) against a body of small *direct* indents (7–60), not against a modal 0 — see Amendment A-1.1**
+- NFC unifies composed/decomposed accents **(synthetic fixture — no sample is decomposed, see Amendment A-1.3)**; NBSP and runs of spaces collapse
 - run formatting preserved; tables extracted with row/cell shape
+- **text conservation: every source paragraph appears in `StyledDoc` exactly once (Amendment A-1.4)**
 
 Exit: all 15 samples ingest losslessly; goldens committed.
+
+**Amendment A-1.1 (Cycle 1, 2026-08-02) — the indentation discriminator is *direct* `w:ind`, not effective indent, and the modal value is not 0.**
+
+Measured on `parecer_93` before implementing. The count and band are confirmed: exactly **21** `Art.`-initial paragraphs, at `w:ind/@w:left` ∈ {2880, 2908 (×18), 2930}. The comparison baseline was wrong:
+
+1. **The modal indent is not 0 — it is 2908, the quote band itself.** The 2880–2930 band holds **137 non-empty paragraphs**, not 21: the whole quoted excerpt — the incisos, alíneas and continuation paragraphs of each quoted article — carries the same indent as the `Art.` line heading it, spread across blocks 10–416. Only **37** paragraphs (front matter and unquoted commentary) sit in the small band at 7–60. So the discriminator is **"quote band vs small band"**, *not* "quote band vs modal": a Cycle 4 rule thresholding against the modal indent would classify the majority of the document as unquoted body. The two bands are disjoint by an order of magnitude, so any threshold in 100–2800 separates them cleanly.
+2. **Resolving inheritance destroys the signal.** 226 paragraphs carry no direct `w:ind`, so they inherit 2909 — one twip from the quote band at 2908. Read effective indent alone and quotations become indistinguishable from body text. Read direct indent alone and 226 paragraphs report nothing. (Of those 226, **219 are empty or section artifacts**; only one is a non-empty real paragraph.)
+3. **`StyledPara` therefore carries both** `indent_direct` and `indent_effective`. Cycle 4's quotation guard chooses whichever discriminates. *(Decided with the user during Cycle 1 reconciliation.)*
+4. **One of the 21 is not deeply indented:** `Art. 4º - São atribuições do Advogado-Geral da União:` sits at `indent_direct=240`. Cycle 4 must not assume indentation alone separates every quotation — §2.5 already pairs it with citation antecedent and monotonicity, and this is why.
+5. **Indentation marks quoted *regions*, not article openers.** Of the 137 in-band paragraphs only 20 begin with `Art.`. Cycle 4 should read the band as a region marker and use the label grammar to find article boundaries *within* it, rather than treating "indented" and "is an article" as the same predicate.
+
+This matters beyond Cycle 1: §10 lists "quoted statute misread as articulation" as a **high, silently-corrupting** risk, and this is the evidence channel that mitigates it.
+
+**Amendment A-1.2 (Cycle 1, 2026-08-02) — three DOCX constructs the deliverable list omitted, all present in the samples.**
+
+- **Struck runs** (18, `sumula_stj_125`) are **dropped**, toggle-aware (`w:val` ∈ {`false`,`0`,`off`} disables), matching `DOCXReader.stripStruckRuns`. They are **ordinal markers inside live sentences** — `ª` ×9, `º` ×8, `º,` ×1 — split 7 in the document's table and 11 in body prose: `(2ª T, 03.08.1994)` → `(2 T, 03.08.1994)`, `art. 3º, § 4º` → `art. 3, § 4`. `read_docx(..., drop_strikethrough=False)` retains them, and a test asserts that path conserves them, so the loss is bounded and reversible. Struck ordinals are a Portuguese legal-typography idiom, so **Cycle 9 should expect them corpus-wide**, and any cycle reasoning about article numbers must read the dropped form.
+- **Soft breaks** (`<w:br/>`; 7 in `pn_cst_38`, 3 each in `par_cosit_26` and CARNE_LEAO) **split the paragraph**, as the reference does. Block counts consequently exceed source paragraph counts: 85→92, 100→103, 109→112. `StyledPara.index` is assigned *after* splitting and is authoritative.
+- **Hyperlink targets** (11, CARNE_LEAO) are captured into `Inline.href`, which §3.1 already declares.
+
+Strike stripping runs **before** soft-break splitting — a struck run can contain `<w:br/>`-separated text, so splitting first would let struck text escape its `<w:rPr>`. *(Decided with the user during Cycle 1 reconciliation.)*
+
+**Amendment A-1.3 (Cycle 1, 2026-08-02) — the NFC test cannot be written against the samples.**
+
+All 15 samples are **already NFC**, so a test asserting "NFC unifies composed/decomposed accents" would pass with the normaliser deleted. NFC is therefore tested against **synthetic decomposed input** (mutation-verified: removing the `unicodedata.normalize` call fails 8 tests), plus a standing assertion that all 15 samples are NFC-unchanged, which acts as a tripwire for the first non-NFC corpus document.
+
+Note also that `DOCXReader.breakText` does **not** normalise — it only collapses whitespace. NFC is our deliberate addition, justified by the 300+ unseen corpus: one decomposed `ç` breaks profile regexes, the conservation invariant and byte-stable goldens simultaneously, and does so invisibly. *(Decided with the user during Cycle 1 reconciliation.)*
+
+**Amendment A-1.4 (Cycle 1, 2026-08-02) — "ingests losslessly" made checkable.**
+
+The exit criterion is discharged by a **text-conservation test** (§9.2 invariant #2 applied at ingestion): every non-empty source paragraph's normalised text appears in `StyledDoc` exactly once, compared as a multiset so duplication fails as loudly as loss, and cross-checked by reading the source with `python-docx` independently of our reader. The two sanctioned transformations above (soft-break splitting, struck-run dropping) are accounted for explicitly rather than excused. Goldens alone were rejected as the criterion: a byte-identical match to a golden containing a bug passes forever. *(Decided with the user during Cycle 1 reconciliation.)*
 
 ### Cycle 2 — Metadata, URN and profiles
 

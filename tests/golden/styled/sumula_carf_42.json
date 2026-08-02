@@ -1,0 +1,49 @@
+{
+  "source": "sumula_carf_42.docx",
+  "blocks": [
+    {
+      "kind": "para",
+      "index": 0,
+      "inlines": [
+        {
+          "text": "Súmula CARF nº 42"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 1,
+      "inlines": [
+        {
+          "text": "Não incide o imposto sobre a renda das pessoas físicas sobre os valores recebidos a título de indenização por desapropriação."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 2,
+      "inlines": [
+        {
+          "text": "ACÓRDÃOS PARADIGMAS"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 3,
+      "inlines": [
+        {
+          "text": "Acórdão nº 104-23033, de 05/03/2008 Acórdão nº 102-45909, de 28/01/2003 Acórdão nº 102-49283, de 11/09/2008 Acórdão nº 104-23287, de 25/06/2008 Acórdão nº 106-15476, de 26/04/2006 Acórdão nº 301-33218, de 20/09/2006 Acórdão nº 301-32390, de 08/12/1997 Acórdão nº 302-37944, de 24/08/2006 Acórdão nº 302-38480, de 28/02/2007 Acórdão nº 302-39723, de 13/08/2008 Acórdão nº 302-39650, de 09/07/2008"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "source": "REsp_1306393.docx",
+  "blocks": [
+    {
+      "kind": "para",
+      "index": 0,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 1,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 2,
+      "inlines": [
+        {
+          "text": "RECURSO ESPECIAL Nº 1.306.393 - DF (2012/0013476-0)"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_effective": 84
+    },
+    {
+      "kind": "para",
+      "index": 3,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 82,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 82
+    },
+    {
+      "kind": "table",
+      "index": 4,
+      "rows": [
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "RELATOR",
+                      "bold": true
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": ": MINISTRO MAURO CAMPBELL MARQUES",
+                      "bold": true
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "RECORRENTE"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": ": GLÓRIA DELFIM COSTA E SILVA WALKER"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "ADVOGADA"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": ": LORENA VASCONCELOS DE A BOSA"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "RECORRIDO"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": ": FAZENDA NACIONAL"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "ADVOGADO"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "alignment": "left",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": ": PROCURADORIA-GERAL DA FAZENDA NACIONAL"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_direct": 0,
+                  "first_line": 0,
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "para",
+      "index": 5,
+      "inlines": [
+        {
+          "text": "EMENTA"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_effective": 84
+    },
+    {
+      "kind": "para",
+      "index": 6,
+      "inlines": [
+        {
+          "text": "TRIBUTÁRIO. RECURSO ESPECIAL REPRESENTATIVO DA CONTROVÉRSIA (ART. 543-C DO CPC). ISENÇÃO DO IMPOSTO DE RENDA SOBRE OS RENDIMENTOS AUFERIDOS POR TÉCNICOS A SERVIÇO DAS NAÇÕES UNIDAS, CONTRATADOS NO BRASIL PARA",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1211,
+      "indent_effective": 1211
+    },
+    {
+      "kind": "para",
+      "index": 7,
+      "inlines": [
+        {
+          "text": "ATUAR COMO CONSULTORES NO ÂMBITO DO PNUD/ONU.",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1211,
+      "indent_effective": 1211
+    },
+    {
+      "kind": "para",
+      "index": 8,
+      "inlines": [
+        {
+          "text": "A Primeira Seção do STJ, ao julgar o REsp 1.159.379/DF, sob a relatoria do Ministro Teori Albino Zavascki, firmou o posicionamento majoritário no sentido de que são isentos do imposto de renda os rendimentos do trabalho recebidos por técnicos a serviço das Nações Unidas, contratados no Brasil para atuar como consultores no âmbito do Programa das Nações Unidas para o Desenvolvimento – PNUD. No referido julgamento, entendeu o relator que os \"peritos\" a que se refere o Acordo Básico de Assistência Técnica com a Organização das Nações Unidas, suas Agências Especializadas e a Agência Internacional de Energia Atômica, promulgado pelo Decreto 59.308/66, estão ao abrigo da norma isentiva do imposto de renda. Conforme decidido pela Primeira Seção, o Acordo Básico de Assistência Técnica atribuiu os benefícios fiscais decorrentes da Convenção sobre Privilégios e Imunidades das Nações Unidas, promulgada pelo Decreto 27.784/50, não só aos funcionários da ONU em sentido estrito, mas também aos que a ela prestam serviços na condição de \"peritos de assistência técnica\", no que se refere a essas atividades específicas."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "1",
+      "ilvl": 0,
+      "indent_effective": 1226
+    },
+    {
+      "kind": "para",
+      "index": 9,
+      "inlines": [
+        {
+          "text": "Considerando a função precípua do STJ – de uniformização da interpretação da legislação federal infraconstitucional –, e com a ressalva do meu entendimento pessoal, deve ser aplicada ao caso a orientação firmada pela Primeira Seção."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "1",
+      "ilvl": 0,
+      "indent_effective": 1226
+    },
+    {
+      "kind": "para",
+      "index": 10,
+      "inlines": [
+        {
+          "text": "Recurso especial provido. Acórdão submetido ao regime do art. 543-C do CPC e da Resolução STJ n. 8/08."
+        }
+      ],
+      "style": "Normal",
+      "num_id": "1",
+      "ilvl": 0,
+      "indent_effective": 1226
+    },
+    {
+      "kind": "para",
+      "index": 11,
+      "inlines": [
+        {
+          "text": "ACÓRDÃO"
+        }
+      ],
+      "style": "Heading 1",
+      "style_id": "Heading1",
+      "outline_level": 0,
+      "indent_effective": 84
+    },
+    {
+      "kind": "para",
+      "index": 12,
+      "inlines": [
+        {
+          "text": "Vistos, relatados e discutidos esses autos em que são partes as acima indicadas, acordam os Ministros da PRIMEIRA SEÇÃO do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráficas, o seguinte resultado de julgamento:"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 67,
+      "first_line": 850,
+      "indent_effective": 67
+    },
+    {
+      "kind": "para",
+      "index": 13,
+      "inlines": [
+        {
+          "text": "\"A Seção, por unanimidade, deu provimento ao recurso especial, nos termos do voto do Sr. Ministro Relator.\""
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 67,
+      "first_line": 850,
+      "indent_effective": 67
+    },
+    {
+      "kind": "para",
+      "index": 14,
+      "inlines": [
+        {
+          "text": "Os Srs. Ministros Benedito Gonçalves, Eliana Calmon, Teori Albino Zavascki, Arnaldo Esteves Lima, Humberto Martins, Herman Benjamin e Napoleão Nunes Maia Filho votaram com o Sr. Ministro Relator."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 67,
+      "first_line": 850,
+      "indent_effective": 67
+    },
+    {
+      "kind": "para",
+      "index": 15,
+      "inlines": [
+        {
+          "text": "Documento: 25489411 - EMENTA / ACORDÃO - Site certificado - DJe: 07/11/2012 Página 1 de 2"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 16,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 17,
+      "inlines": [],
+      "style": "Normal",
+      "indent_direct": 0,
+      "first_line": 0,
+      "alignment": "left",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 18,
+      "inlines": [
+        {
+          "text": "Licenciado o Sr. Ministro Ari Pargendler."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 942,
+      "indent_effective": 942
+    },
+    {
+      "kind": "para",
+      "index": 19,
+      "inlines": [
+        {
+          "text": "Presidiu o julgamento o Sr. Ministro Castro Meira. Brasília (DF), 24 de outubro de 2012."
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1499,
+      "hanging": 567,
+      "indent_effective": 1499
+    },
+    {
+      "kind": "para",
+      "index": 20,
+      "inlines": [
+        {
+          "text": "MINISTRO MAURO CAMPBELL MARQUES , Relator"
+        }
+      ],
+      "style": "Normal",
+      "indent_direct": 1871,
+      "indent_effective": 1871
+    }
+  ]
+}

@@ -1,0 +1,1237 @@
+{
+  "source": "par_cosit_26_20000629.docx",
+  "blocks": [
+    {
+      "kind": "para",
+      "index": 0,
+      "inlines": [
+        {
+          "text": "Parecer Cosit nº 26, de 29 de junho de 2000",
+          "bold": true
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 1,
+      "inlines": [
+        {
+          "text": "Assunto: Imposto sobre a Renda de Pessoa Física - IRPF"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 2,
+      "inlines": [
+        {
+          "text": "Ementa: A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita à apuração de ganho de capital, sobre o qual incidirá imposto de renda na forma da legislação pertinente à matéria."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 3,
+      "inlines": [
+        {
+          "text": "Dispositivos Legais: Arts. 123 da Lei nº 5.172, de 1966 (Código Tributário Nacional), 986, 987, 1065 e 1066 da Lei nº 3.071, de 1916 (Código Civil), 1º, 3º, caput e §§ 2º a 4º, e 16, caput e § 4º, da Lei nº 7.713, de 1988, 21, caput e §§ 1º e 2º, e 32 da Lei nº 8.981, de 1995, e 2º, 25 e 27 da Lei nº 9.430, de 1996."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 4,
+      "inlines": [
+        {
+          "text": "Fl. 6 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 5,
+      "inlines": [
+        {
+          "text": "COSIT"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 6,
+      "inlines": [
+        {
+          "text": "Fls. 1"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 7,
+      "inlines": [
+        {
+          "text": "_______________"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 8,
+      "inlines": [
+        {
+          "text": "MINISTÉRIO DA FAZENDA"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 9,
+      "inlines": [
+        {
+          "text": "0 SECRETARIA DA RECEITA FEDERAL"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 10,
+      "inlines": [
+        {
+          "text": "COORDENAÇÃO-GERAL DO SISTEMA DE TRIBUTAÇÃO"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "table",
+      "index": 11,
+      "rows": [
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "PROCESSO Nº",
+                      "bold": true
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "PARECER COSIT Nº 26, de 29 de junho de 2000",
+                      "bold": true
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "INTERESSADO"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [],
+                  "style": "Normal",
+                  "indent_effective": 0
+                }
+              ]
+            },
+            {
+              "paras": [
+                {
+                  "kind": "para",
+                  "index": 0,
+                  "inlines": [
+                    {
+                      "text": "CNPJ/CPF"
+                    }
+                  ],
+                  "style": "Normal",
+                  "indent_effective": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "para",
+      "index": 12,
+      "inlines": [
+        {
+          "text": "DOMICÍLIO FISCAL"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 13,
+      "inlines": [
+        {
+          "text": "Assunto: Imposto sobre a Renda de Pessoa Física - IRPF"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 14,
+      "inlines": [
+        {
+          "text": "Ementa: A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita à apuração de ganho de capital, sobre o qual incidirá imposto de renda na forma da legislação pertinente à matéria."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 15,
+      "inlines": [
+        {
+          "text": "Dispositivos Legais: Arts. 123 da Lei nº 5.172, de 1966 (Código Tributário Nacional), 986, 987, 1065 e 1066 da Lei nº 3.071, de 1916 (Código Civil), 1º, 3º, caput e §§ 2º a 4º, e 16, caput e § 4º, da Lei nº 7.713, de 1988, 21, caput e §§ 1º e 2º, e 32 da Lei nº 8.981, de 1995, e 2º, 25 e 27 da Lei nº 9.430, de 1996."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 16,
+      "inlines": [
+        {
+          "text": "RELATÓRIO"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 17,
+      "inlines": [
+        {
+          "text": "A Divisão de Tributação da SRRF da 1ª RF, Disit/SRRF/1ªRF, baseada no art. 12, § 5º, da Instrução Normativa do Secretário da Receita Federal – IN SRF nº 2, de 09 de janeiro de 1997, submete à apreciação desta COSIT, recurso de divergência relativo às decisões prolatadas pelas 1ª e 7ª Regiões Fiscais, sobre o tratamento tributário a ser dado à cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 18,
+      "inlines": [
+        {
+          "text": "2. A Disit/SRRF/1ª RF afirmou que “... a cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita ao imposto de renda sobre ganho de capital e terá o custo de aquisição igual a zero”, e que “... no momento do pagamento do precatório ocorrerá a incidência do imposto de renda na fonte, considerada como tal a homologação da compensação do precatório com débitos de natureza tributária do cessionário para com a Fazenda Pública.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 19,
+      "inlines": [
+        {
+          "text": "3. Consta da ementa da Decisão SRRF/1ª RF/DISIT Nº 055, de 28 de dezembro de 1998, in verbis:"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 20,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 21,
+      "inlines": [
+        {
+          "text": "Fl. 7 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 22,
+      "inlines": [
+        {
+          "text": "“A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita ao imposto de renda sobre ganho de capital e terá o custo de aquisição zero."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 23,
+      "inlines": [
+        {
+          "text": "No momento do pagamento do precatório ocorrerá a incidência do imposto de renda na fonte, considerada como tal a homologação da compensação do precatório com débitos de natureza tributária do cessionário para com a Fazenda Pública.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 24,
+      "inlines": [
+        {
+          "text": "4. A fundamentação centrou-se na premissa de que “... o imposto de renda tem como fato gerador a aquisição de disponibilidade econômica ou jurídica de renda ou proventos de qualquer natureza, aí incluídos os ganhos de capital” e que “... o ganho de capital apurado na cessão de direitos ... está sujeito à tributação na pessoa física do cedente ...”. A referida Decisão, citando a Nota Cosit/Cotir/DIRPF nº 215, de 13 de maio de 1998, esclarece que:"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 25,
+      "inlines": [
+        {
+          "text": "“- a cessão de direitos, representados por créditos líquidos e certos, de qualquer natureza, decorrentes de ações judiciais, está sujeita ao imposto de renda sobre ganhos de capital, e terá custo de aquisição igual a zero;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 26,
+      "inlines": [
+        {
+          "text": "- o cessionário sub-roga-se no crédito do cedente e que no momento da homologação da compensação do precatório com débitos de natureza tributária do cessionário, este apurará o ganho de capital, considerando como valor de alienação o valor líquido passível de compensação, isto é, após excluídas as deduções previstas em lei;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 27,
+      "inlines": [
+        {
+          "text": "- o crédito contra a Fazenda Pública não perde a sua natureza jurídica, mesmo se transferido a terceiro. Em função de natureza jurídica do crédito cedido, ocorre a incidência de imposto de renda na fonte no momento do pagamento do precatório, considerando como tal a homologação do precatório com débitos de natureza tributária do cessionário para com a Fazenda do Distrito Federal”."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 28,
+      "inlines": [
+        {
+          "text": "5. Estabelecendo juízo dissonante, a Disit/SRRF/7ª RF asseverou “... que os rendimentos recebidos pelos servidores estaduais ao alienarem a empresa privada títulos precatórios contra a Fazenda Estadual representativos de dívidas decorrentes de vínculo estatutário, deverão receber, quando de seu auferimento, o mesmo tratamento tributário que seria dispensado se fossem diretamente recebidos da Administração Estadual (rendimentos do trabalho assalariado)”."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 29,
+      "inlines": [
+        {
+          "text": "6. Acrescenta, ainda, a Disit/SRRF/7ª RF que “... em se tratando de diferenças salariais, incidirá o imposto de renda com base na tabela progressiva mensal, no mês em que o rendimento for disponibilizado pela pessoa jurídica ao beneficiário. A responsabilidade pela retenção e recolhimento do imposto é da fonte pagadora, ou seja, a pessoa jurídica que disponibilizar o rendimento à pessoa física beneficiária.” E que “... o servidor poderá abater o imposto retido na fonte com o devido na declaração de ajuste anual. No entanto, obviamente, o servidor fará inserir em sua declaração apenas os rendimentos que por ele forem efetivamente recebidos (valor do precatório menos o deságio, se for o caso), bem como poderá abater na mesma declaração apenas o imposto retido na fonte que incidiu sobre os rendimentos por ele recebidos.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 30,
+      "inlines": [
+        {
+          "text": "7. Consta da ementa da Decisão DISIT/SRRF-7ª RF Nº 217, de 06 de agosto de 1999, in verbis:"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 31,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 32,
+      "inlines": [
+        {
+          "text": "Fl. 8 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 33,
+      "inlines": [
+        {
+          "text": "“INCIDÊNCIA DO IRRF. CESSÃO DE PRECATÓRIOS."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 34,
+      "inlines": [
+        {
+          "text": "Rendimentos recebidos por servidor estadual. Venda de precatórios contra a Fazenda Estadual. Natureza do rendimento. Os rendimentos recebidos por servidor estadual pela alienação, a empresa privada, de títulos precatórios contra a Fazenda Estadual – representativos de créditos oriundos do vínculo estatutário – deverão receber o mesmo tratamento tributário que seria aplicável caso os valores tivessem sido diretamente recebidos do Poder Público devedor. Na hipótese, para efeitos tributários, o rendimento recebido pelo servidor conservará a mesma natureza do crédito que lhe era originariamente devido pela Administração.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 35,
+      "inlines": [
+        {
+          "text": "8. A justificação centrou-se no entendimento de que “... os rendimentos a serem percebidos pelos servidores, em virtude da alienação de seus precatórios, conservam sua natureza originária (rendimentos do trabalho assalariado), devendo receber o tratamento tributário respectivo, eis que a causa real pelo qual o beneficiário percebe o rendimento é o seu esforço laboral. As características formais da operação – alienação do precatório – não tem o condão de modificar a realidade fática da situação econômica tributada – auferimento de renda resultante do trabalho assalariado.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 36,
+      "inlines": [
+        {
+          "text": "FUNDAMENTOS LEGAIS"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 37,
+      "inlines": [
+        {
+          "text": "9. A essência da discussão consiste em se definir qual o tratamento tributário a ser dado na cessão de direitos sobre precatórios recebidos da Fazenda pública decorrentes de ações judiciais que discutiam questões laborais."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 38,
+      "inlines": [
+        {
+          "text": "10. O precatório é uma ordem judicial em que a autoridade forense determina o pagamento ao credor de importância líquida e certa em razão de sentença condenatória transitada em julgado imposta a pessoa jurídica de direito público, que deverá inclui-lo na lei orçamentária anual. Portanto, configura um título judicial representativo de um crédito de titularidade da pessoa física ou jurídica que estabeleceu a lide contra o poder público."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 39,
+      "inlines": [
+        {
+          "text": "11. A cessão do precatório configura a cessão de um direito de crédito do seu titular para outrem. O negócio jurídico cessão de crédito, como ensina o professor Silvio Rodrigues, em sua obra Direito Civil, “... encontra justificativa no fato de o crédito se apresentar como um bem de caráter patrimonial e capaz, portanto, de ser negociado. Da mesma maneira que os bens materiais, móveis ou imóveis, têm valor de mercado onde alcançam um preço, assim também os créditos, que representam promessa de pagamento futuro, podem ser objeto de negócio, pois sempre haverá quem por eles ofereça certo valor. A cessão desempenha, quanto aos créditos, papel idêntico ao da compra e venda, quanto aos bens corpóreos.” (Ed. Saraiva, vol. 4, 9ª edição, 1995, pág. 297)."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 40,
+      "inlines": [
+        {
+          "text": "12. O imposto de renda tem como fato gerador a aquisição de disponibilidade econômica ou jurídica de renda ou proventos de qualquer natureza, inclusive rendimentos e ganhos de capital, sendo que, em relação às pessoas físicas, no regime de retenção na fonte, essa disponibilidade ocorre quando do pagamento do rendimento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 41,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 42,
+      "inlines": [
+        {
+          "text": "Fl. 9 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 43,
+      "inlines": [
+        {
+          "text": "13. O Código Tributário Nacional - CTN (Lei nº 5.172, de 25 de outubro de 1966) estabelece em seu art. 123 que as convenções particulares não podem ser opostas à Fazenda Pública no que se refere à responsabilidade tributária, ou seja, os particulares podem pactuar o que desejarem desde que não deixem de pagar os tributos decorrentes."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 44,
+      "inlines": [
+        {
+          "text": "14. A diferença positiva entre o valor de alienação e o custo de aquisição do título configurará ganho de capital e estará sujeita ao imposto de renda, como dispõem os arts. 1º a 3º e 16 da Lei nº 7.713, de dezembro de 1988, com as alterações dadas pelos arts. 2º e 18 da Lei nº 8.134, 27 de dezembro de 1990, 52 da Lei nº 8.383, de 30 de dezembro 1991, e 21 da Lei nº 8.981, de 20 de janeiro de 1995, in verbis:"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 45,
+      "inlines": [
+        {
+          "text": "Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliadas no Brasil, serão tributados pelo imposto de renda na forma da legislação vigente, com as modificações introduzidas por esta Lei."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 46,
+      "inlines": [
+        {
+          "text": "Art. 2º- O imposto de renda das pessoas físicas será devido, mensalmente, à medida em que os rendimentos e ganhos de capital forem percebidos."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 47,
+      "inlines": [
+        {
+          "text": "Art. 3º- O imposto incidirá sobre o rendimento bruto, sem qualquer dedução, ressalvado o disposto nos arts. 9º a 14 desta Lei."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 48,
+      "inlines": [
+        {
+          "text": ".............................................................."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 49,
+      "inlines": [
+        {
+          "text": "§ 2º- Integrará o rendimento bruto, como ganho de capital, o resultado da soma dos ganhos auferidos no mês, decorrentes de alienação de bens ou direitos de qualquer natureza, considerando-se como ganho a diferença positiva entre o valor de transmissão do bem ou direito e o respectivo custo de aquisição corrigido monetariamente, observado o disposto nos arts. 15 a 22 desta Lei."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 50,
+      "inlines": [
+        {
+          "text": "§ 3º- Na apuração do ganho de capital serão consideradas as operações que importem alienação, a qualquer título, de bens ou direitos ou cessão ou promessa de cessão de direitos à sua aquisição, tais como as realizadas por compra e venda, permuta, adjudicação, desapropriação, dação em pagamento, doação, procuração em causa própria, promessa de compra e venda, cessão de direitos ou promessa de cessão de direitos e contratos afins."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 51,
+      "inlines": [
+        {
+          "text": "§ 4º- A tributação independe da denominação dos rendimentos, títulos ou direitos, da localização, condição jurídica ou nacionalidade da fonte, da origem dos bens produtores da renda, e da forma de percepção das rendas ou proventos, bastando, para a incidência do imposto, o benefício do contribuinte por qualquer forma e a qualquer título."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 52,
+      "inlines": [
+        {
+          "text": ".............................................................."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 53,
+      "inlines": [
+        {
+          "text": "Art. 16 - O custo de aquisição dos bens e direitos será o preço ou valor pago, e, na ausência deste, conforme o caso:"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 54,
+      "inlines": [
+        {
+          "text": "I - o valor atribuído para efeito de pagamento do imposto de transmissão;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 55,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 56,
+      "inlines": [
+        {
+          "text": "Fl. 10 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 57,
+      "inlines": [
+        {
+          "text": "II - o valor que tenha servido de base para o cálculo do imposto de importação acrescido do valor dos tributos e das despesas de desembaraço aduaneiro;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 58,
+      "inlines": [
+        {
+          "text": "III - o valor da avaliação no inventário ou arrolamento;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 59,
+      "inlines": [
+        {
+          "text": "IV - o valor de transmissão utilizado, na aquisição, para cálculo do ganho de capital do alienante;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 60,
+      "inlines": [
+        {
+          "text": "V - seu valor corrente, na data da aquisição ."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 61,
+      "inlines": [
+        {
+          "text": "............................................"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 62,
+      "inlines": [
+        {
+          "text": "§ 4º - O custo é considerado igual a zero no caso das participações societárias resultantes de aumento de capital por incorporação de lucros e reservas, no caso de partes beneficiárias adquiridas gratuitamente, assim como de qualquer bem cujo valor não possa ser determinado nos termos previstos neste artigo.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 63,
+      "inlines": [
+        {
+          "text": "Lei 8.134, de 1990 - \"Art. 2º - O imposto de renda das pessoas físicas será devido à medida em que os rendimentos e ganhos de capital forem percebidos, sem prejuízo do ajuste estabelecido no artigo 11.\""
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 64,
+      "inlines": [
+        {
+          "text": "\"Art. 18 - É sujeita ao pagamento do imposto de renda, à alíquota de vinte e cinco por cento, a pessoa física que perceber:"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 65,
+      "inlines": [
+        {
+          "text": "I - ganhos de capital na alienação de bens ou direitos de qualquer natureza, de que tratam os §§ 2º e 3º do artigo 3º da Lei nº 7.713, de 1988, observado o disposto no artigo 21 da mesma Lei;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 66,
+      "inlines": [
+        {
+          "text": ".............................................................."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 67,
+      "inlines": [
+        {
+          "text": "§ 1º - O imposto de que trata este artigo deverá ser pago até o último dia útil da primeira quinzena do mês subseqüente ao da percepção dos ganhos;"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 68,
+      "inlines": [
+        {
+          "text": "§ 2º - Os ganhos a que se referem os inciso I e II deste artigo serão apurados e tributados em separado e não integrarão a base de cálculo do imposto de renda, na declaração anual, e o imposto pago não poderá ser deduzido do devido na declaração.\""
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 69,
+      "inlines": [
+        {
+          "text": "Lei 8.383, de 1991, Art. 12. .............................................................."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 70,
+      "inlines": [
+        {
+          "text": "§ 1º Os ganhos a que se referem o art. 26 desta lei e o inciso I do art. 18 da Lei nº 8.134, de 1990, serão apurados e tributados em separado, não integrarão a base de cálculo do imposto de renda na declaração de ajuste anual e o imposto pago não poderá ser deduzido na declaração."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 71,
+      "inlines": [
+        {
+          "text": ".............................................................."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 72,
+      "inlines": [
+        {
+          "text": "Art. 52. ............................................................."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 73,
+      "inlines": [
+        {
+          "text": "§ 1º - O imposto incidente sobre ganhos de capital na alienação de bens ou direitos (Lei 8.134, de 1990, art. 18) deverá ser pago até o último dia útil do mês subseqüente àquele em que os ganhos houverem sido percebidos.\""
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 74,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 75,
+      "inlines": [
+        {
+          "text": "Fl. 11 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 76,
+      "inlines": [
+        {
+          "text": "Lei 8.981, de 1995, \"Art. 21. O ganho de capital percebido por pessoa física em decorrência da alienação de bens e direitos de qualquer natureza sujeita-se à incidência do imposto de renda à alíquota de quinze por cento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 77,
+      "inlines": [
+        {
+          "text": "§ 1º - O imposto de que trata este artigo deverá ser pago até o último dia útil do mês subseqüente ao da percepção dos ganhos."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 78,
+      "inlines": [
+        {
+          "text": "§ 2º Os ganhos a que se refere este artigo serão apurados e tributados em separado e não integrarão a base de cálculo do imposto de renda na declaração de ajuste anual, e o imposto pago não poderá ser deduzido do devido na declaração.”"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 79,
+      "inlines": [
+        {
+          "text": "(os grifos não são dos originais)"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 80,
+      "inlines": [
+        {
+          "text": "15. Dirimida a forma de tributação, resta-nos esclarecer pontos específicos relativos à obrigação de cada um dos envolvidos no negócio jurídico da cessão de direitos sobre o precatório, quais sejam o cedente, o cessionário e a fonte pagadora (Fazenda Pública)."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 81,
+      "inlines": [
+        {
+          "text": "16. Quanto à pessoa do cedente, os ganhos de capital obtidos com a cessão de direitos, representados no caso pelos precatórios decorrentes de ações judiciais, estão sujeitos ao imposto de renda."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 82,
+      "inlines": [
+        {
+          "text": "16.1. O valor de alienação será o valor recebido do cessionário, e o custo de aquisição será igual a zero, já que não há valor pago pelo precatório e nem há a possibilidade de aplicação das modalidades de atribuição de custo de aquisição de que tratam os incisos I a V do art. 16 da Lei nº 7.713, de 1988 (Lei nº 7.713, art. 16, § 4º)."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 83,
+      "inlines": [
+        {
+          "text": "16.2. O ganho de capital será apurado no mês em que for auferido, e tributado em separado, à alíquota de 15% (quinze por cento), não integrando a base de cálculo do imposto na declaração de rendimentos, e o valor do imposto pago não poderá ser deduzido do devido na declaração (Lei nº 8.981, de 1995, art. 21)."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 84,
+      "inlines": [
+        {
+          "text": "16.3. O demonstrativo de apuração do ganho de capital deverá ser juntado à declaração do cedente, e o valor do ganho de capital, menos o imposto pago, será informado na declaração, no campo de rendimentos sujeitos à tributação exclusiva."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 85,
+      "inlines": [
+        {
+          "text": "17. Quanto à pessoa do cessionário, este sub-roga-se no crédito do cedente, que para aquele transfere todos os direitos, inclusive os acessórios do crédito (Código Civil - Lei nº 3.071, de 1º de janeiro de 1916, arts. 986, 987, 1065 e 1066)."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 86,
+      "inlines": [
+        {
+          "text": "17.1. No momento da homologação da compensação do precatório com débitos de natureza tributária do cessionário, este apurará igualmente o ganho de capital decorrente desta operação, considerando como valor de alienação o valor líquido passível de compensação, isto é, após excluídas as deduções previstas em lei e o custo de aquisição será o montante pago ao cedente quando da cessão de direitos."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 87,
+      "inlines": [
+        {
+          "text": "17.2. Os ganhos de capital, quando apurados por pessoa jurídica, integrarão a base de cálculo do pagamento por estimativa (Leis nºs 8.981, de 20 de janeiro de 1995, art. 32, e 9.430, de 27 de dezembro de 1996, art. 2º), comporão o seu resultado e serão computados na determinação do lucro real e, no caso de pessoa jurídica que apure o imposto de renda com base no lucro presumido ou arbitrado, comporão o lucro do período de apuração (Lei nº 9.430, de 1996, arts. 25 e 27)."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 88,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 89,
+      "inlines": [
+        {
+          "text": "Fl. 12 DF COSIT RFB"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 90,
+      "inlines": [
+        {
+          "text": "18. Quanto à fonte pagadora (Fazenda Pública), o crédito líquido e certo, decorrente de ações judiciais, instrumentalizado por meio de precatório, mantém por toda a sua trajetória a natureza jurídica do fato que lhe deu origem, independendo, assim, de ele vir a ser transferido a outrem. O acordo de cessão de direitos não pode afastar a tributação na fonte dos rendimentos tributáveis relativo ao precatório no momento em que for quitado pela Fazenda Pública."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 91,
+      "inlines": [
+        {
+          "text": "18.1. Em função da natureza jurídica do crédito cedido, ocorrerá a incidência de imposto de renda retido na fonte, quando cabível, no momento do pagamento do precatório, considerado como tal a homologação da compensação do precatório com débitos do cessionário para com a Fazenda Pública."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 92,
+      "inlines": [
+        {
+          "text": "CONCLUSÃO"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 93,
+      "inlines": [
+        {
+          "text": "19. A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita à apuração de ganho de capital, sobre o qual incidirá imposto de renda na forma da legislação pertinente à matéria, observado o disposto neste parecer."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 94,
+      "inlines": [
+        {
+          "text": "ORDEM DE INTIMAÇÃO"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 95,
+      "inlines": [
+        {
+          "text": "Dê-se ciência desta decisão."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 96,
+      "inlines": [
+        {
+          "text": "Às Disit da 1ª e 7ª Regiões Fiscais, para as providências cabíveis, com cópia para as Disit das demais Superintendências e Delegacias da Receita Federal de Julgamento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 97,
+      "inlines": [
+        {
+          "text": "Carlos Alberto de Niza e Castro"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 98,
+      "inlines": [
+        {
+          "text": "COORDENADOR-GERAL DA COSIT"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 99,
+      "inlines": [
+        {
+          "text": "DOCUMENTO FORNECIDO EM CUMPRIMENTO À LEI DE ACESSO A INFORMAÇÃO. REGISTRE-SE QUE TAL DOCUMENTO PODE CONTER CONCLUSÕES NÃO MAIS VÁLIDAS POR ESTAREM EM DESACORDO COM ATO NORMATIVO OU INTERPRETATIVO EDITADO EM DATA POSTERIOR."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 100,
+      "inlines": [
+        {
+          "text": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 101,
+      "inlines": [
+        {
+          "text": "CARLOS ALBERTO DE NIZA E CASTRO"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 102,
+      "inlines": [
+        {
+          "text": "Coordenador-Geral"
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    },
+    {
+      "kind": "para",
+      "index": 103,
+      "inlines": [
+        {
+          "text": "Nota Normas: Este documento foi tornado público em cumprimento à Lei de Acesso à Informação."
+        }
+      ],
+      "style": "Normal",
+      "indent_effective": 0
+    }
+  ]
+}
