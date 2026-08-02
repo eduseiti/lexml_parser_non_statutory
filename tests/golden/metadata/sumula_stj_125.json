@@ -1,0 +1,16 @@
+{
+  "profile": "jurisprudencia_generico",
+  "locality": "br",
+  "authority": "superior.tribunal.justica",
+  "doc_type": "sumula",
+  "number": "125",
+  "authority_source": "preamble",
+  "epigraph": "SÚMULA N. 125",
+  "epigraph_index": 0,
+  "source": "sumula_stj_125.docx",
+  "urn": "urn:lex:br:superior.tribunal.justica:sumula:0000;125",
+  "complete": false,
+  "missing": [
+    "date"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "profile": "ato_declaratorio",
+  "locality": "br",
+  "authority": "ministerio.fazenda;secretaria.receita.federal",
+  "doc_type": "ato.declaratorio",
+  "number": "3",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Ato Declaratório SRF nº 3, de 7 de janeiro de 1999",
+  "epigraph_index": 0,
+  "source": "ad_srf_3_19990107.docx",
+  "date": {
+    "year": 1999,
+    "month": 1,
+    "day": 7
+  },
+  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:ato.declaratorio:1999-01-07;3",
+  "complete": true
+}

@@ -1,0 +1,19 @@
+{
+  "profile": "ato_declaratorio",
+  "locality": "br",
+  "authority": "ministerio.fazenda;secretaria.receita.federal",
+  "doc_type": "ato.declaratorio",
+  "number": "19",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Ato Declaratório Normativo Cosit nº 19, de 25 de outubro de 2000",
+  "epigraph_index": 0,
+  "source": "adn_cosit_19_20001025.docx",
+  "date": {
+    "year": 2000,
+    "month": 10,
+    "day": 25
+  },
+  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:ato.declaratorio:2000-10-25;19",
+  "complete": true
+}

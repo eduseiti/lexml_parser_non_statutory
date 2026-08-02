@@ -1,0 +1,14 @@
+{
+  "profile": "servico",
+  "locality": "br",
+  "authority": "ministerio.fazenda;secretaria.receita.federal",
+  "doc_type": "servico",
+  "authority_source": "profile",
+  "source": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:servico:0000;0",
+  "complete": false,
+  "missing": [
+    "number",
+    "date"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "profile": "parecer",
+  "locality": "br",
+  "authority": "ministerio.fazenda;secretaria.receita.federal",
+  "doc_type": "parecer",
+  "number": "38",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Parecer Normativo CST nº 38, de 31 de outubro de 1980",
+  "epigraph_index": 0,
+  "source": "pn_cst_38_19801031.docx",
+  "date": {
+    "year": 1980,
+    "month": 10,
+    "day": 31
+  },
+  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:parecer:1980-10-31;38",
+  "complete": true
+}

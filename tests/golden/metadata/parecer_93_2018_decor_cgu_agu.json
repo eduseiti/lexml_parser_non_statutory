@@ -1,0 +1,46 @@
+{
+  "profile": "parecer",
+  "locality": "br",
+  "authority": "advocacia.geral.uniao",
+  "doc_type": "parecer",
+  "number": "93",
+  "date_source": "header",
+  "authority_source": "epigraph",
+  "epigraph": "PARECER n. 00093/2018/DECOR/CGU/AGU",
+  "epigraph_index": 3,
+  "source": "parecer_93_2018_decor_cgu_agu.docx",
+  "date": {
+    "year": 2018,
+    "month": 12,
+    "day": 28
+  },
+  "urn": "urn:lex:br:advocacia.geral.uniao:parecer:2018-12-28;93",
+  "complete": true,
+  "proprietary": [
+    {
+      "label": "NUP",
+      "value": "03154.004642/2018-50",
+      "source_index": 4
+    },
+    {
+      "label": "INTERESSADOS",
+      "value": "CONSULTORIA JURÍDICA JUNTO AO MINISTÉRIO DO PLANEJAMENTO,",
+      "source_index": 5
+    },
+    {
+      "label": "ASSUNTO",
+      "value": "BENEFÍCIO ESPECIAL PREVISTO NA LEI NO 12.618, DE 2012",
+      "source_index": 8
+    },
+    {
+      "label": "EMENTA",
+      "value": "ADMINISTRATIVO. SERVIDOR PÚBLICO. REGIME DE PREVIDÊNCIA COMPLEMENTAR. BENEFÍCIO ESPECIAL. LEI NO 12.618, DE 2012.",
+      "source_index": 9
+    },
+    {
+      "label": "Cod. Ement.",
+      "value": "34",
+      "source_index": 16
+    }
+  ]
+}

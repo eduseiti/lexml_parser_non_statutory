@@ -1,0 +1,26 @@
+{
+  "profile": "portaria",
+  "locality": "br",
+  "authority": "ministerio.fazenda",
+  "doc_type": "portaria",
+  "number": "454",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Portaria MF nº 454, de 25 de agosto de 1977",
+  "epigraph_index": 0,
+  "source": "port_mf_454_19770825.docx",
+  "date": {
+    "year": 1977,
+    "month": 8,
+    "day": 25
+  },
+  "urn": "urn:lex:br:ministerio.fazenda:portaria:1977-08-25;454",
+  "complete": true,
+  "proprietary": [
+    {
+      "label": "Nota Normas",
+      "value": "Este ato foi originalmente publicado sem a ementa.",
+      "source_index": 20
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# Python bytecode caches.
+#
+# Added in Cycle 2 after a stale, *tracked* .pyc silently shadowed edited
+# source for several minutes: Python skipped recompilation, so the module that
+# ran was not the module on disk, and a passing/failing test could not be
+# trusted either way. Bytecode is a build artifact of a specific interpreter
+# version; it does not belong in version control.
+#
+# NOTE: 22 .pyc files committed by earlier cycles are still tracked. This file
+# stops new ones appearing; removing the existing ones is a separate,
+# deliberate change (`git rm -r --cached '**/__pycache__'`).
+__pycache__/
+*.py[cod]
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# packaging
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,36 @@
+{
+  "profile": "parecer",
+  "locality": "br",
+  "authority": "ministerio.fazenda;secretaria.receita.federal",
+  "doc_type": "parecer",
+  "number": "26",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Parecer Cosit nº 26, de 29 de junho de 2000",
+  "epigraph_index": 0,
+  "source": "par_cosit_26_20000629.docx",
+  "date": {
+    "year": 2000,
+    "month": 6,
+    "day": 29
+  },
+  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:parecer:2000-06-29;26",
+  "complete": true,
+  "proprietary": [
+    {
+      "label": "Assunto",
+      "value": "Imposto sobre a Renda de Pessoa Física - IRPF",
+      "source_index": 1
+    },
+    {
+      "label": "Ementa",
+      "value": "A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita à apuração de ganho de capital, sobre o qual incidirá imposto de renda na forma da legislação pertinente à matéria.",
+      "source_index": 2
+    },
+    {
+      "label": "Dispositivos Legais",
+      "value": "Arts. 123 da Lei nº 5.172, de 1966 (Código Tributário Nacional), 986, 987, 1065 e 1066 da Lei nº 3.071, de 1916 (Código Civil), 1º, 3º, caput e §§ 2º a 4º, e 16, caput e § 4º, da Lei nº 7.713, de 1988, 21, caput e §§ 1º e 2º, e 32 da Lei nº 8.981, de 1995, e 2º, 25 e 27 da Lei nº 9.430, de 1996.",
+      "source_index": 3
+    }
+  ]
+}

@@ -690,13 +690,41 @@ The exit criterion is discharged by a **text-conservation test** (§9.2 invarian
 
 Tests
 - URN round-trip for federal/state/municipal authorities
-- `parecer_93` → authority `advocacia.geral.uniao`, type `parecer`, number `93`, date `2018-12-28`
+- `parecer_93` → authority `advocacia.geral.uniao`, type `parecer`, number `93`, date `2018-12-28` — **the date comes from a bare header stamp, not the epigraph; see Amendment A-2.1**
 - `port_mf_277` → `ministerio.fazenda`, `portaria`, `277`, `2018-06-07`
 - date forms: `28/12/2018`, `7 de junho de 2018`, ISO
 - number normalisation `00093/2018` → `93`
 - profile auto-selection correct for all 15 samples
-- unmapped fields land in `MetadadoProprietario`; none dropped
+- unmapped fields land in `MetadadoProprietario`; none dropped — **allowlist-gated per profile, see Amendment A-2.2**
+- **4 of 15 samples carry no number/date and yield a best-effort URN flagged incomplete — see Amendment A-2.3**
 - `<Metadado>` fragment validates on both schemas
+
+**Amendment A-2.1 (Cycle 2, 2026-08-02) — `parecer_93`'s date is a header artifact, and the extractor needs a four-step chain, not an epigraph read.**
+
+The expected value `2018-12-28` is correct, but it is **not on the epigraph line**: `PARECER n. 00093/2018/DECOR/CGU/AGU` carries no date at all. Three different dates appear in the document — a bare `28/12/2018` stamp at block 0 (a portal header artifact), the signature `Brasília, 19 de dezembro de 2018` at block 428, and the approving despacho's 27/12/2018. Extraction therefore uses an explicit chain, **epigraph → bare header stamp → signature → filename**, and records which branch fired in `Metadata.date_source` (`parecer_93` → `"header"`, the other 11 dated samples → `"epigraph"`).
+
+Two consequences worth carrying forward:
+
+1. **A year-only epigraph date does not end the chain.** The path-form epigraph yields only `2018`; a later source may *refine* it to a full date, but only when the years agree, so a stray date elsewhere cannot overwrite the epigraph's.
+2. **A bare four-digit run is not a date.** Requiring the `de` cue is load-bearing: without it `PORTARIA MF nº 277` parses as the year 277. Caught by a test, not by review. *(Decided with the user during Cycle 2 reconciliation; the filename fallback is sanctioned as a last resort only.)*
+
+**Amendment A-2.2 (Cycle 2, 2026-08-02) — `MetadadoProprietario` capture must be allowlist-gated, and the plan's field list is incomplete.**
+
+The plan names four fields, all from `parecer_93`. A census across all 15 samples finds more that belong in the same channel — `Assunto`, `Ementa`, `Dispositivos Legais` (`par_cosit_26`), `JURISPRUDÊNCIA` (`ad_pgfn_*`), `Referência`, `Precedentes` (`sumula_stj_125`), `Nota Normas` (`port_mf_454`) — and, more importantly, shows that a naive `LABEL:` rule **captures prose as metadata**: `sumula_stj_125` alone yields `Advogados:` ×7, `Relator:`, `Recorrente:`, `Some-se:` and `O Sr. Ministro Garcia Vieira:`. Those lines are the structure of the *acórdão being reported*, not fields of the document.
+
+Capture is therefore gated on a **per-profile allowlist**, plus a bounded-recall heuristic (ALL-CAPS label, ≤4 words) confined to the front-matter region. A missed field is recoverable — the text stays in the body for Cycle 3 to segment — whereas a false field is silent corruption. *(Decided with the user during Cycle 2 reconciliation.)*
+
+**Amendment A-2.3 (Cycle 2, 2026-08-02) — four samples cannot produce a complete URN, and that is a first-class outcome.**
+
+`sumula_carf_42`, `sumula_stj_125`, `REsp_1306393` and `CARNE_LEAO` carry no authority+type+number+date quadruple: súmulas and acórdãos are cited by number without a promulgation date, and the service description is not a legal act at all. Extraction is therefore **best-effort and never raises**: it emits a syntactically valid URN using sentinels (`0000` for an unknown date, `0` for an unknown number) and reports the gap honestly via `Metadata.complete` / `.missing`.
+
+The sentinel must survive the module's own parser — `parse_urn(build_urn(...))` — so `UrnDate` accepts year 0 and exposes `is_unknown` to distinguish it from a real year. A test caught the original defect, where `build_urn` emitted `0000` and `parse_urn` then rejected it.
+
+Known limit, documented rather than fixed: `is_valid_urn` checks the date's *shape*, not calendar validity, so `2018-13-45` passes it while `parse_urn` raises. Cycle 6 should not treat `is_valid_urn` as a guard for `parse_urn`. *(Decided with the user during Cycle 2 reconciliation.)*
+
+**Amendment A-2.4 (Cycle 2, 2026-08-02) — `nota_tecnica` is deliberately not built.**
+
+Plan §3's layout lists `profile/nota_tecnica.py`, but no sample in the corpus is a nota técnica. Building it would mean shipping untested regexes that no test could discharge. Six profiles are registered — `parecer` (covering *Parecer Normativo*), `ato_declaratorio`, `portaria`, `jurisprudencia_generico`, `servico`, `generic` — and `nota_tecnica` joins them when a sample exists. *(Decided with the user during Cycle 2 reconciliation.)*
 
 ### Cycle 3 — Front/back matter segmentation
 

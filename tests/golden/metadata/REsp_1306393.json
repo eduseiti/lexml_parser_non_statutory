@@ -1,0 +1,16 @@
+{
+  "profile": "jurisprudencia_generico",
+  "locality": "br",
+  "authority": "superior.tribunal.justica",
+  "doc_type": "sumula",
+  "number": "1306393",
+  "authority_source": "preamble",
+  "epigraph": "RECURSO ESPECIAL Nº 1.306.393 - DF (2012/0013476-0)",
+  "epigraph_index": 2,
+  "source": "REsp_1306393.docx",
+  "urn": "urn:lex:br:superior.tribunal.justica:sumula:0000;1306393",
+  "complete": false,
+  "missing": [
+    "date"
+  ]
+}

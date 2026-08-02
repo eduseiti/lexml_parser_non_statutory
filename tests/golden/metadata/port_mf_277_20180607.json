@@ -1,0 +1,19 @@
+{
+  "profile": "portaria",
+  "locality": "br",
+  "authority": "ministerio.fazenda",
+  "doc_type": "portaria",
+  "number": "277",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Portaria MF nº 277, de 7 de junho de 2018",
+  "epigraph_index": 0,
+  "source": "port_mf_277_20180607.docx",
+  "date": {
+    "year": 2018,
+    "month": 6,
+    "day": 7
+  },
+  "urn": "urn:lex:br:ministerio.fazenda:portaria:2018-06-07;277",
+  "complete": true
+}

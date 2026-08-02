@@ -1,0 +1,16 @@
+{
+  "profile": "jurisprudencia_generico",
+  "locality": "br",
+  "authority": "ministerio.fazenda;conselho.administrativo.recursos.fiscais",
+  "doc_type": "sumula",
+  "number": "42",
+  "authority_source": "epigraph",
+  "epigraph": "Súmula CARF nº 42",
+  "epigraph_index": 0,
+  "source": "sumula_carf_42.docx",
+  "urn": "urn:lex:br:ministerio.fazenda;conselho.administrativo.recursos.fiscais:sumula:0000;42",
+  "complete": false,
+  "missing": [
+    "date"
+  ]
+}

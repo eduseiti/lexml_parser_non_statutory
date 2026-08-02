@@ -1,0 +1,26 @@
+{
+  "profile": "ato_declaratorio",
+  "locality": "br",
+  "authority": "procuradoria.geral.fazenda.nacional",
+  "doc_type": "ato.declaratorio",
+  "number": "3",
+  "date_source": "epigraph",
+  "authority_source": "epigraph",
+  "epigraph": "Ato Declaratório PGFN nº 3, de 18 de setembro de 2008",
+  "epigraph_index": 0,
+  "source": "ad_pgfn_3_20080918.docx",
+  "date": {
+    "year": 2008,
+    "month": 9,
+    "day": 18
+  },
+  "urn": "urn:lex:br:procuradoria.geral.fazenda.nacional:ato.declaratorio:2008-09-18;3",
+  "complete": true,
+  "proprietary": [
+    {
+      "label": "JURISPRUDÊNCIA",
+      "value": "REsp 502739/PE, DJ 17/11/2003; EDcl no REsp 689893/PE, DJ 13/06/2005; REsp 828571/RJ, DJ 25/05/2006; REsp 952038/PE, DJe 18/06/2008; REsp 641243/PE, DJ 27/09/2004; REsp 672723/CE, DJ 11/04/2005.",
+      "source_index": 4
+    }
+  ]
+}
