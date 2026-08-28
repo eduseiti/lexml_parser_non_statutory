@@ -1,0 +1,24 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda;secretaria.receita.federal:ato.declaratorio:1997-04-30;22"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Ato Declaratório SRF nº 22, de 30 de abril de 1997</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>Dispõe sobre a indenização, a título reparatório, de que trata a Lei nº 9.140, de 4 de dezembro de 1995.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="preambulo">
+        <p>O SECRETÁRIO DA RECEITA FEDERAL, no uso de suas atribuiçoes</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="formulaPromulgacao">
+        <p>DECLARA, que a indenização, a título reparatório, de que trata o art. 11 da Lei nº 9.140, de 4 de dezembro de 1995, não está sujeita à incidência do Imposto de Renda.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>EVERARDO MACIEL</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

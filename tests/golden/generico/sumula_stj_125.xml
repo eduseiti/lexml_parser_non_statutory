@@ -1,0 +1,557 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:superior.tribunal.justica:sumula:0000;125"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>SÚMULA N. 125</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>O pagamento de férias não gozadas por necessidade do serviço não está sujeito à incidência do Imposto de Renda.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="texto">
+        <p>
+          <b>Referência:</b>
+        </p>
+        <p>CF/1998, art. 153, III.</p>
+        <p>CTN, art. 43, I e II.</p>
+        <p>CC/1916, arts. 1.056 e 1.534.</p>
+        <p>Lei n. 7.713/1988, arts. 3º, § 4º, 6º, IV e V.</p>
+        <p>Lei n. 8.112/1990, art. 78, § 1º.</p>
+        <p>
+          <b>Precedentes:</b>
+        </p>
+        <table id="pp1_tab1">
+          <tr>
+            <td>AgRg no Ag</td>
+            <td>46.146-SP</td>
+            <td>(2 T, 03.08.1994 — DJ 22.08.1994)</td>
+          </tr>
+          <tr>
+            <td>REsp</td>
+            <td/>
+            <td>34.988-SP</td>
+            <td>(1 T, 06.10.1993 — DJ 08.11.1993)</td>
+          </tr>
+          <tr>
+            <td>REsp</td>
+            <td/>
+            <td>36.084-SP</td>
+            <td>(1 T, 06.06.1994 — DJ 27.06.1994)</td>
+          </tr>
+          <tr>
+            <td>REsp</td>
+            <td/>
+            <td>40.136-SP</td>
+            <td>(2 T, 21.02.1994 — DJ 21.03.1994)</td>
+          </tr>
+          <tr>
+            <td>REsp</td>
+            <td/>
+            <td>40.921-SP</td>
+            <td>(2 T, 03.08.1994 — DJ 22.08.1994)</td>
+          </tr>
+          <tr>
+            <td>REsp</td>
+            <td/>
+            <td>47.102-SP</td>
+            <td>(2 T, 20.06.1994 — DJ 15.08.1994)</td>
+          </tr>
+          <tr>
+            <td>REsp</td>
+            <td/>
+            <td>52.208-SP</td>
+            <td>(1 T, 19.09.1994 — DJ 10.10.1994)</td>
+          </tr>
+        </table>
+        <p class="quote">Primeira Seção, em 06.12.1994 DJ 15.12.1994, p. 34.815</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="secao">
+        <Bloco nome="nomeAgrupador">AGRAVO REGIMENTAL NO AGRAVO DE INSTRUMENTO N. 46.146-SP (93.0033207-4)</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro Antônio de Pádua Ribeiro</p>
+        <p>Agravante: Estado de São Paulo</p>
+        <p>Procuradores: Armando de Oliveira Pimentel, Maria Luísa de Oliveira e outros</p>
+        <p>Agravado: Paulo Guimarães Leite</p>
+        <p>Advogados: Paulo Guimarães Leite e outros</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Tributário. Imposto de renda. Férias indenizadas. Não incidência.</p>
+        <ul>
+          <li>- O imposto de renda não incide sobre o pagamento de férias não gozadas, em razão do seu caráter indenizatório. Precedentes.</li>
+          <li>- Recurso especial não conhecido.</li>
+        </ul>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos, relatados e discutidos estes autos, em que são partes as acima indicadas, decide a Segunda Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas anexas, por unanimidade, negar provimento ao agravo regimental, nos termos do voto do Sr. Ministro Relator. Participaram do julgamento os Srs. Ministros José de Jesus, Hélio Mosimann, Peçanha Martins e Américo Luz.</p>
+        <p>Brasília (DF), 03 de agosto de 1994 (data do julgamento).</p>
+        <p>Ministro Hélio Mosimann, Presidente</p>
+        <p>Ministro Antônio de Pádua Ribeiro, Relator</p>
+        <p>DJ 22.08.1994</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Antônio de Pádua Ribeiro: Trata-se de agravo regimental, interposto pelo Estado de São Paulo, contra o seguinte despacho (fl . 113):</p>
+        <p>Decidiu o acórdão recorrido que o pagamento das férias, em pecúnia, por sua natureza indenizatória, não está sujeito a imposto de renda. Daí o recurso especial, em que alega ofensa à Lei n. 7.713, de 1988, e ao art. 43 e incisos, do CTN.</p>
+        <p>Mesmo que se dê por superado o óbice da Súmula n. 284-STF, em que se apóia o despacho agravado (fl . 102), ainda assim o recurso especial não merece prosperar, porquanto o aresto atacado acha-se em harmonia com os precedentes desta Corte sobre a matéria (REsp n. 27.487-8-SP, 30.978-9-SP e 34.988-0-SP).</p>
+        <p>Isto posto, nego provimento ao agravo.</p>
+        <p>Sustenta o agravante (fl s. 115/118):</p>
+        <p>Assim, alegou-se nas razões do agravo de instrumento que a decisão recorrida não podia subsistir porque a matéria em discussão foi amplamente ventilada no recurso de revista, inocorrendo as defi ciências que não p ermitissem a exata compreensão da controvérsia. Tanto é que o próprio despacho de fl . 113 pode identifi car a matéria em discussão, rejeitando a tese sustentada pelo agravante, em razão dos precedentes da Casa sobre a matéria.</p>
+        <p>Ocorre que, apesar de constar da petição de encaminhamento do recurso especial, tão-somente, o art. 105, inciso III, da Constituição Federal, é bem verdade que no corpo do recurso, no título “<i>Cabimento do Recurso”</i>, fi cou e xpresso que era pela alínea <b>a</b>.</p>
+        <p>Por outro lado, estão bem claros os artigos de lei federal que foram ofendidos pelo acórdão recorrido, tendo sido os mesmos analisados pelo v. acórdão proferido pela Quinta Câmara Civil do Tribunal de Justiça de São Paulo. Entre outras menções de ofensa à Lei Federal n. 7.713/1988, no recurso especial, temos o seguinte parágrafo:</p>
+        <p class="quote">E, notamos que isto não se dá no presente caso. Dentre as hipóteses de não incidência previstas nos parágrafos do art. 6 da Lei n. 7.713/1988, não encontramos menção às férias ou licença-prêmio convertidas em pecúnia. Assim, querer evitar a incidência do tributo sobre tais r endimentos na esfera do Poder Judiciário, seria o mesmo que conceder uma isenção tributária judicialmente, quando é sabido que ao Poder J udiciário não compete criar isenções; as isenções somente podem ser concedidas por lei. A criação de uma isenção por este órgão c onfi guraria uma anomalia, que além de patentemente nula, estaria, também, infringindo um dos princípios basilares de nossa ordem constitucional, a tripartição de poderes.</p>
+        <p>Em conseqüência, contrariamente ao afi rmado na r. decisão, ora agravada, inaplicável <i>data venia</i>, ao presente caso a Súmula n. 284 do Pretório Excelso.</p>
+        <p>Na certeza de que venham a ser superadas essas questões, a a preciação do agravo se impõe quanto à matéria de mérito, tendo em vista, f undamentalmente, recente aresto da Primeira Turma desse egrégio Tribunal, ( publicado no DJ 21.02.1994) o qual, decidindo questão idêntica, proclamou o seguinte:</p>
+        <p class="quote">Tributário. Imposto de renda. Indenização pecuniária referente a licença prêmio não gozada por necessidade do serviço. Incidência.</p>
+        <p class="quote">Incide imposto de renda auferida de indenização pecuniária relativa a período de licença-prêmio não gozada em face da necessidade do s erviço.</p>
+        <p class="quote">(REsp n. 39.627-1-SP).</p>
+        <p>Acresce, Srs. Ministros, que do voto condutor consta a seguinte conjectura:</p>
+        <p class="quote">Chego até a admitir que seria de justiça isentar-se do pagamento do imposto sobre a renda a indenização pecuniária paga a funcionário relativa a licença-prêmio ou <i>férias indeferidas por necessidade de serviço</i> (g.n.), uma vez que tal verba não se consubstancia em rendimento do trabalho, não se confundindo com o produto do trabalho do recorrido, <i>mas de mera indenização</i> (g.n.) que visa, de maneira razoável, a recompor o patrimônio do interessado para, na medida do possível, torná-lo indene, íntegro, após a consumação da lesão, conforme anotado no r. acórdão hostilizado.</p>
+        <p>5. Por todo o exposto, espera o Estado de São Paulo que seja provido o agravo regimental, de forma a fazer chegar o especial ao exame desse colendo Tribunal, para, em julgamento colegiado, dar-se-lhe a solução mais condizente com o direito federal.</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Antônio de Pádua Ribeiro (Relator): A jurisprudência das Primeira e Segunda Turmas, especializadas em Direito Público, é no sentido de que o imposto de renda não incide sobre o pagamento de férias não gozadas, em razão do seu caráter indenizatório.</p>
+        <p>Eis as ementas de alguns precedentes:</p>
+        <p>Imposto de renda. Férias não gozadas por necessidade do serviço. I ndenização. Não incidência.</p>
+        <ul>
+          <li>- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer n atureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita à incidência do imposto de renda.</li>
+          <li>- Recurso desprovido.</li>
+        </ul>
+        <p>(REsp n. 26.998-6-SP (92.0022615-9); Rel. Min. <i>José de Jesus Filho</i>; julgado em</p>
+        <p>06.12.1993 e Publ. DJ 28.02.1994).</p>
+        <p>Imposto de renda. Férias não gozadas indenizadas. Não incidência.</p>
+        <p>O pagamento em dinheiro das férias não gozadas, porque indeferidas por necessidade do serviço, não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial, não e stando, portanto, sujeitas à incidência do Imposto de Renda. Recurso improvido.</p>
+        <p>(REsp n. 34.988-0-SP (93.0013182-6) Rel. Min. <i>Garcia Vieira</i>, julgado em</p>
+        <p>06.10.1993 e publicado DJ 08.11.1993).</p>
+        <p>Isto posto, nego provimento ao agravo.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5" nome="secao">
+        <Bloco nome="nomeAgrupador">RECURSO ESPECIAL N. 34.988-SP (93.0013182-6)</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro Garcia Vieira</p>
+        <p>Recorrente: Fazenda do Estado de São Paulo</p>
+        <p>Recorridos: Décio Antônio Piola e outros</p>
+        <p>Interessado: Instituto de Previdência do Estado de São Paulo — Ipesp</p>
+        <p>Advogados: Flávia C. Piovesan e outros, João Lopes Guimarães e outros e Jorge Atique Sobrinho</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Imposto de renda. Férias não gozadas indenizadas. Não incidência.</p>
+        <p>O pagamento em dinheiro das férias não gozadas, porque indeferidas por necessidade do serviço, não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial, não estando, portanto, sujeitas à incidência do Imposto de Renda.</p>
+        <p class="quote">Recurso improvido.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos, relatados e discutidos estes autos, acordam os Exmos Srs. Ministros da Primeira Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por maioria, vencido o Exmo Sr. Ministro Cesar Rocha, negar provimento ao recurso. Votaram com o Relator os Exmos Srs. Ministros Demócrito Reinaldo, Gomes de Barros e Milton Pereira.</p>
+        <p>Brasília (DF), 06 de outubro de 1993 (data do julgamento).</p>
+        <p>Ministro Garcia Vieira, Presidente e Relator</p>
+        <p>DJ 08.11.1993</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Garcia Vieira: Trata-se de ação ordinária de repetição de indébito ajuizada por Promotores Públicos contra a Fazenda do Estado e o Instituto de Previdência do Estado de São Paulo, visando ao recebimento de importâncias descontadas, a título de Imposto de Renda na Fonte e Contribuição Previdenciária do Ipesp, sobre indenização decorrente de férias não gozadas.</p>
+        <p>Em primeira instância a ação foi julgada parcialmente procedente, acolhido o p edido quanto ao desconto na fonte do Imposto de Renda e afastado quanto à contribuição previdenciária ao Ipesp. (fl s. 295/303)</p>
+        <p>Apreciando o feito, o E. Tribunal de Justiça do Estado de São Paulo negou provimento ao recurso da Fazenda e deu provimento ao apelo dos autores para afastar, também, a incidência da contribuição devida ao Ipesp sobre a indenização de férias não gozadas. Considerou aquela E. Corte que “retenção ou percentual sobre verba que não tem correspondência com futuro benefício não é contribuição previdenciária, é imposto, ou confi sco ...”</p>
+        <p>Com relação ao desconto relativo ao Imposto de Renda, entendeu o E. Tribunal <i>a quo</i> que as quantias recebidas à guisa de férias e licenças prêmio em pecúnia, por confi gurarem indenizações e, não rendimentos, estão constitucionalmente a salvo da tributação por via de IR (fl s. 379/388).</p>
+        <p>Inconformada, a Fazenda do Estado de São Paulo interpôs o presente recurso especial, com apoio na alínea <b>a</b> do permissivo constitucional, sob alegação de violação à Lei n. 7.713/1988, art. 43 do CTN, e art. 135 da Lei Complementar Estadual n. 180/1978.</p>
+        <p>Sustenta, em síntese, que “ao não integrar o exaustivo rol de isenções, não há como objetivar que as férias pagas em pecúnia não sejam tributadas, porque estão abrangidas pelo conceito de renda, universo de incidência do referido imposto”, ainda mais considerando que as isenções hão de ser interpretadas restritivamente.</p>
+        <p>Alega, ainda, que a contribuição previdenciária tem como base de cálculo vantagens remuneratórias de qualquer natureza percebidas dos cofres públicos, incluindo-se aí, as férias em pecúnia, nos justos termos do art. 133 da Lei Complementar n. 180 (fl s. 405/413).</p>
+        <p>Oferecidas contra-razões, foi o recurso admitido (fl s. 427/431), subindo os autos a este C. Tribunal.</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Garcia Vieira (Relator): Discute-se neste recurso especial se o imposto de renda e a contribuição previdenciária para o Instituto de Previdência do Estado de São Paulo, incidem ou não sobre o pagamento em dinheiro de férias não gozadas por interesse do serviço.</p>
+        <p>Com referência à contribuição previdenciária, o recurso não foi admitido (fl s. 427/431), tendo o eminente 3 Vice-Presidente do egrégio Tribunal de Justiça afi rmado que:</p>
+        <p>Todavia, tocante à devolução das importâncias descontadas a título de contribuição previdenciária, o recurso não merece prosperar.</p>
+        <p>É que o exame da questão como feito, não evidencia violação flagrante, direta de lei federal, dependendo sua verifi cação, no caso, de interpretação da lei estadual especifi camente considerada, o que inviabiliza a seqüência recursal.</p>
+        <p>Sabe-se que a interpretação de direito local é insusceptível de revisão especial pretendida, conforme anuncia a Súmula n. 280 do Pretório Excelso, aqui aplicável.</p>
+        <p>De fato, com referência à incidência ou não da contribuição previdenciária, nenhuma lei federal foi apontada como violada e a única norma legal invocada é a Lei Complementar Estadual n. 180/1978 e por ofensa a direito local não cabe o especial (Súmula n. 280 do STF). Por isso, não conheço do recurso na parte referente à contribuição previdenciária.</p>
+        <p>Com referência ao imposto de renda, vários dispositivos legais, inclusive o art. 3, § 4 da Lei n. 7.713/1988, e o art. 43, incisos I e II, do CTN, são apontados como atingidos pelo venerando aresto recorrido e houve o prequestionamento.</p>
+        <p>Conheço do recurso no concernente ao imposto de renda, com base na letra <b>a</b>.</p>
+        <p>Nesta parte, o recurso é admissível mas, a meu ver, não merece provimento.</p>
+        <p>Compete à União instituir o imposto sobre “renda e proventos de qualquer natureza” (Constituição Federal, art. 153, inciso III) e o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de qualquer natureza. O fato gerador do imposto de renda é a aquisição da disponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto do capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN).</p>
+        <p>Ora, o pagamento em dinheiro das férias não gozadas porque indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da a dministração pública o pagamento de férias não gozadas constitui uma indenização. Estabelece a Súmula n. 39 do TFR, que:</p>
+        <p>Não está sujeita ao imposto de renda a indenização recebida por pessoa jurídica em decorrência de desapropriação amigável ou judicial.</p>
+        <p>É claro que, quando uma pessoa recebe uma indenização como pagamento de seu imóvel atingido pela desapropriação ou pelos danos sofridos em decorrência de acidente envolvendo veículo oficial ou por qualquer outro dano a ela causado por agente público ou lhe paga as férias não gozadas, não está ele recebendo nenhuma renda ou proventos de qualquer natureza. Estas indenizações não são o produto do capital ou de trabalho e não representam qualquer acréscimo patrimonial, b enefício, vantagem ou rendimentos. Se não é renda nem proventos, não pode lei nenhuma determinar a cobrança de imposto de renda sobre a indenização de férias não gozadas, porque isto é vedado pela Constituição (art. 153, item III).</p>
+        <p>O eminente Juiz singular, em sua bem lançada sentença de fl s. 295/303, com razão, acentuou que:</p>
+        <p>Entende o respeitado Amauri Mascaro Nascimento<b> </b>que o pagamento de férias vencidas tem natureza indenizatória, como se vê em seu “Curso de Direito do Trabalho”, 2 edição, 2 volume, p. 156, e no seu “Compêndio do Direito do Trabalho”, Ed. LTr, 1976, p. 465, em que, inclusive, discorre sobre a “<i>indenização substitutiva e proporcional</i>” pelas férias não gozadas.</p>
+        <p>Corroborando tal ensinamento, vê-se decisão do egrégio Tribunal Superior do Trabalho nesse sentido, em que o ínclito Ministro Barata Silva referiu-se expressamente ao pagamento de férias não gozadas como sendo <i>indenização</i> (Recurso de Revista n. 1.251/1977). E, por derradeiro, é de ser, aqui, e xpressamente citado o enunciado da Súmula n. 7 do Colendo Tribunal S uperior do Trabalho: “A indenização pelo não deferimento das férias no tempo oportuno será calculada com base na remuneração devida ao empregado à época da reclamação ou, se for o caso, a extinção do contrato”.</p>
+        <p>O acatado jurista Roque Antônio Carrazza afirma, em seu parecer, que as férias constituem direito que a lei deu aos servidores, que preenchem os requisitos. Em nome do superior interesse público, também pode ter seu desfruto temporariamente adiado, mas, nunca, anulado ou eliminado.</p>
+        <p>A conseqüência da não-concessão, por necessidade de serviço, das férias, seria a necessidade de uma reparação patrimonial, deixando o agente público indene.</p>
+        <p>Como já foi dito anteriormente, a Administração freqüentemente susta o direito de seus agentes ao gozo de férias, invocando razões de necessidade de serviço. Com isto, viola os princípios gerais referentes ao Direito Social (que preconizam o direito ao descanso e a recomposicão das condições físicas do trabalhador), além do preceito constitucional que escuda tal direito (art. 124, § 3, da atual Constituição Estadual). Com isto, gera o direito do agente público — <i>in casu</i>, o promotor — <i>ser indenizado</i> pelo não-gozo de tais direitos.</p>
+        <p>A cobrança do Imposto de Renda sobre o dito pagamento, defende-se a ré, é autorizada pela legislação; tanto pela Constituição Federal (art. 153, inciso III), como pela Lei Federal n. 7.713/1988. Já o Código Tributário Nacional dispõe, em seu art. 43, sobre o tributo em pauta, que ele tem como fato gerador a aquisição de disponibilidade econômica jurídica: “I - de Renda, assim entendido o produto do capital, do trabalho ou da combinação de ambos; II - de proventos de qualquer natureza, assim entendidos os acréscimos patrimoniais não compreendidos no inciso anterior”.</p>
+        <p>Deve o tributo incidir sobre ganhos ou proventos que causem aumento de patrimônio; ou seja, sobre numerário que venha a somar àquele que já seja propriedade do contribuinte. Mas as indenizações, pela própria natureza j urídica, não causam aumento de patrimônio algum, pois correspondem a uma <i>r ecomposição</i>; a um <i>prejuízo anteriormente sofrido pela pessoa que as recebe</i>. Não pode ser considerada renda, pois <i>não redunda em aumento de patrimônio</i>.</p>
+        <p>É do ilustre Geraldo Ataliba, em seu parecer anteriormente mencionado, a seguinte observação: “Indenizar” implica a noção de - “compensar ou recompensar o dano ou prejuízo sofrido; reparar” e “Compensar é estabelecer o equilíbrio entre; contrabalancear; substituir” (A. Morais Silva). O patrimônio deve fi car <i>indene,</i> intocado, igual. Semanticamente, indenização é, portanto, reposição de patrimônio no estado em que se encontrava, antes do dano, ou desfalque sofrido. E conclui, mais adiante: “Como nas indenizações não ocorre acréscimo patrimonial, não há lugar para incidência de imposto de renda. Doutrina e jurisprudência roboram inteiramente a inteligência exposta, ao realizar a exegese da competência tributária da União, inserta no inciso III do art. 153 da Lei Maior (e preceitos homólogos dos textos constitucionais anteriores)”.</p>
+        <p>Absurdo, assim, que se aluda à necessidade da existência de lei infraconstitucional que venha a outorgar isenções para os casos de indenizações, pura e simplesmente porque não são elas tributáveis.</p>
+        <p>A hipótese cabível, em verdade, é a da <i>não-incidência</i>, que é o e quivalente, no Direito Tributário, ao não-crime do Direito Penal. Ou, como ensina José Souto Maior Borges: “A expressão ‘não-incidência’, usada comumente pela doutrina de Direito Tributário em sentido genérico, para abranger todos os casos de inexigibilidade de tributos, pode ser empregada no sentido específico de inexistência de disposição prevendo o fato gerador” (“Isenções Tributárias”; Ed. Sugestões Literárias S/A, 1969, p. 182). E, mais adiante: “não-incidência é conceito correlacionado com o de incidência. Ocorre incidência de lei tributária quando determinada pessoa ou coisa se encontra <i>dentro</i> do campo coberto pela tributação; dá-se não incidência, diversamente, quando determinada pessoa ou coisa se encontra <i>fora</i> do campo de incidência da regra jurídica de tributação” (<i>op. cit.</i>, p. 183).</p>
+        <p>Argumentar-se-á que a Lei n. 7.713/1988 tratou de isenções a respeito de indenizações, no seu art. 62, IV e V. Entretanto, fê-lo, desnecessariamente; ou, como decidiu o ilustre magistrado Venício Antônio de Paula Salles, ao sentenciar, brilhantemente, o Processo n. 472/1990, da egrégia 9 Vara da Fazenda Pública: “... o legislador ordinário não poderia escolher estes fatos como desencadeadores do imposto de renda. O legislador ordinário foi totalmente ‘atécnico’, mas isto é absolutamente normal em nossa legislação, pois ‘a ele é dado cometer erros não permitidos no estudante de direito’” (Professor Geraldo Ataliba).</p>
+        <p>Houve, prossegue o magistrado, uma “falha legal”, e dela não se pode extrair “um raciocínio correto. Este (raciocínio) há de estar contaminado por igual vício.</p>
+        <p>Portanto, o fato de haver previsão legal de isenção para algumas indenizações, não significa que todas as demais se encontram submetidas à cobrança de tributos”. E conclui, com absoluto acerto: “fosse correto este entendimento e as reparações de danos provocadas por acidentes a utomobilísticos, ou as indenizações decorrentes de desapropriações, e stariam sujeitas ao pagamento do imposto federal”.</p>
+        <p>E de onde provém a diferença? Justamente daquilo que já foi dito; ou seja, de que as <i>indenizações constituem recomposição de patrimônio anteriormente desfalcado</i>. Pura e simplesmente, não podem ser considerados como <i>renda</i>. Ou como conclui Geraldo Ataliba no já mencionado estudo: “Como as indenizações não se submetem ao conceito constitucional legal e doutrinário de renda, são intributáveis”.</p>
+        <p>No mesmo sentido, a opinião do Professor Roque Antônio Carrazza: “A quantia recebida pelo servidor público, a título de ressarcimento, pelas férias e licenças-prêmio vencidas e não gozadas, por absoluta necessidade de serviço, é simples indenização. É medida reparatória que recompõe seu p atrimônio, mas que absolutamente não lhe cria, sob o aspecto jurídico, riquezas novas, é dizer, rendimentos ou ganhos de capital (proventos). T emos por indisputável, pois, que o pagamento, em dinheiro, das férias e licenças-prêmio não gozadas por necessidade de serviço, tem caráter indenizatório. E — reprisemos — indenizações não podem ser objeto de tributação, por via de IR”. (fl s. 298/302)</p>
+        <p>Nego provimento ao recurso.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr5" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO-VISTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Milton Pereira: Compelido por dúvidas, pareceu-me aconselhável solicitar vista, pórtico regimental propiciador de oportunidade para refl exões mais demoradas. Concluídas, à guisa de registro que se cuida de ação objetivando a repetição de indébito, conseqüente a importâncias descontadas a título de Imposto de Renda, incidente sobre a indenização pecuniária de férias não gozadas.</p>
+        <p>No seu substancioso voto, o Sr. Ministro-Relator averbou:</p>
+        <p>
+          <i>Omissis</i>
+        </p>
+        <p>... o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de qualquer natureza. O fato gerador do imposto de renda é a aquisição da disponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto do capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN).</p>
+        <p>Ora, o pagamento em dinheiro das férias não gozadas porque indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da Administração Pública o pagamento de férias não gozadas constitui uma indenização.</p>
+        <p>Deveras, a questão não se prende às férias “vendidas” (art. 78, § 1, Lei n. 8.112/1990), hipótese em que, constituindo-se em anômala fonte de renda, parece-me que ocorrerá a incidência do tributo.</p>
+        <p>Acertada essa exclusão, a trato de pagamento substitutivo e proporcional das férias, não gozadas no tempo oportuno por inquestionado interesse do serviço, seguindo-se as lições doutrinárias colacionadas pelo eminente Ministro Garcia Vieira, consubstanciou-se o direito a uma reparação, pecuniária, gerando a correspondente <i>indenização</i>; daí por que:</p>
+        <p>... Deve o tributo incidir sobre ganhos ou proventos que causem aumento de patrimônio; ou seja, sobre numerário que venha a somar àquele que já seja propriedade do contribuinte. Mas as indenizações, pela própria natureza j urídica, não causam aumento de patrimônio algum, pois correspondem a <i>uma recomposição;</i> a um <i>prejuízo anteriormente sofrido pela pessoa que as recebe</i>. Não pode ser considerada renda, pois <i>não</i> <i>redunda em aumento de patrimônio</i>.</p>
+        <p>É do ilustre Geraldo Ataliba, em seu parecer anteriormente m encionado, a seguinte observação: “Indenizar” implica a noção de “compensar ou recompensar o dano ou prejuízo sofridos; reparar” e “Compensar é e stabelecer o equilíbrio entre o contrabalancear; substituir...”. (Voto — grifos originais)</p>
+        <p>Esse lineamento, ao derredor de que as férias <i>indenizadas</i> não constituem salário, tem o precioso apoio do pranteado <i>Orlando Gomes,</i> a dizer: “qualquer remuneração paga ao empregado sem trabalho não é tecnicamente salário” (“O Salário no Direito Brasileiro” - , p. 353, ed. 1957 - ). Em assim afi rmado, calham à fi veleta estas anotações:</p>
+        <p>... no mesmo campo do salário e da indenização, se aquele é típico e específi co do contrato-de-emprego e, portanto, do Direito do Trabalho, esta, da indenização, tem conteúdo conceitual, também típico e específi co, no Direito Comum. E o preceito legal está expresso no art. 1.534 do Código Civil, assim enunciado: “Se o devedor não puder cumprir a prestação na espécie ajustada, substituir-se-á pelo seu valor, em moeda corrente, no lugar onde se execute a obrigação”. Contudo, o princípio mesmo da indenização está consagrado no art. 1.056 do Código Civil, a saber: “Não cumprindo a obrigação ou deixando de cumpri-la pelo modo e no tempo devido, responde o devedor por perdas e danos”. Os dois preceitos legais invocados, dão-nos, de maneira irretorquível, as medidas certas e adequadas para conceituação de indenização do Direito Comum, e que deve ser aplicada ao Direito do Trabalho, como ramo da mesma Ciência Jurídica.</p>
+        <p class="omissis">(...)</p>
+        <p>Serão tais verbas indenizatórias entendidas como “rendimentos de t rabalho assalariado”, para os efeitos da incidência do I. Renda, na fonte?</p>
+        <p>Segundo a Coordenadoria do Sistema de Tributação, sim.</p>
+        <p>Deixando de lado o aspecto abrangente dado pela aludida C oordenadoria, sempre no sentido de arrecadar cada vez mais, há que se ater ao princípio maior que regula a tributação sobre rendimentos do trabalho, no sentido de que as indenizações trabalhistas estão isentas sem restrições, a não ser que houvesse lei declarando o contrário, não sendo lícito ao intérprete distinguir se o texto legal não distinguiu. O que há são Pareceres Normativos e Acórdãos isolados, quase todos, na esfera administrativa... (<i>Irany Ferrari</i>, “Férias indenizadas — Tempo de serviço — Incidência de IAPAS, Imp. Renda e FGTS”, <i>in</i> Rev. LTr, vol. 46, n. 1, 1982, p. 49 a 51).</p>
+        <p>Some-se:</p>
+        <p>
+          <i>Omissis</i>
+        </p>
+        <p>... que signifi ca a expressão “renda e proventos de qualquer natureza”? Ou, por outro giro verbal: será que qualquer importância recebida, seja a que título for, pode ser alcançada pelo IR? entendemos que <i>não</i>.</p>
+        <p>Obviamente, o art. 21, IV, da Lei Maior, não deu ao legislador o rdinário da União liberdade para tributar o que lhe aprouver. Pelo contrário, conferiu-lhe apenas o direito de tributar a renda e os proventos de qualquer natureza.</p>
+        <p>Melhor esclarecendo, o IR só pode alcançar a aquisição de d isponibilidade de riqueza nova, vale dizer, o acréscimo patrimonial, experimentado durante certo período.</p>
+        <p>Logo, não é qualquer entrada de dinheiro nos cofres de uma pessoa (física ou jurídica) que pode ser alcançada pelo <i>IR</i>, mas, tão-somente, os “acréscimos patrimoniais”, isto é, “a aquisição de disponibilidade de riqueza nova”, como averba, com precisão, Rubens Gomes de Souza. Tudo que não tipifi car <i>ganhos durante um período</i>, mas simples <i>transformações de r iqueza</i>, não se enquadra na área traçada pelo art. 21, IV, da CF.</p>
+        <p>É o caso das indenizações. Nelas, não há geração de rendas ou acréscimos patrimoniais (proventos) de qualquer espécie. Não há riquezas novas d isponíveis, mas reparações, em pecúnia, por perdas de direitos.</p>
+        <p>Na indenização, como todos aceitam, há <i>compensação</i>, em pecúnia, por dano sofrido. Em outros termos, o direito ferido é transformado numa quantia de dinheiro. O patrimônio da pessoa lesada não aumenta de valor, mas simplesmente é reposto no estado em que se encontrava antes do advento do gravame (<i>status quo ante</i>).</p>
+        <p>Em apertada síntese, na indenização inexiste<i> riqueza nova</i>. E, sem <i> </i>riqueza nova, não pode haver incidência do <i>IR</i> ou de qualquer outro imposto da c ompetência residual da União (neste caso, por ausência de indício de <i> capacidade contributiva</i>).</p>
+        <p>Assim, conquanto reinem dúvidas sobre o significado, o conteúdo e o alcance da expressão “renda e proventos de qualquer natureza”, a doutrina e a jurisprudência de há muito vêm entendendo que <i>ela não compreende as i mportâncias percebidas a título de indenização</i>. A respeito, já se pacifi caram as inteligências, motivo pelo qual julgamos dispensável ampliar estas c onsiderações.</p>
+        <p>Enfi m, as indenizações não são — e nem podem vir a ser — tributáveis por meio de <i>IR</i> ... (<i>Roque Antônio Carrazza</i>, “Intributabilidade por Via de Imposto sobre a Renda — Férias e Licenças-Prêmio em Pecúnia”, <i>in</i> Rev. Direito Tributário, vol. 39, pp. 165 e 166).</p>
+        <p>A quantia recebida pelo servidor público, a título de ressarcimento, pelas férias e licenças-prêmio vencidas e não gozadas, por absoluta necessidade de serviço, é simples indenização. É medida reparatória que recompõe seu patrimônio, mas que absolutamente não lhe cria, <i>sob o aspecto jurídico, riquezas novas</i>, é dizer, <i>rendimentos</i> ou <i>ganhos de capital</i> (proventos).</p>
+        <p>Temos por indisputável, pois, que o pagamento, em dinheiro, das <i>f érias</i> e licenças-prêmio não gozadas, por necessidade de serviço, têm caráter indenizatório. E — repisamos — indenizações não podem ser objeto de tributação, por via de IR .... (Roque Antônio Carrazza, “Novas Considerações sobre a Intributabilidade, por Via de Imposto sobre a Renda, das Férias e Licenças Prêmio Recebidas em Pecúnia”, <i>in</i> Rev. de Direito Tributário, n. 52 p. 181 — grifo).</p>
+        <p>Conforme, pois, essas eméritas considerações, pagamento das <i>férias</i>, indeferido o seu aproveitamento por necessidade do serviço, as verbas percebidas têm a natureza jurídica de <i>indenização</i>. Ilógico seria Interpretação diversa, inclusive porque, além do sacrifício à saúde, impedido o gozo do descanso, seria duplamente apenado com a incidência do Imposto de Renda sobre a compensação monetária.</p>
+        <p>Enfi m, exprimindo o pagamento das férias não gozadas por necessidade de serviço a reparação pecuniária, tem a natureza de indenização e seria injusto, com a anulação parcial dos seus efeitos, de diminuída no seu valor pela incidência do Imposto de Renda. A rigor, seria modifi car o conceito da reparação sofrida pelo servidor, decorrente de lesão ao seu direito constitucional de férias anuais remuneradas (arts. 7, XVIII, e 39, § 2, CF).</p>
+        <p>Amarradas as razões, na espécie examinada, convencido da não incidência do Imposto de Renda, acompanho o voto do eminente Relator Garcia Vieira, <i>improvendo o recurso.</i></p>
+        <p>É o meu voto-vista.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr6" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Cesar Rocha: <i>Data venia</i> do Sr. Ministro Relator, fi co vencido.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6" nome="secao">
+        <Bloco nome="nomeAgrupador">RECURSO ESPECIAL N. 36.084-SP</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro Humberto Gomes de Barros</p>
+        <p>Recorrente: Estado de São Paulo (Fazenda Estadual)</p>
+        <p>Recorrida: Flora Maria Borelli Gonçalves</p>
+        <p>Advogados: Denize Piovani, Marcelo Saraiva de Oliveira Ribeiro e outro</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Tributário. Imposto de renda. Pagamento de indenização a servidor público. Férias indeferidas por necessidade do serviço. Não incidência.</p>
+        <ul>
+          <li>O pagamento em pecúnia a servidor público, referente a períodos de férias não gozadas, por necessidade do serviço não constitui renda ou proventos, pois não caracteriza acréscimo patrimonial, dado o caráter compensatório da verba.</li>
+          <li>Recurso desprovido.</li>
+        </ul>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos, relatados e discutidos estes autos, acordam os Ministros da Primeira Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por unanimidade, negar provimento ao recurso. Votaram com o Sr. Ministro Relator os Srs. Ministros Milton Luiz Pereira, Garcia Vieira e Demócrito Reinaldo. Ausente, justifi cadamente, o Sr. Ministro Cesar Asfor Rocha.</p>
+        <p>Brasília (DF), 06 de junho de 1994 (data do julgamento).</p>
+        <p>Ministro Demócrito Reinaldo, Presidente</p>
+        <p>Ministro Humberto Gomes de Barros, Relator</p>
+        <p>DJ 27.06.1994</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Humberto Gomes de Barros: Recurso especial interposto pelo Estado de São Paulo, com base na alínea <b>a</b> da permissão constitucional, contra acórdão que decidiu pela não incidência de imposto de renda sobre o pagamento de férias indeferidas por necessidade do serviço.</p>
+        <p>O recorrente sustenta contrariedade aos arts. 43, I e II, do CTN, e 3º e 6º, da Lei n. 7.713/1988.</p>
+        <p>Admitido, na origem, o processamento do apelo, subiram os autos a esta Corte.</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Humberto Gomes de Barros (Relator): Discute-se, no presente recurso especial, questão dirimida na jurisprudência da Corte, a saber: se o p agamento em pecúnia, a servidor público, referente a períodos de férias não g ozados, por imperativos de necessidade do serviço, confi gura fato gerador do imposto de renda.</p>
+        <p>Esta Turma, no julgamento do REsp n. 36.088-9, DJ 29.11.1993, sob o voto condutor do eminente Ministro Garcia Vieira decidiu, <i>verbis</i>:</p>
+        <p>Imposto de renda. Férias não gozadas indenizadas. Não incidência.</p>
+        <p>O pagamento em dinheiro das férias não gozadas, porque indeferidas por necessidade do serviço, não é produto do capital, do trabalho ou da combinação de ambos e também não representa acréscimo patrimonial, não e stando, portanto, sujeitas à incidência do Imposto de Renda.</p>
+        <p>Recurso improvido. (No mesmo sentido os Recursos Especiais n. 2 7.487-8, DJ</p>
+        <p>29.11.1993; 34.988-0, DJ 08.11.1993; e 36.050-1, DJ 29.11.1993).</p>
+        <p>Diverso não é o entendimento fi rmado pela Segunda Turma, consoante se depreende do seguinte julgado:</p>
+        <p>Imposto de renda. Férias não gozadas por necessidade do serviço. I ndenização.</p>
+        <p>Não incidência.</p>
+        <ul>
+          <li>- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer n atureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita a incidência do imposto de renda.</li>
+          <li>- Recurso desprovido. (REsp n. 26.998, DJ 28.02.1994, Relator o e minente Ministro José de Jesus).</li>
+        </ul>
+        <p>Efetivamente, a indenização paga a servidor público, concernente a férias indeferidas por necessidade do serviço, não constitui renda ou proventos, porquanto não caracteriza acréscimo patrimonial, dado o caráter c ompensatório da verba.</p>
+        <p>Nego provimento ao recurso.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7" nome="secao">
+        <Bloco nome="nomeAgrupador">RECURSO ESPECIAL N. 40.136-SP (93.0030048-2)</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro José de Jesus Filho</p>
+        <p>Recorrente: Fazenda do Estado de São Paulo</p>
+        <p>Recorrido: Vicente de Paulo Machado Almeida</p>
+        <p>Advogados: Maria Luisa de Oliveira e outros e Roberto Tortorelli</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Imposto de renda. Férias não gozadas por necessidade do serviço. Indenização. Não incidência.</p>
+        <ul>
+          <li>- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer natureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita à incidência do imposto de renda.</li>
+          <li>- Recurso não conhecido.</li>
+        </ul>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos e relatados estes autos, em que são partes as acima indicadas, decide a Segunda Turma do Superior Tribunal de Justiça, por unanimidade, não conhecer do recurso, na forma do relatório e notas taquigráfi cas constantes dos autos, que fi cam fazendo parte integrante do presente julgado. Participaram do julgamento os Srs. Ministros Hélio Mosimann, Peçanha Martins, Américo Luz e Antônio de Pádua Ribeiro.</p>
+        <p>Brasília (DF), 21 de fevereiro de 1994 (data do julgamento).</p>
+        <p>Ministro Antônio de Pádua Ribeiro, Presidente</p>
+        <p>Ministro José de Jesus Filho, Relator</p>
+        <p>DJ 21.03.1994</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro José de Jesus Filho: Trata-se de recurso especial interposto pela <i>Fazenda do Estado de São Paulo</i>, com fundamento no art. 105, III, alínea <b>a</b>, do permissivo constitucional, contra o v. acórdão proferido pela Terceira Câmara Civil do Tribunal de Justiça daquele Estado, que concedeu a segurança impetrada por membro do M inistério Público Estadual, objetivando afastar a incidência do imposto de renda retido na fonte sobre o pagamento de férias não gozadas por necessidade de serviço.</p>
+        <p>Sustenta a recorrente, em síntese, que o v. aresto hostilizado contrariou dispositivos da Constituição Federal (arts. 150 e 153), assim como do CTN (art. 43, I e II) e da Lei Federal n. 7.713/1988 (arts. 1º, 3º e 6º), uma vez que indenização paga por férias não gozadas constitui fato gerador da incidência do imposto sobre a renda, pois de renda se trata.</p>
+        <p>Às fl s. 203-211, recurso extraordinário.</p>
+        <p>Admitidos ambos os recursos, subiram os autos a esta egrégia Corte, onde dispensei a manifestação da douta Subprocuradoria Geral da República.</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro José de Jesus Filho (Relator): Discute-se, na espécie, a respeito de desconto de imposto de renda na fonte sobre o pagamento de indenização correspondente a férias não gozadas por necessidade do serviço.</p>
+        <p>O v. acórdão perseguido decidiu a espécie nestes termos:</p>
+        <p>O art. 153, III, da Constituição Federal ofereceu ao legislador ordinário o direito de tributar a renda e os proventos de qualquer natureza.</p>
+        <p>O imposto em questão, segundo ressalta o ilustre Procurador de Justiça, Osni de Souza, não incide sobre qualquer percepção em dinheiro, mas apenas sobre aquelas que impliquem geração de rendas ou acréscimos patrimoniais (proventos) de qualquer espécie. Em outras palavras, “não é qualquer entrada de dinheiro nos cofres de uma pessoa (física ou jurídica) que pode ser alcançada pelo IR, mas, tão-somente, ‘os acréscimos patrimoniais’, isto é, ‘a aquisição de disponibilidade de riqueza nova’, como averbava, com precisão Rubens Gomes de Souza. Tudo que não tipificar ganhos durante um período, mas simples transformações de riqueza, não se enquadra na área traçada pelo art. 153, III, da Constituição Federal”.</p>
+        <p>Nas indenizações não há geração de rendas ou acréscimos patrimoniais, mas tão só a reposição do patrimônio no estado em que se encontrava antes do dano ou desfalque sofrido. Nada acresce ao patrimônio expropriado, pois simplesmente substitui o valor que dele anteriormente foi subtraído, como mera compensação.</p>
+        <p>A riqueza nova, segundo ressalta Gilberto de Ulhoa Canto, com menção ao Decreto n. 21.554, de 20.06.1932, conduz a que o imposto de renda não incide sobre hipótese que não importa em acréscimo patrimonial. Assim, já em seus primórdios, a legislação do imposto de renda cuidava de tributar tão somente o que se constituísse acréscimo patrimonial (“Estudos e Pareceres de Direito Tributário”, Ed. Alba, RJ).</p>
+        <p>Não ocorrendo acréscimo algum, mas apenas reposição do patrimônio na parte injustamente desfalcada, em que se busca a restituição ao estado anterior, o servidor, como todo trabalhador, tem garantido o direito às férias anuais, sendo o gozo obrigatório, sem possibilidade de negociação com a Administração Pública.</p>
+        <p>Preponderando o interesse público ao particular, pode o Poder Público indeferir pretensão de servidor às férias, em nome da continuidade do serviço, que não pode ser interrompido, mormente havendo quadro restrito de pessoal, como sabidamente ocorre com o Ministério Público e a Magistratura, de forma que o servidor muitas vezes fi ca impedido de gozar suas férias. Impedido, pois, de auferir tal benefício, à vista da defi ciência apontada, tem seu direito lesado pela Administração, experimentando prejuízo, fi cando, portanto, reduzido o seu patrimônio funcional.</p>
+        <p>Afastada a possibilidade no concernente ao gozo imediato de férias, permitida, conseqüentemente, a reposição patrimonial em pecúnia, sem a créscimo algum (riqueza nova), não há como proceder ao reconhecimento quanto à licitude de desconto na fonte.</p>
+        <p>Em suma, a natureza jurídica do pagamento de férias que não foram gozadas nas ocasiões devidas ostenta caráter indenizatório, constituindo r ecompensa pelo que não experimentou o funcionário, já que o seu patrimônio era formado também pelo direito ao gozo de férias, que lhe era garantido, mas que, pela necessidade do serviço, não foi exercido.</p>
+        <p>Assentou a egrégia Oitava Câmara Civil deste Tribunal, em acórdão r elatado pelo Des. Jorge Almeida, proferido no Mandado de Segurança n. 143.348-1, julgamento de 27.03.1991: “A indenização não acarreta acréscimo patrimonial. É sim reposição dele. É a substituição da perda sofrida, por c orrespondente valor econômico, guardando, como não se controverte no caso examinado, estrita correspondência. O equivalente pecuniário de ressarcimento de dano, não retrata hipótese de acréscimo patrimonial”. Em arremate: “Sem a renda-acréscimo não pode haver cobrança de imposto, por se tratar de relação jurídica extravagante ao fenômeno tributário defi nido no art. 43, II, CTN. Sem o acréscimo patrimonial, porque não instituído como renda o ato de recomposição patrimonial</p>
+        <p>(indenização), incorre a pressuposta hipótese de incidência (art. 114, CTN)”.</p>
+        <p>Em igual sentido os seguintes julgados deste Pretório: AC n. 143.811-1,</p>
+        <p>Quarta Câmara, Relator Desembargador Cunha de Abreu (RT 667/96); 144.7151, Segunda Câmara, Relator Desembargador Urbano Ruiz; 145.063-1, Terceira Câmara, Relator Desembargador Yussef Cahali; 145.487-1, Terceira Câmara, Relator Desembargador Toledo Cesar; 147.873-1, Primeira Câmara, Relator Desembargador Euclides de Oliveira, e 159.890-1, Terceira Câmara, Relator Desembargador José Malerbi; MS n. 140.933-1, Relator Desembargador Franklin Nogueira (RJTJESP 133/204).</p>
+        <p>O Superior Tribunal de Justiça já considerou que as importâncias pagas a empregados quando da resilição contratual, dizentes a férias não gozadas, não tem color de salário, por isso não há falar em contribuição previdenciária (Embargos de declaração no Recurso Especial n. 3.794, julgamento de 13.03.1991).</p>
+        <p>Em face do exposto, dá-se provimento ao recurso interposto, para c oncessão da segurança, nos termos pretendidos na inicial. Sem verba h onorária, reembolsando a Fazenda as despesas de fl s. 98 e 144, corrigidas desde as datas dos respectivos recolhimentos, ofi ciando-se. (fl s. 181-184)</p>
+        <p>Tenho como incensuráveis os fundamentos alinhados na decisão supratranscrita, pois também entendo que o pagamento de férias não gozadas por necessidade de serviço tem natureza indenizatória, portanto, não é renda e nem proventos de qualquer natureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em aumento de patrimônio. Aliás, o eminente Ministro Garcia Vieira, ao apreciar matéria idêntica, quando do julgamento do Recurso Especial n. 34.988-0-SP, na sessão do dia 6 de outubro do corrente ano, acórdão publicado no DJ 08.11.1993, assim discorreu sobre a <i>quaestio juris</i>:</p>
+        <p>Compete à União instituir o imposto sobre “renda e proventos de q ualquer natureza” (Constituição Federal, art. 153, inciso III) e o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de q ualquer natureza. O fato gerador do imposto de renda é a aquisição da d isponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN).</p>
+        <p>Ora, o pagamento em dinheiro das férias não gozadas porque i ndeferidas por necessidade do serviço não é produto de capital, do trabalho ou da c ombinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da Administração Pública o pagamento de férias não gozadas constitui uma indenização.</p>
+        <p>Destarte, por compartilhar do mesmo entendimento, isto é, que a indenização de férias não gozadas não constitui renda e, portanto, não está sujeita à incidência do imposto em tela, é que não conheço do recurso no âmbito desta Corte.</p>
+        <p>É o meu voto.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8" nome="secao">
+        <Bloco nome="nomeAgrupador">RECURSO ESPECIAL N. 40.921-SP (1993/0032428-4)</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro Américo Luz</p>
+        <p>Recorrente: Fazenda do Estado de São Paulo</p>
+        <p>Recorrida: Eloisa de Souza Arruda</p>
+        <p>Advogados: Luis Claudio Manfi o e outros e Francisco Egysto Siviero</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Férias não gozadas por necessidade do serviço. Indenização. Imposto de renda. Não incidência.</p>
+        <p>O pagamento decorrente de férias não gozadas por absoluta necessidade do serviço, não está sujeito à incidência do imposto sobre a renda, vez que tem caráter indenizatório, não se constituindo, assim, em acréscimo patrimonial. Precedentes.</p>
+        <p class="quote">Recurso não conhecido.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos, relatados e discutidos estes autos, acordam os Ministros da Segunda Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por unanimidade, não conhecer do recurso. Votaram com o Relator os Srs. Ministros Antônio de Pádua Ribeiro, José de Jesus, Hélio Mosimann e Peçanha Martins.</p>
+        <p>Brasília (DF), 03 de agosto de 1994 (data do julgamento).</p>
+        <p>Ministro Hélio Mosimann, Presidente</p>
+        <p>Ministro Américo Luz, Relator</p>
+        <p>DJ 22.08.1994</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Américo Luz: Contra acórdão da Segunda Câmara Civil do Tribunal de Justiça de São Paulo, concedendo a segurança para afastar a incidência do imposto de renda sobre a indenização por férias não gozadas por estrita necessidade do serviço, a Fazenda paulista interpôs recurso especial, com fundamento no art. 105, III, <b>a</b>, da Constituição Federal.</p>
+        <p>A recorrente sustenta, em síntese, que o acórdão atacado, ao assim decidir, violou os arts. 153, III, da Carta Magna; 43, I e II, do CTN; 3º e 6º da Lei n. 7.713/1988, vez que a indenização paga em razão de férias não gozadas “constitui fato gerador da incidência do imposto sobre a renda, uma vez que de renda se trata” (173).</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Américo Luz (Relator): A discussão, na espécie, consiste em saber se a indenização paga em razão de férias não gozadas, por absoluta necessidade do serviço, é ou não fato gerador da incidência do imposto sobre a renda.</p>
+        <p>Do v. acórdão recorrido, destaco o seguinte trecho, que bem delineia a questão (fl s. 146-147):</p>
+        <p>Decorre daí que, se o funcionário público tem indeferidas suas férias por absoluta necessidade de serviço, como foi o caso, sofre ele um dano que está a merecer indenização. Daí os pagamentos de férias atrasadas em pecúnia, em nada semelhantes à “renda”, tal como legalmente conceituada, ou a “proventos”. Não colhe, com o devido respeito, o argumento da Fazenda de que, em se tratando de dano, o indeferimento das férias por necessidade absoluta de serviço traria, como conseqüência, a desobrigação de indenizar. Ao contrário, a necessidade absoluta de serviço não pode servir de base para subtrair do servidor o direito a férias, já incorporado em seu patrimônio j urídico. Se é obrigado a sacrifi cá-las em proveito da Administração, deverão ser convertidas em perdas e danos, na pior das hipóteses.</p>
+        <p>Verifi ca-se, então, que mesmo de uma interpretação literal dos textos legais não decorre a conclusão de que incida o Imposto de Renda sobre as indenizações. É bem verdade que no art. 6º da Lei n. 7.713 o legislador, ao dispor sobre as isenções, fez com que elas também incidissem sobre certas indenizações. Interpretando os dispositivos em pauta a <i>contrario senso</i> p oder-se-ia chegar à conclusão de que as demais indenizações não estariam isentas, completando-se a idéia de que, por isso, elas integravam o conceito de renda ou proventos. Ora, consoante já se viu, as indenizações não são renda e nem proventos. Não são renda porque não se encartam no conceito legal de renda, tal como está expresso nos diplomas acima mencionados. E não se encartam no conceito de proventos por tudo o que se conhece do signifi cado da palavra “provento”. As isenções em epígrafe, assim, são inócuas vez que, de qualquer forma, a hipótese, quanto a elas, seria de não-incidência.</p>
+        <p>Creio que não assiste razão à recorrente. Isto por entender que, efetivamente, o pagamento decorrente de férias não gozadas por necessidade do serviço não constitui renda ou provento de qualquer natureza, não sendo, também, acréscimo patrimonial, ao contrário, tem caráter indenizatório, visando apenas reparar o dano sofrido pelo servidor, decorrente da não usufruição do descanso garantido por lei.</p>
+        <p>Assim, o entendimento da Turma esposado quando do julgamento dos Recursos Especiais n. 26.998 e 39.872, ambos de São Paulo, relatados pelos eminentes Ministros José de Jesus e Hélio Mosimann, acórdãos assim ementados, r espectivamente, <i>verbis</i>:</p>
+        <p>Imposto de renda. Férias não gozadas por necessidade do serviço. I ndenização. Não incidência.</p>
+        <ul>
+          <li>- O pagamento de férias não gozadas por necessidade do serviço tem natureza indenizatória, portanto, não é renda nem proventos de qualquer n atureza, mas, sim, uma recomposição a um prejuízo anteriormente sofrido pela pessoa que as recebe, não redundando em acréscimo patrimonial, por isso que não está sujeita à incidência do imposto de renda.</li>
+          <li>- Recurso desprovido. (DJ 28.02.1994)</li>
+        </ul>
+        <p>Recurso especial. Licença-prêmio não gozada por necessidade do serviço. Pagamento de natureza indenizatória. Não incidência do imposto de renda.</p>
+        <p>O pagamento da licença-prêmio, como das férias, não gozadas por necessidade do serviço, pela sua natureza indenizatória, não está sujeito à incidência do imposto de renda. (DJ 20.06.1994)</p>
+        <p>Não conheço do recurso.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9" nome="secao">
+        <Bloco nome="nomeAgrupador">RECURSO ESPECIAL N. 47.102-SP (94.11552-0)</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro Peçanha Martins</p>
+        <p>Recorrente: Fazenda do Estado de São Paulo</p>
+        <p>Recorrido: Sebastião Sérgio da Silveira</p>
+        <p>Advogados: Lilian Rodrigues Gonçalves e outros e José Sidnei Rosada e</p>
+        <p>outro</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Imposto de renda. Férias não gozadas. Indenização. Não incidência. Precedentes STJ.</p>
+        <p>O pagamento de férias indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da combinação de ambos, não resultando em acréscimo patrimonial, por isso que não está sujeita ao imposto de renda.</p>
+        <p class="quote">Recurso não conhecido.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos, relatados e discutidos estes autos, acordam os Ministros da Segunda Turma do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráfi cas a seguir, por unanimidade, não conhecer do recurso. Votaram com o Relator os Ministros Américo Luz, Antônio de Pádua Ribeiro, José de Jesus e Hélio Mosimann.</p>
+        <p>Brasília (DF), 20 de junho de 1994 (data do julgamento).</p>
+        <p>Ministro Hélio Mosimann, Presidente</p>
+        <p>Ministro Peçanha Martins, Relator</p>
+        <p>DJ 15.08.1994</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Peçanha Martins: Trata-se de recurso especial manifestado pela Fazenda do Estado de São Paulo, fundado no art. 105, III, <b>a</b> e <b>c</b> da Constituição Federal, contra acórdão do Tribunal de Justiça do Estado de São Paulo proferido nos autos de ação de repetição de indébito proposta por Sebastião Sérgio da Silveira, membro do Ministério Público Estadual, visando a restituição do valor retido na fonte a título de imposto de renda incidente sobre o pagamento de férias em pecúnia, que lhe haviam sido indeferidas por necessidade de serviço.</p>
+        <p>Sustenta ter o v. acórdão recorrido, ao determinar a restituição das importâncias reclamadas, violado os arts. 535, inciso II e 267, inciso VI do CPC; 3º, 6º e 7º da Lei n. 7.713/1988, art. 45, parágrafo único, art. 4º e art. 121, II do CTN. Contra-razões oferecidas às fl s. 220-228.</p>
+        <p>O Tribunal <i>a quo</i> admitiu o recurso especial, pela alínea <b>a </b>do permissivo constitucional.</p>
+        <p>Dispensei a manifestação da Subprocuradoria Geral da República, nos termos regimentais.</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Peçanha Martins (Relator): Sobre a questão preliminar, ilegitimidade da Fazenda do Estado para integrar a lide, assim decidiu a v. decisão recorrida (fl . 200):</p>
+        <p>Preliminarmente, não se vislumbra, no caso, o interesse da União, pois o art. 157, inciso I, da Constituição Federal, diz pertencer aos Estados e ao Distrito Federal o produto da arrecadação do imposto de renda incidente na fonte sobre rendimentos pagos a qualquer título por eles, suas autarquias e fundações. Legitimado passivamente, portanto, é o Estado, que se benefi ciou da arrecadação e, se esta foi feita erradamente, é quem está obrigado a r estituir. Conseqüentemente, não há falar em incompetência da Justiça Estadual.</p>
+        <p>Correto o entendimento, rejeito a preliminar argüida.</p>
+        <p>Quanto ao mérito, também entendo que o pagamento de férias não gozadas por necessidade do serviço, não é renda e nem proventos de qualquer natureza e nem representa acréscimo patrimonial.</p>
+        <p>Tem, sim, natureza indenizatória.</p>
+        <p>Sobre a matéria vale transcrever trecho do voto proferido pelo eminente Ministro Garcia Vieira, no REsp n. 43.717-2-SP:</p>
+        <p>Compete à União instituir o imposto sobre “renda e proventos de q ualquer natureza” (Constituição Federal, art. 153, inciso III) e o pagamento de férias indeferidas por necessidade do serviço não é renda e nem proventos de qualquer natureza. O fato gerador do imposto de renda é a aquisição da d isponibilidade econômica de rendas e de proventos de qualquer natureza. Renda é o “produto do capital, do trabalho ou da combinação de ambos” e proventos os “acréscimos patrimoniais” (art. 43, itens I e II, do CTN).</p>
+        <p>Ora, o pagamento em dinheiro das férias não gozadas porque indeferidas por necessidade do serviço não é produto do capital, do trabalho ou da c ombinação de ambos e também não representa acréscimo patrimonial. É ele, na realidade, uma indenização paga ao servidor para compensá-lo dos desgastes sofridos pelo longo período de trabalho, sem gozar do descanso garantido pela lei. A exemplo das indenizações decorrentes de desapropriação ou de acidente de veículos da Administração Pública o pagamento de férias não gozadas c onstitui uma indenização. Estabelece a Súmula n. 39 do TFR, que:</p>
+        <p class="quote">Não está sujeita ao imposto de renda a indenização recebida por pessoa jurídica em decorrência de desapropriação amigável ou judicial.</p>
+        <p>É claro que, quando uma pessoa recebe uma indenização como p agamento de seu imóvel atingido pela desapropriação ou pelos danos sofridos em d ecorrência de acidente envolvendo veículo ofi cial ou por qualquer outro dano a ela causado por agente público ou lhe paga as férias não gozadas, não está ele recebendo nenhuma renda ou proventos de qualquer natureza. Estas indenizações não são o produto do capital ou do trabalho e não representam qualquer acréscimo patrimonial, benefício, vantagem ou rendimentos. Se não é renda nem proventos, não pode lei nenhuma determinar a cobrança de imposto de renda sobre a indenização de férias não gozadas, porque isto é vedado pela Constituição (art. 153, item III).</p>
+        <p>Neste sentido vem decidindo, reiteradamente esta colenda Turma, bastando citar as decisões proferidas nos Recursos Especiais n. 34.988-SP, DJ 08.11.1993; 27.487-SP, DJ 29.11.1993; 30.978-SP, DJ 29.11.1993; 36.050-SP, DJ 29.11.1993, dentre inúmeros outros.</p>
+        <p>Também comungo desse entendimento, razão por que não conheço do recurso.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10" nome="secao">
+        <Bloco nome="nomeAgrupador">RECURSO ESPECIAL N. 52.208-SP (1994/0023969-6)</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Relator: Ministro Demócrito Reinaldo</p>
+        <p>Recorrente: Fazenda do Estado de São Paulo</p>
+        <p>Recorrido: Leandro Pereira Leite</p>
+        <p>Advogados: João Carlos Lopes de Souza e outros e Marcelo Saraiva de</p>
+        <p>Oliveira Ribeiro</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10_agr1" nome="subsecao">
+        <Bloco nome="nomeAgrupador">EMENTA</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Tributário. Funcionário público. Férias não gozadas. Indenização. Incidência do imposto de renda. Impossibilidade.</p>
+        <p>Consoante entendimento que se cristalizou, na jurisprudência, o pagamento (<i>in pecunia</i>) de férias não gozadas — por necessidade do serviço — ao servidor público, tem a natureza jurídica de indenização, não constituindo espécie de remuneração, mas, mera reparação do dano econômico sofrido pelo funcionário.</p>
+        <p>Erigindo-se em reparação, a conversão, em pecúnia, das férias a que a conveniência da Administração impediu o auferimento, visa, apenas, a restabelecer a integridade patrimonial desfalcada pelo dano. A percepção dessa quantia indenizatória não induz em acréscimo patrimonial e nem em renda tributável, na defi nição da legislação pertinente.</p>
+        <p>O tributo, na disciplina da lei, só deve incidir sobre ganhos que causem aumento de patrimônio, ou, em outras palavras: sobre numerário que se venha a somar àquele que já seja propriedade do contribuinte.</p>
+        <p>Recurso a que se nega provimento, por maioria.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10_agr2" nome="subsecao">
+        <Bloco nome="nomeAgrupador">ACÓRDÃO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Vistos e relatados os autos em que são partes as acima indicadas, decide a Primeira Turma do Superior Tribunal de Justiça, por maioria, vencido o Sr. Ministro Cesar Asfor Rocha, negar provimento ao recurso, nos termos do voto do Sr. Ministro-Relator, na forma do relatório e das notas taquigráfi cas constantes dos autos, que fi cam fazendo parte integrante do presente julgado. Participaram do julgamento os Srs. Ministros Humberto Gomes de Barros, Milton Luiz Pereira, Cesar Asfor Rocha e Garcia Vieira. Custas como de lei.</p>
+        <p>Brasília (DF), 19 de setembro de 1994 (data do julgamento).</p>
+        <p>Ministro Demócrito Reinaldo, Presidente e Relator</p>
+        <p>DJ 10.10.1994</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10_agr3" nome="subsecao">
+        <Bloco nome="nomeAgrupador">RELATÓRIO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Demócrito Reinaldo:<i> Leandro Pereira Leite</i>, promotor de justiça da capital do <i>Estado de São Paulo</i> impetrou mandado de segurança contra ato do <i>Secretário da Fazenda </i>daquele Estado, visando a que na indenização das suas férias não gozadas por necessidade do serviço deixasse de incidir o imposto de renda.</p>
+        <p>Denegada a segurança, em primeira instância, em grau de apelação, a egrégia Sexta Câmara Civil do Tribunal de Justiça de São Paulo concedeu o <i>mandamus,</i> ao fundamento basilar de que não se configura hipótese de incidência de imposto de renda, porquanto da indenização por férias não gozadas não decorre acréscimo patrimonial (fl s. 259-261).</p>
+        <p>Irresignada, a <i>Fazenda Estadual</i> manifesta recurso especial, sob o pálio da letra <b>a</b> do admissivo constitucional, alegando violação ao art. 1º da Lei n. 5.021/1966 (fl s. 317-321).</p>
+        <p>Admitido na origem e contra-arrazoado (fl s. 323-326), subiram os autos e me vieram conclusos para julgamento.</p>
+        <p>É o relatório.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10_agr4" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Demócrito Reinaldo (Relator): A matéria já se encontra pacifi cada no âmbito das duas Turmas de Direito Público deste egrégio Tribunal. Em recente decisão do REsp n. 43.393-2-SP, da minha relatoria, esta egrégia Corte decidiu conforme acórdão assim ementado:</p>
+        <p>Tributário. Funcionário público. Férias não gozadas. Indenização. I ncidência do imposto de renda. Impossibilidade.</p>
+        <p>Consoante entendimento que se cristalizou, na jurisprudência, o pagamento (<i>in pecunia</i>) de férias não gozadas — por necessidade do serviço — ao servidor público, tem a natureza jurídica de indenização, não constituindo espécie de remuneração, mas, mera reparação do dano econômico sofrido pelo funcionário.</p>
+        <p>Erigindo-se em reparação, a conversão, em pecúnia, das férias a que a conveniência da Administração impediu o auferimento, visa, apenas, a restabelecer a integridade patrimonial desfalcada pelo dano. A percepção dessa quantia indenizatória não induz em acréscimo patrimonial e nem em renda tributável, na defi nição da legislação pertinente.</p>
+        <p>O tributo, na disciplina da lei, só deve incidir sobre ganhos que causem aumento de patrimônio, ou, em outras palavras: sobre numerário que se venha a somar àquele que já seja propriedade do contribuinte.</p>
+        <p>Recurso especial a que se nega provimento. Decisão por maioria de votos.</p>
+        <p>Nessa mesma linha de orientação, não me parece que assista razão à recorrente. É que, o entendimento que se fi rmou nos Tribunais, inclusive, na jurisprudência desta egrégia Primeira Turma, é o de que, “o pagamento de férias não gozadas (por necessidade do serviço), ao servidor público, pela Administração, tem a natureza jurídica de indenização”. Quanto a este aspecto, o v. acórdão objurgado, se houve nos limites da interpretação mais consentânea com o espírito da lei, ao asseverar: “aquilo que a expressão vulgar chama férias <i>in pecunia</i> é uma equivalência ou conversão. Férias gozam-se com remuneração especial. E, se impedido o respectivo gozo, indeniza-se a perda, de acordo com antiga criação pretoriana. Tratando-se de indenização, a orientação jurisprudencial não confl ita com o CTN ou com a Lei n. 7.713/1988. Indenização não é espécie de remuneração, senão reparação de dano econômico de que é vítima alguém — no caso, o funcionário público. Sendo reparação, signifi ca que aquele pagamento irá restabelecer a integridade patrimonial desfalcada pelo dano: algo que saiu do patrimônio pessoal (o período de descanso anual) e que voltará traduzido em prestação pecuniária” (fl . 183). Assim, a p ercepção da quantia indenizatória não induz em acréscimo patrimonial, <i>em renda</i>, mas da integração pecuniária, daquilo que sofreu desfalque, por determinação e por conveniência da Administração Pública. O eminente Ministro <i>Garcia Vieira</i>, ao julgar o REsp n. 34.988-0-SP, citando jurisprudência e doutrina, assim se posicionou:</p>
+        <p>O jurista Roque Antônio Carrazza afirma, em seu parecer, que as férias constituem direito que a lei deu aos servidores. Em nome do interesse público, pode ter seu desfruto temporariamente adiado, mas, nunca, anulado ou eliminado. A conseqüência da não concessão das férias, por necessidade do serviço, seria a reparação patrimonial, deixando o agente público indene. Deve o tributo incidir sobre ganhos que causem aumento de patrimônio; ou seja, sobre numerário que venha a somar àquele que já seja propriedade do contribuinte. Mas, as indenizações, pela própria natureza jurídica, não c ausam a umento de patrimônio algum, pois, correspondem a uma recomposição; a um prejuízo anteriormente sofrido pela pessoa que as recebe. Não pode ser considerada renda, pois, não redunda em aumento de patrimônio. E continua citando o jurista <i>Geraldo Ataliba</i>, esposando o seguinte escólio:</p>
+        <p class="quote">Indenizar implica a noção de compensar ou recompensar o dano ou prejuízo sofrido. Reparar e compensar é estabelecer o equilíbrio e ntre contrabalançar, substituir (A. Morais Silva). O patrimônio deve fi car indene, intocado, igual. Semanticamente, indenização é, portanto, a reposição de patrimônio no estado em que se encontrava antes do dano ou do prejuízo sofrido.</p>
+        <p>Diante das lições doutrinárias e dos precedentes, observa-se que o decisório <i>a quo</i>, ao invés de tratear os preceitos de lei invocados, deu-lhes a interpretação mais consentânea com o direito e a Justiça, não merecendo, portanto, reparo.</p>
+        <p>Nego, pois, provimento ao recurso.</p>
+        <p>É como voto.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10_agr5" nome="subsecao">
+        <Bloco nome="nomeAgrupador">VOTO VENCIDO</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O Sr. Ministro Cesar Asfor Rocha: Sr. Presidente, o meu entendimento é de que cabe imposto de renda nos dois casos. Juntarei voto proferido em caso análogo.</p>
+        <p>
+          <b>ANEXO</b>
+        </p>
+        <p>
+          <b>RECURSO ESPECIAL N. 47.692-SP</b>
+        </p>
+        <p>
+          <b>VOTO VENCIDO EM PARTE</b>
+        </p>
+        <p>O Sr. Ministro Cesar Asfor Rocha (Relator):</p>
+        <p>Tributário. Imposto de renda. Indenização pecuniária referente a férias e licença-prêmio não gozadas por necessidade do serviço. Incidência.</p>
+        <p>Incide imposto sobre a renda auferida de indenização pecuniária relativa a períodos de licença-prêmio e férias não gozadas em face da necessidade do serviço.</p>
+        <p class="quote">Recurso provido.</p>
+        <p>A questão posta consiste em saber se a indenização pecuniária paga a funcionário relativa a períodos de férias e licença-prêmio indeferidos por necessidade do serviço constitui fato gerador para que sobre ela incida o imposto sobre a renda.</p>
+        <p>O r. aresto hostilizado fi xou o entendimento de que tais verbas não se consubstanciariam em rendimento do trabalho, nem se confundiriam com o produto do trabalho do recorrido, mas seriam mera indenização que visa, de maneira razoável, a recompor o patrimônio do interessado para, na medida do possível, torná-lo indene, íntegro, após a consumação da lesão, e como tal não sofreria a incidência do imposto sobre a renda.</p>
+        <p><i>Luciano Amaro</i>, em precioso artigo denominado “Imposto de Renda: Regimes Jurídicos” (na obra “Curso e Direito Tributário”, Coordenada por <i>Ives Gandra</i>, Cejup, Belém, 1993, Vol. I, 2ª ed., p. 307-332), expõe razões bastante pertinentes sobre o tema em tablado e é dele em que e xtraio, numa versão livre, pedindo a sua permissão, as considerações adiante e xpostas.</p>
+        <p>Assim, é preciso observar, de logo, que o imposto sobre a renda além de sujeitar-se aos princípios constitucionais tributários gerais, tais como os da legalidade, da isonomia ou igualdade jurídica, da capacidade contributiva, da anterioridade, da irretroatividade etc., também está submetido a p rincípios específi cos, decorrentes do disposto no art. 153, § 2º, I, da Constituição Federal, a saber: generalidade, universalidade e progressividade.</p>
+        <p>Do art. 153, III, da Carta Política, decorre que o imposto de renda tem como fato gerador “<i>renda e proventos de qualquer natureza</i>”, ainda que sendo certo que a Carta Magna excepciona — ora expressamente, ora remetendo à lei — da incidência desse imposto diversas situações.</p>
+        <p>Com base nessa premissa constitucional, o Código Tributário Nacional, pelos incisos I e II do seu art. 43, explicita que o fato gerador desse imposto é a aquisição da disponibilidade econômica ou jurídica de rendas ou proventos de qualquer natureza, defi nindo ambos.</p>
+        <p>Em verdade, rendas e proventos de qualquer natureza são espécies do gênero acréscimo patrimonial. A rigor, nem haveria necessidade de o detalhamento legal descer a tanto, mas o propósito parece não ter sido outro senão o de espancar qualquer dúvida que pudesse surgir de que todo aumento patrimonial, salvo os expressamente excepcionados pela lei, consubstancia fato gerador para a exação em comento.</p>
+        <p>Destarte, o fato gerador sobre a renda e proventos de qualquer natureza é a aquisição de riqueza nova (acréscimo de patrimônio), quer decorra do capital ou do trabalho, quer não.</p>
+        <p><i>Ives Gandra</i> prestigia esse entendimento, quando assim leciona:</p>
+        <p>O fato gerador é a aquisição da disponibilidade econômica ou jurídica, que se realiza na ocorrência da elevação patrimonial de valores, bens ou direitos relativos.</p>
+        <p>Por esta razão, explicita o legislador complementar que a renda e os proventos implicam, necessariamente, uma aquisição. A aquisição corresponde a algo que se acrescenta, que aumenta a patrimonialidade anterior, embora outros fatores possam diminuí-la (<i>“Cadernos de Pesquisas Tributárias”</i>, v. 11, CEEU, 1986, p. 265).</p>
+        <p>É certo, conforme observei acima, que nem toda aquisição de disponibilidade econômica ou jurídica é tributável. Assim, estão fora do foco de incidência do tributo em análise várias indenizações. Todavia, há de ser ressaltado que isso d ecorre de isenção explicitamente concedida pela lei, de que são exemplos as tratadas pela Lei n. 7.713/1988.</p>
+        <p>Chego até a admitir que seria de justiça isentar-se do pagamento do imposto sobre a renda a indenização pecuniária paga a funcionário relativa a licença-prêmio ou férias indeferidas por necessidade de serviço, uma vez que tal verba não se consubstancia em rendimento do trabalho, não se c onfundindo com o produto do trabalho do recorrido, mas de mera indenização que visa, de maneira razoável, a recompor o patrimônio do interessado para, na m edida do possível, torná-lo indene, íntegro, após a consumação da lesão, conforme anotado no r. acórdão hostilizado.</p>
+        <p>Todavia, tal isenção estaria a depender <i>de lege ferenda</i>. Enquanto não houver diploma legal nesse sentido, é incidente o imposto na espécie.</p>
+        <p>Merecem destaque, por derradeiro, as judiciosas considerações do eminente Desembargador <i>Silva Ferreira</i>, que adotei e transcrevi no voto por mim proferido quando do julgamento do REsp n. 39.627-1-SP:</p>
+        <p>Entendo devido o Imposto de Renda na transformação de l icença-prêmio, ou férias, em dinheiro, visto que, inegavelmente, há aumento patrimonial para o benefi ciado. Antes receberia, no ano, somente 13 salários, compreendido o 13º. Agora, com o recebimento dos três meses de licença prêmio, passará a receber em pecúnia, portanto, com a umento de seu patrimônio monetário, possível de transformação em bens de consumo, duráveis ou não, ou mesmo de lazer, de mais três meses, fi xando excepcionalmente naquele ano com 16 salários.</p>
+        <p>Com estes três salários poderá quitar dívidas, viajar, adquirir bens, o que não poderia com seus salários normais. Logo, aumentou sua renda e deve pagar o imposto devido, conforme o Código Tributário Nacional.</p>
+        <p>Dizem que nada deve por ser indenização, por não poderem gozar de licença prêmio no tempo devido. Sabe-se, porém, com segurança, que se pedissem a mesma, ser-lhe-ia concedida, sendo que o pedido já é feito, normalmente, com o sentido da denegação. Tanto assim que, q uase que diariamente, o Diário Ofi cial está a publicar concessão de licença-prêmio referente aos anos de 1978/1988, cujo pagamento não se fez, a desembargadores e juízes, sem qualquer problema operacional.</p>
+        <p>Finalmente observe-se que, com aplicação do Estatuto dos Funcionários Públicos, que é aplicado supletivamente, por exemplo para abono de faltas, poderia, perfeitamente, o Apelante usar tal licença para se aposentar mais cedo, permanece ou seja, se retirar do serviço três meses antes de completar seu tempo, sem prejuízo de seus vencimentos, sendo obrigatório o uso do tempo, ou em outras palavras, computar tal p eríodo, indiretamente, para completar o tempo de aposentadoria.</p>
+        <p>Assim não se vê como considerar o pagamento de licença-prêmio não gozada como indenização, de algo que não houve, de prejuízo que não existiu, visto que não usados os meios normais para conseguir seu uso, na forma da lei. Além disto não está revogada a lei que permite pagamento de metade dela, por exclusiva deliberação do benefi ciado, sem se falar em rejeição ou negativa de fruição. (fl s. 196-197).</p>
+        <p>Diante de tais pressupostos, dou provimento ao recurso</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

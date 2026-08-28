@@ -32,6 +32,7 @@ from .frontmatter import (
 )
 from .model import Annex, BackMatter, FrontMatter, Segmentation, Signature, Span
 from .render import (
+    agrupamento_block,
     render_back_generico,
     render_front_generico,
     render_parte_final,
@@ -54,6 +55,7 @@ __all__ = [
     "find_preamble",
     "find_signatures",
     "looks_like_person_name",
+    "agrupamento_block",
     "render_back_generico",
     "render_front_generico",
     "render_parte_final",

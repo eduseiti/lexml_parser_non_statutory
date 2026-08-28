@@ -1,0 +1,249 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda;secretaria.receita.federal:parecer:1980-10-31;38"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Parecer Normativo CST nº 38, de 31 de outubro de 1980</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>Imposto Sobe a Renda e Proventos de Qualquer Natureza</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="texto">
+        <p>1.24.20.25 - Rendimentos Distribuídos pelas Pessoas Jurídicas ou pelas Empresas Individuais</p>
+        <p>2.08.30.00 - Isenção das Sociedades Cooperativas</p>
+        <p>2.16.25.00 - Lucro Arbitrado</p>
+        <p>Não estão cobertos pela não-incidência os resultados obtidos por sociedades cooperativas em operações diversas de ato cooperativo.</p>
+        <p>A base de cálculo do imposto de renda será determinada segundo escrituração contábil que apresente destaque das receitas tributáveis e dos correspondentes custos, despesas e encargos, e, na sua falta, mediante arbitramento, em conformidade com os critérios facultados pelo Decreto-Lei nº 1.648/78 e respectivas normas regulamentares.</p>
+        <p>Diversos atos normativos estabeleceram o entendimento de que as sociedades cooperativas têm a obrigação de destacar em sua escrituração contábil as receitas não compreendidas como típicas ou normais a esse tipo societário, bem como os correspondentes custos, despesas e encargos, a fim de ser apurado o lucro a ser oferecido à tributação (PN CST nº 73/75, D.O. de 04.08.75), incluindo-se, nesse caso, a obrigação de efetuar a correção monetária do balanço (PN CST nº 33/78,D.O. de 18.04.78) e oferecer à tributação parcela do lucro inflacionário do exercício, determinada proporcionalmente (PN CST nº 33/80, D.O. de 09.09.80). Não se encontra esclarecido, entretanto, como determinar a base de cálculo do imposto de renda quando não atendidas aquelas obrigações.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="secao">
+        <Bloco nome="rotulo">2.</Bloco>
+        <Bloco nome="nomeAgrupador">DAS SOCIEDADES COOPERATIVAS</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr1" nome="subsecao">
+        <Bloco nome="rotulo">2.1 -</Bloco>
+        <Bloco nome="nomeAgrupador">Empresas de serviços</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Em linhas gerais, as cooperativas são definidas como empresas de serviços, criadas para atender às necessidades de seus associados, em que estes exercem, em relação a elas, simultaneamente, o papel de "sócio" e de "usuário" ou "cliente" (princípio da dupla qualidade). Permite a lei que elas adotem por objeto qualquer gênero de serviço, operação ou atividade, ficando sua autorização, controle e fiscalização sujeitos a órgãos governamentais.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr2" nome="subsecao">
+        <Bloco nome="rotulo">2.2 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O artigo 111 da Lei nº 5.764, de 16.12.71, que define a Política Nacional de Cooperativismo e institui o regime jurídico das sociedades cooperativas, estabelece:</p>
+        <p class="quote">"Serão considerados como renda tributável os resultados positivos obtidos pelas cooperativas nas operações de que tratam os artigos 85, 86 e 88 da Lei".</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3" nome="subsecao">
+        <Bloco nome="rotulo">2.3 -</Bloco>
+        <Bloco nome="nomeAgrupador">Operações das Sociedades Cooperativas</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Em face do dispositivo citado e de outros contidos nessa Lei específica, que passaremos a indicar entre parênteses, pode-se constatar que duas categorias do operações são admitidas como regulares no funcionamento da sociedade cooperativa.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr1" nome="item">
+        <Bloco nome="rotulo">2.3.1 -</Bloco>
+        <Bloco nome="nomeAgrupador">Atos Cooperativos</Bloco>
+        <Bloco nome="nivel">3</Bloco>
+        <p>A primeira delas abrange os negócios jurídicos internos, negócios-fim, com caracteres próprios em relação aos atos civis, mercantis ou trabalhistas, que a lei denomina atos cooperativos e define como</p>
+        <p class="quote">"os praticados entre as cooperativas e seus associados,entre estes e aqueIas e pelas cooperativas entre si quando associadas, para a consecução dos objetivos sociais" (art. 79).</p>
+        <p>devendo-se assinalar que as cooperativas singulares se caracterizam pela prestação direta de serviços aos associados(art.7º).</p>
+        <p>As despesas gerais relativas aos atos cooperativos são cobertas pelo cooperado, em regra através de rateio na proporção direta da fruição dos serviços (art. 80, caput), podendo ocorrer, também, rateio de sobras líquidas verificadas em balanço do exercício (art. 80, § único).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr2" nome="item">
+        <Bloco nome="rotulo">2.3.2 -</Bloco>
+        <Bloco nome="nomeAgrupador">Atos Não-Cooperativos Legalmente Permitidos</Bloco>
+        <Bloco nome="nivel">3</Bloco>
+        <p>A segunda categoria corresponde a alguns atos não-cooperativos, cuja prática o legislador considerou tolerável, por servirem ao propósito do pleno preenchimento dos objetivos sociais, mas sujeita-os, por isso mesmo, a escrituração em separado e a tributação regular dos resultados obtidos.</p>
+        <p>São estas as operações admitidas:</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr2_agr1" nome="inciso">
+        <Bloco nome="rotulo">I -</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Aquisição, por cooperativas agropecuários e de pesca, de produtos de não associados que sejam agricultores, pecuaristas ou pescadores, para o fim de completar lotes destinados ao cumprimento de contratos ou suprir capacidade ociosa de instalações industriais das cooperativas que as possuam(art. 85).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr2_agr2" nome="inciso">
+        <Bloco nome="rotulo">II -</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Fornecimento, a não associados, de bens ou serviços, assim entendidos estes bens e serviços como sendo os mesmos que a cooperativa, em obediência ao seu objetivo social e estejam de conformidade com a lei, oferecer aos próprios associados (art. 86).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr2_agr3" nome="inciso">
+        <Bloco nome="rotulo">III -</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Participação, em caráter excepcional, em sociedades não cooperativas públicas ou privadas, para atendimento de objetivos acessórios ou complementares, mediante prévia e expressa autorização do Conselho Nacional de Cooperativismo, hipótese em que as inversões serão contabilizadas em títulos específicos (art. 88).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr3" nome="item">
+        <Bloco nome="rotulo">2.3.3 -</Bloco>
+        <Bloco nome="nomeAgrupador">Destinação dos Resultados dos Atos Não-Cooperativos</Bloco>
+        <Bloco nome="nivel">3</Bloco>
+        <p>Os rendimentos dessas operações, além de tributáveis, não podem ser distribuídos, pois passam a integrar obrigatoriamente a conta do "Fundo de Assistência Técnica,Educacional e Social" (arts. 87 e 88, § único).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr3_agr4" nome="item">
+        <Bloco nome="rotulo">2.3.4 -</Bloco>
+        <Bloco nome="nivel">3</Bloco>
+        <p>Disciplinamento das Operações dos Artigos 85 e 86</p>
+        <p>A execução das operações previstas nos artigos 85 e 86 da Lei nº 5.764 está regulada pela Resolução nº 01, de 04 de setembro de 1972, do Conselho Nacional de Cooperativismo (D.O. de 15.09.72 e alt. D.O. de 26.02.73), órgão ao qual as cooperativas estão subordinadas normativamente (art. 103), a qual admite apenas duas opções: 1ª) - realizá-las em base que não supere a 30% do maior montante das transações realizadas nos três últimos exercícios, ou 2ª) - em base que não supere 100% do mesmo montante. Na primeira hipótese, essa opção será comunicada à Secretaria Executiva do CNC juntamente com "cópia da comunicação expedida à Delegacia da Receita Federal, assinalando a decisão de operar com terceiros"; na segunda, a opção só poderá ser posta em prática após obtenção de prévia e expressa autorização daquela Secretaria do CNC.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr4" nome="subsecao">
+        <Bloco nome="rotulo">2.4 -</Bloco>
+        <Bloco nome="nomeAgrupador">Atos Incompatíveis com o Regime Cooperativo</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Tendo a Lei nº 5.764 indicado quais os negócios que, dentro do universo econômico, podem ser exercitados pelas cooperativas, é lícito deduzir que quaisquer outros que elas realizem serão juridicamente incompatíveis com o regime especial que foi estabelecido e, portanto, com o próprio conceito legal dessas entidades.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4_agr5" nome="subsecao">
+        <Bloco nome="rotulo">2.5 -</Bloco>
+        <Bloco nome="nomeAgrupador">Proibição Legal de Concessão de Benefícios</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Em qualquer hipótese, a lei veda expressamente as cooperativas de "distribuírem qualquer espécie de benefício às quotas-partes do capital ou estabelecer outras vantagens ou privilégios, financeiros ou não, em favor de quaisquer associados ou terceiros, excetuando-se os juros até o máximo de 12% (doze por cento) ao ano, que incidirão sobre a parte integralizada, e que só poderão ser pagos se apuradas sobras (art. 24, § 3º, e Res. do CNC . nº 18, de 13.12.78, D.O. de 27.12.78).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5" nome="secao">
+        <Bloco nome="rotulo">3.</Bloco>
+        <Bloco nome="nomeAgrupador">DAS COOPERATIVAS DE MÉDICOS</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr1" nome="subsecao">
+        <Bloco nome="rotulo">3.1 -</Bloco>
+        <Bloco nome="nomeAgrupador">Atos Cooperativos</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>As cooperativas singulares de médicos, ao executarem as operações descritas em 2.3.1, estão plenamente abrigadas da incidência tributária em relação aos serviços que prestem diretamente aos associados na organização e administração dos interesses comuns ligados à atividade profissional, tais como os que buscam a captação de clientela; a oferta pública ou particular dos serviços dos associados; a cobrança e recebimento de honorários; o registro, controle a distribuição periódica dos honorários recebidos; a apuração e cobrança das despesas da sociedade, mediante rateio na proporção direta da fruição dos serviços pelos associados; cobertura de eventuais prejuízos com recursos provenientes do Fundo de Reserva (art. 28, I) e, supletivamente, mediante rateio, entre os associados, na razão direta dos serviços usufruídos (art. 89).</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr2" nome="subsecao">
+        <Bloco nome="rotulo">3.2 -</Bloco>
+        <Bloco nome="nomeAgrupador">Atos Não-Cooperativos, Diversos dos Legalmente Permitidos</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Se, conjuntamente com os serviços dos sócios, a cooperativa contrata com a clientela, a preço global não discriminativo, ainda o fornecimento, a esta, de bens ou serviços de terceiros e/ou cobertura de despesas com (a) diárias e serviços hospitalares, (b) serviços de laboratórios, (c) serviços odontológicos, (d) medicamentos e (e) outros serviços, especializados ou não, por não associados, pessoas físicas ou jurídicas, é evidente que estas operações não se compreendem nem entre os atos cooperativos nem entre os não-cooperativos excepcionalmente facultados pela lei, resultando, portanto, em modalidade contratual com traços de seguro-saúde.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr3" nome="subsecao">
+        <Bloco nome="rotulo">3.3 -</Bloco>
+        <Bloco nome="nomeAgrupador">Intermediação</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Como estas obrigações contratuais não poderão ser cumpridas diretamente pela cooperativa porque seu objeto social é voltado internamente aos associados, nem pelos associados na condição de prestadores de serviços médicos, torna-se logicamente imprescindível a aquisição daqueles bens/serviços de outras sociedades ou de outros profissionais, o que, evidentemente, é característica da mercancia, ou seja a intermediação.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr4" nome="subsecao">
+        <Bloco nome="rotulo">3.4 -</Bloco>
+        <Bloco nome="nomeAgrupador">Organização Mercantil</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Estas atividades, francamente irregulares para esse tipo societário, estão iniludivelmente contidas em contexto de modelo comercial, uma vez que seu perfil operacional, neste particular, envolve (1) atividade econômica, (2) fins lucrativos, (3) habitualidade, (4) organização voltada à circulação de bens e serviços e (5) assunção de risco. Esta afirmação melhor estará corroborada se abstrairmos, dentre as obrigações assumidas com a clientela, a de prestação de serviços médicos pelos próprios associados; percebe-se, então, que seria lógica e juridicamente insustentável considerar-se como cooperativa a entidade que tivesse como único objetivo a revenda de bens e serviços.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5_agr5" nome="subsecao">
+        <Bloco nome="rotulo">3.5 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Ainda por incabível qualquer alegação tendente a considerar tratar-se de cooperativa mista (art. 10, § 2), c/c art. 7º , da lei citada), é fácil depreender que a diversificação das prestações de bens/serviços que dependem de intermediação, poderia ensejar a escalada a outras, sob alegação de afinidade, como por exemplo, fornecimento de refeições, locais de repouso e veraneio, tratamento dentário, assistência social e quiçá até serviço funerário.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6" nome="secao">
+        <Bloco nome="rotulo">4.</Bloco>
+        <Bloco nome="nomeAgrupador">TRATAMENTO TRIBUTÁRIO</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Os resultados das atividades estranhas ao objetivo social das cooperativas, segundo os postulados da Lei nº 5.764/71, conforme já foi exposto no Parecer Normativo CST nº 155/73 (D.O. de 0.5.11.73), estão abrangidos pela regra geral do artigo 226 do Regulamento do Imposto de Renda aprovado pelo Decreto nº 76.186, de 2 de setembro de 1975, que submete ao pagamento do imposto todas as pessoas jurídicas que tenham lucros apurados em conformidade com o mesmo RIR, cujo artigo 574 ainda declara ser irrelevante, na definição do fato gerador, a origem ou causa dos rendimentos. Esta conclusão se harmoniza com o princípio de igualdade de todos perante a lei, consagrado pelo artigo 153, § 1º, da Constituição da República.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7" nome="secao">
+        <Bloco nome="rotulo">5.</Bloco>
+        <Bloco nome="nomeAgrupador">APURAÇÃO DOS RESULTADOS TRIBUTÁVEIS</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr1" nome="subsecao">
+        <Bloco nome="rotulo">5.1 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Como foi dito inicialmente, deve o imposto de renda ter por base de cálculo o resultado determinado a partir da escrituração contábil, que apresente destaque das receitas e correspondentes custos, despesas e encargos, como explicitado no PN CST nº 73/75. Todavia, quando não houver tal destaque, como no caso em que os ingressos não indiquem individualizadamente a que espécie de prestação se destinam, porque recebidos a um único título e em pagamento de contraprestação múltipla e heterogênea, a escrita será imprestável para a apuração do lucro real.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr2" nome="subsecao">
+        <Bloco nome="rotulo">5.2 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Far-se-á mister, então, arbitrar o lucro, como determinado pelo artigo 7º , IV, do Decreto-lei nº 1.648, de 18 de dezembro de 1978, e legislação regulamentar.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8" nome="secao">
+        <Bloco nome="rotulo">6.</Bloco>
+        <Bloco nome="nomeAgrupador">DO ARBITRAMENTO DO LUCRO</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr1" nome="subsecao">
+        <Bloco nome="rotulo">6.1 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>A Portaria nº 22, de 12.01.79, ao fixar critérios para determinação do lucro por arbitramento, manda aplicar o coeficiente de 30% sobre a receita bruta de prestação de serviços, exceto os de transporte, e de 15% sobre a receita bruta proveniente da venda de mercadorias. Esses coeficientes serão elevados até o limite máximo igual ao dobro dos inicialmente fixados, à razão de 20% sobre o último adotado, se o arbitramento se referir a mais de um exercício, dentro de um mesmo qüinqüênio. A propósito, convém lembrar que o Parecer Normativo CST nº 68/79 (D.O. de 22.11.79) tratou especificamente da matéria.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr2" nome="subsecao">
+        <Bloco nome="rotulo">6.2 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Desta forma, à administração tributária incumbe quantificar a parte dos ingressos totais que não se comporta dentro da regra da não-incidência, a fim de servir de base de cálculo ao lucro arbitrado. Essa quantificação é perfeita mente exeqüível com os instrumentos fornecidos pela legislação, uma vez que, ao considerar como lucro 30% ou 15% da receita bruta, conforme seja ela oriunda da prestação de serviços ou da venda de bens, logicamente fixou os custos, despesas e encargos em 70% e 85%, respectivamente.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3" nome="subsecao">
+        <Bloco nome="rotulo">6.3 -</Bloco>
+        <Bloco nome="nomeAgrupador">Exemplificação</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Formulemos a hipótese de uma cooperativa de médicos em que os dados contidos na escrituração contábil permitam identificar:</p>
+        <p>Despesas</p>
+        <p>*Obs: As demais despesas administrativas serão distribuídas por rateio.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3_agr1" nome="inciso">
+        <Bloco nome="rotulo">I -</Bloco>
+        <Bloco nome="nomeAgrupador">Determinação da receita bruta</Bloco>
+        <Bloco nome="nivel">3</Bloco>
+        <p>Separando-se as despesas de serviços e de bens, ambos adquiridos de terceiros, teremos:</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3_agr1_agr1" nome="alinea">
+        <Bloco nome="rotulo">a)</Bloco>
+        <Bloco nome="nomeAgrupador">Serviços</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Sabendo-se que Cr$ 380.000,00 representam, segundo a lei, 70% da receita bruta de serviços, podemos estabelecer a seguinte proporção:</p>
+        <p>Receita bruta de serviços = Cr$ 542.857,00</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3_agr1_agr2" nome="alinea">
+        <Bloco nome="rotulo">b)</Bloco>
+        <Bloco nome="nomeAgrupador">Bens</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Produtos farmacêuticos .. Cr$ 100.000,00</p>
+        <p>Sabendo-se que Cr$ 100.000,00 representam 85% da receita bruta de venda de bens, estabeleceremos a proporção:</p>
+        <p>Receita bruta da venda de bens = 117.647,00</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3_agr2" nome="inciso">
+        <Bloco nome="rotulo">II -</Bloco>
+        <Bloco nome="nomeAgrupador">Determinação do lucro arbitrado</Bloco>
+        <Bloco nome="nivel">3</Bloco>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3_agr2_agr1" nome="alinea">
+        <Bloco nome="rotulo">a)</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Lucro na venda de serviços:</p>
+        <p>Cr$ 542.857,00 a 30% = Cr$ 162.857,00</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr3_agr2_agr2" nome="alinea">
+        <Bloco nome="rotulo">b)</Bloco>
+        <Bloco nome="nivel">4</Bloco>
+        <p>Lucro na venda de bens:</p>
+        <p>Cr$ 117.647,00 a 15% = Cr$ 17.647,00</p>
+        <p>Lucro arbitrado = Cr$ 162.857,00 + Cr$ 17.647,00 = Cr$ 180.504,00</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr4" nome="subsecao">
+        <Bloco nome="rotulo">6.4 -</Bloco>
+        <Bloco nome="nomeAgrupador">Outros Critérios de Arbitramento</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Convém acrescentar que, na impossibilidade de conhecimento da receita bruta, o arbitramento será feito com base nos critérios estabelecidos na Instrução Normativa do SRF nº 108, de 22.10.80.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9" nome="secao">
+        <Bloco nome="rotulo">7</Bloco>
+        <Bloco nome="nomeAgrupador">DECORRÊNCIA</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Finalmente, cabe aduzir que o lucro arbitrado nas condições indicadas nos itens precedentes se presume distribuído em favor dos associados proporcionalmente aos valores que lhes tenham sido pagos ou creditados durante o período-base, em função das operações que tenham realizado com a cooperativa, salvo se outro critério tiver sido utilizado pela mesma na distribuição dos resultados, classificando-se na cédula "F" da declaração de rendimentos da pessoa física beneficiária, ex-vi do artigo 34, alínea “a”, do RIR/75.</p>
+        <p>À consideração superior</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>CST, em 30 de outubro de 1980</p>
+        <p>CARLOS ERVINO GULYAS</p>
+        <p>Fiscal de Tributos Federais</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf2" nome="nota">
+        <p>PARECER NORMATIVO CST Nº</p>
+        <p>Imposto sobre a Renda e Proventos de Qualquer Natureza</p>
+        <p>1.24.20.25 - Rendimentos distribuídos pelas pessoas jurídicas ou pelas empresas individuais</p>
+        <p>2.08.30.00 - Isenção das sociedades cooperativas</p>
+        <p>​2.16.25.00 - Lucro arbitrado</p>
+        <p>De acordo</p>
+        <p>Publique-se e, a seguir, encaminhem-se cópias às SS.RR.R.F. para conhecimento e ciência aos demais órgãos subordinados.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf3" nome="assinatura">
+        <p>JIMIR S. DONIAK</p>
+        <p>Coordenador do Sistema de Tributação</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

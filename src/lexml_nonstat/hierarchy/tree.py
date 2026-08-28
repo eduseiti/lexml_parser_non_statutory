@@ -52,6 +52,7 @@ __all__ = [
     "HierarchyTree",
     "build_tree",
     "split_inlines",
+    "table_node",
 ]
 
 
@@ -101,7 +102,13 @@ def _para_node(para: StyledPara, analysis: QuotationAnalysis) -> Para:
     )
 
 
-def _table_node(table: StyledTable) -> Table:
+def table_node(table: StyledTable) -> Table:
+    """A ``StyledTable`` as a model ``Table``: cells are inlines only (§2.2).
+
+    Public because Cycle 5's emitter meets tables outside the body too —
+    ``REsp_1306393`` carries one inside its front-matter hull — and a second
+    conversion would be a second answer to "what is a cell".
+    """
     rows = tuple(
         tuple(
             tuple(
@@ -199,7 +206,7 @@ def _build_content(
     for block in blocks:
         if isinstance(block, StyledTable):
             flush()
-            out.append(_table_node(block))
+            out.append(table_node(block))
             continue
         if block.is_empty:
             continue

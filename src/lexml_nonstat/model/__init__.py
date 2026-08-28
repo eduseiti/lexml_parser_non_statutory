@@ -33,12 +33,14 @@ from .urn import (
     parse_urn,
     slugify_authority,
 )
+from .document import DocumentModel, build_model
 
 __all__ = [
     "LEXML_URN_RE",
     "METADATA_SOURCE_URI",
     "PARA_KINDS",
     "SECTION_KINDS",
+    "DocumentModel",
     "Evidence",
     "ListItem",
     "ListNode",
@@ -50,6 +52,7 @@ __all__ = [
     "Table",
     "UrnDate",
     "UrnParts",
+    "build_model",
     "build_urn",
     "extract_metadata",
     "is_valid_urn",

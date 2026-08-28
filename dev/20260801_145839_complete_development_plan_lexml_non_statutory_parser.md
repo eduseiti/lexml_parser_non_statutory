@@ -332,7 +332,9 @@ class Anexo:
     def urn_fragment(self) -> str: return f"anexo{self.num}"
 
 @dataclass
-class DocumentModel:
+class DocumentModel:                     # A-5.2: as delivered it stores the
+                                         # component objects and derives the
+                                         # rest; see the Cycle 5 amendment
     metadata: Metadata
     front: FrontMatter
     body: list[Section | Para | ListNode | Table]
@@ -499,6 +501,8 @@ Updated per decision #4: the three former `jurisprudencia` entries are now `gene
 ```
 
 Depth is recoverable three redundant ways: `id` path, `<Bloco nome="nivel">`, `@nome`. **Rule A** (materialise every intermediate `id` prefix) and **Rule B** (leaf-only text) are emitter requirements.
+
+The snippet is illustrative and omits three encodings the schemas require — a `<table>` must carry an `id`, a link is `<a xlink:href>` and never a plain `href`, and `ol`/`ul` take no attributes at all. See **A-5.3**. It also predates **A-5.1** (front and back matter are rendered as *regions*, so nothing between the named parts is lost), **A-5.4** (`<p class="quote">` carries `Para.kind`) and **A-5.7** (a body preamble is wrapped in `Agrupamento nome="texto"`).
 
 ### 5.2 `generico-aninhado` (nested, opt-in) — added 2026-08-28 (A-R.3)
 
@@ -1158,18 +1162,135 @@ Exit: routing correct for all 15 samples; referee integrated, cached, fail-safe;
 
 ### Cycle 5 — Emitter `generico` (flat, default)
 
-`render/generico.py`; `render/ids.py` (path-composed unique ids, **Rule A** materialising every intermediate prefix); flattening with `<Bloco nome="rotulo"|"nomeAgrupador"|"nivel">`; nested `ol`/`ul`; tables **with inline-only cell content (§2.2)**; `Anexos`/`ReferenciaAnexo`.
+`model/document.py` (**`DocumentModel`, landing here rather than in 4b or 6 — A-5.2**); `render/generico.py`; `render/ids.py` (path-composed unique ids, **Rule A** materialising every intermediate prefix); `render/common.py` (**front/back matter rendered as *regions*, not parts — A-5.1**); flattening with `<Bloco nome="rotulo"|"nomeAgrupador"|"nivel">`; nested `ol`/`ul`; tables **with inline-only cell content (§2.2)** and a required `id` (**A-5.3**); `Anexos`/`ReferenciaAnexo` **plus the sibling annex documents themselves (A-5.6)**.
 
 Tests
-- all 14 `generico`-routed samples validate on **both** schemas
+- all 14 `generico`-routed samples validate on **both** schemas — **and `port_mf_277` too, rendered flat as §3's fallback (A-5.5)**
 - `id`s unique document-wide (explicit `xsd:ID` check)
 - **Rule A: every proper prefix of every `Agrupamento` `id` exists** (the breadcrumb-gap regression)
 - **Rule B: leaf-only text — no duplication** (the nested-`li` regression)
 - `id` path encodes depth; **tree reconstructable from XML alone**
 - nested lists survive as nested `ol`/`ul`
 - tables emit inline cell content, never `<p>` (guards the `td` finding)
-- text conservation: every source paragraph's text appears exactly once
-- goldens committed for all 14
+- text conservation: every source paragraph's text appears exactly once — **including the 40 blocks that sit inside a front/back hull and inside no named part (A-5.1)**
+- goldens committed for all 15, **16 files: an annex is its own document (A-5.6)**
+
+**Amendment A-5.1 (Cycle 5, 2026-08-28) — front and back matter are rendered as *regions*, not as parts, or 40 blocks are lost.**
+
+Cycle 3 delivered `render_front_generico` / `render_back_generico`, which render
+the **named parts**: epigraph, ementa, preamble, enacting formula, signatures,
+closing date. But `FrontMatter.span` and `BackMatter.span` are the contiguous
+**hulls**, deliberately so (A-3.5), because that is what makes front / body /
+back / annexes a partition of the document. The blocks *between* the named
+parts are therefore inside the segmentation and inside no rendered element.
+
+Measured over the corpus, that is **40 non-empty blocks in 6 of the 15
+samples**: `parecer_93` 21 (its portal date stamp, its three-line institutional
+banner, its `NUP:` / `INTERESSADOS:` / `ASSUNTO:` lines, and 14 blocks of
+closing matter), `pn_cst_38` 7 (a classification header, `De acordo` and
+`Publique-se`, sitting *between* its two signature blocks), `REsp_1306393` 7,
+`par_cosit_26` 3, `adn_cst_10` 1, `port_mf_454` 1. An emitter that renders
+parts fails invariant #2 on its first document.
+
+`render/common.py`'s `front_region()` / `back_region()` therefore walk each hull
+in document order, emit every named part exactly as Cycle 3 does — reusing its
+`agrupamento_block()` primitive rather than reimplementing the shape (the A-3.4
+rule) — and emit every maximal run of unclaimed non-empty blocks as
+`Agrupamento nome="preliminar"` (front) or `nome="nota"` (back). Cycle 3's two
+functions are unchanged and still tested; they are simply not what a
+whole-document emitter calls. Conservation becomes arithmetic over regions
+rather than over an enumerated list of part names, which is what makes it hold
+on the 285 documents not yet seen.
+
+One consequence for Cycle 5b and Cycle 6: a region is not optional decoration,
+and a nested or statutory emitter that renders only the typed elements will
+reintroduce the same hole.
+
+**Amendment A-5.2 (Cycle 5, 2026-08-28) — `DocumentModel` lands in Cycle 5, and §3.1's field list is corrected.**
+
+§3.1 places `DocumentModel` in `model/document.py`; Cycle 4b was expected to
+build it and did not, so the first cycle that genuinely needs all five views of
+a document at once builds it. *Decided with the user.*
+
+The delivered shape differs from §3.1's sketch in one structural way: it stores
+the **component objects** — `metadata`, `segmentation`, `hierarchy`,
+`viability`, `styled` — rather than re-flattening their contents into
+`front` / `body` / `anexos` / `back` fields. `body` and `annexes` are
+properties reading through to the `HierarchyDoc`; front and back matter are
+read from the `Segmentation`. Copying them out would produce a second, and
+divergeable, copy of what Cycles 3 and 4 already own. `articulacao` is declared
+and empty until Cycle 6, exactly as §3.1 intends. `decisions` is declared **and
+populated**: Cycle 4b already records why a routing call went the way it did,
+and `DecisionRecord` carries no timestamp, so determinism (invariant #4) holds.
+
+`model/document.py` imports `Segmentation` under `TYPE_CHECKING` only — the
+`segment` package imports `model`, so a module-level import is a cycle.
+
+**Amendment A-5.3 (Cycle 5, 2026-08-28) — three encodings §5.1's snippet does not show, each forced by the schemas.**
+
+Probed against both shipped schemas before a line was written:
+
+- **`<table>` requires an `id`** (`idreq`), and both schemas reject one without.
+  Table ids follow §2.9's reference convention: `pp1_tabN` in the primary,
+  `anexoN_tabM` inside an annex.
+- **A hyperlink is `<a xlink:href="…">`.** The `link` attribute group declares
+  `xlink:href` and declares it *required*; a plain HTML `href` is **rejected**.
+  Cycle 1 captures 11 hyperlink targets across the corpus, so this is live.
+- **`ol` and `ul` accept no attributes at all** — not even an `id`. A list is
+  reachable only through its containing `Agrupamento`.
+
+Two further facts the emitter depends on, also measured: an `Agrupamento` with
+no children is **invalid** (`blocksreq` is `minOccurs="1"`), which is why
+`<Bloco nome="nivel">` is emitted unconditionally rather than only when useful;
+and an `xsd:ID` is an `NCName`, so no id may begin with a digit.
+
+**Amendment A-5.4 (Cycle 5, 2026-08-28) — `Para.kind` survives into the XML as `@class`.**
+
+The quotation guard's verdict is the corpus's most consequential inference — it
+is what stops `parecer_93`'s 21 quoted articles being published as the parecer's
+own — and discarding it at the emitter would make the artifact unable to say
+what the parser concluded. A non-default kind is written as `<p class="quote">`
+(likewise `citation`, `field`, `omissis`); `prose` writes nothing. `class` is on
+`HTMLattrs` and valid on both schemas; it adds no text, so conservation is
+untouched. Cycle 7's round-trip reader can therefore recover `kind` rather than
+comparing text and structure alone. *Decided with the user.*
+
+**Amendment A-5.5 (Cycle 5, 2026-08-28) — all 15 samples are rendered flat, not 14.**
+
+The exit criterion is unchanged: the **14** `generico`-routed samples must
+validate on both schemas. But `port_mf_277` is rendered and pinned too. It is
+plan §3's documented validate-then-fallback rendering, so every document must
+have one; and it is the corpus's **only** document with an annex, hence the only
+exercise of `Anexos`/`ReferenciaAnexo` and of conservation across the annex
+split. Cycle 6 emits `norma` for it and this golden stays as the fallback
+evidence. *Decided with the user.*
+
+**Amendment A-5.6 (Cycle 5, 2026-08-28) — the annex *documents* are emitted here, not deferred to Cycle 6.**
+
+Cycle 5's deliverable list names `Anexos`/`ReferenciaAnexo` and Cycle 6's names
+the sibling `<LexML><Anexo>` documents. A pointer with no target loses the
+annex's text, so the pointer alone cannot satisfy invariant #2 —
+`port_mf_277`'s `ANEXO ÚNICO` is 65 sections. `render_generico` therefore
+returns a **bundle**: the primary carrying
+`<Anexos><ReferenciaAnexo AlvoURN="…!anexo1"/></Anexos>`, plus one
+`<LexML><Metadado/><Anexo><DocumentoGenerico>` document per annex, with
+`PartePrincipal id="anexo1_pp"` and tables `anexo1_tabM` — §2.9's convention
+verbatim. Cycle 6 reuses this for the statutory route rather than inventing it.
+The annex's own marker paragraph is emitted as `Agrupamento nome="tituloAnexo"`,
+because A-4.5 deliberately excludes it from the annex's tree and the emitter is
+the only place it can be conserved. *Decided with the user.*
+
+**Amendment A-5.7 (Cycle 5, 2026-08-28) — a body preamble is wrapped in `Agrupamento nome="texto"`.**
+
+`HierarchyTree.preamble` — the body content preceding the first section, which
+is the *entire* body of the seven samples that come back flat — could be emitted
+as bare `<p>` under `PartePrincipal`, which is valid (§2.1 row A). It is
+wrapped instead, so that every content node sits in a citable, `id`-bearing
+container: that is what §2.4's segmentation consumes, and an unwrapped
+paragraph has no URN fragment to be cited by. `texto` is also the `nome` §5.2
+gives a nested prose leaf, so the two emitters agree on segment URNs, which is
+what invariant #11 requires of Cycle 5b. This is a flat container, not inferred
+hierarchy, so invariant #8 is untouched.
 
 ### Cycle 5b — Emitter `generico-aninhado` (nested, opt-in) — added 2026-08-28 (A-R.3)
 
@@ -1417,7 +1538,7 @@ A tracked, reviewable sequence — not a rewrite:
 Revised 2026-08-28 (§14). Cycle order:
 
 ```
-0, 1, 2, 3, 4, 4b  ✅ complete  →  5, 5b(new), 6, 7, 8, 9
+0, 1, 2, 3, 4, 4b, 5  ✅ complete  →  5b(new), 6, 7, 8, 9
                                               └── 6b withdrawn; round-trip reader → 7
 ```
 
@@ -1429,7 +1550,7 @@ Revised 2026-08-28 (§14). Cycle order:
 | 3 ✅ | Front/back matter segmentation | zero false positives on bare documents |
 | 4 ✅ | Hierarchy inference + quotation guard | every quoted article in `parecer_93` rejected; 15 trees match hand-authored goldens |
 | 4b ✅ | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
-| 5 | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold |
+| 5 ✅ | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold — **all 15 rendered and pinned (A-5.5); conservation covers the 40 inter-part blocks (A-5.1)** |
 | **5b** | **Emitter `generico-aninhado` (nested, opt-in)** | **native axes recover hierarchy; text and URNs ≡ flat emitter** |
 | 6 | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both documents |
 | ~~6b~~ | ~~Emitter `articulado-sintetico`~~ | **withdrawn (A-R.6)** — round-trip reader relocated to Cycle 7 |

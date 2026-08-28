@@ -1,0 +1,62 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:superior.tribunal.justica:sumula:0000;1306393"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>RECURSO ESPECIAL Nº 1.306.393 - DF (2012/0013476-0)</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="preliminar">
+        <table id="pp1_tab1">
+          <tr>
+            <td>
+              <b>RELATOR</b>
+            </td>
+            <td>
+              <b>: MINISTRO MAURO CAMPBELL MARQUES</b>
+            </td>
+          </tr>
+          <tr>
+            <td>RECORRENTE</td>
+            <td>: GLÓRIA DELFIM COSTA E SILVA WALKER</td>
+          </tr>
+          <tr>
+            <td>ADVOGADA</td>
+            <td>: LORENA VASCONCELOS DE A BOSA</td>
+          </tr>
+          <tr>
+            <td>RECORRIDO</td>
+            <td>: FAZENDA NACIONAL</td>
+          </tr>
+          <tr>
+            <td>ADVOGADO</td>
+            <td>: PROCURADORIA-GERAL DA FAZENDA NACIONAL</td>
+          </tr>
+        </table>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="ementa">
+        <p>EMENTA</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="preliminar">
+        <p>TRIBUTÁRIO. RECURSO ESPECIAL REPRESENTATIVO DA CONTROVÉRSIA (ART. 543-C DO CPC). ISENÇÃO DO IMPOSTO DE RENDA SOBRE OS RENDIMENTOS AUFERIDOS POR TÉCNICOS A SERVIÇO DAS NAÇÕES UNIDAS, CONTRATADOS NO BRASIL PARA</p>
+        <p>ATUAR COMO CONSULTORES NO ÂMBITO DO PNUD/ONU.</p>
+        <p>A Primeira Seção do STJ, ao julgar o REsp 1.159.379/DF, sob a relatoria do Ministro Teori Albino Zavascki, firmou o posicionamento majoritário no sentido de que são isentos do imposto de renda os rendimentos do trabalho recebidos por técnicos a serviço das Nações Unidas, contratados no Brasil para atuar como consultores no âmbito do Programa das Nações Unidas para o Desenvolvimento – PNUD. No referido julgamento, entendeu o relator que os "peritos" a que se refere o Acordo Básico de Assistência Técnica com a Organização das Nações Unidas, suas Agências Especializadas e a Agência Internacional de Energia Atômica, promulgado pelo Decreto 59.308/66, estão ao abrigo da norma isentiva do imposto de renda. Conforme decidido pela Primeira Seção, o Acordo Básico de Assistência Técnica atribuiu os benefícios fiscais decorrentes da Convenção sobre Privilégios e Imunidades das Nações Unidas, promulgada pelo Decreto 27.784/50, não só aos funcionários da ONU em sentido estrito, mas também aos que a ela prestam serviços na condição de "peritos de assistência técnica", no que se refere a essas atividades específicas.</p>
+        <p>Considerando a função precípua do STJ – de uniformização da interpretação da legislação federal infraconstitucional –, e com a ressalva do meu entendimento pessoal, deve ser aplicada ao caso a orientação firmada pela Primeira Seção.</p>
+        <p>Recurso especial provido. Acórdão submetido ao regime do art. 543-C do CPC e da Resolução STJ n. 8/08.</p>
+        <p>ACÓRDÃO</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5" nome="preambulo">
+        <p>Vistos, relatados e discutidos esses autos em que são partes as acima indicadas, acordam os Ministros da PRIMEIRA SEÇÃO do Superior Tribunal de Justiça, na conformidade dos votos e das notas taquigráficas, o seguinte resultado de julgamento:</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6" nome="texto">
+        <p class="quote">"A Seção, por unanimidade, deu provimento ao recurso especial, nos termos do voto do Sr. Ministro Relator."</p>
+        <p>Os Srs. Ministros Benedito Gonçalves, Eliana Calmon, Teori Albino Zavascki, Arnaldo Esteves Lima, Humberto Martins, Herman Benjamin e Napoleão Nunes Maia Filho votaram com o Sr. Ministro Relator.</p>
+        <p>Documento: 25489411 - EMENTA / ACORDÃO - Site certificado - DJe: 07/11/2012 Página 1 de 2</p>
+        <p class="quote">Licenciado o Sr. Ministro Ari Pargendler.</p>
+        <p class="quote">Presidiu o julgamento o Sr. Ministro Castro Meira. Brasília (DF), 24 de outubro de 2012.</p>
+        <p class="quote">MINISTRO MAURO CAMPBELL MARQUES , Relator</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

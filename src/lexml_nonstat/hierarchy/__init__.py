@@ -56,7 +56,13 @@ from .quotation import (
     is_omissis,
     names_external_norm,
 )
-from .tree import AnnexHierarchy, HierarchyTree, build_tree, split_inlines
+from .tree import (
+    AnnexHierarchy,
+    HierarchyTree,
+    build_tree,
+    split_inlines,
+    table_node,
+)
 from .unify import (
     Assignment,
     Candidate,
@@ -106,6 +112,7 @@ __all__ = [
     "section_kind",
     "split_inlines",
     "style_level",
+    "table_node",
     "unify_levels",
     "validate_top_series",
 ]

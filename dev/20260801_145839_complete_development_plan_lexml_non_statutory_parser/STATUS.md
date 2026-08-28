@@ -18,7 +18,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 3 | Front/back matter segmentation | 2026-08-28 | **complete** | 1681 pass / 0 fail | [spec](20260828_011822_cycle_3_spec.md) | [report](20260828_011822_cycle_3_report.md) |
 | 4 | Hierarchy inference | 2026-08-28 | **complete** | 2462 pass / 0 fail | [spec](20260828_111240_cycle_4_spec.md) | [report](20260828_111240_cycle_4_report.md) |
 | 4b | Routing + LLM referee + telemetry | 2026-08-28 | **complete** | 3135 pass / 0 fail | [spec](20260828_161250_cycle_4b_spec.md) | [report](20260828_161250_cycle_4b_report.md) |
-| 5 | Emitter `generico` (flat, **default**) | — | not started | — | — | — |
+| 5 | Emitter `generico` (flat, **default**) | 2026-08-28 | **complete** | 3510 pass / 0 fail | [spec](20260828_184339_cycle_5_spec.md) | [report](20260828_184339_cycle_5_report.md) |
 | **5b** | **Emitter `generico-aninhado` (nested, opt-in)** — *new, A-R.3* | — | not started | — | — | — |
 | 6 | Emitter `norma` + `Anexo` split | — | not started | — | — | — |
 | ~~6b~~ | ~~Emitter `articulado-sintetico` + round-trip~~ | — | **withdrawn 2026-08-28 (A-R.6)** | — | — | — |
@@ -26,7 +26,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 8 | Generalisation, robustness, CLI | — | not started | — | — | — |
 | 9 | Regression consolidation and corpus scale-out | — | not started | — | — | — |
 
-Cycle order: `0, 1, 2, 3, 4, 4b ✅ → 5, 5b, 6, 7, 8, 9`.
+Cycle order: `0, 1, 2, 3, 4, 4b, 5 ✅ → 5b, 6, 7, 8, 9`.
 Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and relocated to Cycle 7.
 
 ## Change logs
@@ -39,6 +39,7 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | 3 | [changes](20260828_011822_cycle_3_changes.md) — no delivered behaviour changed (additive cycle); `DocumentProfile` gains three pattern fields, all defaulting to `()`; `regen_goldens.py` gains a third golden kind; five plan amendments. **Two changes were considered and deliberately rejected as major: extending Cycle 0's `matrix_cases.py`, and 'correcting' plan §4.3 — which re-validation showed is correct as written** |
 | 4 | [changes](20260828_111240_cycle_4_changes.md) — no delivered behaviour changed (additive cycle); `model/__init__.py` gains 10 exports from the new `nodes` module; `regen_goldens.py` gains a fourth golden kind; six plan amendments. **One change deliberately rejected as major: capturing Word's `numFmt` on `StyledPara`, which would rewrite all 15 Cycle 1 `styled` goldens. Three defects in this cycle's own code were found by its tests and fixed — one of them, silently dropped nested list items, was unreachable from the corpus** |
 | 4b | [changes](20260828_161250_cycle_4b_changes.md) — no delivered behaviour changed (additive cycle); `validate/schema.py` gains keyword-only `generation` + `probe_capabilities()`, `validate/__init__.py` gains 9 exports, `regen_goldens.py` gains a fifth golden kind; six plan amendments. **One change rejected as major: forcing §7.4's `agreed + overrode == flagged` identity, which is false under the suite's own `--referee=none` default — the plan was amended instead. Three defects in this cycle's own code were found and fixed — two reported by a test-authoring subagent under "report, do not fix", and one, `agreed` counting a disagreeing referee as agreeing, found by a mutation sweep. Four of 27 mutations initially survived, all in branches the 15-sample corpus cannot reach** |
+| 5 | [changes](20260828_184339_cycle_5_changes.md) — no delivered behaviour changed (additive cycle); two private helpers promoted to public (`agrupamento_block`, `table_node`) so the emitter reuses rather than reimplements them, three export additions, and `regen_goldens.py`'s `KINDS` refactored to let one sample write several files; seven plan amendments. **Five changes considered and rejected, two of them as major: adding a `residue=True` flag to Cycle 3's `render_front_generico`, and giving the front matter a distinct id token — which would have changed delivered ids *and* broken Rule A. A 15-mutation sweep over the new code killed 15 of 15** |
 | — | **2026-08-28 plan revision** — [changes](20260828_011050_revision_changes.md) · [update record](../../docs/20260828_011050_plan_update_recursive_agrupamento_hierarquico.md). Plan document only; **no code, tests or goldens were touched, and the 788 tests remain green.** The revision is scheduled work, not delivered work |
 
 ## Plan amendments
@@ -76,6 +77,14 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | A-4b.4 | 4b | §7.4's `agreed + overrode == flagged` is **false under `--referee=none`**, which §9.3 pins for the whole suite. Corrected to `agreed + overrode + overruled + abstained == consulted`, with `consulted ≤ flagged`. **`overruled` is a fourth bucket and it is reachable**: a referee that answers, contradicts the rule and is refused the override has neither agreed nor overridden, and folding it into `agreed` manufactures the exact evidence §7.4 uses to justify consulting the referee *less* |
 | A-4b.5 | 4b | The recorded fixtures are **hand-authored** and documented as such per file, with a refresh command. They assert the referee **agrees** with a rule verdict that is already correct — a wrong fixture would surface as a spurious override and a changed route, not a silent pass. *Decided with the user* |
 | A-4b.6 | 4b | Invariant #9 asserted as an **attack**: an adversarial referee answering "own" to every question changes no sample's route. On `par_cosit_26` it genuinely overrides three verdicts and the monotonicity gate holds the route anyway |
+
+| A-5.1 | 5 | **Front and back matter are rendered as *regions*, not parts.** Cycle 3's renderers emit the named parts; `FrontMatter.span`/`BackMatter.span` are the contiguous **hulls** (A-3.5). Measured: **40 non-empty blocks in 6 of 15 samples** sit inside a hull and inside no named part — `parecer_93` 21, `pn_cst_38` 7 (`De acordo`/`Publique-se`, *between* its two signatures), `REsp_1306393` 7, `par_cosit_26` 3, `adn_cst_10` 1, `port_mf_454` 1. A parts-based emitter fails invariant #2 on its first document. Cycle 3's functions are unchanged; `render/common.py` walks the hull and names unclaimed runs `preliminar`/`nota`. **Binding on Cycles 5b and 6** |
+| A-5.2 | 5 | `DocumentModel` lands in **Cycle 5**, not 4b or 6. §3.1's field list corrected: it stores the component objects (`metadata`, `segmentation`, `hierarchy`, `viability`, `styled`) and derives `body`/`annexes`, rather than re-flattening what Cycles 3 and 4 already own. `articulacao` empty until Cycle 6; `decisions` declared **and populated**. `Segmentation` imported under `TYPE_CHECKING` only — `segment` imports `model`. *Decided with the user* |
+| A-5.3 | 5 | Three encodings §5.1's snippet omits, each measured against both schemas: **`<table>` requires an `id`** (`idreq`); **a link is `<a xlink:href>`** and a plain HTML `href` is *rejected*; **`ol`/`ul` take no attributes at all**. Also: an empty `Agrupamento` is invalid (`blocksreq`), which is why `<Bloco nome="nivel">` is unconditional, and an `xsd:ID` is an `NCName`, so no id may start with a digit |
+| A-5.4 | 5 | `Para.kind` survives into the XML as `<p class="quote">` (likewise `citation`/`field`/`omissis`; `prose` writes nothing). The quotation guard's verdict is the corpus's most consequential inference, and an artifact that discarded it could not say what the parser concluded. Adds no text, so conservation is untouched. *Decided with the user* |
+| A-5.5 | 5 | **All 15 samples are rendered flat, not 14.** The exit criterion still names the 14; `port_mf_277` is §3's documented validate-then-fallback rendering and the corpus's only exercise of `Anexos`/`ReferenciaAnexo`. *Decided with the user* |
+| A-5.6 | 5 | The annex **documents** are emitted in Cycle 5, not deferred to Cycle 6 — a pointer with no target loses 65 sections and cannot satisfy invariant #2. `render_generico` returns a **bundle** following §2.9 verbatim: `anexo1_pp`, `anexo1_tabM`, `!anexo1`. The annex's marker paragraph becomes `Agrupamento nome="tituloAnexo"`, because A-4.5 excludes it from the annex's own tree. *Decided with the user* |
+| A-5.7 | 5 | A body preamble is wrapped in `Agrupamento nome="texto"` rather than left as bare `<p>`, so every content node has a citable, `id`-bearing container — and `texto` is the `nome` §5.2 gives a nested prose leaf, so the two emitters agree on segment URNs (invariant #11) |
 
 ### Revision amendments (2026-08-28 — schema change adoption)
 
@@ -115,6 +124,7 @@ The flat `generico` emitter targets the former and stays default; `generico-anin
 python3 -m pytest tests/ -q                        # from the repository root
 python3 scripts/build_proposed_schemas.py --check  # verify generated schemas current
 python3 -m lexml_nonstat.routing --decisions-report samples/*.docx   # Cycle 4b
+python3 scripts/regen_goldens.py --kind=generico                    # Cycle 5
 ```
 
 The referee defaults to `none` everywhere and the suite pins it (§9.3): nothing

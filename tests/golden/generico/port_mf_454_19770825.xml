@@ -1,0 +1,105 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda:portaria:1977-08-25;454"/>
+    <MetadadoProprietario fonte="http://www.lexml.gov.br/nonstat">
+      <campo nome="Nota Normas">Este ato foi originalmente publicado sem a ementa.</campo>
+    </MetadadoProprietario>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Portaria MF nº 454, de 25 de agosto de 1977</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>"Dispõe sobre o rendimento líquido tributável classificado na cédula 'H' da declaração anual de rendimentos."</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="preambulo">
+        <p>O Ministro de Estado da Fazenda, no uso de suas atribuições e tendo em vista o disposto no artigo 9º do Decreto-lei nº 1.510, de 27 de dezembro de 1976,</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="formulaPromulgacao">
+        <p>RESOLVE:</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5" nome="secao">
+        <Bloco nome="rotulo">1.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Para os efeitos do artigo 1º do Decreto-lei nº 1.510, de 27 de dezembro de 1976, considera-se rendimento liquido tributável, classificado na cédula "H" da declaração anual de rendimentos, a diferença entre o valor bruto obtido da alienação de quaisquer participações societárias e o respectivo preço de custo reajustado.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6" nome="secao">
+        <Bloco nome="rotulo">2.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Para efeito de apurar a diferença de que trata este item, nas alienações a título gratuito, considera-se como valor bruto obtido pelo alienante:</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr1" nome="alinea">
+        <Bloco nome="rotulo">a)</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>o valor real da participação, determinado pelo preço normal que poderia obter no mercado, desde que não seja inferior ao valor patrimonial da participação alienada;</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr2" nome="alinea">
+        <Bloco nome="rotulo">b)</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>o correspondente ao da cotação média obtida no pregão imediatamente anterior, caso se trate de participação societária representada por ações normalmente negociadas em Bolsas.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6_agr3" nome="subsecao">
+        <Bloco nome="rotulo">2.1 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Considera-se preço de custo reajustado o preço de compra, de subscrição ou de aquisição a qualquer titulo, corrigido monetariamente mediante aplicação dos índices de variação das Obrigações Reajustáveis do Tesouro Nacional, em função das datas de efetivo pagamento.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7" nome="secao">
+        <Bloco nome="rotulo">3.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Nas alienações de participações societárias havidas por herança o valor de custo será aquele que tiver servido de base para a partilha dos bens.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr1" nome="subsecao">
+        <Bloco nome="rotulo">3.1 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Nas alienações de participações societárias havidas por doação o valor de custo será aquele que tiver servido de base para apurar o rendimento imputado ao doador conforme item 2.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr7_agr2" nome="subsecao">
+        <Bloco nome="rotulo">3.2 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>Em ambos os casos o valor de custo poderá ser corrigido monetariamente, como dispõe o item 2.1.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8" nome="secao">
+        <Bloco nome="rotulo">4.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>No caso de opção pelo pagamento do imposto à alíquota de 25% (vinte e cinco por cento) sobre os lucros auferidos, conforme dispõe o artigo 8º do Decreto-lei nº 1.510/76, a incidência far-se-á sobre o rendimento líquido apurado conforme item 1 desta Portaria.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr8_agr1" nome="subsecao">
+        <Bloco nome="rotulo">4.1.</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>A opção é anual e relativa a todas as operações e será exercida na declaração de rendimentos do exercício financeiro correspondente ao ano-base em que as alienações foram efetivadas.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr9" nome="secao">
+        <Bloco nome="rotulo">5.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>Face ao disposto no art. 5º do D.L. 1.510/76, presume-se que as alienações se referem às participações subscritas ou adquiridas mais recentemente e as bonificações recebidas devem ser rateadas segundo as datas e quantidades originariamente subscritas ou adquiridas, já acrescidas dos rateios de bonificações anteriores.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr10" nome="secao">
+        <Bloco nome="rotulo">6.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>O recolhimento do imposto sujeito à retenção na fonte, previsto no artigo 7º, do D.L. 1.510/76, deve ser efetivado no ato da operação, ainda quando se trate de alienação a título gratuito.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr11" nome="secao">
+        <Bloco nome="rotulo">7.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>O imposto não incide na alienação de participações societárias adquiridas há mais de cinco anos; neste caso, o alienante deve fornecer ao adquirente documento em que declare essa circunstância.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr11_agr1" nome="subsecao">
+        <Bloco nome="rotulo">7.1 -</Bloco>
+        <Bloco nome="nivel">2</Bloco>
+        <p>O prazo qüinqüenal citado neste item é contado segundo a definição de ano contida na Lei nº 810, de 6 de setembro de 1949.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr12" nome="secao">
+        <Bloco nome="rotulo">8.</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>O Secretário da Receita Federal poderá criar formulário anexo à declaração de rendimentos, com o fim de demonstrar os resultados auferidos nas alienações, bem como baixar as demais normas que se fizerem necessárias ao cumprimento do disposto nesta Portaria e no Decreto-lei número 1.510/76.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>MÁRIO HENRIQUE SIMONSEN</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf2" nome="nota">
+        <p>Nota Normas: Este ato foi originalmente publicado sem a ementa.</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

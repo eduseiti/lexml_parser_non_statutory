@@ -36,6 +36,7 @@ from .model import BackMatter, FrontMatter, Span
 
 __all__ = [
     "LEXML_NS",
+    "agrupamento_block",
     "render_back_generico",
     "render_front_generico",
     "render_parte_final",
@@ -151,8 +152,14 @@ def render_parte_final(
     return element if len(element) else None
 
 
-def _agrupamento(nome: str, ident: str, lines: list[str]) -> etree._Element:
-    """An ``<Agrupamento nome=…>`` carrying one ``<p>`` per line."""
+def agrupamento_block(nome: str, ident: str, lines: list[str]) -> etree._Element:
+    """An ``<Agrupamento nome=…>`` carrying one ``<p>`` per line.
+
+    Public because Cycle 5's emitter renders the front and back matter
+    *regions* — hulls, including the blocks between the named parts — and
+    must produce the same element shape this module does. One implementation
+    of that shape, not two (amendment A-3.4's rule).
+    """
     element = _el("Agrupamento", id=ident, nome=nome)
     for line in lines:
         paragraph = _el("p")
@@ -184,7 +191,7 @@ def render_front_generico(
     for ordinal, (nome, span) in enumerate(parts, start=1):
         lines = _lines(span, doc)
         if lines:
-            out.append(_agrupamento(nome, f"{prefix}_agr{ordinal}", lines))
+            out.append(agrupamento_block(nome, f"{prefix}_agr{ordinal}", lines))
     return tuple(out)
 
 
@@ -211,7 +218,7 @@ def render_back_generico(
         if lines:
             ordinal += 1
             out.append(
-                _agrupamento("localDataFecho", f"{prefix}_agrf{ordinal}", lines)
+                agrupamento_block("localDataFecho", f"{prefix}_agrf{ordinal}", lines)
             )
 
     for signature in back.signatures:
@@ -221,6 +228,6 @@ def render_back_generico(
             for line in (signature.local_date, signature.name, signature.cargo)
             if line
         ]
-        out.append(_agrupamento("assinatura", f"{prefix}_agrf{ordinal}", lines))
+        out.append(agrupamento_block("assinatura", f"{prefix}_agrf{ordinal}", lines))
 
     return tuple(out)

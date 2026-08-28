@@ -1,0 +1,36 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda;secretaria.receita.federal:ato.declaratorio:1999-01-07;3"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Ato Declaratório SRF nº 3, de 7 de janeiro de 1999</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>Dispõe sobre os valores recebidos a título de incentivo à adesão a Programa de Desligamento Voluntário - PDV.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="preambulo">
+        <p>O SECRETÁRIO DA RECEITA FEDERAL, no uso de suas atribuições, e tendo em vista o disposto no art. 6º, V, da Lei nº 7.713, de 22 de dezembro de 1988, declara que:</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="inciso">
+        <Bloco nome="rotulo">I -</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>os valores pagos por pessoa jurídica a seus empregados, a título de incentivo à adesão a Programas de Desligamento Voluntário - PDV, considerados, em reiteradas decisões do Poder Judiciário, como verbas de natureza indenizatória, e assim reconhecidos por meio do Parecer PGFN/CRJ/nº 1278/98, aprovado pelo Ministro de Estado da Fazenda em 17 de setembro de 1998, não se sujeitam à incidência do imposto de renda na fonte nem na Declaração de Ajuste Anual;</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr5" nome="inciso">
+        <Bloco nome="rotulo">II -</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>a pessoa física que recebeu os rendimentos de que trata o inciso I, com desconto do imposto de renda na fonte, poderá solicitar a restituição ou compensação do valor retido, observado o disposto na Instrução Normativa SRF nº 21, de 10 de março de 1997, alterada pela Instrução Normativa SRF nº 73, de 15 de setembro de 1997;</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr6" nome="inciso">
+        <Bloco nome="rotulo">III -</Bloco>
+        <Bloco nome="nivel">1</Bloco>
+        <p>no caso de pessoa física que houver oferecido os referidos rendimentos à tributação, na Declaração de Ajuste Anual, o pedido de restituição será efetuado mediante retificação da respectiva declaração.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>EVERARDO MACIEL</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>
