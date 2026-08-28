@@ -1,13 +1,16 @@
 # Complete Development Plan — LexML Parser for Non-Statutory Documents
 
 - **Date:** 2026-08-01
-- **Status:** Consolidated and approved plan — supersedes the open questions of both predecessor documents
+- **Status:** Consolidated and approved plan — supersedes the open questions of both predecessor documents.
+  **Revised 2026-08-28** to adopt the LexML maintainers' recursive `AgrupamentoHierarquico` proposal; see §14 for the amendment log and §2.10 for the finding that drives it. Cycles 0–2 are unaffected.
 - **Target language:** Python 3
 - **Predecessors (investigation record, retained for traceability):**
   - `docs/20260801_004745_lexml_non_statutory_parser_investigation_and_development_plan.md` — schema investigation, validation matrix A–R
   - `docs/20260801_142630_design_review_segmentation_statutory_detection_and_lm_support.md` — segmentation proof, statutory detection, LM analysis, recursive `Agrupamento` proposal
+  - `docs/20260827_111015_revised_plan_recursive_agrupamento_hierarquico_adoption.md` — **evaluation of the LexML maintainers' `AgrupamentoHierarquico` change; source of Amendments A-R.1 … A-R.9 (§14)**
 - **Reference implementation:** `../lexml-parser-projeto-lei` (Scala, Senado Federal)
-- **Schemas:** `lexml/lexml-base.xsd`, `lexml/lexml-br-rigido.xsd`, `lexml/lexml09-flexivel.xsd`
+- **Schemas:** `lexml/lexml-base.xsd`, `lexml/lexml-br-rigido.xsd`, `lexml/lexml09-flexivel.xsd` — vendored, byte-identical to upstream, never modified
+- **Proposed schemas:** `lexml-proposed/*.xsd` — *generated* by `scripts/build_proposed_schemas.py`, carrying the LexML maintainers' not-yet-released `AgrupamentoHierarquico` change (§2.10)
 
 ---
 
@@ -34,7 +37,7 @@ Build a Python parser converting Brazilian legal **non-statutory documents** ("d
 
 **In scope:** DOCX (primary), HTML, plain text; the three routing targets of §4; hierarchical segmentation output; LLM referee with telemetry; dual-schema validation; a regression suite.
 
-**Out of scope:** RAG chunking/embedding (deferred by decision); the `Jurisprudencia` document type (deferred by decision); modifying the LexML schemas (a proposal exists — §11 — but the parser must work against the schemas as shipped).
+**Out of scope:** RAG chunking/embedding (deferred by decision); the `Jurisprudencia` document type (deferred by decision); modifying the vendored LexML schemas (`lexml/` stays byte-identical to upstream — but see §2.10: the maintainers' own proposed change is carried in the *generated* `lexml-proposed/`, and the parser must keep working against the schemas as shipped, with the nested emitter opt-in until the change is released).
 
 ---
 
@@ -42,9 +45,11 @@ Build a Python parser converting Brazilian legal **non-statutory documents** ("d
 
 Established empirically across the two investigation rounds. These are load-bearing; each one changed the design.
 
-### 2.1 `OpenStructure` cannot nest
+### 2.1 `OpenStructure` cannot nest — *in the schemas as shipped*
 
-LexML supports non-statutory documents via `OpenStructure` (`<DocumentoGenerico>`), the counterpart of `HierarchicalStructure` (`<Norma>`). But it is deliberately flat. Verified against both schemas:
+> **Amended 2026-08-28 (A-R.1).** This finding remains true of the **vendored** schemas and therefore still governs the default emitter. It is **no longer true of the schemas the maintainers intend to ship** — see §2.10. The table below is consequently a statement about *a schema generation*, not an absolute: every row carries the generation it was measured against.
+
+LexML supports non-statutory documents via `OpenStructure` (`<DocumentoGenerico>`), the counterpart of `HierarchicalStructure` (`<Norma>`). But it is deliberately flat. Verified against both vendored schemas:
 
 | Candidate encoding | rigido | flexivel |
 |---|---|---|
@@ -67,7 +72,9 @@ LexML supports non-statutory documents via `OpenStructure` (`<DocumentoGenerico>
 
 Root cause: `Agrupamento` and `div` derive from `blocksreq`, whose content group `blockElements` = `{p, ul, ol, table, Bloco, ConteudoExterno}` holds no container, making recursion structurally impossible. `AgrupamentoHierarquico` derives from `hierarchy` and requires `LXhierCompleto` (`Parte|Livro|Titulo|Capitulo|Secao|Subsecao|Artigo`) — a statutory device that always terminates in `Artigo` and cannot hold prose.
 
-**Consequence:** LexML has no element that is both non-articulated and recursive. Hierarchy must be preserved out-of-band (§5.2).
+**Consequence (vendored schemas):** LexML has no element that is both non-articulated and recursive. Hierarchy must be preserved out-of-band — the `id` path of §2.3, rendered by the `generico` emitter of §5.1.
+
+**Consequence (proposed schemas, §2.10):** `AgrupamentoHierarquico` becomes exactly that element. Hierarchy is preserved *in-band*, and the `id` path becomes redundant belt-and-braces rather than the sole channel. Both consequences are live simultaneously, which is why the plan carries two emitters.
 
 ### 2.2 Lists nest natively; `<td>` takes no `<p>`
 
@@ -167,6 +174,45 @@ Confirmed from `ProjetoLei.scala:49-64` and the emitted `lei_5070_19660707.anexo
 
 Matching this exactly means our `Norma` + `Anexo` output is interoperable with existing statutory tooling.
 
+### 2.10 `AgrupamentoHierarquico` becomes prose-bearing and recursive (maintainers' proposal)
+
+**Added 2026-08-28 (A-R.1).** Full evidence: `docs/20260827_111015_revised_plan_recursive_agrupamento_hierarquico_adoption.md`.
+
+The LexML maintainers proposed a two-line change to `lexml-base.xsd` that makes `AgrupamentoHierarquico` a genuinely prose-bearing recursive container:
+
+```xml
+<xsd:extension base="hierarchy">
+  <xsd:choice minOccurs="1" maxOccurs="unbounded">   <!-- was xsd:sequence -->
+    <xsd:group   ref="LXhierCompleto"/>
+    <xsd:element ref="Agrupamento"/>                 <!-- ADDED -->
+    <xsd:element ref="Bloco"/>                       <!-- ADDED -->
+  </xsd:choice>
+  <xsd:attributeGroup ref="nome"/>
+</xsd:extension>
+```
+
+Four findings, all measured against both schemas offline:
+
+1. **It solves the core problem.** `AgrupamentoHierarquico` was *already* recursive — `hierarchy` admits `AgrupamentoHierarquico*`. What it lacked was prose-bearing leaves. `PartePrincipal` already accepts `AgrupamentoHierarquico`, so the open model reaches the recursive element with no further change. `pn_cst_38`'s four-level hierarchy (`2.` → `2.1` → `2.3` → `2.3.1`) validates natively, and `ancestor::`/`descendant::` recover it with **no `id`-path parsing**.
+2. **It is verified backward compatible.** All 16 cases of the §2.1 matrix return identical verdicts under `lexml/` and `lexml-proposed/`. The edit is strictly additive.
+3. **It supersedes our own §11 proposal**, which is withdrawn — see §11. `Agrupamento` stays flat; `Agrupamento`-in-`Agrupamento` still FAILS. Recursion lives *only* in `AgrupamentoHierarquico`. `Rotulo` and `NomeAgrupador` become first-class, retiring the `<Bloco nome="rotulo">` smuggling of §5.1.
+4. **It carries three binding emitter constraints** (§5.4), of which the ordering one is a genuine wart.
+
+**Release status — the reason this does not simply replace §2.1.** The change is **proposed, not released**. `lexml-proposed/` is *generated* from `lexml/` by `scripts/build_proposed_schemas.py`, verified to differ from upstream only by the edit above. Until upstream ships it, `generico` (flat) stays the default emitter and `generico-aninhado` is opt-in behind a **schema capability probe** (§2.11) that reads the schemas actually present rather than assuming a version.
+
+### 2.11 Schema capabilities are probed, never assumed
+
+**Added 2026-08-28 (A-R.2).** With two schema generations in the repository, no cycle may hard-code which one is present. `validate/schema.py` gains a probe that discovers, by validating canary fragments:
+
+| Capability | Question it answers |
+|---|---|
+| `recursive_agrupamento_hierarquico` | does `AH > Agrupamento(p)` validate? |
+| `prose_bearing_hierarchy` | may an `AH` have no articulated descendant? |
+| `native_rotulo_nome_agrupador` | are `Rotulo`/`NomeAgrupador` usable on an `AH`? |
+| `interleaved_children` | is prose-before-subsections order accepted? (§11 refinement only) |
+
+Against `lexml/` all four are `False`; against `lexml-proposed/` the first three are `True` and `interleaved_children` is `False` — the maintainers' change does not remove the ordering constraint, and we do not build as though it did.
+
 ---
 
 ## 3. Architecture
@@ -193,10 +239,11 @@ Matching this exactly means our `Norma` + `Anexo` output is interoperable with e
 ├──────────────────────────────────────────────────────────────────────────┤
 │ MODEL                  DocumentModel  (rendering-agnostic, typed)        │
 ├──────────────────────────────────────────────────────────────────────────┤
-│ RENDERING              norma (+anexos)  |  generico  |  articulado-sint. │
+│ RENDERING              norma (+anexos) | generico | generico-aninhado   │
 │  · validate-then-fallback: statutory attempt → generico on failure       │
 ├──────────────────────────────────────────────────────────────────────────┤
 │ VALIDATION             lxml XMLSchema × 2 (rigido + flexivel) + rules    │
+│  · schema-generation aware: lexml/ (shipped) | lexml-proposed/  ★ 2.11  │
 ├──────────────────────────────────────────────────────────────────────────┤
 │ SEGMENTATION OUTPUT    model → hierarchical segments (API + XSLT)        │
 ├──────────────────────────────────────────────────────────────────────────┤
@@ -217,9 +264,11 @@ src/lexml_nonstat/
   routing/     viability.py  coverage.py  genre.py
   referee/     protocol.py  null.py  api.py  local.py  cache.py  prompts.py
   model/       document.py  nodes.py  metadata.py  urn.py
-  render/      generico.py  norma.py  anexo.py  articulado.py  common.py  ids.py
+  render/      generico.py  generico_aninhado.py  norma.py  anexo.py
+               common.py  ids.py
   validate/    schema.py  rules.py  report.py
   segmentation/ api.py  xslt/segment_generico.xsl  xslt/segment_norma.xsl
+                xslt/segment_generico_aninhado.xsl
   telemetry/   decisions.py  report.py
   cli.py
 tests/
@@ -228,7 +277,7 @@ tests/
 
 ### 3.1 Internal model
 
-Rendering-agnostic by design — this is what lets three emitters and a possible fourth (§11) coexist without a rewrite.
+Rendering-agnostic by design — this is what lets the emitters coexist without a rewrite. **That design paid off exactly as §11 predicted:** the maintainers' schema change (§2.10) costs one new emitter and *removes* another, and touches no line of the model below. `Section` was always a real tree; only the rendering of it changes.
 
 ```python
 @dataclass
@@ -291,7 +340,7 @@ class DocumentModel:
     anexos: list[Anexo]
     back: BackMatter
     profile: str
-    route: Literal["norma","generico"]
+    route: Literal["norma","generico"]   # rendering is chosen separately (§5)
     viability: "StatutoryViability"
     decisions: list["DecisionRecord"]   # telemetry, incl. referee interventions
 ```
@@ -415,11 +464,15 @@ Updated per decision #4: the three former `jurisprudencia` entries are now `gene
 
 14 of 15 route to `generico` — confirming it as the correct default, and confirming that **statutory detection's main job is refusing false positives**, not finding statutes.
 
+> **Note (A-R.7).** `route=generico` names a **routing** decision — *this document is not articulated* — not an emitter. A `generico`-routed document is rendered by either `generico` (flat) or `generico-aninhado` (nested) per §5, and the route table above is identical under both. Routing is about what the document *is*; rendering is about how it is written out.
+
 ---
 
 ## 5. Emitters
 
-### 5.1 `generico` (default)
+### 5.1 `generico` (flat, default)
+
+**The default while the maintainers' change (§2.10) is unreleased.** Validates against the schemas as shipped.
 
 ```xml
 <DocumentoGenerico>
@@ -443,13 +496,60 @@ Updated per decision #4: the three former `jurisprudencia` entries are now `gene
 
 Depth is recoverable three redundant ways: `id` path, `<Bloco nome="nivel">`, `@nome`. **Rule A** (materialise every intermediate `id` prefix) and **Rule B** (leaf-only text) are emitter requirements.
 
-### 5.2 `norma` (+ `anexo`)
+### 5.2 `generico-aninhado` (nested, opt-in) — added 2026-08-28 (A-R.3)
 
-Per §4.3, matching the reference parser's conventions.
+Requires the §2.10 capability `recursive_agrupamento_hierarquico`. Selected by `--emitter=generico-aninhado`; refuses with the probe's diagnostic when the vendored schemas are flat. **Becomes the default only once the change is released and `lexml/` is re-vendored** — a one-line default change plus a reviewed golden regeneration, gated on the probe (§2.11).
 
-### 5.3 `articulado-sintetico` (opt-in, retained)
+```xml
+<DocumentoGenerico>
+  <PartePrincipal id="pp1">
+    <AgrupamentoHierarquico id="pp1_agh1" nome="secao">
+      <Rotulo>2.</Rotulo>
+      <NomeAgrupador>DAS SOCIEDADES COOPERATIVAS</NomeAgrupador>
+      <AgrupamentoHierarquico id="pp1_agh1_agh1" nome="subsecao">
+        <Rotulo>2.1</Rotulo>
+        <NomeAgrupador>Empresas de serviços</NomeAgrupador>
+        <Agrupamento id="pp1_agh1_agh1_txt" nome="texto">
+          <p>Em linhas gerais, as cooperativas…</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <Agrupamento id="pp1_agh1_txt" nome="texto">
+        <p>Texto introdutório.</p>
+      </Agrupamento>
+    </AgrupamentoHierarquico>
+  </PartePrincipal>
+</DocumentoGenerico>
+```
 
-Maps `Section` → `AgrupamentoHierarquico` and prose → synthetic `Artigo`/`Caput`, giving genuinely nested XML at the cost of asserting articulation the source lacks. Retained because it validates and some consumers need real nesting; **not the default**, and synthetic articles are marked via `MetadadoProprietario` provenance so they are never mistaken for real ones.
+Differences from §5.1, each load-bearing:
+
+- `Rotulo` and `NomeAgrupador` are **native**; `<Bloco nome="rotulo"|"nomeAgrupador">` is retired.
+- `<Bloco nome="nivel">` is retired too — depth is `count(ancestor::AgrupamentoHierarquico)`, and a redundant marker that can disagree with the tree is a liability, not a safeguard.
+- Prose lives in a single `<Agrupamento nome="texto">` leaf per section. **Never a bare `<p>` under an `AgrupamentoHierarquico`** — the proposal adds `Agrupamento` and `Bloco`, not `blockElements` (§2.1 row E still FAILS, correctly).
+- **Rule A becomes structurally unnecessary**: a missing ancestor is a malformed tree, not a silently broken breadcrumb. Rule B still applies — nested-`li` duplication is a list problem, untouched by the schema change.
+- `id`s stay path-composed (`pp1_agh1_agh1`) even though the nesting makes them redundant, so a segment URN means the same thing whichever emitter produced it.
+
+Existing community tooling that walks `ancestor::*/NomeAgrupador` — including `scripts/GeraCSVporArtigoPorAgrupador.xsl` — becomes applicable to non-statutory documents, which was the original motivation of the whole investigation.
+
+### 5.3 `norma` (+ `anexo`)
+
+Per §4.3, matching the reference parser's conventions. Annex bodies (`Anexo > DocumentoGenerico > PartePrincipal`) may use the nested form when the capability is present — verified valid — giving `port_mf_277`'s 130-entry `ANEXO ÚNICO` real structure.
+
+### 5.4 Three constraints binding on `generico-aninhado`
+
+Measured against `lexml-proposed/`, not assumed. **Added 2026-08-28 (A-R.4).**
+
+**Constraint 1 — subsections precede own prose.** Because `AgrupamentoHierarquico` extends `hierarchy`, whose base sequence ends with `AgrupamentoHierarquico*`, XSD appends the extension `choice` *after* it. The effective content model is:
+
+```
+Rotulo?  NomeAgrupador?  AgrupamentoHierarquico*  (LXhierCompleto | Agrupamento | Bloco)+
+```
+
+So a section's child sections must be serialised **before** its own prose. Natural reading order — `2.` intro text, then `2.1` — is **rejected**. Two consequences: the emitter sorts into a canonical order that is not document order, and **the segmentation reader must never infer reading order from sibling position** — it uses `Rotulo` or a recorded source index. This is the one property that made hand-inspection of flat output trustworthy, and it is lost; §11 offers a refinement upstream that would restore it.
+
+**Constraint 2 — every `AgrupamentoHierarquico` needs at least one non-`AH` child** (`minOccurs="1"` on the extension choice). A section with subsections but no prose of its own cannot be a bare container, and an empty `<Agrupamento/>` is itself invalid (`blocksreq` is `minOccurs="1"`). **Resolution: emit `<Bloco nome="vazio"/>`** — `Bloco` extends `inline` at `minOccurs="0"`, so a genuinely empty one is valid. Verified. Alternatives considered and rejected: an `<Agrupamento><p/></Agrupamento>` injects an empty paragraph into text extraction and risks the conservation invariant; waiting for a `minOccurs="0"` upstream blocks on the maintainers (raised in §11 regardless). A test asserts the marker is invisible to text extraction and to segmentation.
+
+**Constraint 3 — prose always needs an `Agrupamento` wrapper.** Restated from §5.2; it is a schema fact, not a style choice, and gets its own regression.
 
 ---
 
@@ -475,11 +575,21 @@ class Segment:
     route: str
 ```
 
-Segmenting from the in-process model is the primary path; the XML reader exists as the round-trip **test oracle**, which is exactly the reversibility invariant the suite requires.
+Segmenting from the in-process model is the primary path; the XML readers exist as the round-trip **test oracle**, which is exactly the reversibility invariant the suite requires. **Amended 2026-08-28 (A-R.5):** there are now two XML readers, and agreement is three-way:
+
+```python
+def segments_from_flat_xml(doc)   -> Iterator[Segment]:  # id-path reconstruction (Rules A/B)
+def segments_from_nested_xml(doc) -> Iterator[Segment]:  # native ancestor::/descendant::
+```
+
+- `segments_from_nested_xml` parses **no `id`s at all**. Rule A is structurally guaranteed; Rule B still applies. Order comes from `Rotulo` or the recorded source index, never from sibling position (§5.4 Constraint 1), and the `<Bloco nome="vazio"/>` marker of Constraint 2 is skipped.
+- **Three-way oracle agreement** — model, flat XML, nested XML — is the invariant. Segment URNs must be identical across all three, so a citation survives an emitter switch.
 
 ### 6.2 XSLT reference stylesheets
 
-`segment_generico.xsl` (below, with Rules A/B applied) and `segment_norma.xsl` (statutory-element based, adapting `GeraCSVporArtigoPorAgrupador.xsl`).
+`segment_generico.xsl` (below, with Rules A/B applied), `segment_norma.xsl` (statutory-element based, adapting `GeraCSVporArtigoPorAgrupador.xsl`), and — **added 2026-08-28 (A-R.5)** — `segment_generico_aninhado.xsl`.
+
+The nested stylesheet is markedly simpler than the flat one below: with native `Rotulo`/`NomeAgrupador` and real ancestry, the breadcrumb is `ancestor::AgrupamentoHierarquico/NomeAgrupador` and the `starts-with($myid, concat(@id,'_'))` / `string-length(@id)` machinery disappears entirely. That is the same idiom `scripts/GeraCSVporArtigoPorAgrupador.xsl` already uses, so **Cycle 7 probes whether that community stylesheet runs unmodified on nested output** and records the result — informational, not gating, but it is the strongest available argument for the maintainers' change and belongs in the reply to them (§11).
 
 ```xslt
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
@@ -639,6 +749,38 @@ Two corrections to the description above and to `docs/20260801_004745_…` §11,
 
 A third point, discovered while implementing: **a missing stub is silently masked**, because libxml2 answers an unreadable local `schemaLocation` by fetching the URL. Neither banning Python's `socket` (libxml2's HTTP is in C) nor `XMLParser(no_network=True)` (does not reach the schema-import loader) prevents this. `OfflineResolver` therefore raises `MissingStubError` when a mapped stub is absent, rather than declining and letting libxml2 fall back.
 
+**Amendment A-R.2 (Cycle 0 addendum, 2026-08-28) — the harness becomes schema-generation aware, and the §2.1 matrix becomes conditional.**
+
+Cycle 0 shipped complete and stays complete; this is **additive work, scheduled with Cycle 5b** since nothing before it needs the capability. Three additions:
+
+1. **Generation selection.** `validate/schema.py` learns a second schema root — `lexml-proposed/` (§2.10) alongside `lexml/` — so `load_schema`/`validate` can target either. `lexml/` remains read-only and byte-identical to upstream; `lexml-proposed/` is *generated* and equally never hand-edited.
+2. **The capability probe** of §2.11:
+
+```python
+@dataclass(frozen=True)
+class SchemaCapabilities:
+    # What the schemas actually present permit, discovered by probing.
+    recursive_agrupamento_hierarquico: bool
+    prose_bearing_hierarchy: bool
+    native_rotulo_nome_agrupador: bool
+    interleaved_children: bool
+
+def probe_capabilities(generation: str = "vendored") -> SchemaCapabilities: ...
+```
+
+   Never hard-code a schema version: the files present are the truth.
+
+3. **The §2.1 matrix gains a `requires` field** naming the capability each case depends on. A case needing an unavailable capability is **skipped with a reason, not failed** — the matrix stops being a table of absolute truths and becomes a table conditional on the schema generation, which is what §2.1 now says it is.
+
+Tests
+- against `lexml/`, all four capabilities are `False` — pinning today's shipped reality
+- against `lexml-proposed/`, the first three are `True` and `interleaved_children` is `False` (the maintainers' change does not remove the ordering constraint)
+- **all 16 existing matrix cases return identical verdicts under both generations** — the backward-compatibility claim of §2.10, kept executable
+- new matrix rows for the §2.10 encodings, each carrying its `requires` capability
+- the probe never mutates either schema directory, and runs offline through the existing resolver
+- `scripts/build_proposed_schemas.py --check` passes — the generated schemas are current
+- a capability regression (a probe result changing unexpectedly) fails loudly
+
 ### Cycle 1 — DOCX ingestion → `StyledDoc`
 
 `ingest/docx_reader.py`: paragraphs, `pStyle` (with `basedOn` inheritance), `numPr` (`numId`/`ilvl`), **`w:ind/@w:left` indentation — both direct and style-resolved, see Amendment A-1.1**, `w:jc` alignment, runs (bold/italic/sup/sub), tables, **struck runs dropped, soft breaks split, hyperlink targets captured — see Amendment A-1.2**; NFC normalisation and whitespace collapse mirroring `DOCXReader.breakText`; `--dump-styled`.
@@ -770,6 +912,7 @@ Tests — routing
 - `port_mf_277` routes to `norma` **with** annex split; coverage computed after separation
 - coverage gate rejects low-coverage articulation
 - verdicts deterministic under `NullReferee`
+- **A-R.7:** requesting `generico-aninhado` against flat schemas yields blocker `nested_unavailable` with the probe's diagnostic. **Routing decisions are otherwise unchanged** — the §4.4 route table stands, because routing is about *what the document is*, not how it is rendered
 
 Tests — referee
 - `NullReferee` ⇒ byte-identical output to referee-disabled
@@ -789,7 +932,7 @@ Tests — telemetry
 
 Exit: routing correct for all 15 samples; referee integrated, cached, fail-safe; interventions visibly logged and countable.
 
-### Cycle 5 — Emitter `generico` (default)
+### Cycle 5 — Emitter `generico` (flat, default)
 
 `render/generico.py`; `render/ids.py` (path-composed unique ids, **Rule A** materialising every intermediate prefix); flattening with `<Bloco nome="rotulo"|"nomeAgrupador"|"nivel">`; nested `ol`/`ul`; tables **with inline-only cell content (§2.2)**; `Anexos`/`ReferenciaAnexo`.
 
@@ -804,6 +947,34 @@ Tests
 - text conservation: every source paragraph's text appears exactly once
 - goldens committed for all 14
 
+### Cycle 5b — Emitter `generico-aninhado` (nested, opt-in) — added 2026-08-28 (A-R.3)
+
+Runs after Cycle 5, reusing its `Section` tree and `id` scheme. Carries the Cycle 0 addendum (A-R.2) with it — the capability probe lands here, because this is the first cycle that needs it.
+
+`render/generico_aninhado.py`, per §5.2:
+
+- `Section` → `<AgrupamentoHierarquico id nome>` with native `<Rotulo>`/`<NomeAgrupador>`
+- prose, lists and tables → one `<Agrupamento nome="texto">` leaf per section
+- **child sections emitted before the section's own prose leaf** (§5.4 Constraint 1), with source order preserved in `Rotulo` and, for unlabelled sections, an explicit `<Bloco nome="ordem">` index
+- **`<Bloco nome="vazio"/>`** for sections with subsections but no prose of their own (Constraint 2)
+- `id`s path-composed, identical to Cycle 5's, so segment URNs match across emitters
+- `<Bloco nome="rotulo"|"nomeAgrupador"|"nivel">` **not emitted**
+
+Tests
+- all 14 `generico`-routed samples validate on **both** `lexml-proposed/` schemas (skipped, with a reason, when the probe reports flat schemas)
+- **native-axis reconstruction:** the tree recovered via `ancestor::`/`descendant::` alone equals the tree recovered from `id` paths, for all 14
+- **Constraint 1 regression:** for every `AH`, no `Agrupamento` sibling precedes an `AgrupamentoHierarquico` sibling
+- **Constraint 2 regression:** every `AH` has ≥1 non-`AH` child; the `vazio` marker is invisible to text extraction and segmentation
+- **Constraint 3 regression:** no bare `<p>` is ever a child of an `AgrupamentoHierarquico`
+- no `Bloco nome="rotulo"|"nomeAgrupador"|"nivel"` anywhere in the output
+- **cross-emitter equivalence:** `generico` and `generico-aninhado` carry identical text content and identical segment URNs
+- `id` uniqueness; conservation (every source paragraph exactly once)
+- **Rule A asserted unnecessary:** a deliberately gapped tree is structurally impossible to emit
+- `pn_cst_38`'s four levels (`2.` → `2.1` → `2.3` → `2.3.1`) reproduce the §2.10 depth/breadcrumb output exactly
+- goldens committed for all 14
+
+Exit: nested output validates on both proposed schemas; hierarchy recoverable by standard axes with no `id` parsing; text and URNs identical to the flat emitter.
+
 ### Cycle 6 — Emitter `norma` + `Anexo` split
 
 `render/norma.py`, `render/anexo.py`: `ParteInicial`/`Articulacao`/`ParteFinal`; strict element ordering (`Rotulo` before `Caput`; `Caput` carries its own `Rotulo`); sibling `<LexML><Anexo>` documents with `!anexoN` URN fragments, `anexoN_pp` ids, `anexoN_tabM` tables; parent `ReferenciaAnexo` pointers; validate-then-fallback to `generico`.
@@ -816,24 +987,31 @@ Tests
 - `ReferenciaAnexo` targets resolve to the emitted annex URNs
 - validate-then-fallback: a forced statutory-render failure falls back to `generico` and logs the reason
 - annex containing tables uses `DocumentoGenerico`, mirroring `isArticulatedAnexo`
+- **A-R.8:** with the capability present, annex bodies may use the nested form — verified valid — giving `port_mf_277`'s 130-entry `ANEXO ÚNICO` real structure; conservation and URN fragments hold identically either way
 
-### Cycle 6b — Emitter `articulado-sintetico` + round-trip
+### Cycle 6b — Emitter `articulado-sintetico` — ~~planned~~ **withdrawn 2026-08-28 (A-R.6)**
 
-`render/articulado.py`; `hierarchy_from_xml()` reader for round-trip testing of all emitters.
+**This cycle is dropped. Its round-trip reader moves to Cycle 7.**
 
-Tests
-- samples validate in `articulado-sintetico` on both schemas
-- nesting depth preserved exactly (no flattening)
-- synthetic articles marked and countable
-- **round-trip: `model → generico → model'` and `model → articulado → model''` preserve tree shape and all text**
-- cross-emitter equivalence: all emitters carry identical text content
+The emitter's entire justification was: *some consumers need genuinely nested XML, and the only way to get it is to synthesise `Artigo`s the source does not have.* §2.10 removes that premise — real nesting is now available **without asserting articulation the source lacks**, which was always this emitter's semantic sin: presenting a parecer's numbered sections as articles of a statute is exactly the misreading the Cycle 4 quotation guard exists to prevent, committed deliberately on output.
+
+Dropping it removes the emitter, its goldens, and the `MetadadoProprietario` provenance machinery that existed solely to stop synthetic articles being mistaken for real ones.
+
+**Retained and relocated:** `hierarchy_from_xml()`, the round-trip reader, moves to **Cycle 7**. It is the oracle for every emitter and is *more* valuable now, not less — with two emitters in play it is what proves they agree.
+
+**Reinstate only if** a consumer is identified that specifically requires `Artigo`-shaped output. Recorded here rather than deleted, so the reasoning survives if that consumer appears.
 
 ### Cycle 7 — Segmentation output
 
-`segmentation/api.py`; `segment_generico.xsl`; `segment_norma.xsl`; CSV/JSONL writers.
+`segmentation/api.py` with **both** XML readers (§6.1); `segment_generico.xsl`; `segment_norma.xsl`; **`segment_generico_aninhado.xsl`**; `hierarchy_from_xml()` round-trip reader **relocated here from the withdrawn Cycle 6b (A-R.6)**; CSV/JSONL writers.
 
 Tests
-- segments from the model equal segments read back from XML (**oracle agreement**)
+- **A-R.5: three-way oracle agreement** — model, flat XML and nested XML segment identically on all 15 samples (the nested leg skipped, with a reason, when the capability is absent)
+- **segment URNs identical across emitters** — a citation survives an emitter switch
+- **nested reader parses no `id`s**: asserted by mutating every `id` in a nested document and checking the segments are unchanged
+- **order comes from `Rotulo`/source index, never sibling position** (§5.4 Constraint 1) — a document whose serialisation order differs from reading order still segments in reading order
+- **round-trip:** `model → generico → model'` and `model → generico-aninhado → model''` preserve tree shape and all text
+- **`GeraCSVporArtigoPorAgrupador.xsl` compatibility probed on nested output and the result recorded** — informational, not gating (§6.2)
 - breadcrumbs complete for all 15 samples — **no missing ancestors** (Rule A end-to-end)
 - **no duplicated text in any segment** (Rule B end-to-end)
 - segment URNs unique, stable across reruns, and resolvable to their `Agrupamento`/dispositivo
@@ -843,7 +1021,7 @@ Tests
 
 ### Cycle 8 — Generalisation, robustness, CLI
 
-`cli.py`: `parse`, `dump-styled`, `dump-tree`, `segment`, `validate`, `list-profiles`, `decisions-report` (mirroring `FECmdLine`'s shape); HTML and plain-text ingestion; `generic` catch-all profile; structured warnings; confidence reporting; `--profile`/`--emitter`/`--schema`/`--referee`/`--strict`.
+`cli.py`: `parse`, `dump-styled`, `dump-tree`, `segment`, `validate`, `list-profiles`, `decisions-report`, **`capabilities`** (mirroring `FECmdLine`'s shape); HTML and plain-text ingestion; `generic` catch-all profile; structured warnings; confidence reporting; `--profile`/`--emitter`/`--schema`/`--referee`/`--strict`.
 
 Tests
 - CLI end-to-end on all 15 samples, all emitters
@@ -852,6 +1030,7 @@ Tests
 - HTML and TXT ingestion reach the same model shape
 - `--strict` fails on validation error; default warns and continues
 - confidence and referee status surfaced in output
+- **A-R.9:** `--emitter` accepts `generico-aninhado`; a `capabilities` command reports what the schemas present permit; requesting an unavailable emitter exits cleanly with the probe's diagnostic and a non-zero status, never a traceback
 
 Exit: "handles any document" demonstrated — valid output or a clean diagnostic for every fixture.
 
@@ -865,6 +1044,8 @@ Tests
 - **a deliberate mutation fails the suite** (proving the tests bite)
 - batch mode over all samples produces a single reconciling decisions report
 - referee disabled ⇒ suite still green (no network dependency anywhere)
+- **A-R.9:** nested goldens for all 14; cross-emitter equivalence in the regression suite; the mutation test bites on the §5.4 Constraint 1/2/3 invariants
+- **the whole suite passes against `lexml/` alone** — with `lexml-proposed/` absent, nested tests skip with a reason and nothing fails. The parser's correctness must not depend on an unreleased schema
 
 ---
 
@@ -875,12 +1056,14 @@ Tests
 | Layer | Purpose | Location |
 |---|---|---|
 | Unit | label grammar, URN, evidence scoring, id generation, coverage math | `tests/unit/` |
-| Schema matrix | the §2.1 encodings stay true, on both schemas | `tests/unit/test_schema_matrix.py` |
+| Schema matrix | the §2.1 encodings stay true, on both schemas, **per generation (§2.11)** | `tests/unit/test_schema_matrix.py` |
+| Capability probe | what `lexml/` vs `lexml-proposed/` permit, pinned | `tests/unit/test_capabilities.py` |
 | Golden | byte-stable `StyledDoc` / tree / XML / segments per sample | `tests/golden/` |
 | Routing | expected route per sample (§4.4) | `tests/unit/test_routing.py` |
 | Referee | recorded-fixture adjudication; fail-safe paths | `tests/referee_fixtures/` |
 | Telemetry | override/failure logging, report reconciliation | `tests/unit/test_telemetry.py` |
-| Round-trip | XML → model preserves shape and text | `tests/regression/` |
+| Round-trip | XML → model preserves shape and text, **both emitters** | `tests/regression/` |
+| Cross-emitter | flat and nested carry identical text and segment URNs | `tests/regression/` |
 | Conservation | no text lost or duplicated, including across the annex split | `tests/regression/` |
 | Robustness | degenerate/corrupt inputs never crash | `tests/unit/test_robustness.py` |
 | Validation | every emitted document validates on both schemas | all cycles |
@@ -891,14 +1074,16 @@ Asserted throughout — these are what make the parser trustworthy on the 285 do
 
 1. **Validity** — output validates against **both** schemas (configurable).
 2. **Conservation** — all source text present exactly once, including across `Norma`+`Anexo`.
-3. **Reversibility** — hierarchy reconstructable from output alone (`id` path or native nesting).
+3. **Reversibility** — hierarchy reconstructable from output alone: the `id` path on the flat emitter, native `ancestor::`/`descendant::` axes on the nested one.
 4. **Determinism** — same input + same referee cache ⇒ byte-identical output.
 5. **`id` uniqueness** — required by `xsd:ID`; enforced document-wide.
-6. **Ancestor totality (Rule A)** — every proper prefix of an `id` path exists.
+6. **Ancestor totality (Rule A)** — every proper prefix of an `id` path exists. *Required of the flat emitter; structurally guaranteed by the nested one, where a gap is a malformed tree (§5.2).*
 7. **No text duplication (Rule B)** — leaf-only extraction.
 8. **No fabrication** — low confidence degrades to flat, never invents structure.
 9. **Referee is advisory** — cannot override high-confidence rules; disabling it never breaks the pipeline.
 10. **Observability** — every rule failure and referee override is logged and counted.
+11. **Cross-emitter equivalence (A-R.3)** — every emitter carries identical text content and identical segment URNs. Choosing a rendering must never change what the document *says* or how a segment is cited.
+12. **Capability honesty (A-R.2)** — no code assumes a schema generation. Behaviour is gated on the probe, and the suite is green against `lexml/` alone.
 
 ### 9.3 Referee testing policy
 
@@ -920,7 +1105,12 @@ Goldens regenerate only via an explicit documented command. A diff always repres
 
 | Risk | Impact | Mitigation |
 |---|---|---|
-| `OpenStructure` cannot nest (§2.1) | high — core requirement | dual-representation; depth in `id` path + `Bloco nivel`; reversibility test; §11 proposal |
+| `OpenStructure` cannot nest (§2.1) | high — core requirement | dual-representation; depth in `id` path + `Bloco nivel`; reversibility test. **Largely retired by §2.10 once released** |
+| **Maintainers' change never ships, or ships altered** | medium | flat emitter stays default; the probe reads the schemas present, never a hard-coded version; nested emitter is purely additive; suite green without `lexml-proposed/` |
+| **Nested serialisation order ≠ reading order (§5.4 C1)** | medium | canonical emit order + `Rotulo`/explicit order index; segmentation never infers order from sibling position; refinement offered upstream (§11) |
+| **Constraint 2 forces a synthetic child** | low | `<Bloco nome="vazio"/>`, verified valid, tested invisible to text extraction and segmentation |
+| **Two emitters diverge in content** | medium | cross-emitter equivalence is invariant #11, asserted in Cycle 5b and the Cycle 9 regression suite |
+| **`lexml-proposed/` drifts from `lexml/`** | low | *generated*, never hand-edited; `build_proposed_schemas.py --check` in the suite; the patch failing to apply is the signal upstream has shipped |
 | Quoted statute misread as articulation | **high — silent corruption** | indentation + citation antecedent + monotonicity + omissis; regression on `parecer_93`'s 21 quotes; referee on residue |
 | 15 samples ⇏ 300+ corpus | high | genre-agnostic evidence fusion; `generic` profile; flat fallback; **telemetry to measure rule generalisation**; batch mode (Cycle 9) |
 | Coverage misjudged ⇒ lossy statutory render | high | coverage gate + validate-then-fallback + conservation invariant |
@@ -929,60 +1119,99 @@ Goldens regenerate only via an explicit documented command. A diff always repres
 | Rule A / Rule B regressions | medium | both are explicit invariants with dedicated tests (both were real bugs) |
 | `<td>` rejects `<p>` | medium | in the schema matrix from Cycle 0; reference parser confirms inline-only |
 | Strict `Artigo` ordering | medium | matrix cases; emitter asserts order |
-| Synthetic articles mislead consumers | medium | not default; provenance markers; documented |
-| Schema/version drift | medium | §2.1 matrix re-runs on any schema change |
+| ~~Synthetic articles mislead consumers~~ | — | **retired: the `articulado-sintetico` emitter is withdrawn (A-R.6)** |
+| Schema/version drift | medium | §2.1 matrix re-runs on any schema change, **per generation**; capability probe fails loudly on an unexpected result |
 | DOCX style inheritance (`basedOn`) missed | low | explicit resolution + test |
 
 ---
 
-## 11. The Recursive `Agrupamento` Proposal (for the LexML community)
+## 11. Engagement with the LexML Community
 
-Retained here because the user can reach the community. Full text with reproducible evidence is in `docs/20260801_142630_…` §6; summary:
+**Rewritten 2026-08-28 (A-R.6).** This section previously carried *our* proposal to make `Agrupamento` recursive via `blocksreq`. **That proposal is withdrawn.** The maintainers proposed a better change, by a different route, and it is theirs that the plan now builds against (§2.10). The original text is preserved in `docs/20260801_142630_…` §6 for the record.
 
-**Problem.** A large class of Brazilian legal documents is non-articulated yet deeply hierarchical (pareceres, pareceres normativos, atos declaratórios normativos, older portarias, service descriptions). `OpenStructure` cannot represent them, because `Agrupamento` and `div` derive from `blocksreq` → `blockElements`, which contains no container element; and `AgrupamentoHierarquico` requires articulated descendants and cannot hold prose. **No LexML element is both non-articulated and recursive.**
+### 11.1 Why ours was withdrawn
 
-**Evidence.** `Agrupamento`-in-`Agrupamento` and `div`-in-`div` both **FAIL** on `lexml-br-rigido.xsd` and `lexml09-flexivel.xsd`. Real motivating documents: `pn_cst_38_19801031` (`2.` → `2.1` → `2.3` → `2.3.1`), `port_mf_454_19770825` (`1.`, `2.1`, `a)`).
+We attacked `blocksreq`, making `Agrupamento` recursive. The maintainers attacked the other end, making `AgrupamentoHierarquico` prose-bearing. Theirs is better for a reason we had missed entirely: **`AgrupamentoHierarquico` was already recursive**, and `PartePrincipal` already accepted it. Recursion was never the missing piece — prose-bearing leaves were. Our proposal was aiming at a wall while the door stood open.
 
-**Proposed change** — additive, backward compatible:
+Theirs also reuses `hierarchy`, so `Rotulo` and `NomeAgrupador` come along for free. That was a *separate*, secondary request in our draft; their route grants it structurally. And because `Agrupamento` stays flat, prose cannot leak into `Artigo` or `Capitulo` — the statutory model keeps its integrity, which ours would have put at risk.
+
+**Consequence for the plan:** any design assuming nested `Agrupamento` is rewritten to use `AgrupamentoHierarquico` as the container and `Agrupamento` as the prose leaf. `Agrupamento`-in-`Agrupamento` still FAILS and always will.
+
+### 11.2 What to send back to the maintainers
+
+The reply should endorse their change and add value rather than restate the problem:
+
+1. **Endorse it, with evidence.** Their change makes `pn_cst_38_19801031`'s four-level hierarchy natively representable, validated on both `lexml-br-rigido.xsd` and `lexml09-flexivel.xsd`. All 16 cases of our pinned §2.1 matrix are unchanged: the edit is strictly additive. Our harness reproduces every claim offline.
+
+2. **Withdraw ours explicitly**, so no one implements two competing changes.
+
+3. **Confirm the ergonomic win they may not have set out to make.** `Rotulo`/`NomeAgrupador` become available to non-articulated documents, so existing breadcrumb tooling that walks `ancestor::*/NomeAgrupador` — `GeraCSVporArtigoPorAgrupador.xsl` among it — becomes applicable to them. Cycle 7 probes whether that stylesheet runs *unmodified* on nested output; if it does, that result is the strongest argument for the change and belongs in the reply.
+
+4. **Report the ordering constraint (§5.4 C1) as a usability finding, and offer the refinement.** Moving `AgrupamentoHierarquico` out of the `hierarchy` base and into the extension `choice` makes children order-free, letting sections interleave prose and subsections in true document order:
 
 ```xml
-<xsd:complexType name="blocksreq">
-  <xsd:choice minOccurs="1" maxOccurs="unbounded">
-    <xsd:group ref="blockElements"/>
-    <xsd:group ref="containerElements"/>   <!-- ADDED: div | Agrupamento -->
-  </xsd:choice>
+<xsd:complexType name="hierarchy">
+  <xsd:sequence>
+    <xsd:element ref="Rotulo"        minOccurs="0" maxOccurs="1"/>
+    <xsd:element ref="NomeAgrupador" minOccurs="0" maxOccurs="1"/>
+  </xsd:sequence>                              <!-- AH* removed from here -->
   <xsd:attributeGroup ref="corereq"/>
 </xsd:complexType>
+
+<xsd:choice minOccurs="1" maxOccurs="unbounded">
+  <xsd:group   ref="LXhierCompleto"/>
+  <xsd:element ref="AgrupamentoHierarquico"/>  <!-- moved here -->
+  <xsd:element ref="Agrupamento"/>
+  <xsd:element ref="Bloco"/>
+</xsd:choice>
 ```
 
-`sequence`→`choice` allows interleaving prose with subsections, the natural document order. Every currently-valid document stays valid. Precedent: Akoma Ntoso models exactly this with a recursive `<hcontainer>`; `Agrupamento` is its natural LexML analogue and already carries the required `@nome` role attribute under LexML's documented *Generic Document + Role Attribute* pattern.
+   Verified: prose-first order flips FAIL → PASS, nested-first keeps passing, and all 16 matrix cases stay unchanged. **State the caveat honestly:** `hierarchy` is the base type of every statutory aggregator (`Parte`, `Livro`, `Titulo`, `Capitulo`, `Secao`, `Subsecao`), so this has a wider blast radius than editing `AgrupamentoHierarquico` alone. The maintainers own that judgement. **This is an ergonomics improvement to offer, not a blocker to insist on** — the parser works either way, and §5.4 C1 is how it absorbs the constraint if they decline.
 
-**Secondary observations worth raising:**
-- `Rotulo`/`NomeAgrupador` are children of `hierarchy` only, so non-articulated sections must smuggle labels through `<Bloco nome="rotulo">`. Permitting them on `Agrupamento` would make non-articulated headings first-class and reusable by existing stylesheets.
-- `<td>` accepts inline content but not `<p>`, unlike every other block container — an inconsistency that complicates faithful table rendering.
+5. **Raise `minOccurs`** (§5.4 C2): the extension `choice` at `minOccurs="1"` makes a subsections-only section invalid, forcing a synthetic `<Bloco nome="vazio"/>` child. `minOccurs="0"` would remove that need, and is as small an edit as the ordering fix.
 
-**Route.** Open an issue on the schema repository with the problem statement, attach the reproducible validation script (`docs/20260801_004745_…` §11), offer the public-domain corpus documents as examples, and note that `lexml-parser-projeto-lei` already faces this limitation (`LexmlRenderer.isArticulatedAnexo`).
+6. **Re-raise the two carried-over observations.** `<td>` accepts inline content but not `<p>`, unlike every other block container. And `<p>` is still not permitted directly under `AgrupamentoHierarquico` (§2.1 row E), so prose always needs an `Agrupamento` wrapper — worth confirming that is intentional.
 
-**If adopted**, add a fourth emitter `generico-aninhado`. Because the internal model is already a real tree, this is purely a rendering addition — the payoff of keeping the model rendering-agnostic is that a schema improvement costs one emitter, not a rewrite.
+7. **Ask the release question.** Which schema version carries the change, and will `lexml-br-rigido.xsd` / `lexml09-flexivel.xsd` be re-issued together? The capability probe (§2.11) means the parser adapts automatically, but the re-vendoring step needs a version to pin.
+
+8. **Offer the corpus.** `pn_cst_38_19801031` and `port_mf_454_19770825` are public-domain motivating examples.
+
+### 11.3 When the change ships
+
+A tracked, reviewable sequence — not a rewrite:
+
+1. Re-vendor `lexml/` from upstream.
+2. Run `python3 scripts/build_proposed_schemas.py --check`. **It will fail**, because the region the patch targets no longer matches. *That failure is the signal.*
+3. Delete `lexml-proposed/` and `scripts/build_proposed_schemas.py`; point validation at `lexml/` alone.
+4. Flip the default emitter to `generico-aninhado` — one line, gated on the probe — and regenerate goldens as a reviewed diff.
+5. The capability probe stays. It is how the next schema change is discovered rather than assumed.
 
 ---
 
 ## 12. Cycle Summary
 
+Revised 2026-08-28 (§14). Cycle order:
+
+```
+0, 1, 2  ✅ complete        →  3, 4, 4b, 5, 5b(new), 6, 7, 8, 9
+                                          └── 6b withdrawn; round-trip reader → 7
+```
+
 | Cycle | Deliverable | Key exit criterion |
 |---|---|---|
-| 0 | Scaffolding, dual-schema harness | §2.1 matrix executable and green |
-| 1 | DOCX → `StyledDoc` (incl. indentation) | 15 samples ingest losslessly |
-| 2 | Metadata, URN, profiles | correct URN/metadata for all samples |
+| 0 ✅ | Scaffolding, dual-schema harness | §2.1 matrix executable and green — **+ capability probe (A-R.2), landing with 5b** |
+| 1 ✅ | DOCX → `StyledDoc` (incl. indentation) | 15 samples ingest losslessly |
+| 2 ✅ | Metadata, URN, profiles | correct URN/metadata for all samples |
 | 3 | Front/back matter segmentation | zero false positives on bare documents |
 | 4 | Hierarchy inference + quotation guard | 21 quoted articles in `parecer_93` rejected |
-| **4b** | **Routing + LLM referee + telemetry** | **routes match §4.4; overrides logged and counted** |
-| 5 | Emitter `generico` | 14 samples valid on both schemas; Rules A/B hold |
-| 6 | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both docs |
-| 6b | Emitter `articulado-sintetico` + round-trip | round-trip preserves shape and text |
-| 7 | Segmentation output (API + XSLT) | breadcrumbs complete; oracle agreement |
-| 8 | Robustness + CLI | every degenerate input handled cleanly |
-| 9 | Regression consolidation + batch | mutation test fails; corpus report reconciles |
+| 4b | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
+| 5 | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold |
+| **5b** | **Emitter `generico-aninhado` (nested, opt-in)** | **native axes recover hierarchy; text and URNs ≡ flat emitter** |
+| 6 | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both documents |
+| ~~6b~~ | ~~Emitter `articulado-sintetico`~~ | **withdrawn (A-R.6)** — round-trip reader relocated to Cycle 7 |
+| 7 | Segmentation output (API + XSLT) | **three-way oracle agreement**; breadcrumbs complete |
+| 8 | Robustness + CLI | every degenerate input handled cleanly; capabilities reported |
+| 9 | Regression consolidation + batch | mutation test bites; corpus report reconciles; **suite green without `lexml-proposed/`** |
 
 ---
 
@@ -991,7 +1220,33 @@ Retained here because the user can reach the community. Full text with reproduci
 Everything in this plan is grounded in verified evidence rather than assumption. The investigation record is preserved in `docs/`:
 
 - **`docs/20260801_004745_…`** — schema investigation; validation matrix A–R; reference-parser survey; §11 reproducible schema harness (offline `xml.xsd` stub + `schemaLocation` rewrite).
-- **`docs/20260801_142630_…`** — segmentation proof (Saxon XSLT 3.0, verbatim output); Rules A/B discovered by running the transform; indentation discriminator across 15 samples; local-SLM feasibility; dual-schema equivalence analysis; recursive `Agrupamento` proposal.
-- **This document** — consolidated plan incorporating the four ratified decisions.
+- **`docs/20260801_142630_…`** — segmentation proof (Saxon XSLT 3.0, verbatim output); Rules A/B discovered by running the transform; indentation discriminator across 15 samples; local-SLM feasibility; dual-schema equivalence analysis; **our recursive `Agrupamento` proposal — since withdrawn (§11.1), retained for the record**.
+- **`docs/20260827_111015_…`** — evaluation of the maintainers' `AgrupamentoHierarquico` change: the §3.1/§3.2 encoding tables, the 16-case backward-compatibility run, the ordering-constraint measurements, and the §3.7 refinement. **Source of every amendment in §14.**
+- **`docs/20260828_011050_plan_update_recursive_agrupamento_hierarquico.md`** — the record of *applying* that evaluation to this plan: what changed, what did not, and why.
+- **This document** — the consolidated plan, as amended.
 
 Both predecessor documents contain the originating prompts verbatim, for reproducibility.
+
+---
+
+## 14. Amendment Log — 2026-08-28 Revision
+
+Source: `docs/20260827_111015_revised_plan_recursive_agrupamento_hierarquico_adoption.md`. Cycles 0–2 are **complete and unaffected**; no delivered work is invalidated.
+
+| ID | Section(s) | Amendment |
+|---|---|---|
+| A-R.1 | §2.1, §2.10 | §2.1 is re-scoped to *the schemas as shipped* and is no longer absolute. New §2.10 records the maintainers' prose-bearing recursive `AgrupamentoHierarquico`, its four findings, and its unreleased status |
+| A-R.2 | §2.11, Cycle 0 addendum, §9.1, §9.2 | Schema capabilities are **probed, never assumed**. `validate/schema.py` gains a second generation (`lexml-proposed/`) and `probe_capabilities()`; matrix cases gain `requires` and skip rather than fail. New invariant #12 |
+| A-R.3 | §5.2, Cycle 5b, §9.2 | New emitter `generico-aninhado` and new **Cycle 5b**. New invariant #11 (cross-emitter equivalence) |
+| A-R.4 | §5.4 | Three binding constraints on the nested emitter: subsections-before-prose, ≥1 non-`AH` child (`<Bloco nome="vazio"/>`), prose needs an `Agrupamento` wrapper |
+| A-R.5 | §6.1, §6.2, Cycle 7 | Segmentation gains `segments_from_nested_xml()` and `segment_generico_aninhado.xsl`; the oracle becomes **three-way** |
+| A-R.6 | §11, Cycle 6b, §10, §12 | **Cycle 6b withdrawn** — `articulado-sintetico` is dropped, its round-trip reader relocated to Cycle 7. **Our own §11 recursive-`Agrupamento` proposal is withdrawn** in favour of the maintainers'; §11 becomes the engagement plan, including the §3.7 refinement to offer and the ship sequence |
+| A-R.7 | Cycle 4b | Blocker reason `nested_unavailable`. Routing decisions otherwise unchanged — the §4.4 route table stands |
+| A-R.8 | Cycle 6 | Annex bodies may use the nested form when the capability is present |
+| A-R.9 | Cycle 8, Cycle 9 | `--emitter=generico-aninhado`; new `capabilities` CLI command; nested goldens and cross-emitter equivalence in the regression suite; **the suite must stay green against `lexml/` alone** |
+
+**Decisions taken with the user while applying this revision (2026-08-28):**
+
+1. **Cycle 6b is dropped**, not merely deferred (A-R.6). Its round-trip reader is retained and relocated.
+2. **`lexml-proposed/` is the patched-schema location**, replacing the revision document's proposed `tests/fixtures/schemas/`. Verified by diff: it carries the maintainers' change *verbatim and nothing else* — only the `AgrupamentoHierarquico` edit plus a generated-file header — so the location is a repository-layout matter that leaves the proposal untouched.
+3. **The maintainers' proposal prevails.** The §3.7 refinement is *ours*, and is **forwarded upstream as a suggestion only** (§11.2 item 4). The emitter is built against the maintainers' change as written and absorbs the ordering constraint (§5.4 C1). No third "refined" schema generation is produced, and `interleaved_children` probes `False` against both generations present.
