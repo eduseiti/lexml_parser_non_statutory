@@ -1,0 +1,19 @@
+{
+  "source": "ad_srf_22_19970430.docx",
+  "profile": "ato_declaratorio",
+  "body": {
+    "confidence": 0.0,
+    "flat": true,
+    "signals": {
+      "n_blocks": 0,
+      "n_sections": 0,
+      "coverage": 0.0,
+      "label_kinds": [],
+      "style_headings": 0,
+      "rejected": [],
+      "confidence": 0.0
+    },
+    "sections": []
+  },
+  "annexes": []
+}

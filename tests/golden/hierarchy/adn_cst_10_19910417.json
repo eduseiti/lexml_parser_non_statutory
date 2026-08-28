@@ -1,0 +1,115 @@
+{
+  "source": "adn_cst_10_19910417.docx",
+  "profile": "ato_declaratorio",
+  "body": {
+    "confidence": 0.85,
+    "flat": false,
+    "signals": {
+      "n_blocks": 3,
+      "n_sections": 3,
+      "coverage": 1.0,
+      "label_kinds": [
+        "numeric"
+      ],
+      "style_headings": 0,
+      "rejected": [],
+      "confidence": 0.85
+    },
+    "span": {
+      "start": 4,
+      "end": 6
+    },
+    "sections": [
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "1.",
+        "source_indices": [
+          4
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "O Demonstrativo da Apuração dos Ganhos de Capital de que trata o subitem 8.3 da IN RF 19/91, a ser anexado à Declaração de Rendimentos do exercício de 1991, é o do ano-base de 1989, exercício de 1990, adaptado à legislação tributária em vigor no ano-base de 1990."
+              }
+            ],
+            "source_indices": [
+              4
+            ]
+          }
+        ],
+        "children": [
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "label": "1.1",
+            "source_indices": [
+              5
+            ],
+            "evidence": {
+              "signals": [
+                "label:numeric",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Na apuração do ganho de capital na alienação de bens comuns, decorrentes do regime de casamento, o limite de 10.000 BTN aplica-se em relação ao bem."
+                  }
+                ],
+                "source_indices": [
+                  5
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "2.",
+        "source_indices": [
+          6
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "Na apuração de ganho de capital de imóvel cuja construção tenha sido iniciada a partir de janeiro de 1989, em terreno adquirido até 31 de dezembro de 1988, o percentual de redução aplica-se apenas em relação à proporção do ganho de capital correspondente ao terreno."
+              }
+            ],
+            "source_indices": [
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "annexes": []
+}

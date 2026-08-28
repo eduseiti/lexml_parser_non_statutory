@@ -12,9 +12,10 @@ Prints what changed. A silent regeneration that quietly rewrites 15 files is
 exactly the failure mode the policy exists to prevent — if this reports
 "3 changed", those three belong in the commit message.
 
-Three kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
-(Cycle 2's `Metadata`) and ``segment`` (Cycle 3's `Segmentation`). Later
-cycles add theirs to ``KINDS`` rather than writing another script.
+Four kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
+(Cycle 2's `Metadata`), ``segment`` (Cycle 3's `Segmentation`) and
+``hierarchy`` (Cycle 4's `HierarchyDoc`). Later cycles add theirs to ``KINDS``
+rather than writing another script.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
+from lexml_nonstat.hierarchy import infer_hierarchy  # noqa: E402
 from lexml_nonstat.ingest import read_docx  # noqa: E402  (after sys.path setup)
 from lexml_nonstat.model import extract_metadata  # noqa: E402
 from lexml_nonstat.segment import segment_document  # noqa: E402
@@ -50,11 +52,21 @@ def _segment_json(sample: Path) -> str:
     return segment_document(doc, metadata=metadata).to_json()
 
 
+def _hierarchy_json(sample: Path) -> str:
+    doc = read_docx(sample)
+    metadata = extract_metadata(doc, filename=sample.name)
+    segmentation = segment_document(doc, metadata=metadata)
+    return infer_hierarchy(
+        doc, metadata=metadata, segmentation=segmentation
+    ).to_json()
+
+
 #: kind → (output directory, renderer)
 KINDS: dict[str, tuple[Path, object]] = {
     "styled": (GOLDEN_ROOT / "styled", _styled_json),
     "metadata": (GOLDEN_ROOT / "metadata", _metadata_json),
     "segment": (GOLDEN_ROOT / "segment", _segment_json),
+    "hierarchy": (GOLDEN_ROOT / "hierarchy", _hierarchy_json),
 }
 
 

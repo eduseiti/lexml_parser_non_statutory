@@ -1,0 +1,1159 @@
+{
+  "source": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+  "profile": "servico",
+  "body": {
+    "confidence": 0.9,
+    "flat": false,
+    "signals": {
+      "n_blocks": 93,
+      "n_sections": 6,
+      "coverage": 0.0645,
+      "label_kinds": [],
+      "style_headings": 6,
+      "rejected": [],
+      "confidence": 0.9
+    },
+    "span": {
+      "start": 0,
+      "end": 111
+    },
+    "sections": [
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "heading": "Sistema de Recolhimento Mensal Obrigatório (Carnê-Leão)",
+        "source_indices": [
+          0
+        ],
+        "evidence": {
+          "signals": [
+            "style"
+          ],
+          "score": 0.9
+        },
+        "children": [
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "heading": "O que é?",
+            "source_indices": [
+              2
+            ],
+            "evidence": {
+              "signals": [
+                "style"
+              ],
+              "score": 0.9
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "O Carnê-leão é o imposto sobre a renda que deve ser pago mensalmente, de forma obrigatória, pelas pessoas físicas, residentes no Brasil, que receberem rendimentos de outra pessoa física ou do exterior."
+                  }
+                ],
+                "source_indices": [
+                  3
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Através deste serviço você poderá emitir o DARF para pagar o carnê-leão, além de manter o registro dos rendimentos mensais utilizados no cálculo. No ano seguinte, os registros poderão ser importados para sua Declaração de Imposto de Renda (DIRPF), facilitando o preenchimento."
+                  }
+                ],
+                "source_indices": [
+                  4
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "heading": "Quem pode utilizar este serviço?",
+            "source_indices": [
+              5
+            ],
+            "evidence": {
+              "signals": [
+                "style"
+              ],
+              "score": 0.9
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "São obrigados ao recolhimento do carnê-leão:",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  6
+                ]
+              },
+              {
+                "node": "list",
+                "ordered": false,
+                "items": [
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "pessoas físicas, residentes no Brasil, que receberem rendimentos de outra pessoa física ou do exterior; e"
+                      }
+                    ],
+                    "source_indices": [
+                      7
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "serventuários da justiça, independentemente de a fonte ser pessoa física ou jurídica, exceto quando forem remunerados exclusivamente pelos cofres públicos."
+                      }
+                    ],
+                    "source_indices": [
+                      8
+                    ]
+                  }
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Estão sujeitos ao pagamento do Carnê-leão os rendimentos:",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  10
+                ]
+              },
+              {
+                "node": "list",
+                "ordered": false,
+                "items": [
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Trabalho sem vínculo empregatício;"
+                      }
+                    ],
+                    "source_indices": [
+                      11
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Locação e sublocação de bens móveis e imóveis;"
+                      }
+                    ],
+                    "source_indices": [
+                      12
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Arrendamento e subarrendamento;"
+                      }
+                    ],
+                    "source_indices": [
+                      13
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Prestação de serviços a embaixadas, repartições consulares, missões diplomáticas ou técnicas ou a organismos internacionais;"
+                      }
+                    ],
+                    "source_indices": [
+                      14
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Prestação de serviços de representante comercial autônomo, intermediário na realização de negócios por conta de terceiros;"
+                      }
+                    ],
+                    "source_indices": [
+                      15
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Emolumentos e custas dos serventuários da Justiça, exceto quando forem remunerados pelos cofres públicos;"
+                      }
+                    ],
+                    "source_indices": [
+                      16
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Prestação de serviços de transporte de cargas - no mínimo 10% (dez por cento) do total dos rendimentos recebidos;"
+                      }
+                    ],
+                    "source_indices": [
+                      17
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Prestação de serviços de transporte de passageiros - no mínimo 60% (sessenta por cento) do total dos rendimentos recebidos;"
+                      }
+                    ],
+                    "source_indices": [
+                      18
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Rendimentos decorrentes da atividade de leiloeiro."
+                      }
+                    ],
+                    "source_indices": [
+                      19
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "heading": "Etapas para a realização deste serviço",
+            "source_indices": [
+              21
+            ],
+            "evidence": {
+              "signals": [
+                "style"
+              ],
+              "score": 0.9
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Informar rendimentos e emitir o DARF",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  22
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Acesse canal abaixo e preencha as informações necessárias para emitir o DARF."
+                  }
+                ],
+                "source_indices": [
+                  23
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Para rendimentos recebidos antes de 2021, baixe o programa correspondente ao respectivo ano."
+                  }
+                ],
+                "source_indices": [
+                  24
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Canais de prestação",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  25
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Web :"
+                  }
+                ],
+                "source_indices": [
+                  26
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Meu Carnê-Leão",
+                    "href": "https://cav.receita.fazenda.gov.br/autenticacao/login/index/10028"
+                  }
+                ],
+                "source_indices": [
+                  27
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Para rendimentos recebidos até 2020",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  28
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Web :"
+                  }
+                ],
+                "source_indices": [
+                  30
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Baixar o programa",
+                    "href": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/leao"
+                  }
+                ],
+                "source_indices": [
+                  31
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Documentação",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  32
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Documentação em comum para todos os casos",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  33
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Comprovantes de rendimentos do mês."
+                  }
+                ],
+                "source_indices": [
+                  34
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Tempo de duração da etapa",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  35
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Atendimento imediato"
+                  }
+                ],
+                "source_indices": [
+                  36
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "heading": "Outras Informações",
+            "source_indices": [
+              37
+            ],
+            "evidence": {
+              "signals": [
+                "style"
+              ],
+              "score": 0.9
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Quanto tempo leva?",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  38
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Não estimado ainda"
+                  }
+                ],
+                "source_indices": [
+                  39
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Informações adicionais ao tempo estimado",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  41
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Este serviço é gratuito para o cidadão."
+                  }
+                ],
+                "source_indices": [
+                  43
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Para mais informações ou dúvidas sobre este serviço, entre em contato",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  45
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Orientações sobre o carnê-leão",
+                    "href": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/carne-leao"
+                  }
+                ],
+                "source_indices": [
+                  46
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Fale Conosco",
+                    "href": "https://servicos.receitafederal.gov.br/servico/receita-atende"
+                  }
+                ],
+                "source_indices": [
+                  47
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Este é um serviço do(a) "
+                  },
+                  {
+                    "text": "Secretaria Especial da Receita Federal do Brasil",
+                    "href": "https://www.gov.br/pt-br/orgaos/secretaria-especial-da-receita-federal-do-brasil"
+                  },
+                  {
+                    "text": " . Em caso de dúvidas, reclamações ou sugestões favor contactá-lo."
+                  }
+                ],
+                "source_indices": [
+                  49
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Legislação",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  51
+                ]
+              },
+              {
+                "node": "list",
+                "ordered": false,
+                "items": [
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Instrução Normativa RFB nº 2.006/2021",
+                        "href": "http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?visao=anotado&idAto=115115"
+                      }
+                    ],
+                    "source_indices": [
+                      52
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Instrução Normativa RFB nº 1.500/2014",
+                        "href": "http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?idAto=57670&visao=anotado"
+                      }
+                    ],
+                    "source_indices": [
+                      53
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Instrução Normativa SRF nº 46/1997",
+                        "href": "http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?visao=anotado&idAto=49308"
+                      }
+                    ],
+                    "source_indices": [
+                      54
+                    ]
+                  }
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Tratamento a ser dispensado ao usuário no atendimento",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  56
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "O usuário deverá receber, conforme os princípios expressos na Lei nº 13.460/2017, um atendimento pautado nas seguintes diretrizes:"
+                  }
+                ],
+                "source_indices": [
+                  57
+                ]
+              },
+              {
+                "node": "list",
+                "ordered": false,
+                "items": [
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Urbanidade;"
+                      }
+                    ],
+                    "source_indices": [
+                      58
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Respeito;"
+                      }
+                    ],
+                    "source_indices": [
+                      59
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Acessibilidade;"
+                      }
+                    ],
+                    "source_indices": [
+                      60
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Cortesia;"
+                      }
+                    ],
+                    "source_indices": [
+                      61
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Presunção da boa-fé do usuário;"
+                      }
+                    ],
+                    "source_indices": [
+                      62
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Igualdade;"
+                      }
+                    ],
+                    "source_indices": [
+                      63
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Eficiência;"
+                      }
+                    ],
+                    "source_indices": [
+                      64
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Segurança; e"
+                      }
+                    ],
+                    "source_indices": [
+                      65
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Ética"
+                      }
+                    ],
+                    "source_indices": [
+                      66
+                    ]
+                  }
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Informações sobre as condições de acessibilidade, sinalização, limpeza e conforto dos locais de atendimento",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  68
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "O usuário do serviço público, conforme estabelecido pela Lei nº 13.460/2017, tem direito a atendimento presencial, quando necessário, em instalações salubres, seguras, sinalizadas, acessíveis e adequadas ao serviço e ao atendimento."
+                  }
+                ],
+                "source_indices": [
+                  69
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Informação sobre quem tem direito a tratamento prioritário",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  71
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Têm direito a atendimento prioritário as pessoas com deficiência, pessoas com transtorno do espectro autista, os idosos com idade igual ou superior a 60 anos, as gestantes, as lactantes, as pessoas com crianças de colo, os obesos, pessoas com mobilidade reduzida e doadores de sangue, conforme estabelecido pela Lei nº 10.048/2000."
+                  }
+                ],
+                "source_indices": [
+                  72
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "heading": "Lei Geral de Proteção de Dados Pessoais - LGPD",
+            "source_indices": [
+              74
+            ],
+            "evidence": {
+              "signals": [
+                "style"
+              ],
+              "score": 0.9
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Dados pessoais tratados por este Serviço",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  75
+                ]
+              },
+              {
+                "node": "list",
+                "ordered": false,
+                "items": [
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Nome"
+                      }
+                    ],
+                    "source_indices": [
+                      76
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Endereço"
+                      }
+                    ],
+                    "source_indices": [
+                      77
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "NIT/PIS"
+                      }
+                    ],
+                    "source_indices": [
+                      78
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "CTPS"
+                      }
+                    ],
+                    "source_indices": [
+                      79
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "CBO"
+                      }
+                    ],
+                    "source_indices": [
+                      80
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Data de admissão"
+                      }
+                    ],
+                    "source_indices": [
+                      81
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Data de nascimento"
+                      }
+                    ],
+                    "source_indices": [
+                      82
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "CPF"
+                      }
+                    ],
+                    "source_indices": [
+                      83
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Naturalidade"
+                      }
+                    ],
+                    "source_indices": [
+                      84
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Sexo"
+                      }
+                    ],
+                    "source_indices": [
+                      85
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Ocupação"
+                      }
+                    ],
+                    "source_indices": [
+                      86
+                    ]
+                  }
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Dados pessoais sensíveis tratados por este Serviço de acordo com a Lei 13709/2018, art. 5º, II",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  88
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Não é realizado tratamento de dados pessoais sensíveis"
+                  }
+                ],
+                "source_indices": [
+                  89
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Este serviço não trata dados pessoais de crianças ou adolescentes.",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  91
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Prazo de retenção para dados pessoais",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  93
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "No mínimo enquanto não extinto o direito da Fazenda Pública cobrar os respectivos créditos."
+                  }
+                ],
+                "source_indices": [
+                  94
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Hipótese de tratamento de dados pessoais adotada (Lei 13709/2018)",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  96
+                ]
+              },
+              {
+                "node": "list",
+                "ordered": false,
+                "items": [
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Cumprimento de obrigação legal ou regulatória pelo controlador"
+                      }
+                    ],
+                    "source_indices": [
+                      97
+                    ]
+                  },
+                  {
+                    "node": "li",
+                    "inlines": [
+                      {
+                        "text": "Execução de políticas públicas"
+                      }
+                    ],
+                    "source_indices": [
+                      98
+                    ]
+                  }
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Finalidade do tratamento",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  100
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Apuração dos créditos tributários"
+                  }
+                ],
+                "source_indices": [
+                  101
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Previsão legal do tratamento",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  102
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Lei nº 5.172/1966, art. 150"
+                  }
+                ],
+                "source_indices": [
+                  103
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Lei 9.779/1999, art. 16."
+                  }
+                ],
+                "source_indices": [
+                  104
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Dados pessoais compartilhados com outras instituições",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  105
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Não, exceto no caso do Simples Nacional, regime único de arrecadação dos impostos e contribuições comum da União, dos Estados, do Distrito Federal e dos Municípios."
+                  }
+                ],
+                "source_indices": [
+                  106
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "País(es) e instituição(ões) que recebem transferência(s) internacional de dados pessoais e/ou dados pessoais sensíveis",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  107
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Não é realizada transferência internacional de dados pessoais e dados pessoais sensíveis."
+                  }
+                ],
+                "source_indices": [
+                  108
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Link da política de privacidade/termo de uso do serviço",
+                    "bold": true
+                  }
+                ],
+                "source_indices": [
+                  109
+                ]
+              },
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/lgpd/termo-de-uso",
+                    "href": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/lgpd/termo-de-uso"
+                  }
+                ],
+                "source_indices": [
+                  110
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "annexes": []
+}

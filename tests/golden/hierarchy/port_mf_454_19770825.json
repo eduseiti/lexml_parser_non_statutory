@@ -1,0 +1,470 @@
+{
+  "source": "port_mf_454_19770825.docx",
+  "profile": "portaria",
+  "body": {
+    "confidence": 0.85,
+    "flat": false,
+    "signals": {
+      "n_blocks": 15,
+      "n_sections": 15,
+      "coverage": 1.0,
+      "label_kinds": [
+        "alpha",
+        "numeric"
+      ],
+      "style_headings": 0,
+      "rejected": [],
+      "confidence": 0.85
+    },
+    "span": {
+      "start": 4,
+      "end": 18
+    },
+    "sections": [
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "1.",
+        "source_indices": [
+          4
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "Para os efeitos do artigo 1º do Decreto-lei nº 1.510, de 27 de dezembro de 1976, considera-se rendimento liquido tributável, classificado na cédula \"H\" da declaração anual de rendimentos, a diferença entre o valor bruto obtido da alienação de quaisquer participações societárias e o respectivo preço de custo reajustado."
+              }
+            ],
+            "source_indices": [
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "2.",
+        "source_indices": [
+          5
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "Para efeito de apurar a diferença de que trata este item, nas alienações a título gratuito, considera-se como valor bruto obtido pelo alienante:"
+              }
+            ],
+            "source_indices": [
+              5
+            ]
+          }
+        ],
+        "children": [
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "alinea",
+            "label": "a)",
+            "source_indices": [
+              6
+            ],
+            "evidence": {
+              "signals": [
+                "label:alpha",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "o valor real da participação, determinado pelo preço normal que poderia obter no mercado, desde que não seja inferior ao valor patrimonial da participação alienada;"
+                  }
+                ],
+                "source_indices": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "alinea",
+            "label": "b)",
+            "source_indices": [
+              7
+            ],
+            "evidence": {
+              "signals": [
+                "label:alpha",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "o correspondente ao da cotação média obtida no pregão imediatamente anterior, caso se trate de participação societária representada por ações normalmente negociadas em Bolsas."
+                  }
+                ],
+                "source_indices": [
+                  7
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "label": "2.1 -",
+            "source_indices": [
+              8
+            ],
+            "evidence": {
+              "signals": [
+                "label:numeric",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Considera-se preço de custo reajustado o preço de compra, de subscrição ou de aquisição a qualquer titulo, corrigido monetariamente mediante aplicação dos índices de variação das Obrigações Reajustáveis do Tesouro Nacional, em função das datas de efetivo pagamento."
+                  }
+                ],
+                "source_indices": [
+                  8
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "3.",
+        "source_indices": [
+          9
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "Nas alienações de participações societárias havidas por herança o valor de custo será aquele que tiver servido de base para a partilha dos bens."
+              }
+            ],
+            "source_indices": [
+              9
+            ]
+          }
+        ],
+        "children": [
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "label": "3.1 -",
+            "source_indices": [
+              10
+            ],
+            "evidence": {
+              "signals": [
+                "label:numeric",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Nas alienações de participações societárias havidas por doação o valor de custo será aquele que tiver servido de base para apurar o rendimento imputado ao doador conforme item 2."
+                  }
+                ],
+                "source_indices": [
+                  10
+                ]
+              }
+            ]
+          },
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "label": "3.2 -",
+            "source_indices": [
+              11
+            ],
+            "evidence": {
+              "signals": [
+                "label:numeric",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "Em ambos os casos o valor de custo poderá ser corrigido monetariamente, como dispõe o item 2.1."
+                  }
+                ],
+                "source_indices": [
+                  11
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "4.",
+        "source_indices": [
+          12
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "No caso de opção pelo pagamento do imposto à alíquota de 25% (vinte e cinco por cento) sobre os lucros auferidos, conforme dispõe o artigo 8º do Decreto-lei nº 1.510/76, a incidência far-se-á sobre o rendimento líquido apurado conforme item 1 desta Portaria."
+              }
+            ],
+            "source_indices": [
+              12
+            ]
+          }
+        ],
+        "children": [
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "label": "4.1.",
+            "source_indices": [
+              13
+            ],
+            "evidence": {
+              "signals": [
+                "label:numeric",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "A opção é anual e relativa a todas as operações e será exercida na declaração de rendimentos do exercício financeiro correspondente ao ano-base em que as alienações foram efetivadas."
+                  }
+                ],
+                "source_indices": [
+                  13
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "5.",
+        "source_indices": [
+          14
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "Face ao disposto no art. 5º do D.L. 1.510/76, presume-se que as alienações se referem às participações subscritas ou adquiridas mais recentemente e as bonificações recebidas devem ser rateadas segundo as datas e quantidades originariamente subscritas ou adquiridas, já acrescidas dos rateios de bonificações anteriores."
+              }
+            ],
+            "source_indices": [
+              14
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "6.",
+        "source_indices": [
+          15
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "O recolhimento do imposto sujeito à retenção na fonte, previsto no artigo 7º, do D.L. 1.510/76, deve ser efetivado no ato da operação, ainda quando se trate de alienação a título gratuito."
+              }
+            ],
+            "source_indices": [
+              15
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "7.",
+        "source_indices": [
+          16
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "O imposto não incide na alienação de participações societárias adquiridas há mais de cinco anos; neste caso, o alienante deve fornecer ao adquirente documento em que declare essa circunstância."
+              }
+            ],
+            "source_indices": [
+              16
+            ]
+          }
+        ],
+        "children": [
+          {
+            "node": "section",
+            "level": 2,
+            "kind": "subsecao",
+            "label": "7.1 -",
+            "source_indices": [
+              17
+            ],
+            "evidence": {
+              "signals": [
+                "label:numeric",
+                "series"
+              ],
+              "score": 0.85
+            },
+            "body": [
+              {
+                "node": "para",
+                "inlines": [
+                  {
+                    "text": "O prazo qüinqüenal citado neste item é contado segundo a definição de ano contida na Lei nº 810, de 6 de setembro de 1949."
+                  }
+                ],
+                "source_indices": [
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "secao",
+        "label": "8.",
+        "source_indices": [
+          18
+        ],
+        "evidence": {
+          "signals": [
+            "label:numeric",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "O Secretário da Receita Federal poderá criar formulário anexo à declaração de rendimentos, com o fim de demonstrar os resultados auferidos nas alienações, bem como baixar as demais normas que se fizerem necessárias ao cumprimento do disposto nesta Portaria e no Decreto-lei número 1.510/76."
+              }
+            ],
+            "source_indices": [
+              18
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "annexes": []
+}

@@ -977,19 +977,111 @@ exactly one part, none twice and none nowhere — which is text conservation
 `hierarchy/`: `labels.py` (`1.`, `1.1`, `1.1.1`, `I -`, `a)`, `c. 1)`, `CAPÍTULO`, `Seção`, `Subseção`, ordinals, roman, `único`, `-A`); **`quotation.py` redesigned** around indentation + citation antecedent + numbering monotonicity + omissis runs; `evidence.py`; `unify.py` (level unification, depth monotonicity); `tree.py`; confidence scoring; flat fallback.
 
 Tests
-- label grammar: ~40 parametrised forms → (kind, value, arity), **including negatives** (`1.500/2014` in a citation is not a label; `Lei nº 12.618` is not a label)
-- **quotation guard: all 21 indented `Art.` in `parecer_93` are content, not structure** (regression-critical)
-- `par_cosit_26`: `Art. 52. .........` recognised as omissis-bearing quotation; numbering `1º,2º,3º,16,52` flagged non-monotonic
+- label grammar: ~40 parametrised forms → (kind, value, arity), **including negatives** (`1.500/2014` in a citation is not a label; `Lei nº 12.618` is not a label, and neither is `2.08.30.00` or `06.12` — A-4.2)
+- **quotation guard: every paragraph-initial `Art.` in `parecer_93` is content, not structure** (regression-critical; 25 under a quote-tolerant regex, 21 under §2.5's stricter one — the count is not the point)
+- `par_cosit_26`: `Art. 52. .........` recognised as omissis-bearing quotation; numbering `2,3,16,18,52` flagged non-monotonic
 - `CARNE_LEAO`: `Heading1`→1, `Heading2`→2, children attached correctly
 - `pn_cst_38`: `2.` → `2.1` → `2.3` → `2.3.1` yields depths 1/2/2/3
 - `port_mf_454`: `1.`, `2.`, `2.1`, `a)` hierarchy correct
 - depth monotonicity: never increases by more than 1 between consecutive headings
-- nested list reconstruction from `ilvl`
+- nested list reconstruction from `ilvl` — **synthetic fixture**, no sample has a contiguous multi-level Word list (A-4.6)
 - style/label evidence conflict resolves deterministically
 - low confidence ⇒ flat fallback, no fabricated sections
 - idempotence: inferring twice yields an identical tree
+- **`sumula_stj_125` groups by case** — 7 identified headings, 31 parts (A-4.3)
+- **`port_mf_277`'s annex carries its own tree** — 65 `Súmula CARF nº N` sections (A-4.5, discharging A-R.8 early)
 
 Exit: all 15 samples produce trees matching hand-authored goldens.
+
+**Amendment A-4.1 (Cycle 4, 2026-08-28) — the indent discriminator is declared-vs-inherited, not deviation.**
+
+§2.5 proposed measuring each paragraph's indent against the document's modal
+body indent. On `parecer_93` that arithmetic does not work: the quote band is
+**2908** and the modal body indent is **2909**, one twip *above* it. What
+separates them is where the number comes from — ordinary body text *inherits*
+2909 from the `Normal` style (216 of 397 paragraphs declare no direct indent at
+all), while every quoted paragraph *declares* its own. `detect_quote_bands`
+therefore has two rules and picks whichever the document supports: `deviation`
+(values ≥ modal + 300 twips, ≥3 paragraphs) and `declared` (modal is inherited,
+and declared indents ≥300 cluster). `sumula_stj_125` resolves by the first,
+`parecer_93` only by the second, and eight samples by neither.
+
+A precedence rule falls out of the same measurement: **a paragraph Word itself
+declares a heading is never quoted.** Without it, `sumula_stj_125`'s eight
+centred `EMENTA` headings (1371 twips against a body of 893) land in the
+deviation band and the document loses half its structure.
+
+**Amendment A-4.2 (Cycle 4, 2026-08-28) — three negative rules the grammar needs, each forced by a real paragraph.**
+
+1. **A zero or zero-padded component is not an ordinal.** `pn_cst_38` opens with
+   `1.24.20.25 -`, `2.08.30.00 -`, `2.16.25.00 -` — subject-classification
+   codes, not fourth-level sections. The same rule disposes of
+   `sumula_stj_125`'s `06.12`/`06.10`, and it is what lets a two-component date
+   be told apart from `2.1`, which by shape alone it cannot be.
+2. **An orphan dotted label is not a label.** `1.24.20.25` survives rule 1, and
+   is refused instead by unification: its parent `1.24.20` was never opened.
+   This belongs to the document, not to the grammar — `2.3.1` is a good label
+   when `2.3` is open and noise when it is not.
+3. **A top-level numeric series must start at 1 or 2 and step by ≤3, or the
+   whole series is rejected.** `parecer_93`'s depth-1 numeric candidates read
+   `1, 11, 111, 46, 194, 74` in document order; a document does not number
+   itself backwards. (`par_cosit_26` starts at `2.` because its `1.` sits in
+   the front matter, which is why 2 is allowed.)
+
+A fourth, smaller rule joins them: a **solitary** roman/alpha label is not an
+enumeration. `parecer_93` block 330 is an OCR'd footnote marker `n.` that would
+otherwise become a section of the parecer.
+
+**Amendment A-4.3 (Cycle 4, 2026-08-28) — numbered-container demotion.**
+*(Decided with the user during Cycle 4 reconciliation.)*
+
+`sumula_stj_125`'s body is 38 `Heading 1` blocks: seven naming a case
+(`RECURSO ESPECIAL N. 34.988-SP`) and thirty-one naming a part of one
+(`EMENTA`, `ACÓRDÃO`, `RELATÓRIO`, `VOTO`). Word records **no** difference
+between them — identical style, outline level, typography, alignment and
+indent — so the grouping is read from what the headings say about themselves: a
+heading carrying its own identifier names a thing, and identifier-free headings
+after it name parts of it.
+
+Deliberately not a vocabulary rule. Three guards keep it from firing on a
+document that merely happens to have a number in a heading: the run of
+same-level style headings must be ≥4 long, must **start** with an identified
+heading, and must genuinely mix the two (≥2 identified, ≥1 bare). `CARNE_LEAO`
+declines on the first count (no heading carries an identifier) and
+`port_mf_277`'s annex on the third (all 65 do).
+
+**Amendment A-4.4 (Cycle 4, 2026-08-28) — named units are a series, not a grammar rule.**
+
+`Súmula CARF nº 1` is a heading only because 65 of them run in order through
+`port_mf_277`'s annex. `detect_unit_series` requires ≥3 whole-paragraph
+occurrences sharing a folded head word with strictly increasing numbers, and
+feeds the heads it finds back into `parse_label`. That is what stops
+`Lei nº 12.618` from ever parsing as a label: it appears only inside sentences,
+never as a paragraph of its own.
+
+The sibling-gap limit does **not** apply to a unit series, which was validated
+document-wide already. The annex runs `1, 3, 4 … 33, 40, 41 …` — the gaps are
+the súmulas CARF revoked — and a gap limit would amputate it at nº 33.
+
+**Amendment A-4.5 (Cycle 4, 2026-08-28) — the deliverable is a `HierarchyDoc`: body *and* each annex.**
+*(Decided with the user during Cycle 4 reconciliation.)*
+
+Hierarchy is inferred over the body span and over each annex span separately,
+so `infer_hierarchy` returns a `HierarchyDoc` carrying one `HierarchyTree` per
+region rather than a bare tree. This discharges **A-R.8** a cycle early:
+`port_mf_277`'s `ANEXO ÚNICO` gains 65 real sections instead of being a flat
+blob, and Cycle 6 inherits the result rather than re-importing this package to
+compute it. The annex's own marker paragraph is its *title*, not part of its
+body.
+
+**Amendment A-4.6 (Cycle 4, 2026-08-28) — `ilvl` nesting is tested synthetically.**
+
+**No sample has a contiguous multi-level Word list.** `CARNE_LEAO`'s `ilvl=1`
+and `ilvl=2` paragraphs (blocks 22 and 34) are eleven blocks apart, so they are
+two single-level lists rather than one nested one. Nesting is therefore
+exercised by a synthetic fixture, following the A-1.3 precedent for NFC
+normalisation — and it earned its place immediately: the first implementation
+dropped every nested item, and no corpus golden could have caught it.
 
 ### Cycle 4b — Statutory Viability Analyzer + LLM Referee + Telemetry
 
@@ -1284,7 +1376,7 @@ A tracked, reviewable sequence — not a rewrite:
 Revised 2026-08-28 (§14). Cycle order:
 
 ```
-0, 1, 2, 3  ✅ complete     →  4, 4b, 5, 5b(new), 6, 7, 8, 9
+0, 1, 2, 3, 4  ✅ complete  →  4b, 5, 5b(new), 6, 7, 8, 9
                                           └── 6b withdrawn; round-trip reader → 7
 ```
 
@@ -1293,8 +1385,8 @@ Revised 2026-08-28 (§14). Cycle order:
 | 0 ✅ | Scaffolding, dual-schema harness | §2.1 matrix executable and green — **+ capability probe (A-R.2), landing with 5b** |
 | 1 ✅ | DOCX → `StyledDoc` (incl. indentation) | 15 samples ingest losslessly |
 | 2 ✅ | Metadata, URN, profiles | correct URN/metadata for all samples |
-| 3 | Front/back matter segmentation | zero false positives on bare documents |
-| 4 | Hierarchy inference + quotation guard | 21 quoted articles in `parecer_93` rejected |
+| 3 ✅ | Front/back matter segmentation | zero false positives on bare documents |
+| 4 ✅ | Hierarchy inference + quotation guard | every quoted article in `parecer_93` rejected; 15 trees match hand-authored goldens |
 | 4b | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
 | 5 | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold |
 | **5b** | **Emitter `generico-aninhado` (nested, opt-in)** | **native axes recover hierarchy; text and URNs ≡ flat emitter** |

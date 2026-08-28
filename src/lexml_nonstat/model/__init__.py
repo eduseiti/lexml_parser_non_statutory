@@ -1,10 +1,22 @@
 """The rendering-agnostic document model.
 
-Cycle 2 delivers its metadata half: URNs and ``Metadata``. The structural half
-(``Section``, ``Dispositivo``, ``DocumentModel`` — plan §3.1) arrives with the
-hierarchy cycles.
+Cycle 2 delivered its metadata half: URNs and ``Metadata``. Cycle 4 adds the
+content nodes and the recursive ``Section`` (:mod:`.nodes`). ``Dispositivo`` and
+``DocumentModel`` arrive with the statutory route in Cycles 4b and 6.
 """
 
+from .nodes import (
+    PARA_KINDS,
+    SECTION_KINDS,
+    Evidence,
+    ListItem,
+    ListNode,
+    Node,
+    Para,
+    Section,
+    Table,
+    node_from_dict,
+)
 from .metadata import (
     METADATA_SOURCE_URI,
     Metadata,
@@ -25,13 +37,23 @@ from .urn import (
 __all__ = [
     "LEXML_URN_RE",
     "METADATA_SOURCE_URI",
+    "PARA_KINDS",
+    "SECTION_KINDS",
+    "Evidence",
+    "ListItem",
+    "ListNode",
     "Metadata",
+    "Node",
+    "Para",
     "ProprietaryField",
+    "Section",
+    "Table",
     "UrnDate",
     "UrnParts",
     "build_urn",
     "extract_metadata",
     "is_valid_urn",
+    "node_from_dict",
     "parse_pt_date",
     "parse_urn",
     "slugify_authority",

@@ -16,7 +16,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 1 | DOCX ingestion → `StyledDoc` | 2026-08-02 | **complete** | 373 pass / 0 fail | [spec](20260802_224308_cycle_1_spec.md) | [report](20260802_224308_cycle_1_report.md) |
 | 2 | Metadata, URN and profiles | 2026-08-02 | **complete** | 788 pass / 0 fail | [spec](20260802_231852_cycle_2_spec.md) | [report](20260802_231852_cycle_2_report.md) |
 | 3 | Front/back matter segmentation | 2026-08-28 | **complete** | 1681 pass / 0 fail | [spec](20260828_011822_cycle_3_spec.md) | [report](20260828_011822_cycle_3_report.md) |
-| 4 | Hierarchy inference | — | not started | — | — | — |
+| 4 | Hierarchy inference | 2026-08-28 | **complete** | 2462 pass / 0 fail | [spec](20260828_111240_cycle_4_spec.md) | [report](20260828_111240_cycle_4_report.md) |
 | 4b | Routing + LLM referee + telemetry | — | not started | — | — | — |
 | 5 | Emitter `generico` (flat, **default**) | — | not started | — | — | — |
 | **5b** | **Emitter `generico-aninhado` (nested, opt-in)** — *new, A-R.3* | — | not started | — | — | — |
@@ -26,7 +26,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 8 | Generalisation, robustness, CLI | — | not started | — | — | — |
 | 9 | Regression consolidation and corpus scale-out | — | not started | — | — | — |
 
-Cycle order: `0, 1, 2, 3 ✅ → 4, 4b, 5, 5b, 6, 7, 8, 9`.
+Cycle order: `0, 1, 2, 3, 4 ✅ → 4b, 5, 5b, 6, 7, 8, 9`.
 Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and relocated to Cycle 7.
 
 ## Change logs
@@ -37,6 +37,7 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | 1 | [changes](20260802_224308_cycle_1_changes.md) — no delivered behaviour changed (additive cycle); `python-docx` floor raised to `>=1.1`; three plan corrections, all agreed with the user |
 | 2 | [changes](20260802_231852_cycle_2_changes.md) — no delivered behaviour changed (additive cycle); `regen_goldens.py` generalised to multiple golden kinds; `.gitignore` added; four plan amendments, all agreed with the user. **Includes an incident record: a subagent edited `src/` against instruction; mutations were transient, verified reverted, and all four are now covered by failing-on-mutation tests** |
 | 3 | [changes](20260828_011822_cycle_3_changes.md) — no delivered behaviour changed (additive cycle); `DocumentProfile` gains three pattern fields, all defaulting to `()`; `regen_goldens.py` gains a third golden kind; five plan amendments. **Two changes were considered and deliberately rejected as major: extending Cycle 0's `matrix_cases.py`, and 'correcting' plan §4.3 — which re-validation showed is correct as written** |
+| 4 | [changes](20260828_111240_cycle_4_changes.md) — no delivered behaviour changed (additive cycle); `model/__init__.py` gains 10 exports from the new `nodes` module; `regen_goldens.py` gains a fourth golden kind; six plan amendments. **One change deliberately rejected as major: capturing Word's `numFmt` on `StyledPara`, which would rewrite all 15 Cycle 1 `styled` goldens. Three defects in this cycle's own code were found by its tests and fixed — one of them, silently dropped nested list items, was unreachable from the corpus** |
 | — | **2026-08-28 plan revision** — [changes](20260828_011050_revision_changes.md) · [update record](../../docs/20260828_011050_plan_update_recursive_agrupamento_hierarquico.md). Plan document only; **no code, tests or goldens were touched, and the 788 tests remain green.** The revision is scheduled work, not delivered work |
 
 ## Plan amendments
@@ -60,6 +61,13 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | A-3.3 | 3 | Annex detection is **allowlisted per profile**. An ungated `^ANEXO` rule amputates 28 blocks off `sumula_stj_125`, whose bare `ANEXO` paragraph is not an annex. `DocumentProfile` gains `enacting_res`, `annex_res`, `closing_res` |
 | A-3.4 | 3 | `segment/fields.py` deliberately **not built** — Cycle 2's allowlist-gated capture (A-2.2) is re-exported rather than reimplemented |
 | A-3.5 | 3 | Every signature block is recorded, in order (`parecer_93` and `pn_cst_38` carry two regions). `FrontMatter.span` is the **contiguous hull**, and `BackMatter.trailing` absorbs closing notes, so the parts form a **partition** — text conservation as arithmetic, asserted ×15 |
+
+| A-4.1 | 4 | The indent discriminator is **declared-vs-inherited**, not deviation: `parecer_93`'s quote band (2908) is one twip *below* the modal body indent (2909), which is *inherited from the style* while every quoted paragraph *declares* its own. Two band rules, `deviation` and `declared`. Corollary: **a paragraph Word declares a heading is never quoted** — without it `sumula_stj_125` loses a level of structure |
+| A-4.2 | 4 | Three negative rules the grammar needs, each forced by a real paragraph: a **zero or zero-padded component** is not an ordinal (`2.08.30.00`, `06.12`); an **orphan** dotted label is not a label (`1.24.20.25`), refused by the document rather than the grammar; a **top-level numeric series must start at 1 or 2 and step by ≤3** or the whole series is rejected (`parecer_93`'s `1, 11, 111, 46, 194, 74`). Plus: a **solitary** roman/alpha/ordinal label is not an enumeration |
+| A-4.3 | 4 | **Numbered-container demotion.** `sumula_stj_125`'s 38 same-level headings group into 7 cases × 31 parts, read from whether a heading carries its own identifier — Word records no difference between them. Three guards; declines on `CARNE_LEAO` and on `port_mf_277`'s annex. *Decided with the user* |
+| A-4.4 | 4 | Named units (`Súmula CARF nº 1`) are a **document-level series**, not a grammar rule — ≥3 whole-paragraph occurrences with increasing numbers. This is what stops `Lei nº 12.618` from ever parsing as a label. The sibling-gap limit does not apply to a unit series (the annex runs 1, 3, 4 … 33, 40 …) |
+| A-4.5 | 4 | The deliverable is a **`HierarchyDoc`**: body *and* each annex, discharging **A-R.8** a cycle early — `port_mf_277`'s `ANEXO ÚNICO` gains 65 real sections. *Decided with the user* |
+| A-4.6 | 4 | **No sample has a contiguous multi-level Word list**, so `ilvl` nesting is tested by a synthetic fixture (the A-1.3 precedent). It caught a real bug on its first run: the implementation dropped every nested item |
 
 ### Revision amendments (2026-08-28 — schema change adoption)
 

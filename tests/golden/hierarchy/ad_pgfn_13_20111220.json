@@ -1,0 +1,95 @@
+{
+  "source": "ad_pgfn_13_20111220.docx",
+  "profile": "ato_declaratorio",
+  "body": {
+    "confidence": 0.5667,
+    "flat": false,
+    "signals": {
+      "n_blocks": 3,
+      "n_sections": 2,
+      "coverage": 0.6667,
+      "label_kinds": [
+        "roman"
+      ],
+      "style_headings": 0,
+      "rejected": [],
+      "confidence": 0.5667
+    },
+    "span": {
+      "start": 3,
+      "end": 5
+    },
+    "sections": [
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "inciso",
+        "label": "I -",
+        "source_indices": [
+          3
+        ],
+        "evidence": {
+          "signals": [
+            "label:roman",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "fica autorizada a dispensa de apresentação de contestação e de interposição de recursos, bem como a desistência dos já interpostos, desde que inexista outro fundamento relevante, nas ações judiciais que visem obter a declaração de que não incidem contribuição previdenciária e imposto de renda sobre as verbas recebidas a título de auxílio-creche pelos trabalhadores até o limite de cinco anos de idade de seus filhos e"
+              }
+            ],
+            "source_indices": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "inciso",
+        "label": "II -",
+        "source_indices": [
+          4
+        ],
+        "evidence": {
+          "signals": [
+            "label:roman",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "ficam revogados os Atos Declaratórios PGFN nº 2, de 27 de agosto de 2010, e PGFN nº 11, de 1º de dezembro de 2008."
+              }
+            ],
+            "source_indices": [
+              4
+            ]
+          },
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "JURISPRUDÊNCIA: Resp nº 816.829/RJ (DJ 19/11/2007), Resp nº 664.258/RJ (DJ 31/05/2006), AI nº 677.274/SP (DJe 30/9/2008), Resp nº 1.019.017/PI (DJe 29/04/2009), Resp nº 1.131.114/PR (DJ 20/10/2009), Resp nº 1.108.113 (DJ 4/2/2010), Resp nº 1.165.034/MT (DJ 13/11/2009), Resp nº 625.506/RS (DJ 06/03/2007), AI nº 677.274/SP (DJe 30/9/2008)."
+              }
+            ],
+            "source_indices": [
+              5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "annexes": []
+}

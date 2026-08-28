@@ -1,0 +1,100 @@
+{
+  "source": "REsp_1306393.docx",
+  "profile": "jurisprudencia_generico",
+  "body": {
+    "confidence": 0.0,
+    "flat": true,
+    "signals": {
+      "n_blocks": 6,
+      "n_sections": 0,
+      "coverage": 0.0,
+      "label_kinds": [],
+      "style_headings": 0,
+      "rejected": [],
+      "confidence": 0.0
+    },
+    "span": {
+      "start": 13,
+      "end": 20
+    },
+    "preamble": [
+      {
+        "node": "para",
+        "inlines": [
+          {
+            "text": "\"A Seção, por unanimidade, deu provimento ao recurso especial, nos termos do voto do Sr. Ministro Relator.\""
+          }
+        ],
+        "kind": "quote",
+        "indent": 67,
+        "source_indices": [
+          13
+        ]
+      },
+      {
+        "node": "para",
+        "inlines": [
+          {
+            "text": "Os Srs. Ministros Benedito Gonçalves, Eliana Calmon, Teori Albino Zavascki, Arnaldo Esteves Lima, Humberto Martins, Herman Benjamin e Napoleão Nunes Maia Filho votaram com o Sr. Ministro Relator."
+          }
+        ],
+        "indent": 67,
+        "source_indices": [
+          14
+        ]
+      },
+      {
+        "node": "para",
+        "inlines": [
+          {
+            "text": "Documento: 25489411 - EMENTA / ACORDÃO - Site certificado - DJe: 07/11/2012 Página 1 de 2"
+          }
+        ],
+        "source_indices": [
+          15
+        ]
+      },
+      {
+        "node": "para",
+        "inlines": [
+          {
+            "text": "Licenciado o Sr. Ministro Ari Pargendler."
+          }
+        ],
+        "kind": "quote",
+        "indent": 942,
+        "source_indices": [
+          18
+        ]
+      },
+      {
+        "node": "para",
+        "inlines": [
+          {
+            "text": "Presidiu o julgamento o Sr. Ministro Castro Meira. Brasília (DF), 24 de outubro de 2012."
+          }
+        ],
+        "kind": "quote",
+        "indent": 1499,
+        "source_indices": [
+          19
+        ]
+      },
+      {
+        "node": "para",
+        "inlines": [
+          {
+            "text": "MINISTRO MAURO CAMPBELL MARQUES , Relator"
+          }
+        ],
+        "kind": "quote",
+        "indent": 1871,
+        "source_indices": [
+          20
+        ]
+      }
+    ],
+    "sections": []
+  },
+  "annexes": []
+}

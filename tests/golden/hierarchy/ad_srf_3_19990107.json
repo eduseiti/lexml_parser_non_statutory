@@ -1,0 +1,113 @@
+{
+  "source": "ad_srf_3_19990107.docx",
+  "profile": "ato_declaratorio",
+  "body": {
+    "confidence": 0.85,
+    "flat": false,
+    "signals": {
+      "n_blocks": 3,
+      "n_sections": 3,
+      "coverage": 1.0,
+      "label_kinds": [
+        "roman"
+      ],
+      "style_headings": 0,
+      "rejected": [],
+      "confidence": 0.85
+    },
+    "span": {
+      "start": 3,
+      "end": 5
+    },
+    "sections": [
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "inciso",
+        "label": "I -",
+        "source_indices": [
+          3
+        ],
+        "evidence": {
+          "signals": [
+            "label:roman",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "os valores pagos por pessoa jurídica a seus empregados, a título de incentivo à adesão a Programas de Desligamento Voluntário - PDV, considerados, em reiteradas decisões do Poder Judiciário, como verbas de natureza indenizatória, e assim reconhecidos por meio do Parecer PGFN/CRJ/nº 1278/98, aprovado pelo Ministro de Estado da Fazenda em 17 de setembro de 1998, não se sujeitam à incidência do imposto de renda na fonte nem na Declaração de Ajuste Anual;"
+              }
+            ],
+            "source_indices": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "inciso",
+        "label": "II -",
+        "source_indices": [
+          4
+        ],
+        "evidence": {
+          "signals": [
+            "label:roman",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "a pessoa física que recebeu os rendimentos de que trata o inciso I, com desconto do imposto de renda na fonte, poderá solicitar a restituição ou compensação do valor retido, observado o disposto na Instrução Normativa SRF nº 21, de 10 de março de 1997, alterada pela Instrução Normativa SRF nº 73, de 15 de setembro de 1997;"
+              }
+            ],
+            "source_indices": [
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "node": "section",
+        "level": 1,
+        "kind": "inciso",
+        "label": "III -",
+        "source_indices": [
+          5
+        ],
+        "evidence": {
+          "signals": [
+            "label:roman",
+            "series"
+          ],
+          "score": 0.85
+        },
+        "body": [
+          {
+            "node": "para",
+            "inlines": [
+              {
+                "text": "no caso de pessoa física que houver oferecido os referidos rendimentos à tributação, na Declaração de Ajuste Anual, o pedido de restituição será efetuado mediante retificação da respectiva declaração."
+              }
+            ],
+            "source_indices": [
+              5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "annexes": []
+}
