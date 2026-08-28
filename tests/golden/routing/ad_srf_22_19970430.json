@@ -1,0 +1,65 @@
+{
+  "source": "ad_srf_22_19970430.docx",
+  "profile": "ato_declaratorio",
+  "route": "generico",
+  "confidence": 0.85,
+  "articles_found": 0,
+  "articles_quoted": 0,
+  "articles_own": 0,
+  "numbering_monotonic": false,
+  "coverage": 0.0,
+  "has_anexos": false,
+  "blockers": [
+    {
+      "code": "no_articles",
+      "detail": "no paragraph in the 0-block body opens an article",
+      "vetoes": true
+    }
+  ],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "ato_declaratorio",
+      "p_norma": 0.2,
+      "note": "Atos declaratórios DECLARE and enumerate incisos; none in the corpus carries an article"
+    },
+    "census": {
+      "found": [],
+      "quoted": [],
+      "own": [],
+      "values": [],
+      "monotonic": false
+    },
+    "body_blocks": 0,
+    "quote_band_rule": "none",
+    "omissis": [],
+    "citation_antecedent": [],
+    "tables_in_body": [],
+    "annexes": [],
+    "gates": {
+      "own_articles": false,
+      "monotonic": false,
+      "coverage": false,
+      "no_vetoing_blocker": false
+    },
+    "p_norma": 0.15,
+    "contributions": [
+      [
+        "genre_prior",
+        0.2
+      ],
+      [
+        "blockers",
+        -0.05
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 0,
+      "body_flat": true,
+      "body_confidence": 0.0,
+      "rejected": []
+    },
+    "emitter": "generico"
+  }
+}

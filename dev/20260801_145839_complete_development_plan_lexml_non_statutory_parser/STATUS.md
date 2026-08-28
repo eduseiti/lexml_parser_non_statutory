@@ -12,12 +12,12 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | Cycle | Title | Date | State | Tests | Spec | Report |
 |---|---|---|---|---|---|---|
 | 0 | Scaffolding and the schema harness | 2026-08-02 | **complete** | 107 pass / 0 fail | [spec](20260802_140857_cycle_0_spec.md) | [report](20260802_140857_cycle_0_report.md) |
-| 0+ | ↳ addendum: schema-generation awareness + capability probe (A-R.2) | — | not started — *lands with 5b* | — | — | — |
+| 0+ | ↳ addendum: schema-generation awareness + capability probe (A-R.2) | 2026-08-28 | **partial** — probe landed in 4b (A-4b.1); matrix `requires`/skip still with 5b | (in 4b) | — | — |
 | 1 | DOCX ingestion → `StyledDoc` | 2026-08-02 | **complete** | 373 pass / 0 fail | [spec](20260802_224308_cycle_1_spec.md) | [report](20260802_224308_cycle_1_report.md) |
 | 2 | Metadata, URN and profiles | 2026-08-02 | **complete** | 788 pass / 0 fail | [spec](20260802_231852_cycle_2_spec.md) | [report](20260802_231852_cycle_2_report.md) |
 | 3 | Front/back matter segmentation | 2026-08-28 | **complete** | 1681 pass / 0 fail | [spec](20260828_011822_cycle_3_spec.md) | [report](20260828_011822_cycle_3_report.md) |
 | 4 | Hierarchy inference | 2026-08-28 | **complete** | 2462 pass / 0 fail | [spec](20260828_111240_cycle_4_spec.md) | [report](20260828_111240_cycle_4_report.md) |
-| 4b | Routing + LLM referee + telemetry | — | not started | — | — | — |
+| 4b | Routing + LLM referee + telemetry | 2026-08-28 | **complete** | 3135 pass / 0 fail | [spec](20260828_161250_cycle_4b_spec.md) | [report](20260828_161250_cycle_4b_report.md) |
 | 5 | Emitter `generico` (flat, **default**) | — | not started | — | — | — |
 | **5b** | **Emitter `generico-aninhado` (nested, opt-in)** — *new, A-R.3* | — | not started | — | — | — |
 | 6 | Emitter `norma` + `Anexo` split | — | not started | — | — | — |
@@ -26,7 +26,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 8 | Generalisation, robustness, CLI | — | not started | — | — | — |
 | 9 | Regression consolidation and corpus scale-out | — | not started | — | — | — |
 
-Cycle order: `0, 1, 2, 3, 4 ✅ → 4b, 5, 5b, 6, 7, 8, 9`.
+Cycle order: `0, 1, 2, 3, 4, 4b ✅ → 5, 5b, 6, 7, 8, 9`.
 Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and relocated to Cycle 7.
 
 ## Change logs
@@ -38,6 +38,7 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | 2 | [changes](20260802_231852_cycle_2_changes.md) — no delivered behaviour changed (additive cycle); `regen_goldens.py` generalised to multiple golden kinds; `.gitignore` added; four plan amendments, all agreed with the user. **Includes an incident record: a subagent edited `src/` against instruction; mutations were transient, verified reverted, and all four are now covered by failing-on-mutation tests** |
 | 3 | [changes](20260828_011822_cycle_3_changes.md) — no delivered behaviour changed (additive cycle); `DocumentProfile` gains three pattern fields, all defaulting to `()`; `regen_goldens.py` gains a third golden kind; five plan amendments. **Two changes were considered and deliberately rejected as major: extending Cycle 0's `matrix_cases.py`, and 'correcting' plan §4.3 — which re-validation showed is correct as written** |
 | 4 | [changes](20260828_111240_cycle_4_changes.md) — no delivered behaviour changed (additive cycle); `model/__init__.py` gains 10 exports from the new `nodes` module; `regen_goldens.py` gains a fourth golden kind; six plan amendments. **One change deliberately rejected as major: capturing Word's `numFmt` on `StyledPara`, which would rewrite all 15 Cycle 1 `styled` goldens. Three defects in this cycle's own code were found by its tests and fixed — one of them, silently dropped nested list items, was unreachable from the corpus** |
+| 4b | [changes](20260828_161250_cycle_4b_changes.md) — no delivered behaviour changed (additive cycle); `validate/schema.py` gains keyword-only `generation` + `probe_capabilities()`, `validate/__init__.py` gains 9 exports, `regen_goldens.py` gains a fifth golden kind; six plan amendments. **One change rejected as major: forcing §7.4's `agreed + overrode == flagged` identity, which is false under the suite's own `--referee=none` default — the plan was amended instead. Three defects in this cycle's own code were found and fixed — two reported by a test-authoring subagent under "report, do not fix", and one, `agreed` counting a disagreeing referee as agreeing, found by a mutation sweep. Four of 27 mutations initially survived, all in branches the 15-sample corpus cannot reach** |
 | — | **2026-08-28 plan revision** — [changes](20260828_011050_revision_changes.md) · [update record](../../docs/20260828_011050_plan_update_recursive_agrupamento_hierarquico.md). Plan document only; **no code, tests or goldens were touched, and the 788 tests remain green.** The revision is scheduled work, not delivered work |
 
 ## Plan amendments
@@ -68,6 +69,13 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | A-4.4 | 4 | Named units (`Súmula CARF nº 1`) are a **document-level series**, not a grammar rule — ≥3 whole-paragraph occurrences with increasing numbers. This is what stops `Lei nº 12.618` from ever parsing as a label. The sibling-gap limit does not apply to a unit series (the annex runs 1, 3, 4 … 33, 40 …) |
 | A-4.5 | 4 | The deliverable is a **`HierarchyDoc`**: body *and* each annex, discharging **A-R.8** a cycle early — `port_mf_277`'s `ANEXO ÚNICO` gains 65 real sections. *Decided with the user* |
 | A-4.6 | 4 | **No sample has a contiguous multi-level Word list**, so `ilvl` nesting is tested by a synthetic fixture (the A-1.3 precedent). It caught a real bug on its first run: the implementation dropped every nested item |
+
+| A-4b.1 | 4b | The **capability probe was pulled forward** from the Cycle 0 addendum, because A-R.7's `nested_unavailable` blocker needs a real diagnostic. `validate/schema.py` gains keyword-only `generation` on `load_schema`/`load_schemas`/`validate`/`validate_all`, plus `probe_capabilities()`. The probe document is **not** Cycle 0's matrix case E: case E wraps a bare `<p>`, which `lexml-proposed/` also rejects — the maintainers' change adds `Agrupamento` and `Bloco` to the choice, not `p`. *Decided with the user* |
+| A-4b.2 | 4b | The route turns on **four gates** — `articles_own ≥ 1`, monotonic series, `coverage ≥ 0.6` measured *after the annex split*, no vetoing blocker. `articles_own = found − quoted` is the discriminator, and `port_mf_277` is the only sample with a non-zero value. §4.1's `blockers` retyped `list[str]` → `tuple[Blocker, ...]`, because a bare string cannot carry A-R.7's veto/no-veto distinction |
+| A-4b.3 | 4b | The corpus flags exactly **four** decisions — `par_cosit_26` p#46/p#47/p#53 and `parecer_93` p#36. 415 paragraphs and 25 quoted articles generate **one** referee question, because the declared quote band carries the other 24 |
+| A-4b.4 | 4b | §7.4's `agreed + overrode == flagged` is **false under `--referee=none`**, which §9.3 pins for the whole suite. Corrected to `agreed + overrode + overruled + abstained == consulted`, with `consulted ≤ flagged`. **`overruled` is a fourth bucket and it is reachable**: a referee that answers, contradicts the rule and is refused the override has neither agreed nor overridden, and folding it into `agreed` manufactures the exact evidence §7.4 uses to justify consulting the referee *less* |
+| A-4b.5 | 4b | The recorded fixtures are **hand-authored** and documented as such per file, with a refresh command. They assert the referee **agrees** with a rule verdict that is already correct — a wrong fixture would surface as a spurious override and a changed route, not a silent pass. *Decided with the user* |
+| A-4b.6 | 4b | Invariant #9 asserted as an **attack**: an adversarial referee answering "own" to every question changes no sample's route. On `par_cosit_26` it genuinely overrides three verdicts and the monotonicity gate holds the route anyway |
 
 ### Revision amendments (2026-08-28 — schema change adoption)
 
@@ -106,4 +114,8 @@ The flat `generico` emitter targets the former and stays default; `generico-anin
 ```bash
 python3 -m pytest tests/ -q                        # from the repository root
 python3 scripts/build_proposed_schemas.py --check  # verify generated schemas current
+python3 -m lexml_nonstat.routing --decisions-report samples/*.docx   # Cycle 4b
 ```
+
+The referee defaults to `none` everywhere and the suite pins it (§9.3): nothing
+here makes a network call.

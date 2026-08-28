@@ -1,0 +1,67 @@
+{
+  "source": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+  "profile": "servico",
+  "route": "generico",
+  "confidence": 0.9,
+  "articles_found": 0,
+  "articles_quoted": 0,
+  "articles_own": 0,
+  "numbering_monotonic": false,
+  "coverage": 0.0,
+  "has_anexos": false,
+  "blockers": [
+    {
+      "code": "no_articles",
+      "detail": "no paragraph in the 112-block body opens an article",
+      "vetoes": true
+    }
+  ],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "servico",
+      "p_norma": 0.15,
+      "note": "Service documentation is prose under Word heading styles"
+    },
+    "census": {
+      "found": [],
+      "quoted": [],
+      "own": [],
+      "values": [],
+      "monotonic": false
+    },
+    "body_blocks": 112,
+    "quote_band_rule": "none",
+    "omissis": [],
+    "citation_antecedent": [
+      58
+    ],
+    "tables_in_body": [],
+    "annexes": [],
+    "gates": {
+      "own_articles": false,
+      "monotonic": false,
+      "coverage": false,
+      "no_vetoing_blocker": false
+    },
+    "p_norma": 0.1,
+    "contributions": [
+      [
+        "genre_prior",
+        0.15
+      ],
+      [
+        "blockers",
+        -0.05
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 6,
+      "body_flat": false,
+      "body_confidence": 0.9,
+      "rejected": []
+    },
+    "emitter": "generico"
+  }
+}

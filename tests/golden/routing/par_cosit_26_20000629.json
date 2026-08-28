@@ -1,0 +1,118 @@
+{
+  "source": "par_cosit_26_20000629.docx",
+  "profile": "parecer",
+  "route": "generico",
+  "confidence": 1.0,
+  "articles_found": 5,
+  "articles_quoted": 5,
+  "articles_own": 0,
+  "numbering_monotonic": false,
+  "coverage": 0.0,
+  "has_anexos": false,
+  "blockers": [
+    {
+      "code": "all_articles_quoted",
+      "detail": "5 of 5 article paragraphs convicted by the quotation guard; the document quotes statutes it does not enact",
+      "vetoes": true
+    },
+    {
+      "code": "non_monotonic_series",
+      "detail": "the article series does not hold together: 2, 3, 16, 18, 52",
+      "vetoes": true
+    },
+    {
+      "code": "top_level_table",
+      "detail": "1 table(s) at body top level, outside any dispositivo (blocks 11)",
+      "vetoes": true
+    }
+  ],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "parecer",
+      "p_norma": 0.15,
+      "note": "Pareceres argue and quote; the three in the corpus quote statutes they do not enact (§2.5)"
+    },
+    "census": {
+      "found": [
+        46,
+        47,
+        53,
+        64,
+        72
+      ],
+      "quoted": [
+        46,
+        47,
+        53,
+        64,
+        72
+      ],
+      "own": [],
+      "values": [
+        2,
+        3,
+        16,
+        18,
+        52
+      ],
+      "monotonic": false
+    },
+    "body_blocks": 98,
+    "quote_band_rule": "none",
+    "omissis": [
+      48,
+      52,
+      61,
+      66,
+      69,
+      71,
+      72
+    ],
+    "citation_antecedent": [
+      45,
+      46,
+      54,
+      64,
+      65,
+      77
+    ],
+    "tables_in_body": [
+      11
+    ],
+    "annexes": [],
+    "gates": {
+      "own_articles": false,
+      "monotonic": false,
+      "coverage": false,
+      "no_vetoing_blocker": false
+    },
+    "p_norma": 0.0,
+    "contributions": [
+      [
+        "genre_prior",
+        0.15
+      ],
+      [
+        "not_monotonic",
+        -0.2
+      ],
+      [
+        "all_articles_quoted",
+        -0.35
+      ],
+      [
+        "blockers",
+        -0.15
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 24,
+      "body_flat": false,
+      "body_confidence": 0.85,
+      "rejected": []
+    },
+    "emitter": "generico"
+  }
+}

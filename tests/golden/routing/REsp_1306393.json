@@ -1,0 +1,65 @@
+{
+  "source": "REsp_1306393.docx",
+  "profile": "jurisprudencia_generico",
+  "route": "generico",
+  "confidence": 0.95,
+  "articles_found": 0,
+  "articles_quoted": 0,
+  "articles_own": 0,
+  "numbering_monotonic": false,
+  "coverage": 0.0,
+  "has_anexos": false,
+  "blockers": [
+    {
+      "code": "no_articles",
+      "detail": "no paragraph in the 8-block body opens an article",
+      "vetoes": true
+    }
+  ],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "jurisprudencia_generico",
+      "p_norma": 0.1,
+      "note": "Súmulas and acórdãos are never articulated (decision #2)"
+    },
+    "census": {
+      "found": [],
+      "quoted": [],
+      "own": [],
+      "values": [],
+      "monotonic": false
+    },
+    "body_blocks": 8,
+    "quote_band_rule": "deviation",
+    "omissis": [],
+    "citation_antecedent": [],
+    "tables_in_body": [],
+    "annexes": [],
+    "gates": {
+      "own_articles": false,
+      "monotonic": false,
+      "coverage": false,
+      "no_vetoing_blocker": false
+    },
+    "p_norma": 0.05,
+    "contributions": [
+      [
+        "genre_prior",
+        0.1
+      ],
+      [
+        "blockers",
+        -0.05
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 0,
+      "body_flat": true,
+      "body_confidence": 0.0,
+      "rejected": []
+    },
+    "emitter": "generico"
+  }
+}

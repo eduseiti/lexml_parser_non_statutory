@@ -1,0 +1,17 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.87,
+    "rationale": "Enumera 'atribuições do Advogado-Geral da União' — competências fixadas pela LC 73/1993, transcritas pelo parecer; um parecer não atribui competências a si mesmo."
+  },
+  "meta": {
+    "model": "deepseek-chat",
+    "kind": "own_articulation",
+    "sample": "parecer_93_2018_decor_cgu_agu",
+    "locator": "p#36",
+    "rule_verdict": "quoted",
+    "rule_confidence": 0.55,
+    "excerpt": "Art. 4º - São atribuições do Advogado-Geral da União:",
+    "origin": "hand-authored (see README.md); never recorded from a live provider"
+  }
+}

@@ -12,10 +12,11 @@ Prints what changed. A silent regeneration that quietly rewrites 15 files is
 exactly the failure mode the policy exists to prevent — if this reports
 "3 changed", those three belong in the commit message.
 
-Four kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
-(Cycle 2's `Metadata`), ``segment`` (Cycle 3's `Segmentation`) and
-``hierarchy`` (Cycle 4's `HierarchyDoc`). Later cycles add theirs to ``KINDS``
-rather than writing another script.
+Five kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
+(Cycle 2's `Metadata`), ``segment`` (Cycle 3's `Segmentation`),
+``hierarchy`` (Cycle 4's `HierarchyDoc`) and ``routing`` (Cycle 4b's
+`StatutoryViability`). Later cycles add theirs to ``KINDS`` rather than writing
+another script.
 """
 
 from __future__ import annotations
@@ -29,6 +30,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 from lexml_nonstat.hierarchy import infer_hierarchy  # noqa: E402
 from lexml_nonstat.ingest import read_docx  # noqa: E402  (after sys.path setup)
 from lexml_nonstat.model import extract_metadata  # noqa: E402
+from lexml_nonstat.routing import assess_viability  # noqa: E402
 from lexml_nonstat.segment import segment_document  # noqa: E402
 
 SAMPLES_DIR = REPO_ROOT / "samples"
@@ -61,12 +63,25 @@ def _hierarchy_json(sample: Path) -> str:
     ).to_json()
 
 
+def _routing_json(sample: Path) -> str:
+    # `referee=None` on purpose: goldens are the deterministic rule verdicts,
+    # so a golden diff can never be an LLM having a different day (§9.3).
+    doc = read_docx(sample)
+    metadata = extract_metadata(doc, filename=sample.name)
+    segmentation = segment_document(doc, metadata=metadata)
+    hierarchy = infer_hierarchy(doc, metadata=metadata, segmentation=segmentation)
+    return assess_viability(
+        doc, metadata=metadata, segmentation=segmentation, hierarchy=hierarchy
+    ).to_json()
+
+
 #: kind → (output directory, renderer)
 KINDS: dict[str, tuple[Path, object]] = {
     "styled": (GOLDEN_ROOT / "styled", _styled_json),
     "metadata": (GOLDEN_ROOT / "metadata", _metadata_json),
     "segment": (GOLDEN_ROOT / "segment", _segment_json),
     "hierarchy": (GOLDEN_ROOT / "hierarchy", _hierarchy_json),
+    "routing": (GOLDEN_ROOT / "routing", _routing_json),
 }
 
 

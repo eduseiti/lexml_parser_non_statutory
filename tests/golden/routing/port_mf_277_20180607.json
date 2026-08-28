@@ -1,0 +1,82 @@
+{
+  "source": "port_mf_277_20180607.docx",
+  "profile": "portaria",
+  "route": "norma",
+  "confidence": 1.0,
+  "articles_found": 2,
+  "articles_quoted": 0,
+  "articles_own": 2,
+  "numbering_monotonic": true,
+  "coverage": 1.0,
+  "has_anexos": true,
+  "blockers": [],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "portaria",
+      "p_norma": 0.45,
+      "note": "Portarias and Resoluções are often articulated — but port_mf_454 is a Portaria numbered 1., 2.1, a), so this leans and never decides (§2.7)"
+    },
+    "census": {
+      "found": [
+        3,
+        4
+      ],
+      "quoted": [],
+      "own": [
+        3,
+        4
+      ],
+      "values": [
+        1,
+        2
+      ],
+      "monotonic": true
+    },
+    "body_blocks": 2,
+    "quote_band_rule": "none",
+    "omissis": [],
+    "citation_antecedent": [],
+    "tables_in_body": [],
+    "annexes": [
+      "ANEXO ÚNICO"
+    ],
+    "gates": {
+      "own_articles": true,
+      "monotonic": true,
+      "coverage": true,
+      "no_vetoing_blocker": true
+    },
+    "p_norma": 1.0,
+    "contributions": [
+      [
+        "genre_prior",
+        0.45
+      ],
+      [
+        "own_article",
+        0.25
+      ],
+      [
+        "second_own_article",
+        0.1
+      ],
+      [
+        "monotonic",
+        0.15
+      ],
+      [
+        "coverage",
+        0.2
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 0,
+      "body_flat": true,
+      "body_confidence": 0.0,
+      "rejected": []
+    },
+    "emitter": "generico"
+  }
+}

@@ -374,7 +374,11 @@ class StatutoryViability:
     numbering_monotonic: bool
     coverage: float               # fraction of body inside articulation
     has_anexos: bool
-    blockers: list[str]           # e.g. "top-level table outside dispositivo"
+    blockers: tuple[Blocker, ...] # A-4b.2: Blocker(code, detail, vetoes), not
+                                  # bare strings — `nested_unavailable` is
+                                  # recorded but must NOT veto the route (A-R.7),
+                                  # and a string cannot carry that distinction.
+                                  # `blocker_codes` gives this flat view back.
     evidence: dict
     referee_consulted: bool
     referee_overrode: bool        # ← must appear in logs (decision #3)
@@ -721,6 +725,37 @@ Top override documents:  par_cosit_26 (7) · pn_cst_38 (5) · …
 ```
 
 The `referee agreed` vs `referee overrode` split is the key metric: a high agreement rate means thresholds are too conservative (cheap to tighten); a high override rate localises which rule needs work, and on which genres.
+
+> **A-4b.4 (2026-08-28, Cycle 4b).** The reconciliation above assumes every
+> flagged decision reaches a referee. It does not. §9.3 pins `--referee=none`
+> for the whole regression suite, so flagged decisions are commonly *not*
+> consulted; and a referee may **abstain** — a timeout, a 5xx, a malformed
+> reply. The identities that hold in general are
+>
+> ```
+> rule_only + flagged                       == total
+> agreed + overrode + overruled + abstained == consulted   (consulted <= flagged)
+> ```
+>
+> `agreed + overrode == flagged` is the special case where every flagged
+> decision is consulted, none abstains and none is overruled, and it is
+> asserted in exactly that form under an active referee. The report therefore
+> carries `consulted`, `overruled` and `abstained` rows, and
+> `DecisionsReport.check()` names whichever identity broke rather than merely
+> returning false. Forcing the original identity by counting an unconsulted
+> decision as an agreement was considered and rejected: it would report the
+> rules as *confirmed* by a referee that was never asked, corrupting the one
+> metric this section exists to produce.
+>
+> **`overruled` is a fourth bucket, and it is reachable.** A referee that
+> answers, *contradicts* the rule, and is refused the override — because it was
+> itself below `REFEREE_MIN_CONFIDENCE`, or because the rule was above
+> `RULE_HIGH_CONFIDENCE` — has neither agreed nor overridden. Cycle 4b first
+> implemented `agreed` as "consulted, not abstained, not overridden", which
+> silently folded these in; a mutation sweep caught it. The error runs in the
+> damaging direction: it manufactures evidence that the rules are right and
+> merely too timid, out of cases where the referee actually disagreed. That
+> reading is what §7.4 says should prompt tightening the thresholds.
 
 ---
 
@@ -1085,6 +1120,9 @@ dropped every nested item, and no corpus golden could have caught it.
 
 ### Cycle 4b — Statutory Viability Analyzer + LLM Referee + Telemetry
 
+> **Amended 2026-08-28 by the executing cycle** — A-4b.1 … A-4b.6 below. The
+> deliverables stand; five test bullets are corrected in place and one is added.
+
 `routing/`: article census, indentation discrimination, numbering monotonicity, omissis/citation cues, genre priors, coverage; structured `StatutoryViability` with blockers.
 `referee/`: `Referee` protocol, `NullReferee`, `CachedAPIReferee` (OpenAI-compatible ⇒ DeepSeek/Qwen/Moonshot), `LocalReferee` (llama.cpp), disk cache, prompt templates, JSON schema constraints.
 `telemetry/`: `DecisionRecord`, structured logging, `--decisions-report`.
@@ -1095,7 +1133,8 @@ Tests — routing
 - `port_mf_277` routes to `norma` **with** annex split; coverage computed after separation
 - coverage gate rejects low-coverage articulation
 - verdicts deterministic under `NullReferee`
-- **A-R.7:** requesting `generico-aninhado` against flat schemas yields blocker `nested_unavailable` with the probe's diagnostic. **Routing decisions are otherwise unchanged** — the §4.4 route table stands, because routing is about *what the document is*, not how it is rendered
+- **A-R.7:** requesting `generico-aninhado` against flat schemas yields blocker `nested_unavailable` with the probe's diagnostic. **Routing decisions are otherwise unchanged** — the §4.4 route table stands, because routing is about *what the document is*, not how it is rendered. *(A-4b.1: the probe this needs was pulled forward from the Cycle 0 addendum into 4b.)*
+- **A-4b.2:** the route turns on **four gates** — `articles_own ≥ 1`, monotonic series, `coverage ≥ 0.6`, no vetoing blocker — and `articles_own = articles_found − articles_quoted` is the number that discriminates. Measured: `port_mf_277` is the only sample with a surviving own article (2, monotonic, coverage 1.0 after the annex split); `parecer_93` is 25/25 quoted and `par_cosit_26` 5/5
 
 Tests — referee
 - `NullReferee` ⇒ byte-identical output to referee-disabled
@@ -1103,14 +1142,16 @@ Tests — referee
 - malformed/non-JSON LM response ⇒ rule verdict retained, `WARN` logged
 - API timeout/5xx ⇒ graceful fallback, pipeline completes
 - referee **cannot** flip a high-confidence rule verdict
-- `par_cosit_26` resolves correctly with a **recorded fixture** (`tests/referee_fixtures/`), no live API
+- `par_cosit_26` resolves correctly with a **recorded fixture** (`tests/referee_fixtures/`), no live API. *(A-4b.5: the fixtures are hand-authored, documented as such, with a documented refresh command; and they assert the referee **agrees** with a rule verdict that is already correct — see A-4b.3.)*
 - prompts contain no PII beyond the excerpt; excerpt length bounded
+- **A-4b.3:** the corpus flags exactly **four** decisions — `par_cosit_26` p#46/p#47/p#53 and `parecer_93` p#36 — so the referee's whole corpus workload is four questions, all of which the rules already answered correctly
+- **A-4b.6:** an **adversarial** referee answering "own" to every question changes no sample's route. Invariant #9 asserted as an attack, not only as a threshold
 
 Tests — telemetry
 - every flagged decision produces a `DecisionRecord`
 - **override emits `WARN` containing both rule and referee verdicts plus rationale** (asserted on log text)
 - **rule failure emits `RULE FAILED` with the reason**
-- `--decisions-report` counts reconcile: `rule_only + flagged == total`; `agreed + overrode == flagged`
+- `--decisions-report` counts reconcile: `rule_only + flagged == total`; `agreed + overrode == flagged` — **corrected by A-4b.4** to `agreed + overrode + abstained == consulted`, with `consulted ≤ flagged`. The original form is false under `--referee=none`, which §9.3 pins for the whole regression suite; it is asserted in its original form under an active referee
 - records are stable across reruns given a warm cache
 
 Exit: routing correct for all 15 samples; referee integrated, cached, fail-safe; interventions visibly logged and countable.
@@ -1376,18 +1417,18 @@ A tracked, reviewable sequence — not a rewrite:
 Revised 2026-08-28 (§14). Cycle order:
 
 ```
-0, 1, 2, 3, 4  ✅ complete  →  4b, 5, 5b(new), 6, 7, 8, 9
-                                          └── 6b withdrawn; round-trip reader → 7
+0, 1, 2, 3, 4, 4b  ✅ complete  →  5, 5b(new), 6, 7, 8, 9
+                                              └── 6b withdrawn; round-trip reader → 7
 ```
 
 | Cycle | Deliverable | Key exit criterion |
 |---|---|---|
-| 0 ✅ | Scaffolding, dual-schema harness | §2.1 matrix executable and green — **+ capability probe (A-R.2), landing with 5b** |
+| 0 ✅ | Scaffolding, dual-schema harness | §2.1 matrix executable and green — **+ capability probe (A-R.2): the probe itself landed in 4b (A-4b.1); the matrix `requires`/skip machinery remains with 5b** |
 | 1 ✅ | DOCX → `StyledDoc` (incl. indentation) | 15 samples ingest losslessly |
 | 2 ✅ | Metadata, URN, profiles | correct URN/metadata for all samples |
 | 3 ✅ | Front/back matter segmentation | zero false positives on bare documents |
 | 4 ✅ | Hierarchy inference + quotation guard | every quoted article in `parecer_93` rejected; 15 trees match hand-authored goldens |
-| 4b | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
+| 4b ✅ | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
 | 5 | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold |
 | **5b** | **Emitter `generico-aninhado` (nested, opt-in)** | **native axes recover hierarchy; text and URNs ≡ flat emitter** |
 | 6 | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both documents |

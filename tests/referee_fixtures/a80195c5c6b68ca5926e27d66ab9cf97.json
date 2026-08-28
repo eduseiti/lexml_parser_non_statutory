@@ -1,0 +1,17 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.88,
+    "rationale": "Precedido de omissis ('.....'), marca clássica de supressão em transcrição; um parecer não elide artigos que ele próprio institui."
+  },
+  "meta": {
+    "model": "deepseek-chat",
+    "kind": "own_articulation",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#53",
+    "rule_verdict": "quoted",
+    "rule_confidence": 0.5,
+    "excerpt": "Art. 16 - O custo de aquisição dos bens e direitos será o preço ou valor pago, e, na ausência deste, conforme o caso:",
+    "origin": "hand-authored (see README.md); never recorded from a live provider"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "source": "port_mf_454_19770825.docx",
+  "profile": "portaria",
+  "route": "generico",
+  "confidence": 0.6,
+  "articles_found": 0,
+  "articles_quoted": 0,
+  "articles_own": 0,
+  "numbering_monotonic": false,
+  "coverage": 0.0,
+  "has_anexos": false,
+  "blockers": [
+    {
+      "code": "no_articles",
+      "detail": "no paragraph in the 15-block body opens an article",
+      "vetoes": true
+    }
+  ],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "portaria",
+      "p_norma": 0.45,
+      "note": "Portarias and Resoluções are often articulated — but port_mf_454 is a Portaria numbered 1., 2.1, a), so this leans and never decides (§2.7)"
+    },
+    "census": {
+      "found": [],
+      "quoted": [],
+      "own": [],
+      "values": [],
+      "monotonic": false
+    },
+    "body_blocks": 15,
+    "quote_band_rule": "none",
+    "omissis": [],
+    "citation_antecedent": [],
+    "tables_in_body": [],
+    "annexes": [],
+    "gates": {
+      "own_articles": false,
+      "monotonic": false,
+      "coverage": false,
+      "no_vetoing_blocker": false
+    },
+    "p_norma": 0.4,
+    "contributions": [
+      [
+        "genre_prior",
+        0.45
+      ],
+      [
+        "blockers",
+        -0.05
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 15,
+      "body_flat": false,
+      "body_confidence": 0.85,
+      "rejected": []
+    },
+    "emitter": "generico"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "source": "sumula_stj_125.docx",
+  "profile": "jurisprudencia_generico",
+  "route": "generico",
+  "confidence": 1.0,
+  "articles_found": 0,
+  "articles_quoted": 0,
+  "articles_own": 0,
+  "numbering_monotonic": false,
+  "coverage": 0.0,
+  "has_anexos": false,
+  "blockers": [
+    {
+      "code": "no_articles",
+      "detail": "no paragraph in the 394-block body opens an article",
+      "vetoes": true
+    },
+    {
+      "code": "top_level_table",
+      "detail": "1 table(s) at body top level, outside any dispositivo (blocks 10)",
+      "vetoes": true
+    }
+  ],
+  "referee_consulted": false,
+  "referee_overrode": false,
+  "evidence": {
+    "genre_prior": {
+      "profile": "jurisprudencia_generico",
+      "p_norma": 0.1,
+      "note": "Súmulas and acórdãos are never articulated (decision #2)"
+    },
+    "census": {
+      "found": [],
+      "quoted": [],
+      "own": [],
+      "values": [],
+      "monotonic": false
+    },
+    "body_blocks": 394,
+    "quote_band_rule": "deviation",
+    "omissis": [
+      140
+    ],
+    "citation_antecedent": [
+      44,
+      109,
+      231,
+      246,
+      276,
+      322,
+      356,
+      362,
+      363
+    ],
+    "tables_in_body": [
+      10
+    ],
+    "annexes": [],
+    "gates": {
+      "own_articles": false,
+      "monotonic": false,
+      "coverage": false,
+      "no_vetoing_blocker": false
+    },
+    "p_norma": 0.0,
+    "contributions": [
+      [
+        "genre_prior",
+        0.1
+      ],
+      [
+        "blockers",
+        -0.1
+      ]
+    ],
+    "hierarchy": {
+      "body_sections": 38,
+      "body_flat": false,
+      "body_confidence": 0.9,
+      "rejected": [
+        "top numeric series implausible: 5"
+      ]
+    },
+    "emitter": "generico"
+  }
+}

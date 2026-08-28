@@ -1,0 +1,17 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.93,
+    "rationale": "O parágrafo anterior abre a citação com 'Lei nº 7.713, de 1988 - \"Art. 1º-'; este é o artigo seguinte da mesma lei transcrita, não do parecer."
+  },
+  "meta": {
+    "model": "deepseek-chat",
+    "kind": "own_articulation",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#46",
+    "rule_verdict": "quoted",
+    "rule_confidence": 0.55,
+    "excerpt": "Art. 2º- O imposto de renda das pessoas físicas será devido, mensalmente, à medida em que os rendimentos e ganhos de capital forem percebidos.",
+    "origin": "hand-authored (see README.md); never recorded from a live provider"
+  }
+}
