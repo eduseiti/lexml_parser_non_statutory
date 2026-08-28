@@ -32,4 +32,19 @@ PORTARIA = DocumentProfile(
         ("SRF", "ministerio.fazenda;secretaria.receita.federal"),
     ),
     field_labels=frozenset({"Nota Normas", "REFERÊNCIA"}),
+    enacting_res=(
+        re.compile(r"^\s*resolve\b", re.I),
+        re.compile(r"^\s*determina\b", re.I),
+    ),
+    annex_res=(
+        re.compile(r"^\s*anexo\s+(?:unico|[ivxlcdm]+|[a-z]|\d+)\b", re.I),
+    ),
+    closing_res=(
+        # "Brasília, 19 de dezembro de 2018." / "CST, em 30 de outubro de 1980"
+        re.compile(
+            r"^[A-ZÁÉÍÓÚÂÊÔÃÕÇ][\w\s.\-()]{1,40},\s*(?:em\s+)?"
+            r"[\d.]{1,4}\s*de\s+\w+\s+de\s+\d{4}",
+            re.I,
+        ),
+    ),
 )

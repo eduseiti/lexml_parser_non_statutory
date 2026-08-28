@@ -874,12 +874,103 @@ Plan §3's layout lists `profile/nota_tecnica.py`, but no sample in the corpus i
 
 Tests
 - `parecer_93`: epigraph `PARECER n. 00093/2018/DECOR/CGU/AGU`; ementa from `EMENTA:`
-- `EMENTA:` with no space after colon still splits (observed in sample)
+- `EMENTA:` with no space after colon still splits (observed in sample — in the
+  source the label is followed by `<w:tab/>`, not a space)
 - `ad_*`/`adn_*`: enacting formula `DECLARA` recognised; `port_mf_454`: `RESOLVE:`
 - `port_mf_277`: `ANEXO ÚNICO` boundary found; annex body separated
+- `sumula_stj_125`: its bare `ANEXO` paragraph is **not** an annex (A-3.3)
+- `adn_cst_10`: the portal artifact `O ato não possui ementa. Ver íntegra` is
+  **not** read as an ementa
 - `CARNE_LEAO`: no ementa/preamble/signature — **no false positives**
-- signature blocks (`NomePessoa` + optional `Cargo`) for all signed samples
-- `ParteInicial`/`ParteFinal` fragments validate on both schemas
+- signature blocks (`NomePessoa` + optional `Cargo`) for all signed samples,
+  with institution and heading lines rejected (`ACÓRDÃO`, `ADVOCACIA-GERAL DA
+  UNIÃO`, `ACÓRDÃOS PARADIGMAS`, …)
+- `ParteInicial`/`ParteFinal` fragments validate on both schemas — **and** the
+  `generico` `Agrupamento` rendering does too, for all 15 samples (A-3.1)
+- front / body / back / annexes **partition** the document's blocks (A-3.5)
+
+**Amendment A-3.1 (Cycle 3, 2026-08-28) — front/back matter needs *two* renderings, because `ParteInicial`/`ParteFinal` do not exist in `DocumentoGenerico`.**
+
+A schema probe run during Cycle 3 established that `ParteInicial` and
+`ParteFinal` are declared inside `HierarchicalStructure` only. Placed inside
+`DocumentoGenerico` (`OpenStructure`) both schemas reject them:
+
+```
+Element 'ParteInicial': This element is not expected.
+Expected is one of ( PartePrincipal, Anexos )
+```
+
+Since §4.4 routes **14 of the 15 samples** to `generico`, a single rendering
+would have served either one sample or fourteen, never both. Cycle 3 therefore
+delivers a rendering-agnostic model plus two verified renderings: the native
+elements for the statutory route, and `<Agrupamento nome="epigrafe"|"ementa"|
+"preambulo"|"formulaPromulgacao"|"assinatura"|"localDataFecho">` blocks for the
+open one. Both were probed valid on both schemas for all 15 samples. This
+follows §3.1's rendering-agnostic design: the model is decided once, the
+rendering twice. *(Decided with the user during Cycle 3 reconciliation.)*
+
+**Amendment A-3.2 (Cycle 3, 2026-08-28) — `LocalDataFecho` and `FormulaPromulgacao` require an `id` and `<p>` wrapping.**
+
+Both are `textoSimplesType`, which is **element-only**. Bare text is rejected on
+both schemas, as is a missing `id`:
+
+```
+Element 'LocalDataFecho': The attribute 'id' is required but missing.
+Element 'LocalDataFecho': Character content other than whitespace is not
+allowed because the content type is 'element-only'
+```
+
+The valid shape is `<LocalDataFecho id="ldf1"><p>Brasília, 7 de junho de
+2018.</p></LocalDataFecho>`. `Epigrafe` and `Ementa` differ — they are
+`inlineReq`, so they take text directly but still require an `id`.
+
+§4.3's snippet is **unaffected**: it carries no `LocalDataFecho`, and was
+re-validated during this cycle and confirmed valid exactly as written. The
+constraint is recorded here because Cycle 6 emits the closing line that §4.3
+omits, and would otherwise discover it by failing. Pinned by tests in
+`tests/unit/test_segment_render.py`.
+
+**Amendment A-3.3 (Cycle 3, 2026-08-28) — annex detection is allowlisted per profile.**
+
+An ungated `^ANEXO` rule fires twice on the corpus: correctly on
+`port_mf_277`'s `ANEXO ÚNICO` (block 6), and catastrophically on
+`sumula_stj_125` block 369 — a bare paragraph reading `ANEXO` inside a
+compilation of court precedents that has no annex, where it would amputate 28
+blocks into a non-existent sibling document.
+
+`DocumentProfile` therefore gains `annex_res`, empty for
+`jurisprudencia_generico` and `servico`. This is the A-2.2 reasoning applied
+again: a missed annex is recoverable because the text stays in the body,
+whereas a false annex is silent corruption. `DocumentProfile` also gains
+`enacting_res` and `closing_res`, all three defaulting to `()` so no existing
+construction changes. *(Decided with the user during Cycle 3 reconciliation.)*
+
+**Amendment A-3.4 (Cycle 3, 2026-08-28) — `segment/fields.py` is not built; Cycle 2's capture is re-exported.**
+
+§3's layout lists `segment/fields.py`, but labelled-field capture already
+shipped in Cycle 2's `model/metadata.py` under the allowlist ratified by
+A-2.2. A second implementation would be a competing source of truth for a
+decision already taken, so `FrontMatter.fields` re-exports
+`Metadata.proprietary` instead. `segment/` ships `model.py`, `frontmatter.py`,
+`backmatter.py`, `sections.py`, `render.py` and `__main__.py`.
+
+**Amendment A-3.5 (Cycle 3, 2026-08-28) — every signature block is recorded, and the parts form a partition.**
+
+`parecer_93` carries an appended `DESPACHO DO CONSULTOR-GERAL DA UNIÃO` after
+its own signature, with its own header, NUP, date and signer;
+`pn_cst_38` carries two signatures outright. `BackMatter.signatures` is
+therefore an ordered tuple of every block found, and `BackMatter.trailing`
+covers closing notes below the last signature (`par_cosit_26`'s `Nota Normas:`
+disclaimer, `port_mf_454`'s "originally published without an ementa").
+
+Correspondingly, `FrontMatter.span` is the **contiguous hull** of its parts,
+not their union: `parecer_93`'s epigraph is block 3, behind a portal date
+stamp and an institutional banner, and its ementa is block 9, behind `NUP:`,
+`INTERESSADOS:` and `ASSUNTO:`. Together these make front / body / back /
+annexes a **partition** of the document's blocks — every non-empty block in
+exactly one part, none twice and none nowhere — which is text conservation
+(§9.2) stated as arithmetic and asserted for all 15 samples.
+*(Decided with the user during Cycle 3 reconciliation.)*
 
 ### Cycle 4 — Hierarchy inference
 
@@ -1193,7 +1284,7 @@ A tracked, reviewable sequence — not a rewrite:
 Revised 2026-08-28 (§14). Cycle order:
 
 ```
-0, 1, 2  ✅ complete        →  3, 4, 4b, 5, 5b(new), 6, 7, 8, 9
+0, 1, 2, 3  ✅ complete     →  4, 4b, 5, 5b(new), 6, 7, 8, 9
                                           └── 6b withdrawn; round-trip reader → 7
 ```
 

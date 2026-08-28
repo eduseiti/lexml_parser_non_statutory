@@ -1,0 +1,33 @@
+{
+  "source": "adn_cosit_19_20001025.docx",
+  "profile": "ato_declaratorio",
+  "front": {
+    "epigraph": {
+      "start": 0,
+      "end": 0
+    },
+    "ementa": {
+      "start": 1,
+      "end": 1
+    },
+    "preamble": {
+      "start": 2,
+      "end": 2
+    },
+    "enacting_formula": {
+      "start": 3,
+      "end": 3
+    }
+  },
+  "back": {
+    "signatures": [
+      {
+        "name": "CARLOS ALBERTO DE NIZA E CASTRO",
+        "span": {
+          "start": 4,
+          "end": 4
+        }
+      }
+    ]
+  }
+}

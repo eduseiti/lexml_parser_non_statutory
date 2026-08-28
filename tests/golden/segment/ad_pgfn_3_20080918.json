@@ -1,0 +1,40 @@
+{
+  "source": "ad_pgfn_3_20080918.docx",
+  "profile": "ato_declaratorio",
+  "front": {
+    "epigraph": {
+      "start": 0,
+      "end": 0
+    },
+    "ementa": {
+      "start": 1,
+      "end": 1
+    },
+    "preamble": {
+      "start": 2,
+      "end": 2
+    },
+    "fields": [
+      {
+        "label": "JURISPRUDÊNCIA",
+        "value": "REsp 502739/PE, DJ 17/11/2003; EDcl no REsp 689893/PE, DJ 13/06/2005; REsp 828571/RJ, DJ 25/05/2006; REsp 952038/PE, DJe 18/06/2008; REsp 641243/PE, DJ 27/09/2004; REsp 672723/CE, DJ 11/04/2005.",
+        "source_index": 4
+      }
+    ]
+  },
+  "body": {
+    "start": 3,
+    "end": 4
+  },
+  "back": {
+    "signatures": [
+      {
+        "name": "LUÍS INÁCIO LUCENA ADAMS",
+        "span": {
+          "start": 5,
+          "end": 5
+        }
+      }
+    ]
+  }
+}

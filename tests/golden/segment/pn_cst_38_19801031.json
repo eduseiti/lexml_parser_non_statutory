@@ -1,0 +1,44 @@
+{
+  "source": "pn_cst_38_19801031.docx",
+  "profile": "parecer",
+  "front": {
+    "epigraph": {
+      "start": 0,
+      "end": 0
+    },
+    "ementa": {
+      "start": 1,
+      "end": 1
+    }
+  },
+  "body": {
+    "start": 2,
+    "end": 79
+  },
+  "back": {
+    "signatures": [
+      {
+        "name": "CARLOS ERVINO GULYAS",
+        "span": {
+          "start": 80,
+          "end": 82
+        },
+        "cargo": "Fiscal de Tributos Federais",
+        "local_date": "CST, em 30 de outubro de 1980",
+        "date": {
+          "year": 1980,
+          "month": 10,
+          "day": 30
+        }
+      },
+      {
+        "name": "JIMIR S. DONIAK",
+        "span": {
+          "start": 90,
+          "end": 91
+        },
+        "cargo": "Coordenador do Sistema de Tributação"
+      }
+    ]
+  }
+}

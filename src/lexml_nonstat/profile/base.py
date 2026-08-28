@@ -79,6 +79,19 @@ class DocumentProfile:
     field_labels: frozenset[str] = frozenset()
     #: True when documents of this genre routinely carry no ementa.
     ementa_absent: bool = False
+    #: Enacting formulas that open the dispositive part ("DECLARA", "RESOLVE:").
+    enacting_res: tuple[re.Pattern[str], ...] = ()
+    #: Annex boundary markers ("ANEXO ÚNICO", "ANEXO I").
+    #:
+    #: Empty for genres that never carry an annex. This is deliberate and
+    #: load-bearing: ``sumula_stj_125`` block 369 is a bare paragraph reading
+    #: ``ANEXO`` inside a court-precedent compilation that has no annex at all,
+    #: so an ungated rule amputates 28 blocks off the document. Same reasoning
+    #: as amendment A-2.2 — a missed annex is recoverable because the text
+    #: stays in the body, while a false one is silent corruption.
+    annex_res: tuple[re.Pattern[str], ...] = ()
+    #: Local/date closing lines ("Brasília, 19 de dezembro de 2018.").
+    closing_res: tuple[re.Pattern[str], ...] = ()
     #: Floor score, so `generic` can win when nothing else matches at all.
     base_score: float = 0.0
 

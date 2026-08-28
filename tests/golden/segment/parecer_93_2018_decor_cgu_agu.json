@@ -1,0 +1,67 @@
+{
+  "source": "parecer_93_2018_decor_cgu_agu.docx",
+  "profile": "parecer",
+  "front": {
+    "epigraph": {
+      "start": 3,
+      "end": 3
+    },
+    "ementa": {
+      "start": 9,
+      "end": 12
+    },
+    "fields": [
+      {
+        "label": "NUP",
+        "value": "03154.004642/2018-50",
+        "source_index": 4
+      },
+      {
+        "label": "INTERESSADOS",
+        "value": "CONSULTORIA JURÍDICA JUNTO AO MINISTÉRIO DO PLANEJAMENTO,",
+        "source_index": 5
+      },
+      {
+        "label": "ASSUNTO",
+        "value": "BENEFÍCIO ESPECIAL PREVISTO NA LEI NO 12.618, DE 2012",
+        "source_index": 8
+      },
+      {
+        "label": "EMENTA",
+        "value": "ADMINISTRATIVO. SERVIDOR PÚBLICO. REGIME DE PREVIDÊNCIA COMPLEMENTAR. BENEFÍCIO ESPECIAL. LEI NO 12.618, DE 2012.",
+        "source_index": 9
+      },
+      {
+        "label": "Cod. Ement.",
+        "value": "34",
+        "source_index": 16
+      }
+    ]
+  },
+  "body": {
+    "start": 13,
+    "end": 427
+  },
+  "back": {
+    "signatures": [
+      {
+        "name": "MÁRCIA CRISTINA NOVAIS LABANCA",
+        "span": {
+          "start": 428,
+          "end": 430
+        },
+        "cargo": "ADVOGADA DA UNIÃO",
+        "local_date": "Brasília, 19 de dezembro de 2018.",
+        "date": {
+          "year": 2018,
+          "month": 12,
+          "day": 19
+        }
+      }
+    ],
+    "trailing": {
+      "start": 431,
+      "end": 449
+    }
+  }
+}

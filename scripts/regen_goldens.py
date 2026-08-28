@@ -12,9 +12,9 @@ Prints what changed. A silent regeneration that quietly rewrites 15 files is
 exactly the failure mode the policy exists to prevent — if this reports
 "3 changed", those three belong in the commit message.
 
-Two kinds so far: ``styled`` (Cycle 1's `StyledDoc`) and ``metadata``
-(Cycle 2's `Metadata`). Later cycles add theirs to ``KINDS`` rather than
-writing another script.
+Three kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
+(Cycle 2's `Metadata`) and ``segment`` (Cycle 3's `Segmentation`). Later
+cycles add theirs to ``KINDS`` rather than writing another script.
 """
 
 from __future__ import annotations
@@ -27,6 +27,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from lexml_nonstat.ingest import read_docx  # noqa: E402  (after sys.path setup)
 from lexml_nonstat.model import extract_metadata  # noqa: E402
+from lexml_nonstat.segment import segment_document  # noqa: E402
 
 SAMPLES_DIR = REPO_ROOT / "samples"
 GOLDEN_ROOT = REPO_ROOT / "tests" / "golden"
@@ -43,10 +44,17 @@ def _metadata_json(sample: Path) -> str:
     return extract_metadata(read_docx(sample), filename=sample.name).to_json()
 
 
+def _segment_json(sample: Path) -> str:
+    doc = read_docx(sample)
+    metadata = extract_metadata(doc, filename=sample.name)
+    return segment_document(doc, metadata=metadata).to_json()
+
+
 #: kind → (output directory, renderer)
 KINDS: dict[str, tuple[Path, object]] = {
     "styled": (GOLDEN_ROOT / "styled", _styled_json),
     "metadata": (GOLDEN_ROOT / "metadata", _metadata_json),
+    "segment": (GOLDEN_ROOT / "segment", _segment_json),
 }
 
 

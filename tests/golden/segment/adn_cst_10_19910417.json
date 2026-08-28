@@ -1,0 +1,34 @@
+{
+  "source": "adn_cst_10_19910417.docx",
+  "profile": "ato_declaratorio",
+  "front": {
+    "epigraph": {
+      "start": 0,
+      "end": 0
+    },
+    "preamble": {
+      "start": 2,
+      "end": 2
+    },
+    "enacting_formula": {
+      "start": 3,
+      "end": 3
+    }
+  },
+  "body": {
+    "start": 4,
+    "end": 6
+  },
+  "back": {
+    "signatures": [
+      {
+        "name": "JOSEFA MARIA COELHO MARQUES",
+        "span": {
+          "start": 7,
+          "end": 7
+        },
+        "cargo": "Em exercício"
+      }
+    ]
+  }
+}

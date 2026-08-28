@@ -53,4 +53,12 @@ PARECER = DocumentProfile(
             "Nota Normas",
         }
     ),
+    closing_res=(
+        # "Brasília, 19 de dezembro de 2018." / "CST, em 30 de outubro de 1980"
+        re.compile(
+            r"^[A-ZÁÉÍÓÚÂÊÔÃÕÇ][\w\s.\-()]{1,40},\s*(?:em\s+)?"
+            r"[\d.]{1,4}\s*de\s+\w+\s+de\s+\d{4}",
+            re.I,
+        ),
+    ),
 )

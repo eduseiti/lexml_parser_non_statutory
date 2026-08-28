@@ -1,0 +1,22 @@
+{
+  "source": "REsp_1306393.docx",
+  "profile": "jurisprudencia_generico",
+  "front": {
+    "epigraph": {
+      "start": 2,
+      "end": 2
+    },
+    "ementa": {
+      "start": 5,
+      "end": 5
+    },
+    "preamble": {
+      "start": 12,
+      "end": 12
+    }
+  },
+  "body": {
+    "start": 13,
+    "end": 20
+  }
+}

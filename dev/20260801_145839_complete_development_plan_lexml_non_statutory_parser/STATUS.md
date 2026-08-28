@@ -15,7 +15,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 0+ | ↳ addendum: schema-generation awareness + capability probe (A-R.2) | — | not started — *lands with 5b* | — | — | — |
 | 1 | DOCX ingestion → `StyledDoc` | 2026-08-02 | **complete** | 373 pass / 0 fail | [spec](20260802_224308_cycle_1_spec.md) | [report](20260802_224308_cycle_1_report.md) |
 | 2 | Metadata, URN and profiles | 2026-08-02 | **complete** | 788 pass / 0 fail | [spec](20260802_231852_cycle_2_spec.md) | [report](20260802_231852_cycle_2_report.md) |
-| 3 | Front/back matter segmentation | — | not started | — | — | — |
+| 3 | Front/back matter segmentation | 2026-08-28 | **complete** | 1681 pass / 0 fail | [spec](20260828_011822_cycle_3_spec.md) | [report](20260828_011822_cycle_3_report.md) |
 | 4 | Hierarchy inference | — | not started | — | — | — |
 | 4b | Routing + LLM referee + telemetry | — | not started | — | — | — |
 | 5 | Emitter `generico` (flat, **default**) | — | not started | — | — | — |
@@ -26,7 +26,7 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | 8 | Generalisation, robustness, CLI | — | not started | — | — | — |
 | 9 | Regression consolidation and corpus scale-out | — | not started | — | — | — |
 
-Cycle order: `0, 1, 2 ✅ → 3, 4, 4b, 5, 5b, 6, 7, 8, 9`.
+Cycle order: `0, 1, 2, 3 ✅ → 4, 4b, 5, 5b, 6, 7, 8, 9`.
 Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and relocated to Cycle 7.
 
 ## Change logs
@@ -36,6 +36,7 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | 0 | [changes](20260802_140857_cycle_0_changes.md) — no delivered behaviour changed (first cycle); two documented divergences from the planning documents, both agreed with the user |
 | 1 | [changes](20260802_224308_cycle_1_changes.md) — no delivered behaviour changed (additive cycle); `python-docx` floor raised to `>=1.1`; three plan corrections, all agreed with the user |
 | 2 | [changes](20260802_231852_cycle_2_changes.md) — no delivered behaviour changed (additive cycle); `regen_goldens.py` generalised to multiple golden kinds; `.gitignore` added; four plan amendments, all agreed with the user. **Includes an incident record: a subagent edited `src/` against instruction; mutations were transient, verified reverted, and all four are now covered by failing-on-mutation tests** |
+| 3 | [changes](20260828_011822_cycle_3_changes.md) — no delivered behaviour changed (additive cycle); `DocumentProfile` gains three pattern fields, all defaulting to `()`; `regen_goldens.py` gains a third golden kind; five plan amendments. **Two changes were considered and deliberately rejected as major: extending Cycle 0's `matrix_cases.py`, and 'correcting' plan §4.3 — which re-validation showed is correct as written** |
 | — | **2026-08-28 plan revision** — [changes](20260828_011050_revision_changes.md) · [update record](../../docs/20260828_011050_plan_update_recursive_agrupamento_hierarquico.md). Plan document only; **no code, tests or goldens were touched, and the 788 tests remain green.** The revision is scheduled work, not delivered work |
 
 ## Plan amendments
@@ -53,6 +54,12 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | A-2.2 | 2 | `MetadadoProprietario` capture is **allowlist-gated per profile**: a naive `LABEL:` rule captures `Advogados:`×7, `Relator:`, `Some-se:` from `sumula_stj_125` as metadata. The plan's 4-field list is extended by a 15-sample census |
 | A-2.3 | 2 | 4 samples cannot yield a complete URN; best-effort URN + `complete`/`missing` flags, never raising. Sentinels must survive `parse_urn`, so `UrnDate` accepts year 0 (`is_unknown`). Known limit: `is_valid_urn` checks date *shape*, not calendar validity |
 | A-2.4 | 2 | `nota_tecnica` deliberately **not** built — no sample exists, so no test could discharge it. Six profiles registered |
+
+| A-3.1 | 3 | Front/back matter needs **two renderings**: `ParteInicial`/`ParteFinal` exist only in `HierarchicalStructure` and are rejected inside `DocumentoGenerico`, where 14 of 15 samples live. Both renderings probed valid on both schemas ×15 |
+| A-3.2 | 3 | `LocalDataFecho` and `FormulaPromulgacao` are `textoSimplesType` — they require an `id` **and** `<p>` wrapping; `Epigrafe`/`Ementa` are `inlineReq` and require an `id` but take text directly. §4.3's snippet is unaffected and was re-validated as correct |
+| A-3.3 | 3 | Annex detection is **allowlisted per profile**. An ungated `^ANEXO` rule amputates 28 blocks off `sumula_stj_125`, whose bare `ANEXO` paragraph is not an annex. `DocumentProfile` gains `enacting_res`, `annex_res`, `closing_res` |
+| A-3.4 | 3 | `segment/fields.py` deliberately **not built** — Cycle 2's allowlist-gated capture (A-2.2) is re-exported rather than reimplemented |
+| A-3.5 | 3 | Every signature block is recorded, in order (`parecer_93` and `pn_cst_38` carry two regions). `FrontMatter.span` is the **contiguous hull**, and `BackMatter.trailing` absorbs closing notes, so the parts form a **partition** — text conservation as arithmetic, asserted ×15 |
 
 ### Revision amendments (2026-08-28 — schema change adoption)
 
