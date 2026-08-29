@@ -54,11 +54,14 @@ from .genre import GenrePrior, genre_prior
 
 __all__ = [
     "BLOCKER_ALL_ARTICLES_QUOTED",
+    "BLOCKER_BACK_RESIDUE",
     "BLOCKER_CODES",
     "BLOCKER_LOW_COVERAGE",
     "BLOCKER_NESTED_UNAVAILABLE",
     "BLOCKER_NON_MONOTONIC",
     "BLOCKER_NO_ARTICLES",
+    "BLOCKER_STATUTORY_INVALID",
+    "BLOCKER_STATUTORY_LOSSY",
     "BLOCKER_TOP_LEVEL_TABLE",
     "EMITTERS",
     "ROUTES",
@@ -80,6 +83,13 @@ BLOCKER_NON_MONOTONIC = "non_monotonic_series"
 BLOCKER_LOW_COVERAGE = "low_coverage"
 BLOCKER_TOP_LEVEL_TABLE = "top_level_table"
 BLOCKER_NESTED_UNAVAILABLE = "nested_unavailable"
+#: Cycle 6's three, raised by the emitter rather than by the analyzer: §4.2's
+#: validate-then-fallback is a *rendering* verdict, and it is what makes
+#: "prefer statutory when possible" safe by construction rather than by
+#: trusting this module's classification.
+BLOCKER_STATUTORY_INVALID = "statutory_invalid"
+BLOCKER_STATUTORY_LOSSY = "statutory_lossy"
+BLOCKER_BACK_RESIDUE = "back_matter_residue"
 
 #: Every code this module can emit. A test asserts no verdict carries anything
 #: outside it — a blocker nobody can name is a blocker nobody will fix.
@@ -90,6 +100,9 @@ BLOCKER_CODES: tuple[str, ...] = (
     BLOCKER_LOW_COVERAGE,
     BLOCKER_TOP_LEVEL_TABLE,
     BLOCKER_NESTED_UNAVAILABLE,
+    BLOCKER_STATUTORY_INVALID,
+    BLOCKER_STATUTORY_LOSSY,
+    BLOCKER_BACK_RESIDUE,
 )
 
 

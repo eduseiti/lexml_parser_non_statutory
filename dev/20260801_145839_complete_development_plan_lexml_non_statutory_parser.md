@@ -1432,6 +1432,125 @@ Tests
 - annex containing tables uses `DocumentoGenerico`, mirroring `isArticulatedAnexo`
 - **A-R.8:** with the capability present, annex bodies may use the nested form — verified valid — giving `port_mf_277`'s 130-entry `ANEXO ÚNICO` real structure; conservation and URN fragments hold identically either way
 
+**Amendment A-6.1 (Cycle 6, 2026-08-29) — dispositivo ids are pattern-constrained, so they need their own allocator.**
+
+`lexml09-flexivel.xsd` restricts `idArtigo` with an `xsd:pattern`:
+
+```
+art(\d+(-[0-9]{1,3}){0,3}|1u)((_cpt|(_(par|dpg)(\d+…|1u)))(_(inc|ali|dpg)\d+…)?)?
+```
+
+so `art1`, `art1_cpt`, `art1_par1`, `art1_cpt_inc1` are legal and **`pp1_art1`
+is rejected by both schemas**:
+
+```
+Element 'Artigo', attribute 'id': [facet 'pattern'] The value 'pp1_art1' is
+not accepted by the pattern …
+```
+
+Cycle 5's path-composed `IdAllocator` therefore cannot issue dispositivo ids —
+its `child()` contract *composes an id from a parent it has issued*, which is
+exactly what this pattern forbids. `render/norma.py` declares a separate
+`DispositivoIds`. The two id spaces coexist in one document without colliding,
+because a `Norma` primary has no `Agrupamento` and an annex has no dispositivo;
+a test asserts uniqueness across the whole bundle rather than trusting the
+argument. §4.3's snippet was already using the right ids — it just did not say
+they were mandatory. *(Decided with the user during Cycle 6 reconciliation.)*
+
+**Amendment A-6.2 (Cycle 6, 2026-08-29) — `ParteInicial`/`ParteFinal` are closed, so A-5.1's region rendering has no statutory equivalent.**
+
+Both elements are `xsd:sequence`s of **only** their named parts. Measured:
+`<Agrupamento>` and a bare `<p>` are rejected inside each of them:
+
+```
+Element 'Agrupamento': This element is not expected. Expected is ( LocalDataFecho )
+Element 'p': This element is not expected. Expected is one of ( FormulaPromulgacao, Epigrafe, … )
+```
+
+So the rendering amendment A-5.1 forced for `generico` — regions, not parts,
+because 40 non-empty blocks in 6 samples sit inside a hull and inside no named
+part — **cannot be reproduced here**. One escape exists and one does not:
+
+* `Preambulo` is `textoSimplesType` and takes several `<p>`, so **front residue
+  folds into it**, in document order, ahead of the preamble's own lines;
+* `ParteFinal` offers nothing — an extra `<p>` inside `Assinatura`, a childless
+  `AgrupamentoHierarquico` and an `Agrupamento` are all rejected — so **back
+  residue makes the document unrenderable as a `Norma`** and it falls back to
+  `generico` with blocker `back_matter_residue`.
+
+`port_mf_277` carries zero residue of either kind, so this changes nothing for
+the corpus and prevents silent loss in the 300+ unseen documents. Text is never
+dropped to keep a route. *(Decided with the user during Cycle 6 reconciliation.)*
+
+**Amendment A-6.3 (Cycle 6, 2026-08-29) — the validate-then-fallback gate is validity *and* conservation *and* coverage.**
+
+§4.2 says "if it fails schema validation or the conservation/coverage
+invariants", and all three are implemented, because **no schema can detect lost
+text**. That is not hypothetical: this cycle's first statutory render of
+`port_mf_277` was valid on both schemas and 29 words short, and the conservation
+gate is what caught it (the defect was in extraction — see A-6.4).
+
+Four named blockers, three of them new in `BLOCKER_CODES`:
+
+| Gate | Code |
+|---|---|
+| fails either shipped schema | `statutory_invalid` |
+| word multiset ≠ the `generico` render's | `statutory_lossy` |
+| back-matter residue with no legal home (A-6.2) | `back_matter_residue` |
+| articulation coverage < 0.6 | `low_coverage` *(existing)* |
+
+`RenderedDocument.emitter` records which emitter actually produced the artifact,
+so a fallback is visible in the output and not only in the log. **Routing is
+unchanged** — this is a *rendering* verdict, exactly as A-R.7 separates the two.
+*(Decided with the user during Cycle 6 reconciliation.)*
+
+**Amendment A-6.4 (Cycle 6, 2026-08-29) — `leaf_texts` reads the statutory elements, and skips a `Caput`'s echoed `Rotulo`.**
+
+`render/common.py::leaf_texts` was written for `generico` and knew nothing of
+`Epigrafe`, `Ementa`, `NomePessoa` or `Cargo` — all four declared **only**
+inside `HierarchicalStructure`, so no `generico` document can contain one, and
+their absence went unnoticed for three cycles. On a `Norma` it is a 29-word
+conservation hole.
+
+The second half is a decision, not a fix. §4.3's snippet and the reference
+parser both give `Caput` its own `Rotulo`, copying the `Artigo`'s — but the
+source wrote that rótulo **once**. Counting the copy reports a word the document
+never said twice. `leaf_texts` therefore skips a `Rotulo` whose parent is a
+`Caput`, on exactly the precedent already in that module: `Bloco nome="nivel"`
+is excluded because it carries a value *this package inferred* rather than text
+the source contained. The alternative — stop emitting the copy, which is valid —
+was rejected because §5.3 requires matching the reference parser's conventions.
+Adds no text and removes none, so the `generico` route is untouched: all 32
+committed goldens are byte-identical. *(Escalated to and decided with the user.)*
+
+**Amendment A-6.5 (Cycle 6, 2026-08-29) — the annex convention is one shared module, and A-R.8's nesting is a flag, not a probe.**
+
+Cycle 5 delivered plan §2.9's annex convention (A-5.6) and Cycle 5b copied it so
+its annexes could nest. A third copy for the statutory route would be the
+"competing source of truth" A-3.4 refused, so all three now call
+`render/anexo.py::render_anexo(model, annex, *, nested=False)`. The refactor is
+byte-identical by construction and by assertion: 32 committed goldens did not
+move, and a test compares the `norma` and `generico` annex goldens directly.
+
+`nested` is an **explicit flag** chosen by the emitter (`generico` and `norma`
+flat, `generico-aninhado` nested), never read from `probe_capabilities()`.
+Selecting it from the probe — A-R.8's most literal reading — would make emitted
+output depend on which directories exist on the machine, breaking determinism
+(§9.2) and making the goldens un-committable. A-R.8 is discharged by tests
+proving a nested annex body is valid on `lexml-proposed/` and correctly rejected
+on `lexml/`, skipping with the probe's own diagnostic when the generation is
+absent (A-5b.3's rule). *(Decided with the user during Cycle 6 reconciliation.)*
+
+**Also measured during Cycle 6, and recorded because the emitter depends on it:**
+`Anexo` is a `choice` of `DocumentoGenerico` and `DocumentoArticulado` and
+**never `Norma`**, which both schemas reject; `Anexos` must follow `ParteFinal`
+inside `Norma`, the reverse order failing on both; an `Artigo` without a
+`Rotulo` and a `Caput` before its `Rotulo` are each rejected, which is what makes
+"a deliberately mis-ordered tree fails validation" assertable against the schema
+rather than against a check of our own; and a `table` or an `ol` inside a
+`Caput` is rejected, so a body article carrying one cannot be articulated and
+falls back.
+
 ### Cycle 6b — Emitter `articulado-sintetico` — ~~planned~~ **withdrawn 2026-08-28 (A-R.6)**
 
 **This cycle is dropped. Its round-trip reader moves to Cycle 7.**

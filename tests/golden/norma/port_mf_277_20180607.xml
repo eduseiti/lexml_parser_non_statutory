@@ -1,0 +1,38 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda:portaria:2018-06-07;277"/>
+  </Metadado>
+  <Norma>
+    <ParteInicial>
+      <Epigrafe id="epi1">Portaria MF nº 277, de 7 de junho de 2018</Epigrafe>
+      <Ementa id="eme1">Atribui a súmulas do Conselho Administrativo de Recursos Fiscais - CARF efeito vinculante em relação à administração tributária federal.</Ementa>
+      <Preambulo id="pre1">
+        <p>O MINISTRO DE ESTADO DA FAZENDA, no uso das atribuições previstas no art. 87, parágrafo único, incisos I e II da Constituição Federal, e tendo em vista o disposto no art. 75 do Anexo II a Portaria MF nº 343, de 9 de junho de 2015, resolve:</p>
+      </Preambulo>
+    </ParteInicial>
+    <Articulacao>
+      <Artigo id="art1">
+        <Rotulo>Art. 1º</Rotulo>
+        <Caput id="art1_cpt">
+          <Rotulo>Art. 1º</Rotulo>
+          <p>Fica atribuído às sumulas do Conselho Administrativo de Recursos Fiscais - CARF, relacionadas no Anexo Único desta Portaria, efeito vinculante em relação à administração tributária federal.</p>
+        </Caput>
+      </Artigo>
+      <Artigo id="art2">
+        <Rotulo>Art. 2º</Rotulo>
+        <Caput id="art2_cpt">
+          <Rotulo>Art. 2º</Rotulo>
+          <p>Esta Portaria entra em vigor na data de sua publicação.</p>
+        </Caput>
+      </Artigo>
+    </Articulacao>
+    <ParteFinal>
+      <Assinatura>
+        <NomePessoa>EDUARDO REFINETTI GUARDIA</NomePessoa>
+      </Assinatura>
+    </ParteFinal>
+    <Anexos>
+      <ReferenciaAnexo AlvoURN="urn:lex:br:ministerio.fazenda:portaria:2018-06-07;277!anexo1"/>
+    </Anexos>
+  </Norma>
+</LexML>

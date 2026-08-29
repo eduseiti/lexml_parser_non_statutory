@@ -33,7 +33,9 @@ leaves only. The plan's own XSLT selects ``li[not(ol|ul)]``, which avoids the
 double-counting bug but silently drops a parent item's own words; here an
 ``li``'s text is read *without* descending into a nested list, so nothing is
 counted twice and nothing is dropped. ``Bloco nome="nivel"`` is excluded: it is
-a structural marker whose value never appeared in the source.
+a structural marker whose value never appeared in the source. So is a
+``Caput``'s ``Rotulo``, which repeats its ``Artigo``'s — the reference
+convention writes the rótulo twice, the document said it once (A-6.4).
 """
 
 from __future__ import annotations
@@ -72,14 +74,36 @@ LEXML_NS = "http://www.lexml.gov.br/1.0"
 XLINK_NS = "http://www.w3.org/1999/xlink"
 NSMAP = {None: LEXML_NS, "xlink": XLINK_NS}
 
-#: Elements whose whole string value is one leaf of text.
-_WHOLE_TEXT_TAGS = ("p", "td", "th", "Rotulo", "NomeAgrupador")
+#: Elements whose whole string value is one leaf of text. The last three are
+#: statutory (Cycle 6): they exist only under ``Norma``, so adding them changes
+#: nothing the ``generico`` emitters produce — but without them a statutory
+#: document's epigraph, ementa and signatures are silently unread, which is a
+#: conservation hole no schema can see.
+_WHOLE_TEXT_TAGS = (
+    "p",
+    "td",
+    "th",
+    "Rotulo",
+    "NomeAgrupador",
+    "Epigrafe",
+    "Ementa",
+    "NomePessoa",
+    "Cargo",
+)
 
 #: ``Bloco`` names that carry source text. ``nivel`` is a marker, not text.
 _TEXT_BLOCOS = ("rotulo", "nomeAgrupador")
 
 #: Children an ``li``'s own text stops at.
 _LI_STOP = frozenset({"ol", "ul", "p"})
+
+#: Elements whose ``Rotulo`` repeats their parent's rather than adding text.
+#: ``Caput`` carries a copy of its ``Artigo``'s rótulo — plan §4.3's snippet
+#: does it and the reference parser does it — but the source wrote that rótulo
+#: **once**. Counting the copy would report a word the document never said
+#: twice, which is the same reasoning that excludes ``Bloco nome="nivel"``
+#: (Cycle 6, amendment A-6.4).
+_ECHOED_ROTULO_PARENTS = frozenset({"Caput"})
 
 
 def el(tag: str, **attrs: str) -> etree._Element:
@@ -453,7 +477,11 @@ def leaf_texts(element: etree._Element) -> tuple[str, ...]:
     out: list[str] = []
     for node in element.iter():
         tag = local_name(node.tag)
-        if tag in _WHOLE_TEXT_TAGS:
+        if tag == "Rotulo" and local_name(
+            node.getparent().tag if node.getparent() is not None else ""
+        ) in _ECHOED_ROTULO_PARENTS:
+            continue
+        elif tag in _WHOLE_TEXT_TAGS:
             text = _own_text(node, frozenset())
         elif tag == "li":
             text = _own_text(node, _LI_STOP)

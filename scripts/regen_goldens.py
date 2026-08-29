@@ -12,12 +12,13 @@ Prints what changed. A silent regeneration that quietly rewrites 15 files is
 exactly the failure mode the policy exists to prevent — if this reports
 "3 changed", those three belong in the commit message.
 
-Seven kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
+Eight kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
 (Cycle 2's `Metadata`), ``segment`` (Cycle 3's `Segmentation`),
 ``hierarchy`` (Cycle 4's `HierarchyDoc`), ``routing`` (Cycle 4b's
 `StatutoryViability`), ``generico`` (Cycle 5's flat XML) and
-``generico-aninhado`` (Cycle 5b's nested XML). Later cycles add theirs to
-``KINDS`` rather than writing another script.
+``generico-aninhado`` (Cycle 5b's nested XML) and ``norma`` (Cycle 6's
+statutory XML — written for the samples §4.4 routes there, which is one).
+Later cycles add theirs to ``KINDS`` rather than writing another script.
 
 The nested goldens are written **unconditionally**, on every checkout. They are
 the emitter's output, which does not depend on which schemas are present; it is
@@ -40,11 +41,13 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from lexml_nonstat.hierarchy import infer_hierarchy  # noqa: E402
 from lexml_nonstat.ingest import read_docx  # noqa: E402  (after sys.path setup)
-from lexml_nonstat.model import extract_metadata  # noqa: E402
+from lexml_nonstat.model import build_model, extract_metadata  # noqa: E402
 from lexml_nonstat.render import (  # noqa: E402
     render_generico_aninhado_from_docx,
     render_generico_from_docx,
 )
+from lexml_nonstat.render.norma import EMITTER as NORMA_EMITTER  # noqa: E402
+from lexml_nonstat.render.norma import render_norma  # noqa: E402
 from lexml_nonstat.routing import assess_viability  # noqa: E402
 from lexml_nonstat.segment import segment_document  # noqa: E402
 
@@ -116,6 +119,41 @@ def _generico_aninhado_xml(sample: Path) -> dict[str, str]:
     return out
 
 
+def _norma_xml(sample: Path) -> dict[str, str]:
+    # Only the samples §4.4 routes to `norma` — one, `port_mf_277`. A renderer
+    # may return **no** files, and `regenerate` reports that as 'unchanged';
+    # writing a statutory golden for the fourteen `generico` documents would
+    # commit an artifact the pipeline never produces.
+    #
+    # `render_norma`, not `render_statutory`: the golden is this emitter's
+    # output, and routing it through §4.2's fallback would silently replace it
+    # with the flat one the moment the statutory render broke — which is the
+    # regression the golden exists to catch.
+    doc = read_docx(sample)
+    metadata = extract_metadata(doc, filename=sample.name)
+    segmentation = segment_document(doc, metadata=metadata)
+    hierarchy = infer_hierarchy(doc, metadata=metadata, segmentation=segmentation)
+    viability = assess_viability(
+        doc, metadata=metadata, segmentation=segmentation, hierarchy=hierarchy
+    )
+    if viability.route != NORMA_EMITTER:
+        return {}
+
+    model = build_model(
+        doc,
+        filename=sample.name,
+        metadata=metadata,
+        segmentation=segmentation,
+        hierarchy=hierarchy,
+        viability=viability,
+    )
+    bundle = render_norma(model)
+    out = {"": bundle.to_xml_string(bundle.primary)}
+    for ordinal, annex in enumerate(bundle.annexes, start=1):
+        out[f".anexo{ordinal}"] = bundle.to_xml_string(annex)
+    return out
+
+
 #: kind → (output directory, renderer, file extension)
 #:
 #: A renderer maps a file-stem suffix to that file's content; ``""`` is the
@@ -132,6 +170,7 @@ KINDS: dict[str, tuple[Path, object, str]] = {
         _generico_aninhado_xml,
         ".xml",
     ),
+    "norma": (GOLDEN_ROOT / "norma", _norma_xml, ".xml"),
 }
 
 

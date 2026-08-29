@@ -60,7 +60,9 @@ nome="vazio"/>`` is the resolution — ``Bloco`` extends ``inline`` at
 
 Everything outside the body is Cycle 5's, unchanged and shared: the front and
 back matter **regions** (amendment A-5.1 — hulls, not named parts), the
-preamble wrapper (A-5.7), and the annex-as-sibling-document convention (§2.9).
+preamble wrapper (A-5.7), and the annex-as-sibling-document convention (§2.9),
+which since Cycle 6 lives in :mod:`.anexo` — this emitter asks it for the
+``nested=True`` form, and that flag is the whole of **A-R.8**.
 """
 
 from __future__ import annotations
@@ -71,9 +73,8 @@ from lxml import etree
 
 from ..model.document import DocumentModel
 from ..model.nodes import Section
+from .anexo import anexos_element, lexml_root, render_anexo
 from .common import (
-    LEXML_NS,
-    XLINK_NS,
     agrupamento,
     back_region,
     el,
@@ -194,53 +195,6 @@ def _tree_elements(tree, scope: Scope) -> Iterator[etree._Element]:
         yield _section_element(section, scope.ids.root, scope, index)
 
 
-def _lexml_root() -> etree._Element:
-    return etree.Element(f"{{{LEXML_NS}}}LexML", nsmap={None: LEXML_NS, "xlink": XLINK_NS})
-
-
-def _render_annex(model: DocumentModel, annex) -> etree._Element:
-    """One annex as a standalone ``<LexML><Metadado/><Anexo>`` document (§2.9).
-
-    Identical in shape to the flat emitter's annex — same ``anexoN_pp`` root,
-    same ``anexoN_tabM`` tables, same ``!anexoN`` fragment — differing only in
-    that its sections nest. That is what lets conservation be checked *across*
-    the split with one implementation of the check.
-    """
-    root = _lexml_root()
-
-    meta = el("Metadado")
-    identificacao = el("Identificacao")
-    identificacao.set("URN", model.metadata.urn_with_fragment(annex.fragment))
-    meta.append(identificacao)
-    root.append(meta)
-
-    scope = Scope(f"{annex.fragment}_pp", annex.fragment)
-    parte = el("PartePrincipal", id=scope.ids.root)
-
-    # Cycle 4 excludes the annex's marker paragraph from its own tree (A-4.5),
-    # so this is the only place `ANEXO ÚNICO` can be conserved (A-5.6).
-    if annex.label:
-        title = el("p")
-        title.text = annex.label
-        element = agrupamento(
-            "tituloAnexo", scope.ids.child(scope.ids.root, "agr"), [title]
-        )
-        if element is not None:
-            parte.append(element)
-
-    for element in _tree_elements(annex.tree, scope):
-        parte.append(element)
-
-    documento = el("DocumentoGenerico")
-    if len(parte):
-        documento.append(parte)
-
-    anexo = el("Anexo")
-    anexo.append(documento)
-    root.append(anexo)
-    return root
-
-
 def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
     """Render ``model`` as a nested ``DocumentoGenerico`` bundle.
 
@@ -252,7 +206,7 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
     what ``generico-aninhado`` being opt-in *means*. Callers gate on
     :func:`~..validate.schema.probe_capabilities`; this function does not.
     """
-    root = _lexml_root()
+    root = lexml_root()
     root.append(model.metadata.to_xml())
 
     scope = Scope("pp1", "pp1")
@@ -286,15 +240,11 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
     if len(parte):
         documento.append(parte)
 
-    annexes = tuple(_render_annex(model, annex) for annex in model.annexes)
-    if model.annexes:
-        anexos = el("Anexos")
-        for annex in model.annexes:
-            referencia = el("ReferenciaAnexo")
-            referencia.set(
-                "AlvoURN", model.metadata.urn_with_fragment(annex.fragment)
-            )
-            anexos.append(referencia)
+    annexes = tuple(
+        render_anexo(model, annex, nested=True) for annex in model.annexes
+    )
+    anexos = anexos_element(model)
+    if anexos is not None:
         documento.append(anexos)
 
     root.append(documento)
