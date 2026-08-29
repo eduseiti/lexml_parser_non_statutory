@@ -1,0 +1,209 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda;secretaria.receita.federal:servico:0000;0"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <AgrupamentoHierarquico id="pp1_agh1" nome="secao">
+        <NomeAgrupador>Sistema de Recolhimento Mensal Obrigatório (Carnê-Leão)</NomeAgrupador>
+        <AgrupamentoHierarquico id="pp1_agh1_agh1" nome="subsecao">
+          <NomeAgrupador>O que é?</NomeAgrupador>
+          <Bloco nome="ordem">0</Bloco>
+          <Agrupamento id="pp1_agh1_agh1_txt1" nome="texto">
+            <p>O Carnê-leão é o imposto sobre a renda que deve ser pago mensalmente, de forma obrigatória, pelas pessoas físicas, residentes no Brasil, que receberem rendimentos de outra pessoa física ou do exterior.</p>
+            <p>Através deste serviço você poderá emitir o DARF para pagar o carnê-leão, além de manter o registro dos rendimentos mensais utilizados no cálculo. No ano seguinte, os registros poderão ser importados para sua Declaração de Imposto de Renda (DIRPF), facilitando o preenchimento.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh1_agh2" nome="subsecao">
+          <NomeAgrupador>Quem pode utilizar este serviço?</NomeAgrupador>
+          <Bloco nome="ordem">1</Bloco>
+          <Agrupamento id="pp1_agh1_agh2_txt1" nome="texto">
+            <p>
+              <b>São obrigados ao recolhimento do carnê-leão:</b>
+            </p>
+            <ul>
+              <li>pessoas físicas, residentes no Brasil, que receberem rendimentos de outra pessoa física ou do exterior; e</li>
+              <li>serventuários da justiça, independentemente de a fonte ser pessoa física ou jurídica, exceto quando forem remunerados exclusivamente pelos cofres públicos.</li>
+            </ul>
+            <p>
+              <b>Estão sujeitos ao pagamento do Carnê-leão os rendimentos:</b>
+            </p>
+            <ul>
+              <li>Trabalho sem vínculo empregatício;</li>
+              <li>Locação e sublocação de bens móveis e imóveis;</li>
+              <li>Arrendamento e subarrendamento;</li>
+              <li>Prestação de serviços a embaixadas, repartições consulares, missões diplomáticas ou técnicas ou a organismos internacionais;</li>
+              <li>Prestação de serviços de representante comercial autônomo, intermediário na realização de negócios por conta de terceiros;</li>
+              <li>Emolumentos e custas dos serventuários da Justiça, exceto quando forem remunerados pelos cofres públicos;</li>
+              <li>Prestação de serviços de transporte de cargas - no mínimo 10% (dez por cento) do total dos rendimentos recebidos;</li>
+              <li>Prestação de serviços de transporte de passageiros - no mínimo 60% (sessenta por cento) do total dos rendimentos recebidos;</li>
+              <li>Rendimentos decorrentes da atividade de leiloeiro.</li>
+            </ul>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh1_agh3" nome="subsecao">
+          <NomeAgrupador>Etapas para a realização deste serviço</NomeAgrupador>
+          <Bloco nome="ordem">2</Bloco>
+          <Agrupamento id="pp1_agh1_agh3_txt1" nome="texto">
+            <p>
+              <b>Informar rendimentos e emitir o DARF</b>
+            </p>
+            <p>Acesse canal abaixo e preencha as informações necessárias para emitir o DARF.</p>
+            <p>Para rendimentos recebidos antes de 2021, baixe o programa correspondente ao respectivo ano.</p>
+            <p>
+              <b>Canais de prestação</b>
+            </p>
+            <p>Web :</p>
+            <p>
+              <a xlink:href="https://cav.receita.fazenda.gov.br/autenticacao/login/index/10028">Meu Carnê-Leão</a>
+            </p>
+            <p>
+              <b>Para rendimentos recebidos até 2020</b>
+            </p>
+            <p>Web :</p>
+            <p>
+              <a xlink:href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/leao">Baixar o programa</a>
+            </p>
+            <p>
+              <b>Documentação</b>
+            </p>
+            <p>
+              <b>Documentação em comum para todos os casos</b>
+            </p>
+            <p>Comprovantes de rendimentos do mês.</p>
+            <p>
+              <b>Tempo de duração da etapa</b>
+            </p>
+            <p>Atendimento imediato</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh1_agh4" nome="subsecao">
+          <NomeAgrupador>Outras Informações</NomeAgrupador>
+          <Bloco nome="ordem">3</Bloco>
+          <Agrupamento id="pp1_agh1_agh4_txt1" nome="texto">
+            <p>
+              <b>Quanto tempo leva?</b>
+            </p>
+            <p>Não estimado ainda</p>
+            <p>
+              <b>Informações adicionais ao tempo estimado</b>
+            </p>
+            <p>Este serviço é gratuito para o cidadão.</p>
+            <p>
+              <b>Para mais informações ou dúvidas sobre este serviço, entre em contato</b>
+            </p>
+            <p>
+              <a xlink:href="https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/carne-leao">Orientações sobre o carnê-leão</a>
+            </p>
+            <p>
+              <a xlink:href="https://servicos.receitafederal.gov.br/servico/receita-atende">Fale Conosco</a>
+            </p>
+            <p>Este é um serviço do(a) <a xlink:href="https://www.gov.br/pt-br/orgaos/secretaria-especial-da-receita-federal-do-brasil">Secretaria Especial da Receita Federal do Brasil</a> . Em caso de dúvidas, reclamações ou sugestões favor contactá-lo.</p>
+            <p>
+              <b>Legislação</b>
+            </p>
+            <ul>
+              <li>
+                <a xlink:href="http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?visao=anotado&amp;idAto=115115">Instrução Normativa RFB nº 2.006/2021</a>
+              </li>
+              <li>
+                <a xlink:href="http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?idAto=57670&amp;visao=anotado">Instrução Normativa RFB nº 1.500/2014</a>
+              </li>
+              <li>
+                <a xlink:href="http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?visao=anotado&amp;idAto=49308">Instrução Normativa SRF nº 46/1997</a>
+              </li>
+            </ul>
+            <p>
+              <b>Tratamento a ser dispensado ao usuário no atendimento</b>
+            </p>
+            <p>O usuário deverá receber, conforme os princípios expressos na Lei nº 13.460/2017, um atendimento pautado nas seguintes diretrizes:</p>
+            <ul>
+              <li>Urbanidade;</li>
+              <li>Respeito;</li>
+              <li>Acessibilidade;</li>
+              <li>Cortesia;</li>
+              <li>Presunção da boa-fé do usuário;</li>
+              <li>Igualdade;</li>
+              <li>Eficiência;</li>
+              <li>Segurança; e</li>
+              <li>Ética</li>
+            </ul>
+            <p>
+              <b>Informações sobre as condições de acessibilidade, sinalização, limpeza e conforto dos locais de atendimento</b>
+            </p>
+            <p>O usuário do serviço público, conforme estabelecido pela Lei nº 13.460/2017, tem direito a atendimento presencial, quando necessário, em instalações salubres, seguras, sinalizadas, acessíveis e adequadas ao serviço e ao atendimento.</p>
+            <p>
+              <b>Informação sobre quem tem direito a tratamento prioritário</b>
+            </p>
+            <p>Têm direito a atendimento prioritário as pessoas com deficiência, pessoas com transtorno do espectro autista, os idosos com idade igual ou superior a 60 anos, as gestantes, as lactantes, as pessoas com crianças de colo, os obesos, pessoas com mobilidade reduzida e doadores de sangue, conforme estabelecido pela Lei nº 10.048/2000.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh1_agh5" nome="subsecao">
+          <NomeAgrupador>Lei Geral de Proteção de Dados Pessoais - LGPD</NomeAgrupador>
+          <Bloco nome="ordem">4</Bloco>
+          <Agrupamento id="pp1_agh1_agh5_txt1" nome="texto">
+            <p>
+              <b>Dados pessoais tratados por este Serviço</b>
+            </p>
+            <ul>
+              <li>Nome</li>
+              <li>Endereço</li>
+              <li>NIT/PIS</li>
+              <li>CTPS</li>
+              <li>CBO</li>
+              <li>Data de admissão</li>
+              <li>Data de nascimento</li>
+              <li>CPF</li>
+              <li>Naturalidade</li>
+              <li>Sexo</li>
+              <li>Ocupação</li>
+            </ul>
+            <p>
+              <b>Dados pessoais sensíveis tratados por este Serviço de acordo com a Lei 13709/2018, art. 5º, II</b>
+            </p>
+            <p>Não é realizado tratamento de dados pessoais sensíveis</p>
+            <p>
+              <b>Este serviço não trata dados pessoais de crianças ou adolescentes.</b>
+            </p>
+            <p>
+              <b>Prazo de retenção para dados pessoais</b>
+            </p>
+            <p>No mínimo enquanto não extinto o direito da Fazenda Pública cobrar os respectivos créditos.</p>
+            <p>
+              <b>Hipótese de tratamento de dados pessoais adotada (Lei 13709/2018)</b>
+            </p>
+            <ul>
+              <li>Cumprimento de obrigação legal ou regulatória pelo controlador</li>
+              <li>Execução de políticas públicas</li>
+            </ul>
+            <p>
+              <b>Finalidade do tratamento</b>
+            </p>
+            <p>Apuração dos créditos tributários</p>
+            <p>
+              <b>Previsão legal do tratamento</b>
+            </p>
+            <p>Lei nº 5.172/1966, art. 150</p>
+            <p>Lei 9.779/1999, art. 16.</p>
+            <p>
+              <b>Dados pessoais compartilhados com outras instituições</b>
+            </p>
+            <p>Não, exceto no caso do Simples Nacional, regime único de arrecadação dos impostos e contribuições comum da União, dos Estados, do Distrito Federal e dos Municípios.</p>
+            <p>
+              <b>País(es) e instituição(ões) que recebem transferência(s) internacional de dados pessoais e/ou dados pessoais sensíveis</b>
+            </p>
+            <p>Não é realizada transferência internacional de dados pessoais e dados pessoais sensíveis.</p>
+            <p>
+              <b>Link da política de privacidade/termo de uso do serviço</b>
+            </p>
+            <p>
+              <a xlink:href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/lgpd/termo-de-uso">https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/lgpd/termo-de-uso</a>
+            </p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <Bloco nome="ordem">0</Bloco>
+        <Bloco nome="vazio"/>
+      </AgrupamentoHierarquico>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

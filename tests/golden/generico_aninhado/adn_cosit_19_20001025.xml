@@ -1,0 +1,24 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda;secretaria.receita.federal:ato.declaratorio:2000-10-25;19"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Ato Declaratório Normativo Cosit nº 19, de 25 de outubro de 2000</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>Dispõe sobre a isenção do imposto de renda sobre proventos de aposentadoria ou reforma percebidos acumuladamente por pessoa física portadora de moléstia grave.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="preambulo">
+        <p>O COORDENADOR-GERAL DO SISTEMA DE TRIBUTAÇÃO, no uso das atribuições que lhe confere o art. 199, inciso IV, do Regimento Interno da Secretaria da Receita Federal, aprovado pela Portaria MF nº 227, de 3 de setembro de 1998; e tendo em vista o disposto nos arts. 111, II, da Lei nº 5.172, de 25 de outubro de 1966 (Código Tributário Nacional), 6º, XIV e XXI, 7º e 12 da Lei nº 7.713, de 22 de dezembro de 1988, 47 da Lei nº 8.541, de 23 de dezembro de 1992, e 30 da Lei nº 9.250, de 26 de dezembro de 1995,</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="formulaPromulgacao">
+        <p>declara, em caráter normativo, às Superintendências Regionais da Receita Federal, às Delegacias da Receita Federal de Julgamento e aos demais interessados, que estão isentos do imposto de renda os rendimentos recebidos acumuladamente por pessoa física portadora de moléstia grave, atestada por laudo médico oficial, desde que correspondam a proventos de aposentadoria ou reforma ou pensão, ainda que se refiram a período anterior à data em que foi contraída a moléstia grave.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>CARLOS ALBERTO DE NIZA E CASTRO</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

@@ -57,6 +57,7 @@ from .ids import IdAllocator
 __all__ = [
     "AUXILIARY_NOMES",
     "RenderedDocument",
+    "Scope",
     "render_generico",
     "render_generico_from_docx",
 ]
@@ -115,8 +116,13 @@ class RenderedDocument:
         return tuple(t for d in self.documents for t in leaf_texts(d))
 
 
-class _Scope:
-    """One document's id space: an allocator plus the §2.9 table base."""
+class Scope:
+    """One document's id space: an allocator plus the §2.9 table base.
+
+    Public because both emitters need exactly this — one allocator, one table
+    base, one ``adopt`` for the ids Cycle 3's region renderers already issued.
+    Cycle 5b reuses it rather than declaring a second, divergable copy.
+    """
 
     def __init__(self, root: str, table_base: str) -> None:
         self.ids = IdAllocator(root)
@@ -143,7 +149,7 @@ def _bloco(nome: str, text: str) -> etree._Element:
 
 
 def _section_elements(
-    section: Section, parent_id: str, scope: _Scope
+    section: Section, parent_id: str, scope: Scope
 ) -> Iterator[etree._Element]:
     """One section, then its descendants — depth-first, pre-order, flattened.
 
@@ -174,7 +180,7 @@ def _section_elements(
         yield from _section_elements(child, ident, scope)
 
 
-def _tree_elements(tree, scope: _Scope) -> list[etree._Element]:
+def _tree_elements(tree, scope: Scope) -> list[etree._Element]:
     """A ``HierarchyTree``'s preamble and sections, as ``PartePrincipal`` children.
 
     The preamble is wrapped in a single ``Agrupamento nome="texto"`` rather than
@@ -218,7 +224,7 @@ def _render_annex(model: DocumentModel, annex) -> etree._Element:
     meta.append(identificacao)
     root.append(meta)
 
-    scope = _Scope(f"{annex.fragment}_pp", annex.fragment)
+    scope = Scope(f"{annex.fragment}_pp", annex.fragment)
     parte = el("PartePrincipal", id=scope.ids.root)
 
     # Cycle 4 excludes the annex's own marker paragraph from its tree — it is
@@ -257,7 +263,7 @@ def render_generico(model: DocumentModel) -> RenderedDocument:
     root = _lexml_root()
     root.append(model.metadata.to_xml())
 
-    scope = _Scope("pp1", "pp1")
+    scope = Scope("pp1", "pp1")
     parte = el("PartePrincipal", id=scope.ids.root)
 
     front = front_region(

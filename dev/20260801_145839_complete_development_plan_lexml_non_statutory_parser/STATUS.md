@@ -12,21 +12,21 @@ Plan: [`20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`
 | Cycle | Title | Date | State | Tests | Spec | Report |
 |---|---|---|---|---|---|---|
 | 0 | Scaffolding and the schema harness | 2026-08-02 | **complete** | 107 pass / 0 fail | [spec](20260802_140857_cycle_0_spec.md) | [report](20260802_140857_cycle_0_report.md) |
-| 0+ | ↳ addendum: schema-generation awareness + capability probe (A-R.2) | 2026-08-28 | **partial** — probe landed in 4b (A-4b.1); matrix `requires`/skip still with 5b | (in 4b) | — | — |
+| 0+ | ↳ addendum: schema-generation awareness + capability probe (A-R.2) | 2026-08-29 | **complete** — probe landed in 4b (A-4b.1); matrix `requires`/skip in 5b (C-6) | (in 4b + 5b) | — | — |
 | 1 | DOCX ingestion → `StyledDoc` | 2026-08-02 | **complete** | 373 pass / 0 fail | [spec](20260802_224308_cycle_1_spec.md) | [report](20260802_224308_cycle_1_report.md) |
 | 2 | Metadata, URN and profiles | 2026-08-02 | **complete** | 788 pass / 0 fail | [spec](20260802_231852_cycle_2_spec.md) | [report](20260802_231852_cycle_2_report.md) |
 | 3 | Front/back matter segmentation | 2026-08-28 | **complete** | 1681 pass / 0 fail | [spec](20260828_011822_cycle_3_spec.md) | [report](20260828_011822_cycle_3_report.md) |
 | 4 | Hierarchy inference | 2026-08-28 | **complete** | 2462 pass / 0 fail | [spec](20260828_111240_cycle_4_spec.md) | [report](20260828_111240_cycle_4_report.md) |
 | 4b | Routing + LLM referee + telemetry | 2026-08-28 | **complete** | 3135 pass / 0 fail | [spec](20260828_161250_cycle_4b_spec.md) | [report](20260828_161250_cycle_4b_report.md) |
 | 5 | Emitter `generico` (flat, **default**) | 2026-08-28 | **complete** | 3510 pass / 0 fail | [spec](20260828_184339_cycle_5_spec.md) | [report](20260828_184339_cycle_5_report.md) |
-| **5b** | **Emitter `generico-aninhado` (nested, opt-in)** — *new, A-R.3* | — | not started | — | — | — |
+| 5b | Emitter `generico-aninhado` (nested, opt-in) — *new, A-R.3* | 2026-08-29 | **complete** | 3957 pass / 0 fail / 4 skip | [spec](20260829_145914_cycle_5b_spec.md) | [report](20260829_145914_cycle_5b_report.md) |
 | 6 | Emitter `norma` + `Anexo` split | — | not started | — | — | — |
 | ~~6b~~ | ~~Emitter `articulado-sintetico` + round-trip~~ | — | **withdrawn 2026-08-28 (A-R.6)** | — | — | — |
 | 7 | Segmentation output | — | not started | — | — | — |
 | 8 | Generalisation, robustness, CLI | — | not started | — | — | — |
 | 9 | Regression consolidation and corpus scale-out | — | not started | — | — | — |
 
-Cycle order: `0, 1, 2, 3, 4, 4b, 5 ✅ → 5b, 6, 7, 8, 9`.
+Cycle order: `0, 1, 2, 3, 4, 4b, 5, 5b ✅ → 6, 7, 8, 9`.
 Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and relocated to Cycle 7.
 
 ## Change logs
@@ -40,6 +40,7 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | 4 | [changes](20260828_111240_cycle_4_changes.md) — no delivered behaviour changed (additive cycle); `model/__init__.py` gains 10 exports from the new `nodes` module; `regen_goldens.py` gains a fourth golden kind; six plan amendments. **One change deliberately rejected as major: capturing Word's `numFmt` on `StyledPara`, which would rewrite all 15 Cycle 1 `styled` goldens. Three defects in this cycle's own code were found by its tests and fixed — one of them, silently dropped nested list items, was unreachable from the corpus** |
 | 4b | [changes](20260828_161250_cycle_4b_changes.md) — no delivered behaviour changed (additive cycle); `validate/schema.py` gains keyword-only `generation` + `probe_capabilities()`, `validate/__init__.py` gains 9 exports, `regen_goldens.py` gains a fifth golden kind; six plan amendments. **One change rejected as major: forcing §7.4's `agreed + overrode == flagged` identity, which is false under the suite's own `--referee=none` default — the plan was amended instead. Three defects in this cycle's own code were found and fixed — two reported by a test-authoring subagent under "report, do not fix", and one, `agreed` counting a disagreeing referee as agreeing, found by a mutation sweep. Four of 27 mutations initially survived, all in branches the 15-sample corpus cannot reach** |
 | 5 | [changes](20260828_184339_cycle_5_changes.md) — no delivered behaviour changed (additive cycle); two private helpers promoted to public (`agrupamento_block`, `table_node`) so the emitter reuses rather than reimplements them, three export additions, and `regen_goldens.py`'s `KINDS` refactored to let one sample write several files; seven plan amendments. **Five changes considered and rejected, two of them as major: adding a `residue=True` flag to Cycle 3's `render_front_generico`, and giving the front matter a distinct id token — which would have changed delivered ids *and* broken Rule A. A 15-mutation sweep over the new code killed 15 of 15** |
+| 5b | [changes](20260829_145914_cycle_5b_changes.md) — no delivered behaviour changed (additive cycle); `_Scope` promoted to public `Scope`, five export additions, `regen_goldens.py` gains a seventh golden kind, `conftest.py` gains the capability helpers, and `matrix_cases.py` gains `requires` (**discharging the Cycle 0 addendum**); five plan amendments. **One major change, escalated and approved: `test_httpx_is_not_imported` was rewritten** — the baseline was red because a `langsmith` pytest plugin imports `httpx` before collection, while the package under test was clean. The obvious repair (snapshot before/after) proved **strictly weaker** and survived a module-level-import mutation; a clean-subprocess probe kills it. **Four changes considered and rejected**, including renaming the nested id tokens to make invariant #11 assertable as string equality — which would have contradicted §5.2's snippet *and* 16 committed goldens. A 16-mutation sweep over the new emitter killed 16 of 16 |
 | — | **2026-08-28 plan revision** — [changes](20260828_011050_revision_changes.md) · [update record](../../docs/20260828_011050_plan_update_recursive_agrupamento_hierarquico.md). Plan document only; **no code, tests or goldens were touched, and the 788 tests remain green.** The revision is scheduled work, not delivered work |
 
 ## Plan amendments
@@ -86,6 +87,12 @@ Cycle 6b's round-trip reader (`hierarchy_from_xml()`) is **retained** and reloca
 | A-5.6 | 5 | The annex **documents** are emitted in Cycle 5, not deferred to Cycle 6 — a pointer with no target loses 65 sections and cannot satisfy invariant #2. `render_generico` returns a **bundle** following §2.9 verbatim: `anexo1_pp`, `anexo1_tabM`, `!anexo1`. The annex's marker paragraph becomes `Agrupamento nome="tituloAnexo"`, because A-4.5 excludes it from the annex's own tree. *Decided with the user* |
 | A-5.7 | 5 | A body preamble is wrapped in `Agrupamento nome="texto"` rather than left as bare `<p>`, so every content node has a citable, `id`-bearing container — and `texto` is the `nome` §5.2 gives a nested prose leaf, so the two emitters agree on segment URNs (invariant #11) |
 
+| A-5b.1 | 5b | **Constraint 1 binds *every* non-`AH` child, not only prose.** Measured, not assumed: a `Bloco` may not precede an `AgrupamentoHierarquico` either, so the order marker sits *after* the subsections. 24 probe cases pin the content model, negatives included — prose-before-subsections, `AH` with no non-`AH` child, bare `<p>` under `AH` (§2.1 row E survives), `NomeAgrupador` before `Rotulo` |
+| A-5b.2 | 5b | **`<Bloco nome="ordem">` on *every* child**, not only unlabelled sections. One rule beats two, and `Rotulo` is not reliably sortable (`2.`, `2.1`, `IV`, `a)` share no comparison). Carries no source text, so extraction and conservation are untouched. *Decided with the user* |
+| A-5b.3 | 5b | **The renderer always renders; the capability gate is on validation and emitter selection.** §5.2's "refuses when the vendored schemas are flat" would refuse on every default checkout — `lexml/` *is* flat. Nested assertions skip with the probe's diagnostic instead, which is how A-R.9 is met. *Decided with the user* |
+| A-5b.4 | 5b | **Invariant #11 is equivalence of text and segment-URN *structure*, not of `id` strings.** Body ids differ **two** ways, the second unanticipated: the token (`agr` flat vs `agh`/`txt` nested, both fixed by ratified artifacts) *and* a **top-level ordinal offset** — the flat emitter numbers body sections in the same root sequence as the front regions, so `pn_cst_38`'s first section is `pp1_agr4` flat and `pp1_agh1` nested. **A segment URN is therefore not portable between emitters.** Front/back region ids *are* byte-identical; tests pin the offset as exactly the front-region count, so a third drift fails loudly |
+| A-5b.5 | 5b | **Six of the sixteen documents contain no `AgrupamentoHierarquico` at all** — they are front and back matter, rendered identically by both emitters, so their nested output is byte-identical to the flat and *correctly* valid on the shipped schemas. "Nested output is invalid on `lexml/`" holds **iff** the document nests. Found by writing the stronger assertion first and watching it fail on exactly those six |
+
 ### Revision amendments (2026-08-28 — schema change adoption)
 
 Source: [`docs/20260827_111015_revised_plan_recursive_agrupamento_hierarquico_adoption.md`](../../docs/20260827_111015_revised_plan_recursive_agrupamento_hierarquico_adoption.md).
@@ -116,7 +123,7 @@ Full text in plan **§14**.
 | `lexml/` | upstream, vendored | shipped | **byte-identical to upstream, never modified** — that is what makes drift detectable |
 | `lexml-proposed/` | *generated* by `scripts/build_proposed_schemas.py` | maintainers' change, **unreleased** | never hand-edited; `--check` verifies it is current |
 
-The flat `generico` emitter targets the former and stays default; `generico-aninhado` targets the latter and is opt-in behind the capability probe until upstream ships the change (plan §11.3).
+The flat `generico` emitter targets the former and stays default; `generico-aninhado` (delivered in Cycle 5b) targets the latter and is opt-in behind the capability probe until upstream ships the change (plan §11.3). Both emitters' goldens are committed — 16 documents each — and the suite is green with `lexml-proposed/` absent, every nested assertion skipping with the probe's own diagnostic (A-R.9, verified).
 
 ## Running the suite
 
@@ -125,6 +132,7 @@ python3 -m pytest tests/ -q                        # from the repository root
 python3 scripts/build_proposed_schemas.py --check  # verify generated schemas current
 python3 -m lexml_nonstat.routing --decisions-report samples/*.docx   # Cycle 4b
 python3 scripts/regen_goldens.py --kind=generico                    # Cycle 5
+python3 scripts/regen_goldens.py --kind=generico-aninhado           # Cycle 5b
 ```
 
 The referee defaults to `none` everywhere and the suite pins it (§9.3): nothing

@@ -12,11 +12,17 @@ Prints what changed. A silent regeneration that quietly rewrites 15 files is
 exactly the failure mode the policy exists to prevent — if this reports
 "3 changed", those three belong in the commit message.
 
-Six kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
+Seven kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
 (Cycle 2's `Metadata`), ``segment`` (Cycle 3's `Segmentation`),
 ``hierarchy`` (Cycle 4's `HierarchyDoc`), ``routing`` (Cycle 4b's
-`StatutoryViability`) and ``generico`` (Cycle 5's emitted XML). Later cycles add
-theirs to ``KINDS`` rather than writing another script.
+`StatutoryViability`), ``generico`` (Cycle 5's flat XML) and
+``generico-aninhado`` (Cycle 5b's nested XML). Later cycles add theirs to
+``KINDS`` rather than writing another script.
+
+The nested goldens are written **unconditionally**, on every checkout. They are
+the emitter's output, which does not depend on which schemas are present; it is
+only *validating* them that needs `lexml-proposed/`, and that is the golden
+test's business, not this script's (spec decision R-2).
 
 A renderer returns ``{suffix: content}`` rather than a bare string, because one
 sample can produce more than one file: an annex is a **standalone sibling
@@ -35,7 +41,10 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 from lexml_nonstat.hierarchy import infer_hierarchy  # noqa: E402
 from lexml_nonstat.ingest import read_docx  # noqa: E402  (after sys.path setup)
 from lexml_nonstat.model import extract_metadata  # noqa: E402
-from lexml_nonstat.render import render_generico_from_docx  # noqa: E402
+from lexml_nonstat.render import (  # noqa: E402
+    render_generico_aninhado_from_docx,
+    render_generico_from_docx,
+)
 from lexml_nonstat.routing import assess_viability  # noqa: E402
 from lexml_nonstat.segment import segment_document  # noqa: E402
 
@@ -97,6 +106,16 @@ def _generico_xml(sample: Path) -> dict[str, str]:
     return out
 
 
+def _generico_aninhado_xml(sample: Path) -> dict[str, str]:
+    # The same 16 documents as `generico`, written nested (spec decision R-4),
+    # so cross-emitter equivalence is checkable file-for-file over the bundle.
+    bundle = render_generico_aninhado_from_docx(sample, filename=sample.name)
+    out = {"": bundle.to_xml_string(bundle.primary)}
+    for ordinal, annex in enumerate(bundle.annexes, start=1):
+        out[f".anexo{ordinal}"] = bundle.to_xml_string(annex)
+    return out
+
+
 #: kind → (output directory, renderer, file extension)
 #:
 #: A renderer maps a file-stem suffix to that file's content; ``""`` is the
@@ -108,6 +127,11 @@ KINDS: dict[str, tuple[Path, object, str]] = {
     "hierarchy": (GOLDEN_ROOT / "hierarchy", _hierarchy_json, ".json"),
     "routing": (GOLDEN_ROOT / "routing", _routing_json, ".json"),
     "generico": (GOLDEN_ROOT / "generico", _generico_xml, ".xml"),
+    "generico-aninhado": (
+        GOLDEN_ROOT / "generico_aninhado",
+        _generico_aninhado_xml,
+        ".xml",
+    ),
 }
 
 

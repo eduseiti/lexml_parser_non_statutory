@@ -1,0 +1,135 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda:portaria:1977-08-25;454"/>
+    <MetadadoProprietario fonte="http://www.lexml.gov.br/nonstat">
+      <campo nome="Nota Normas">Este ato foi originalmente publicado sem a ementa.</campo>
+    </MetadadoProprietario>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Portaria MF nº 454, de 25 de agosto de 1977</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>"Dispõe sobre o rendimento líquido tributável classificado na cédula 'H' da declaração anual de rendimentos."</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="preambulo">
+        <p>O Ministro de Estado da Fazenda, no uso de suas atribuições e tendo em vista o disposto no artigo 9º do Decreto-lei nº 1.510, de 27 de dezembro de 1976,</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr4" nome="formulaPromulgacao">
+        <p>RESOLVE:</p>
+      </Agrupamento>
+      <AgrupamentoHierarquico id="pp1_agh1" nome="secao">
+        <Rotulo>1.</Rotulo>
+        <Bloco nome="ordem">0</Bloco>
+        <Agrupamento id="pp1_agh1_txt1" nome="texto">
+          <p>Para os efeitos do artigo 1º do Decreto-lei nº 1.510, de 27 de dezembro de 1976, considera-se rendimento liquido tributável, classificado na cédula "H" da declaração anual de rendimentos, a diferença entre o valor bruto obtido da alienação de quaisquer participações societárias e o respectivo preço de custo reajustado.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh2" nome="secao">
+        <Rotulo>2.</Rotulo>
+        <AgrupamentoHierarquico id="pp1_agh2_agh1" nome="alinea">
+          <Rotulo>a)</Rotulo>
+          <Bloco nome="ordem">0</Bloco>
+          <Agrupamento id="pp1_agh2_agh1_txt1" nome="texto">
+            <p>o valor real da participação, determinado pelo preço normal que poderia obter no mercado, desde que não seja inferior ao valor patrimonial da participação alienada;</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh2_agh2" nome="alinea">
+          <Rotulo>b)</Rotulo>
+          <Bloco nome="ordem">1</Bloco>
+          <Agrupamento id="pp1_agh2_agh2_txt1" nome="texto">
+            <p>o correspondente ao da cotação média obtida no pregão imediatamente anterior, caso se trate de participação societária representada por ações normalmente negociadas em Bolsas.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh2_agh3" nome="subsecao">
+          <Rotulo>2.1 -</Rotulo>
+          <Bloco nome="ordem">2</Bloco>
+          <Agrupamento id="pp1_agh2_agh3_txt1" nome="texto">
+            <p>Considera-se preço de custo reajustado o preço de compra, de subscrição ou de aquisição a qualquer titulo, corrigido monetariamente mediante aplicação dos índices de variação das Obrigações Reajustáveis do Tesouro Nacional, em função das datas de efetivo pagamento.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <Bloco nome="ordem">1</Bloco>
+        <Agrupamento id="pp1_agh2_txt1" nome="texto">
+          <p>Para efeito de apurar a diferença de que trata este item, nas alienações a título gratuito, considera-se como valor bruto obtido pelo alienante:</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh3" nome="secao">
+        <Rotulo>3.</Rotulo>
+        <AgrupamentoHierarquico id="pp1_agh3_agh1" nome="subsecao">
+          <Rotulo>3.1 -</Rotulo>
+          <Bloco nome="ordem">0</Bloco>
+          <Agrupamento id="pp1_agh3_agh1_txt1" nome="texto">
+            <p>Nas alienações de participações societárias havidas por doação o valor de custo será aquele que tiver servido de base para apurar o rendimento imputado ao doador conforme item 2.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <AgrupamentoHierarquico id="pp1_agh3_agh2" nome="subsecao">
+          <Rotulo>3.2 -</Rotulo>
+          <Bloco nome="ordem">1</Bloco>
+          <Agrupamento id="pp1_agh3_agh2_txt1" nome="texto">
+            <p>Em ambos os casos o valor de custo poderá ser corrigido monetariamente, como dispõe o item 2.1.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <Bloco nome="ordem">2</Bloco>
+        <Agrupamento id="pp1_agh3_txt1" nome="texto">
+          <p>Nas alienações de participações societárias havidas por herança o valor de custo será aquele que tiver servido de base para a partilha dos bens.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh4" nome="secao">
+        <Rotulo>4.</Rotulo>
+        <AgrupamentoHierarquico id="pp1_agh4_agh1" nome="subsecao">
+          <Rotulo>4.1.</Rotulo>
+          <Bloco nome="ordem">0</Bloco>
+          <Agrupamento id="pp1_agh4_agh1_txt1" nome="texto">
+            <p>A opção é anual e relativa a todas as operações e será exercida na declaração de rendimentos do exercício financeiro correspondente ao ano-base em que as alienações foram efetivadas.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <Bloco nome="ordem">3</Bloco>
+        <Agrupamento id="pp1_agh4_txt1" nome="texto">
+          <p>No caso de opção pelo pagamento do imposto à alíquota de 25% (vinte e cinco por cento) sobre os lucros auferidos, conforme dispõe o artigo 8º do Decreto-lei nº 1.510/76, a incidência far-se-á sobre o rendimento líquido apurado conforme item 1 desta Portaria.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh5" nome="secao">
+        <Rotulo>5.</Rotulo>
+        <Bloco nome="ordem">4</Bloco>
+        <Agrupamento id="pp1_agh5_txt1" nome="texto">
+          <p>Face ao disposto no art. 5º do D.L. 1.510/76, presume-se que as alienações se referem às participações subscritas ou adquiridas mais recentemente e as bonificações recebidas devem ser rateadas segundo as datas e quantidades originariamente subscritas ou adquiridas, já acrescidas dos rateios de bonificações anteriores.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh6" nome="secao">
+        <Rotulo>6.</Rotulo>
+        <Bloco nome="ordem">5</Bloco>
+        <Agrupamento id="pp1_agh6_txt1" nome="texto">
+          <p>O recolhimento do imposto sujeito à retenção na fonte, previsto no artigo 7º, do D.L. 1.510/76, deve ser efetivado no ato da operação, ainda quando se trate de alienação a título gratuito.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh7" nome="secao">
+        <Rotulo>7.</Rotulo>
+        <AgrupamentoHierarquico id="pp1_agh7_agh1" nome="subsecao">
+          <Rotulo>7.1 -</Rotulo>
+          <Bloco nome="ordem">0</Bloco>
+          <Agrupamento id="pp1_agh7_agh1_txt1" nome="texto">
+            <p>O prazo qüinqüenal citado neste item é contado segundo a definição de ano contida na Lei nº 810, de 6 de setembro de 1949.</p>
+          </Agrupamento>
+        </AgrupamentoHierarquico>
+        <Bloco nome="ordem">6</Bloco>
+        <Agrupamento id="pp1_agh7_txt1" nome="texto">
+          <p>O imposto não incide na alienação de participações societárias adquiridas há mais de cinco anos; neste caso, o alienante deve fornecer ao adquirente documento em que declare essa circunstância.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh8" nome="secao">
+        <Rotulo>8.</Rotulo>
+        <Bloco nome="ordem">7</Bloco>
+        <Agrupamento id="pp1_agh8_txt1" nome="texto">
+          <p>O Secretário da Receita Federal poderá criar formulário anexo à declaração de rendimentos, com o fim de demonstrar os resultados auferidos nas alienações, bem como baixar as demais normas que se fizerem necessárias ao cumprimento do disposto nesta Portaria e no Decreto-lei número 1.510/76.</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>MÁRIO HENRIQUE SIMONSEN</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agrf2" nome="nota">
+        <p>Nota Normas: Este ato foi originalmente publicado sem a ementa.</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

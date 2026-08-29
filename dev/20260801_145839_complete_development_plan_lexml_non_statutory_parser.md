@@ -506,7 +506,7 @@ The snippet is illustrative and omits three encodings the schemas require — a 
 
 ### 5.2 `generico-aninhado` (nested, opt-in) — added 2026-08-28 (A-R.3)
 
-Requires the §2.10 capability `recursive_agrupamento_hierarquico`. Selected by `--emitter=generico-aninhado`; refuses with the probe's diagnostic when the vendored schemas are flat. **Becomes the default only once the change is released and `lexml/` is re-vendored** — a one-line default change plus a reviewed golden regeneration, gated on the probe (§2.11).
+Requires the §2.10 capability `recursive_agrupamento_hierarquico`. Selected by `--emitter=generico-aninhado`; **emitter selection** refuses with the probe's diagnostic when the vendored schemas are flat — the renderer itself always renders, see **A-5b.3**. **Becomes the default only once the change is released and `lexml/` is re-vendored** — a one-line default change plus a reviewed golden regeneration, gated on the probe (§2.11).
 
 ```xml
 <DocumentoGenerico>
@@ -553,7 +553,7 @@ Measured against `lexml-proposed/`, not assumed. **Added 2026-08-28 (A-R.4).**
 Rotulo?  NomeAgrupador?  AgrupamentoHierarquico*  (LXhierCompleto | Agrupamento | Bloco)+
 ```
 
-So a section's child sections must be serialised **before** its own prose. Natural reading order — `2.` intro text, then `2.1` — is **rejected**. Two consequences: the emitter sorts into a canonical order that is not document order, and **the segmentation reader must never infer reading order from sibling position** — it uses `Rotulo` or a recorded source index. This is the one property that made hand-inspection of flat output trustworthy, and it is lost; §11 offers a refinement upstream that would restore it.
+So a section's child sections must be serialised **before** its own prose — and, per **A-5b.1**, before *every* non-`AgrupamentoHierarquico` child, `Bloco` markers included. Natural reading order — `2.` intro text, then `2.1` — is **rejected**. Two consequences: the emitter sorts into a canonical order that is not document order, and **the segmentation reader must never infer reading order from sibling position** — it uses `Rotulo` or a recorded source index. This is the one property that made hand-inspection of flat output trustworthy, and it is lost; §11 offers a refinement upstream that would restore it.
 
 **Constraint 2 — every `AgrupamentoHierarquico` needs at least one non-`AH` child** (`minOccurs="1"` on the extension choice). A section with subsections but no prose of its own cannot be a bare container, and an empty `<Agrupamento/>` is itself invalid (`blocksreq` is `minOccurs="1"`). **Resolution: emit `<Bloco nome="vazio"/>`** — `Bloco` extends `inline` at `minOccurs="0"`, so a genuinely empty one is valid. Verified. Alternatives considered and rejected: an `<Agrupamento><p/></Agrupamento>` injects an empty paragraph into text extraction and risks the conservation invariant; waiting for a `minOccurs="0"` upstream blocks on the maintainers (raised in §11 regardless). A test asserts the marker is invisible to text extraction and to segmentation.
 
@@ -1292,6 +1292,104 @@ gives a nested prose leaf, so the two emitters agree on segment URNs, which is
 what invariant #11 requires of Cycle 5b. This is a flat container, not inferred
 hierarchy, so invariant #8 is untouched.
 
+**Amendment A-5b.1 (Cycle 5b, 2026-08-29) — Constraint 1 binds *every* non-`AgrupamentoHierarquico` child, not only prose.**
+
+§5.4 states Constraint 1 in terms of a section's own prose: subsections must be
+serialised before it. Measured against `lexml-proposed/` before implementation,
+the constraint is broader — **a `Bloco` may not precede an
+`AgrupamentoHierarquico` either.** The extension `choice` follows the base
+sequence's `AgrupamentoHierarquico*` for `Bloco` exactly as it does for
+`Agrupamento`, so the effective content model is:
+
+```
+AgrupamentoHierarquico[@id required][@nome required] ::=
+    Rotulo?  NomeAgrupador?  AgrupamentoHierarquico*  (Agrupamento | Bloco | LXhierCompleto)+
+```
+
+An emitter written to §5.4's literal wording produces **invalid** XML on any
+section that has both subsections and an order marker. The emitter's canonical
+child order therefore places the marker after the subsections, alongside the
+prose leaf. Twenty-four probe cases pin the model, including the negatives that
+matter: prose-before-subsections fails, a `Bloco` before a subsection fails, an
+`AH` with no non-`AH` child fails, a bare `<p>` under an `AH` fails (so §2.1 row
+E survives the change, correctly), and `NomeAgrupador` before `Rotulo` fails.
+
+**Amendment A-5b.2 (Cycle 5b, 2026-08-29) — `<Bloco nome="ordem">` is emitted on *every* child, not only unlabelled ones.**
+
+Cycle 5b's bullet gives an explicit order index "for unlabelled sections",
+§5.4 saying a reader "uses `Rotulo` or a recorded source index". Both children
+of an `AgrupamentoHierarquico` — subsection and prose leaf alike — now carry a
+0-based document-order index instead. Two reasons. A reader then needs **one**
+rule rather than two, and a rule with no fallback cannot fall back wrongly.
+And `Rotulo` is not reliably sortable: `2.`, `2.1`, `IV` and `a)` do not order
+under any single comparison, so "use `Rotulo` where present" is a sort key that
+works until it silently does not. The marker carries no source text, so
+extraction and conservation are untouched — asserted, not assumed.
+*Decided with the user.*
+
+**Amendment A-5b.3 (Cycle 5b, 2026-08-29) — the nested emitter renders unconditionally; the *capability gate* is on validation and emitter selection.**
+
+§5.2 says `generico-aninhado` "refuses with the probe's diagnostic when the
+vendored schemas are flat". Read literally that refuses on every default
+checkout: `lexml/` — the shipped generation, and the default everywhere — **is**
+flat, so the emitter could not be exercised even by its own tests. Corrected:
+`render_generico_aninhado()` is a pure function and always renders. What
+consults `probe_capabilities()` is *emitter selection* (the CLI's
+`--emitter=generico-aninhado`, Cycle 8) and *validation*. Every nested
+assertion in the suite skips with the probe's own diagnostic when the capability
+is absent, which is how A-R.9's "suite green against `lexml/` alone" is met.
+*Decided with the user.*
+
+**Amendment A-5b.4 (Cycle 5b, 2026-08-29) — invariant #11 is cross-emitter equivalence of *text* and *segment URN structure*, not of `id` strings.**
+
+§5.2 keeps ids path-composed "so a segment URN means the same thing whichever
+emitter produced it". Measured, the two emitters' body ids differ in **two**
+independent ways, and the second was not anticipated by the plan:
+
+1. **The token.** §5.2's own snippet fixes `pp1_agh1_agh1` for a nested section
+   and `pp1_agh1_txt` for its prose leaf, while Cycle 5's `agr` scheme is fixed
+   by sixteen committed goldens.
+2. **A top-level ordinal offset.** The flat emitter numbers body sections in the
+   *same* root `agr` sequence as the front-matter regions — `Scope.adopt`
+   advances that counter past them — while the nested emitter opens a fresh
+   `agh` sequence. With three front regions, `pn_cst_38`'s first section is
+   `pp1_agr4` flat and `pp1_agh1` nested. `IdAllocator` keys its counters on
+   `(parent, token)`, so the two sequences are independent by construction.
+
+The practical consequence, which belongs in any consumer documentation: **a
+segment URN is not portable between emitters.** `!pp1_agr4` and `!pp1_agh1`
+name the same section under different addresses.
+
+Renaming either scheme to force literal equality would contradict a ratified
+artifact — §5.2's snippet on one side, sixteen goldens on the other — in order
+to simplify a test, and sharing the ordinal sequence would still leave the
+tokens different. So what is asserted instead: **identical text** (as a
+multiset, across the whole bundle) and **identical segment-URN structure** for
+body sections — the path of sibling ordinals, normalising away exactly those two
+differences and no others. The front and back matter region ids *are*
+byte-identical, because both emitters call the same `front_region`/`back_region`.
+Tests pin the boundary in both directions: the region ids must match, and the
+body offset must remain exactly the front-region count, so a third drift or a
+reparented section fails loudly rather than being absorbed.
+
+One asymmetry is itself a finding: the offset is measurable only on the nested
+side. In flat output a top-level body section and a front-matter region are
+structurally indistinguishable — both are `Agrupamento` children of
+`PartePrincipal` with all-`agr` ids — while nested output separates them by
+element name.
+
+**Amendment A-5b.5 (Cycle 5b, 2026-08-29) — six of the sixteen documents contain no `AgrupamentoHierarquico` at all.**
+
+`REsp_1306393`, `ad_pgfn_3`, `ad_srf_22`, `adn_cosit_19`, `sumula_carf_42` and
+`port_mf_277`'s **primary** (all 65 of its sections live in the annex) have no
+body sections to nest. They are front and back matter, which both emitters
+render identically through the shared regions (A-5.1), so their nested output is
+**byte-identical to their flat output** and is *correctly* valid on the shipped
+schemas. Consequence for the test suite: "nested output is invalid on `lexml/`"
+is true **iff** the document actually nests. Asserting it unconditionally pins a
+defect rather than a property — this was found by writing the stronger assertion
+first and watching it fail on exactly those six.
+
 ### Cycle 5b — Emitter `generico-aninhado` (nested, opt-in) — added 2026-08-28 (A-R.3)
 
 Runs after Cycle 5, reusing its `Section` tree and `id` scheme. Carries the Cycle 0 addendum (A-R.2) with it — the capability probe lands here, because this is the first cycle that needs it.
@@ -1427,7 +1525,7 @@ Asserted throughout — these are what make the parser trustworthy on the 285 do
 8. **No fabrication** — low confidence degrades to flat, never invents structure.
 9. **Referee is advisory** — cannot override high-confidence rules; disabling it never breaks the pipeline.
 10. **Observability** — every rule failure and referee override is logged and counted.
-11. **Cross-emitter equivalence (A-R.3)** — every emitter carries identical text content and identical segment URNs. Choosing a rendering must never change what the document *says* or how a segment is cited.
+11. **Cross-emitter equivalence (A-R.3)** — every emitter carries identical text content and identical segment URNs. Choosing a rendering must never change what the document *says* or how a segment is cited. *Refined by **A-5b.4**: equivalence is asserted on text (as a multiset) and on segment-URN **structure** for body sections. The id token necessarily differs there — `agr` flat, `agh`/`txt` nested, both fixed by ratified artifacts — while the front/back region ids are byte-identical.*
 12. **Capability honesty (A-R.2)** — no code assumes a schema generation. Behaviour is gated on the probe, and the suite is green against `lexml/` alone.
 
 ### 9.3 Referee testing policy
@@ -1538,20 +1636,20 @@ A tracked, reviewable sequence — not a rewrite:
 Revised 2026-08-28 (§14). Cycle order:
 
 ```
-0, 1, 2, 3, 4, 4b, 5  ✅ complete  →  5b(new), 6, 7, 8, 9
-                                              └── 6b withdrawn; round-trip reader → 7
+0, 1, 2, 3, 4, 4b, 5, 5b  ✅ complete  →  6, 7, 8, 9
+                                          └── 6b withdrawn; round-trip reader → 7
 ```
 
 | Cycle | Deliverable | Key exit criterion |
 |---|---|---|
-| 0 ✅ | Scaffolding, dual-schema harness | §2.1 matrix executable and green — **+ capability probe (A-R.2): the probe itself landed in 4b (A-4b.1); the matrix `requires`/skip machinery remains with 5b** |
+| 0 ✅ | Scaffolding, dual-schema harness | §2.1 matrix executable and green — **+ capability probe (A-R.2): the probe landed in 4b (A-4b.1), the matrix `requires`/skip machinery in 5b (C-6). Addendum complete** |
 | 1 ✅ | DOCX → `StyledDoc` (incl. indentation) | 15 samples ingest losslessly |
 | 2 ✅ | Metadata, URN, profiles | correct URN/metadata for all samples |
 | 3 ✅ | Front/back matter segmentation | zero false positives on bare documents |
 | 4 ✅ | Hierarchy inference + quotation guard | every quoted article in `parecer_93` rejected; 15 trees match hand-authored goldens |
 | 4b ✅ | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
 | 5 ✅ | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold — **all 15 rendered and pinned (A-5.5); conservation covers the 40 inter-part blocks (A-5.1)** |
-| **5b** | **Emitter `generico-aninhado` (nested, opt-in)** | **native axes recover hierarchy; text and URNs ≡ flat emitter** |
+| 5b ✅ | Emitter `generico-aninhado` (nested, opt-in) | native axes recover hierarchy; text and URNs ≡ flat emitter — **16 documents rendered and pinned; Constraint 1 binds `Bloco` too (A-5b.1); `ordem` on every child (A-5b.2)** |
 | 6 | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both documents |
 | ~~6b~~ | ~~Emitter `articulado-sintetico`~~ | **withdrawn (A-R.6)** — round-trip reader relocated to Cycle 7 |
 | 7 | Segmentation output (API + XSLT) | **three-way oracle agreement**; breadcrumbs complete |

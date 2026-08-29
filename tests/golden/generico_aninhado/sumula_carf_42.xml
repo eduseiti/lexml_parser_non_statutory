@@ -1,0 +1,19 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:ministerio.fazenda;conselho.administrativo.recursos.fiscais:sumula:0000;42"/>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Súmula CARF nº 42</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>Não incide o imposto sobre a renda das pessoas físicas sobre os valores recebidos a título de indenização por desapropriação.</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="texto">
+        <p>ACÓRDÃOS PARADIGMAS</p>
+        <p>Acórdão nº 104-23033, de 05/03/2008 Acórdão nº 102-45909, de 28/01/2003 Acórdão nº 102-49283, de 11/09/2008 Acórdão nº 104-23287, de 25/06/2008 Acórdão nº 106-15476, de 26/04/2006 Acórdão nº 301-33218, de 20/09/2006 Acórdão nº 301-32390, de 08/12/1997 Acórdão nº 302-37944, de 24/08/2006 Acórdão nº 302-38480, de 28/02/2007 Acórdão nº 302-39723, de 13/08/2008 Acórdão nº 302-39650, de 09/07/2008</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

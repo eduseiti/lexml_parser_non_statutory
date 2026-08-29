@@ -10,6 +10,12 @@ test names say which.
 ``expected`` is the validity on **both** schemas: §2.8 established that the two
 schemas do not differ anywhere on this surface, and `test_schema_matrix`
 asserts that agreement explicitly.
+
+Capabilities are **probed, never assumed** (amendment A-R.2). A case that needs
+something only one schema *generation* provides names it in ``requires``; the
+matrix test then **skips with the probe's own diagnostic** when the generation
+under test lacks it, instead of failing. Invariant #12: nothing here branches on
+a schema version, only on what a probe of the schemas actually present reported.
 """
 
 from __future__ import annotations
@@ -26,6 +32,12 @@ class MatrixCase:
     fragment: str     # body of the LexML document
     expected: bool    # valid on both schemas?
     generico: bool    # part of the OpenStructure surface? (§2.8 agreement)
+    #: Name of the :class:`SchemaCapabilities` attribute this case needs — today
+    #: only ``"nested_agrupamento"``. Empty means the case needs nothing and so
+    #: runs against every generation. Never a generation *name*: invariant #12
+    #: forbids branching on a version, so a case states the capability it needs
+    #: and the probe decides whether the generation under test has it.
+    requires: str = ""
 
     @property
     def id(self) -> str:
@@ -174,3 +186,48 @@ MATRIX: tuple[MatrixCase, ...] = (
 
 #: Rows of the plan's §2.1 table. Pinned so a row cannot be silently dropped.
 PLAN_ROW_COUNT = 16
+
+#: The capability the nested cases below need — the attribute name on
+#: :class:`lexml_nonstat.validate.SchemaCapabilities` the probe sets.
+NESTED_AGRUPAMENTO = "nested_agrupamento"
+
+#: Encodings that exist only once the maintainers' §2.10 change is present.
+#:
+#: Kept out of :data:`MATRIX` on purpose: `MATRIX` is the plan's §2.1 table and
+#: `PLAN_ROW_COUNT` pins its length, so a row added here can never be mistaken
+#: for a row of that table. Both cases are marked ``requires`` and therefore
+#: skip, rather than fail, on a generation without the change (A-R.2).
+NESTED_MATRIX: tuple[MatrixCase, ...] = (
+    MatrixCase(
+        "N1", "AgrupamentoHierarquico/Agrupamento[@nome]/p",
+        # The maintainers' §2.10 change in one row: `AgrupamentoHierarquico`
+        # becomes prose-bearing by admitting `Agrupamento` (and `Bloco`) after
+        # its nested `AgrupamentoHierarquico*`. This is the shape Cycle 5b's
+        # `generico-aninhado` emitter writes, and the shape `probe_capabilities`
+        # measures — so on a generation carrying the change it is **valid**, and
+        # `requires` keeps it from failing on one that does not.
+        '<DocumentoGenerico><PartePrincipal id="pp1">'
+        '<AgrupamentoHierarquico id="agh1" nome="tema">'
+        '<Agrupamento id="agh1_agr1" nome="texto"><p>Texto</p></Agrupamento>'
+        "</AgrupamentoHierarquico></PartePrincipal></DocumentoGenerico>",
+        True, True, requires=NESTED_AGRUPAMENTO,
+    ),
+    MatrixCase(
+        "N2", "AgrupamentoHierarquico containing p (post-change)",
+        # Row E, re-asked of the changed schema — and it still fails. The
+        # maintainers added `Agrupamento` and `Bloco` to the choice, **not**
+        # `p`, so §5.4 constraint 3 survives the change and prose still needs
+        # its `Agrupamento` wrapper. Expected **invalid on both generations**,
+        # which is also what proves the capability probe measures the right
+        # shape: probing with a bare `<p>` (see `_NESTED_PROBE_DOC` in
+        # `src/lexml_nonstat/validate/schema.py`) would report "no capability"
+        # against the very generation that has it.
+        '<DocumentoGenerico><PartePrincipal id="pp1">'
+        '<AgrupamentoHierarquico id="agh1" nome="tema"><p>Texto</p>'
+        "</AgrupamentoHierarquico></PartePrincipal></DocumentoGenerico>",
+        False, True, requires=NESTED_AGRUPAMENTO,
+    ),
+)
+
+#: Every case, §2.1 table plus the nested surface. What the matrix test runs.
+ALL_CASES: tuple[MatrixCase, ...] = MATRIX + NESTED_MATRIX

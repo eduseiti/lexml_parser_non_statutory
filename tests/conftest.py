@@ -63,3 +63,39 @@ def nested_agrupamento() -> str:
         "</Agrupamento>"
         "</PartePrincipal></DocumentoGenerico>"
     )
+
+
+# ---------------------------------------------------------------------------
+# Schema capabilities (§2.11, amendment A-R.2) — Cycle 5b
+# ---------------------------------------------------------------------------
+#
+# Cycle 5b's nested output is valid only against `lexml-proposed/`, the
+# *generated* generation carrying the maintainers' unreleased change. That
+# directory can legitimately be absent from a checkout, and amendment A-R.9
+# requires the suite to stay green against `lexml/` alone — so every nested
+# assertion **skips with the probe's own diagnostic** rather than failing.
+#
+# Invariant #12: nothing here branches on a schema *version*. It branches only
+# on what a probe of the schemas actually present reported.
+
+
+def nested_capabilities():
+    """The proposed generation's measured capabilities. Never raises."""
+    from lexml_nonstat.validate.schema import PROPOSED, probe_capabilities
+
+    return probe_capabilities(PROPOSED)
+
+
+def nested_available() -> bool:
+    """Whether nested `AgrupamentoHierarquico` is available to validate against."""
+    return nested_capabilities().nested_agrupamento
+
+
+#: Skip marker for tests that must validate nested output. The reason is the
+#: probe's diagnostic, so a skipped run says *why* — a missing directory reads
+#: differently from an unpatched schema, and a user should not have to read the
+#: source to tell them apart.
+requires_nested = pytest.mark.skipif(
+    not nested_available(),
+    reason=nested_capabilities().diagnostic,
+)

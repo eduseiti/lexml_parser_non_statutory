@@ -1,0 +1,39 @@
+<LexML xmlns="http://www.lexml.gov.br/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <Metadado>
+    <Identificacao URN="urn:lex:br:procuradoria.geral.fazenda.nacional:ato.declaratorio:2011-12-20;13"/>
+    <MetadadoProprietario fonte="http://www.lexml.gov.br/nonstat">
+      <campo nome="JURISPRUDÊNCIA">Resp nº 816.829/RJ (DJ 19/11/2007), Resp nº 664.258/RJ (DJ 31/05/2006), AI nº 677.274/SP (DJe 30/9/2008), Resp nº 1.019.017/PI (DJe 29/04/2009), Resp nº 1.131.114/PR (DJ 20/10/2009), Resp nº 1.108.113 (DJ 4/2/2010), Resp nº 1.165.034/MT (DJ 13/11/2009), Resp nº 625.506/RS (DJ 06/03/2007), AI nº 677.274/SP (DJe 30/9/2008).</campo>
+    </MetadadoProprietario>
+  </Metadado>
+  <DocumentoGenerico>
+    <PartePrincipal id="pp1">
+      <Agrupamento id="pp1_agr1" nome="epigrafe">
+        <p>Ato Declaratório PGFN nº 13, de 20 de dezembro de 2011</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr2" nome="ementa">
+        <p>"Revoga os Atos Declaratórios PGFN nº 2, de 27/08/10, e PGFN nº 11, de 01/12/08."</p>
+      </Agrupamento>
+      <Agrupamento id="pp1_agr3" nome="preambulo">
+        <p>A PROCURADORA-GERAL DA FAZENDA NACIONAL, no uso da competência legal que lhe foi conferida, nos termos do inciso II do art. 19 da Lei nº 10.522, de 19 de julho de 2002, e do art. 5º do Decreto nº 2.346, de 10 de outubro de 1997, tendo em vista a aprovação do Parecer PGFN/CRJ/Nº 2118/2011, desta Procuradoria-Geral da Fazenda Nacional, pelo Senhor Ministro de Estado da Fazenda, conforme despacho publicado no DOU de 15/12/2011, declara que fica autorizada a dispensa de apresentação de contestação e de interposição de recursos, bem como a desistência dos já interpostos, desde que inexista outro fundamento relevante:</p>
+      </Agrupamento>
+      <AgrupamentoHierarquico id="pp1_agh1" nome="inciso">
+        <Rotulo>I -</Rotulo>
+        <Bloco nome="ordem">0</Bloco>
+        <Agrupamento id="pp1_agh1_txt1" nome="texto">
+          <p>fica autorizada a dispensa de apresentação de contestação e de interposição de recursos, bem como a desistência dos já interpostos, desde que inexista outro fundamento relevante, nas ações judiciais que visem obter a declaração de que não incidem contribuição previdenciária e imposto de renda sobre as verbas recebidas a título de auxílio-creche pelos trabalhadores até o limite de cinco anos de idade de seus filhos e</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <AgrupamentoHierarquico id="pp1_agh2" nome="inciso">
+        <Rotulo>II -</Rotulo>
+        <Bloco nome="ordem">1</Bloco>
+        <Agrupamento id="pp1_agh2_txt1" nome="texto">
+          <p>ficam revogados os Atos Declaratórios PGFN nº 2, de 27 de agosto de 2010, e PGFN nº 11, de 1º de dezembro de 2008.</p>
+          <p>JURISPRUDÊNCIA: Resp nº 816.829/RJ (DJ 19/11/2007), Resp nº 664.258/RJ (DJ 31/05/2006), AI nº 677.274/SP (DJe 30/9/2008), Resp nº 1.019.017/PI (DJe 29/04/2009), Resp nº 1.131.114/PR (DJ 20/10/2009), Resp nº 1.108.113 (DJ 4/2/2010), Resp nº 1.165.034/MT (DJ 13/11/2009), Resp nº 625.506/RS (DJ 06/03/2007), AI nº 677.274/SP (DJe 30/9/2008).</p>
+        </Agrupamento>
+      </AgrupamentoHierarquico>
+      <Agrupamento id="pp1_agrf1" nome="assinatura">
+        <p>ADRIANA QUEIROZ DE CARVALHO</p>
+      </Agrupamento>
+    </PartePrincipal>
+  </DocumentoGenerico>
+</LexML>

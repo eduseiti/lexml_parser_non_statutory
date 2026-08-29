@@ -12,10 +12,13 @@ test — **the cache layer is the seam**. So this file drives the real
   read-only — which is how the *whole* referee path, adjudication and telemetry
   included, runs over the real corpus with the transport wired to raise.
 
-``httpx`` is not installed in this environment and must never be imported. That
-is not an inconvenience being worked around; it is the property being tested.
-The ``referee`` extra is optional, and a module-level import would make it
-mandatory for everybody — ``test_httpx_is_not_imported`` pins that.
+Nothing here may import ``httpx``. That is not an inconvenience being worked
+around; it is the property being tested. The ``referee`` extra is optional, and
+a module-level import would make it mandatory for everybody —
+``test_httpx_is_not_imported`` pins that, by asserting that exercising the
+referee does not *add* ``httpx`` to ``sys.modules``. Whether some unrelated
+pytest plugin already put it there is not ours to control and not what the
+invariant claims.
 
 The invariants under test, in order of what they cost when broken:
 
@@ -854,12 +857,54 @@ def test_httpx_is_not_imported():
     leave it untouched. A module-level import would make an HTTP client a hard
     dependency of a parser whose default referee is ``none``, and the suite
     would not notice until an install without the extra failed to collect.
-    """
-    assert "httpx" not in sys.modules
 
+    Asserted **in a clean subprocess**, and that is not incidental. The obvious
+    in-process form — ``assert "httpx" not in sys.modules`` — is a claim about
+    the whole interpreter, which this test does not own: it failed here on a
+    ``langsmith`` pytest plugin that imports ``httpx`` at plugin-load, before
+    any test collects, while the package under test was entirely clean. The
+    equally obvious repair, snapshotting presence before and after, is *worse*:
+    once a third party has imported ``httpx``, a genuine module-level import in
+    our own code changes nothing about the snapshot, and the guard silently
+    stops guarding — verified by mutation, which it failed to kill.
+
+    A subprocess with ``-I`` (isolated) and no pytest plugins is the only place
+    the question "does *our* import graph pull in ``httpx``?" can actually be
+    asked. It kills the mutation.
+    """
+    import subprocess
+
+    probe = (
+        "import sys\n"
+        "sys.path.insert(0, %r)\n"
+        "import lexml_nonstat.referee.api as api\n"
+        "from lexml_nonstat.referee import CachedAPIReferee, RefereeCache\n"
+        "r = CachedAPIReferee(api_key='k',\n"
+        "                     cache=RefereeCache(%r, read_only=True),\n"
+        "                     transport=lambda *a, **k: (_ for _ in ()).throw(\n"
+        "                         AssertionError('no network')))\n"
+        "r.ask('own_articulation', 'x')\n"
+        "print('httpx' in sys.modules)\n"
+    ) % (str(REPO_ROOT / "src"), str(FIXTURES))
+
+    result = subprocess.run(
+        [sys.executable, "-I", "-c", probe],
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    assert result.returncode == 0, (
+        f"the probe itself failed:\n{result.stdout}\n{result.stderr}"
+    )
+    assert result.stdout.strip() == "False", (
+        "importing `lexml_nonstat.referee` and asking the referee a question "
+        "pulled in `httpx`. It must be imported only inside the default "
+        "transport, on a call that actually reaches the network, so the "
+        f"`referee` extra stays optional.\nprobe said: {result.stdout.strip()!r}"
+    )
+
+    # And the in-process objects still work without it having been needed here.
     referee = fixture_referee()
     assess_viability(sample(PAR_COSIT_26), referee=referee)
     CachedAPIReferee(api_key=API_KEY, transport=replies()).ask("own_articulation", "x")
-
-    assert "httpx" not in sys.modules
     assert sys.modules["lexml_nonstat.referee.api"] is not None
