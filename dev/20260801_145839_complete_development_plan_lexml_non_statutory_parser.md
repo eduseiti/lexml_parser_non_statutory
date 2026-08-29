@@ -583,7 +583,7 @@ class Segment:
     route: str
 ```
 
-Segmenting from the in-process model is the primary path; the XML readers exist as the round-trip **test oracle**, which is exactly the reversibility invariant the suite requires. **Amended 2026-08-28 (A-R.5):** there are now two XML readers, and agreement is three-way:
+Segmenting from the in-process model is the primary path; the XML readers exist as the round-trip **test oracle**, which is exactly the reversibility invariant the suite requires. **Amended 2026-08-28 (A-R.5):** there are now two XML readers, and agreement is three-way. **Amended 2026-08-29 (A-7.1, A-7.2, A-7.3):** the package is `segments/`; `Segment` gains `path` (emitter-independent), `id`, `order`, `document`, `echoed_label` and `descendant_texts`, and its `text` is **own-text** with `full_text` derived; and a third reader, `segments_from_norma_xml`, joins the two below:
 
 ```python
 def segments_from_flat_xml(doc)   -> Iterator[Segment]:  # id-path reconstruction (Rules A/B)
@@ -1565,13 +1565,13 @@ Dropping it removes the emitter, its goldens, and the `MetadadoProprietario` pro
 
 ### Cycle 7 — Segmentation output
 
-`segmentation/api.py` with **both** XML readers (§6.1); `segment_generico.xsl`; `segment_norma.xsl`; **`segment_generico_aninhado.xsl`**; `hierarchy_from_xml()` round-trip reader **relocated here from the withdrawn Cycle 6b (A-R.6)**; CSV/JSONL writers.
+`segments/api.py` with **all three** XML readers (§6.1, **A-7.1**, **A-7.3**); `segment_generico.xsl`; `segment_norma.xsl`; **`segment_generico_aninhado.xsl`**; `hierarchy_from_xml()` round-trip reader **relocated here from the withdrawn Cycle 6b (A-R.6)**; CSV/JSONL writers.
 
 Tests
-- **A-R.5: three-way oracle agreement** — model, flat XML and nested XML segment identically on all 15 samples (the nested leg skipped, with a reason, when the capability is absent)
-- **segment URNs identical across emitters** — a citation survives an emitter switch
+- **A-R.5: three-way oracle agreement** — model, flat XML and nested XML segment identically on all 15 samples (**A-7.4:** the nested leg does **not** skip — reading nested XML needs no schema)
+- **segment `path` identical across emitters** — a citation survives an emitter switch (**A-7.2:** the *urn* cannot be, and is not, identical)
 - **nested reader parses no `id`s**: asserted by mutating every `id` in a nested document and checking the segments are unchanged
-- **order comes from `Rotulo`/source index, never sibling position** (§5.4 Constraint 1) — a document whose serialisation order differs from reading order still segments in reading order
+- **order comes from `Bloco nome="ordem"`/source index, never sibling position** (§5.4 Constraint 1, **A-7.5**) — a document whose serialisation order differs from reading order still segments in reading order
 - **round-trip:** `model → generico → model'` and `model → generico-aninhado → model''` preserve tree shape and all text
 - **`GeraCSVporArtigoPorAgrupador.xsl` compatibility probed on nested output and the result recorded** — informational, not gating (§6.2)
 - breadcrumbs complete for all 15 samples — **no missing ancestors** (Rule A end-to-end)
@@ -1580,6 +1580,20 @@ Tests
 - XSLT and Python paths produce equivalent rows (skipped if `saxonche` absent)
 - `norma`-routed documents segment via statutory elements
 - `port_mf_277` segments span primary **and** annex
+
+**Amendments from executing this cycle (2026-08-29).**
+
+- **A-7.1 — the package is `segments/`, not `segmentation/`.** `lexml_nonstat.segment` has meant *spans* since Cycle 3 (front matter, body, back matter, annexes), and its docstring's contract is "nothing is copied and nothing is discarded". Cycle 7's records copy text by construction. Two packages three letters apart, exporting similar-sounding names for unrelated concepts, is a readability hazard; `segment` divides, `segments` cites. *Decided with the user.*
+
+- **A-7.2 — "segment URNs identical across emitters" is false as string equality, and is met by `Segment.path` instead.** Amendment A-5b.4 already measured that the flat and nested emitters give the same section two different ids — the token (`agr` vs `agh`/`txt`) *and* a top-level ordinal offset. So `Segment` carries **two** addresses: `urn`, the literal `{document urn}!{id}` that **resolves in the artifact it came from** (asserted: exactly one element, every segment, every sample), and `path`, the tuple of body-section ordinals that is identical across all three derivations. Normalising the urn was considered and rejected as major: a normalised urn resolves against *neither* artifact, and the plan asks for a citable address. *Decided with the user.*
+
+- **A-7.3 — there are three readers, not two, and dispatch is on markup rather than on `emitter`.** §6.1 names two; Cycle 6 added a second id grammar (A-6.1), so `segments_from_norma_xml` joins them. It cannot share the flat reader's `_`-path arithmetic — `art1_cpt` is a caput by *containment*, not by path — so it walks statutory elements and never splits an id. Dispatch reads the document element (`Norma` vs `DocumentoGenerico`, then presence of `AgrupamentoHierarquico`), because a file read from disk has no `RenderedDocument.emitter` to consult.
+
+- **A-7.4 — the nested oracle leg does not skip.** §8's Cycle 7 text says the nested leg skips "when the capability is absent". Measured: reading nested XML needs **no schema at all** — the capability gates *validation* (A-5b.3), not parsing. Skipping would silently retire a third of the oracle on precisely the bare-checkout configuration A-R.9 most wants green. The three-way oracle runs unconditionally; only `tests/unit/test_capabilities.py` and the nested golden's *validity* assertions remain gated.
+
+- **A-7.5 — order is `Bloco nome="ordem"`, not `Rotulo`.** §6.1 says order comes from "`Rotulo` or the recorded source index". A rótulo is **not sortable**: `2.`, `2.1`, `IV` and `a)` share no comparison, which is the same finding A-5b.2 recorded when it put an explicit order marker on *every* nested child. The reader uses that marker, and falls back to serialised order at the root, where `PartePrincipal`'s children carry none and are already in document order.
+
+- **A-7.6 — the community stylesheet produces *no rows* for either `generico` shape, and that sharpens §11's argument rather than weakening it.** §6.2 predicts `GeraCSVporArtigoPorAgrupador.xsl` "runs unmodified on nested output". Measured on all three of our shapes: **4 rows** for `norma`, **0 rows** (header only) for `generico`, **0 rows** for `generico-aninhado`. The cause is one grep — the stylesheet contains **zero** occurrences of `AgrupamentoHierarquico` and selects on statutory element *names* (`//Artigo`, `//Capitulo`, `//Secao`, …). The *idiom* half of §6.2's argument holds exactly as stated: the breadcrumb really is `ancestor::*/NomeAgrupador`, which is what our nested stylesheet uses natively and what the flat one must fake with `starts-with(@id, …)` arithmetic. What the probe adds is that element **names** matter too, so the reply to the maintainers (§11.2) should ask for `AgrupamentoHierarquico` in community tooling's *selection* as well as in the schema — a concrete, checkable request that "it just works" would not have been. Pinned as an assertion, so the day the stylesheet grows those selectors this claim is revisited rather than quietly ageing.
 
 ### Cycle 8 — Generalisation, robustness, CLI
 

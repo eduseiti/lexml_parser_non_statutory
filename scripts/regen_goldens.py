@@ -12,12 +12,13 @@ Prints what changed. A silent regeneration that quietly rewrites 15 files is
 exactly the failure mode the policy exists to prevent — if this reports
 "3 changed", those three belong in the commit message.
 
-Eight kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
+Nine kinds so far: ``styled`` (Cycle 1's `StyledDoc`), ``metadata``
 (Cycle 2's `Metadata`), ``segment`` (Cycle 3's `Segmentation`),
 ``hierarchy`` (Cycle 4's `HierarchyDoc`), ``routing`` (Cycle 4b's
 `StatutoryViability`), ``generico`` (Cycle 5's flat XML) and
 ``generico-aninhado`` (Cycle 5b's nested XML) and ``norma`` (Cycle 6's
-statutory XML — written for the samples §4.4 routes there, which is one).
+statutory XML — written for the samples §4.4 routes there, which is one) and
+``segments`` (Cycle 7's citable segment records, as JSONL).
 Later cycles add theirs to ``KINDS`` rather than writing another script.
 
 The nested goldens are written **unconditionally**, on every checkout. They are
@@ -50,6 +51,7 @@ from lexml_nonstat.render.norma import EMITTER as NORMA_EMITTER  # noqa: E402
 from lexml_nonstat.render.norma import render_norma  # noqa: E402
 from lexml_nonstat.routing import assess_viability  # noqa: E402
 from lexml_nonstat.segment import segment_document  # noqa: E402
+from lexml_nonstat.segments import segments_from_model, to_jsonl  # noqa: E402
 
 SAMPLES_DIR = REPO_ROOT / "samples"
 GOLDEN_ROOT = REPO_ROOT / "tests" / "golden"
@@ -154,6 +156,29 @@ def _norma_xml(sample: Path) -> dict[str, str]:
     return out
 
 
+def _segments_jsonl(sample: Path) -> dict[str, str]:
+    # From the **model**, on the flat emitter's ids — the primary path (§6.1)
+    # addressed the way `--kind=generico` writes it, so a golden segment urn
+    # resolves against the golden XML sitting beside it.
+    #
+    # One file per emitted document, split on `Segment.document`, matching the
+    # `.anexo1` naming every other XML kind already uses. The nested emitter's
+    # segments are not committed a second time: cross-emitter equality is
+    # asserted by the three-way oracle, and a golden that restated it would
+    # move whenever the *other* emitter changed.
+    model = build_model(read_docx(sample), filename=sample.name)
+    rows = segments_from_model(model, emitter="generico")
+
+    primary = model.metadata.urn
+    out: dict[str, str] = {"": to_jsonl(s for s in rows if s.document == primary)}
+    for ordinal, annex in enumerate(model.annexes, start=1):
+        fragment = model.metadata.urn_with_fragment(annex.fragment)
+        out[f".anexo{ordinal}"] = to_jsonl(
+            s for s in rows if s.document == fragment
+        )
+    return out
+
+
 #: kind → (output directory, renderer, file extension)
 #:
 #: A renderer maps a file-stem suffix to that file's content; ``""`` is the
@@ -171,6 +196,7 @@ KINDS: dict[str, tuple[Path, object, str]] = {
         ".xml",
     ),
     "norma": (GOLDEN_ROOT / "norma", _norma_xml, ".xml"),
+    "segments": (GOLDEN_ROOT / "segments", _segments_jsonl, ".jsonl"),
 }
 
 

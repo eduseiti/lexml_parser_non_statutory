@@ -28,7 +28,7 @@ dev = ["pytest>=8", "pytest-cov>=5"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-lexml_nonstat = ["validate/stubs/*.xsd"]
+lexml_nonstat = ["validate/stubs/*.xsd", "segments/stylesheets/*.xsl"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
