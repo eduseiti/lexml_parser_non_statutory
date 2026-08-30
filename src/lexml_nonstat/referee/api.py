@@ -39,7 +39,7 @@ Transport = Callable[[str, dict, dict, float], dict]
 
 #: §7.2's first candidate: very low cost, strong reasoning, context caching.
 DEFAULT_BASE_URL = "https://api.deepseek.com/v1"
-DEFAULT_MODEL = "deepseek-chat"
+DEFAULT_MODEL = "deepseek-v4-flash"
 
 #: Temperature 0 everywhere. Invariant #4 wants the same input plus the same
 #: cache to give byte-identical output; a sampled referee would break that on
