@@ -5,7 +5,7 @@
     "rationale": "Continuação da transcrição da Lei nº 7.713/1988 iniciada acima; remete a 'arts. 9º a 14 desta Lei', isto é, da lei citada, não do parecer."
   },
   "meta": {
-    "model": "deepseek-chat",
+    "model": "deepseek-v4-flash",
     "kind": "own_articulation",
     "sample": "par_cosit_26_20000629",
     "locator": "p#47",

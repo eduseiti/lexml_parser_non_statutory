@@ -5,6 +5,27 @@
 plan is `dev/20260801_145839_complete_development_plan_lexml_non_statutory_parser.md`;
 where the two disagree, `dev/` wins.
 
+> **Correction, 2026-08-30.** Three statements below were checked against the
+> code after Cycle 8 and the referee-configuration amendment. Kept as written,
+> because this is a dated record; read them with these corrections:
+>
+> 1. **§6.6's command produces no LexML XML, and never could.**
+>    `python3 -m lexml_nonstat.routing` is a *diagnostic* entry point that
+>    prints a routing verdict and a decisions report. The command that emits
+>    XML is `python3 -m lexml_nonstat parse`. §6.6 is a referee-wiring check
+>    only — which is what it is titled, but the distinction was not stated.
+> 2. **§6.6's expected output is misquoted.** The text line reads
+>    `referee : consulted=True overrode=False` (a per-document boolean); the
+>    count appears below it in the decisions report as `put to a referee: 3`.
+> 3. **§7.1's changes 1–2 were not adopted in Cycle 8**, so between Cycle 8 and
+>    2026-08-30 the `LEXML_REFEREE_BASE_URL` / `LEXML_REFEREE_MODEL` variables
+>    in `.env.example` were read by nothing. They are honoured as of the
+>    amendment recorded in
+>    [`dev/…/20260830_184109_referee_configuration_amendment_report.md`](../dev/20260801_145839_complete_development_plan_lexml_non_statutory_parser/20260830_184109_referee_configuration_amendment_report.md).
+>
+> Full analysis:
+> [`docs/20260830_144415_referee_setup_verification_cli_usage_and_base_url_gap.md`](20260830_144415_referee_setup_verification_cli_usage_and_base_url_gap.md).
+
 **Originating request (verbatim):**
 
 > Check the development plan captured in

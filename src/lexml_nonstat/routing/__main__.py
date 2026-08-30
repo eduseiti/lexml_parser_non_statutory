@@ -26,7 +26,7 @@ from pathlib import Path
 
 from ..ingest import DocxReadError, read_docx
 from ..profile import get_profile
-from ..referee import REFEREE_MODES, build_referee
+from ..referee import DEFAULT_BASE_URL, REFEREE_MODES, build_referee
 from ..telemetry import DecisionLog, render_report
 from ..validate.schema import GENERATIONS, SHIPPED
 from .viability import EMITTERS, StatutoryViability, assess_viability
@@ -91,7 +91,17 @@ def main(argv: list[str] | None = None) -> int:
         help="adjudicator for low-confidence decisions (default: none)",
     )
     parser.add_argument(
-        "--referee-model", default=None, help="model id or GGUF path for the referee"
+        "--referee-model",
+        default=os.environ.get("LEXML_REFEREE_MODEL"),
+        help="model id or GGUF path for the referee (default: $LEXML_REFEREE_MODEL)",
+    )
+    parser.add_argument(
+        "--referee-base-url",
+        default=os.environ.get("LEXML_REFEREE_BASE_URL"),
+        help=(
+            "OpenAI-compatible endpoint root for --referee=api "
+            f"(default: $LEXML_REFEREE_BASE_URL, then {DEFAULT_BASE_URL})"
+        ),
     )
     parser.add_argument(
         "--referee-cache", type=Path, default=None, help="referee disk cache directory"
@@ -129,6 +139,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.referee == "api":
         if args.referee_model:
             referee_kwargs["model"] = args.referee_model
+        # `api` only — LocalReferee takes no base_url.
+        if args.referee_base_url:
+            referee_kwargs["base_url"] = args.referee_base_url
         referee_kwargs["api_key"] = os.environ.get("LEXML_REFEREE_API_KEY")
         referee_kwargs["cache"] = args.referee_cache
     elif args.referee == "local":

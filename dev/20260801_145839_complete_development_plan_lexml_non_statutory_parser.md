@@ -1599,7 +1599,7 @@ Tests
 
 ### Cycle 8 — Generalisation, robustness, CLI
 
-`cli.py`: `parse`, `dump-styled`, `dump-tree`, `segment`, `validate`, `list-profiles`, `decisions-report`, **`capabilities`** (mirroring `FECmdLine`'s shape); HTML and plain-text ingestion; `generic` catch-all profile; structured warnings; confidence reporting; `--profile`/`--emitter`/`--schema`/`--referee`/`--strict`.
+`cli.py`: `parse`, `dump-styled`, `dump-tree`, `segment`, `validate`, `list-profiles`, `decisions-report`, **`capabilities`** (mirroring `FECmdLine`'s shape); HTML and plain-text ingestion; `generic` catch-all profile; structured warnings; confidence reporting; `--profile`/`--emitter`/`--schema`/`--referee`/`--strict`. *(A-C.1: also `--referee-base-url`, with `--referee-model`/`--referee-base-url` defaulting from `LEXML_REFEREE_MODEL`/`LEXML_REFEREE_BASE_URL`. A-C.2: the referee is threaded into `build_model()` — before that repair the flag was accepted and then dropped.)*
 
 Tests
 - CLI end-to-end on all 15 samples, all emitters
@@ -1607,7 +1607,7 @@ Tests
 - malformed/corrupt DOCX ⇒ clean error, non-zero exit, no traceback
 - HTML and TXT ingestion reach the same model shape
 - `--strict` fails on validation error; default warns and continues
-- confidence and referee status surfaced in output
+- confidence and referee status surfaced in output *(A-C.2: the status was surfaced but could not vary — `--referee` reached nothing until the 2026-08-30 amendment)*
 - **A-R.9:** `--emitter` accepts `generico-aninhado`; a `capabilities` command reports what the schemas present permit; requesting an unavailable emitter exits cleanly with the probe's diagnostic and a non-zero status, never a traceback
 
 Exit: "handles any document" demonstrated — valid output or a clean diagnostic for every fixture.
@@ -1842,3 +1842,38 @@ Source: `docs/20260827_111015_revised_plan_recursive_agrupamento_hierarquico_ado
 1. **Cycle 6b is dropped**, not merely deferred (A-R.6). Its round-trip reader is retained and relocated.
 2. **`lexml-proposed/` is the patched-schema location**, replacing the revision document's proposed `tests/fixtures/schemas/`. Verified by diff: it carries the maintainers' change *verbatim and nothing else* — only the `AgrupamentoHierarquico` edit plus a generated-file header — so the location is a repository-layout matter that leaves the proposal untouched.
 3. **The maintainers' proposal prevails.** The §3.7 refinement is *ours*, and is **forwarded upstream as a suggestion only** (§11.2 item 4). The emitter is built against the maintainers' change as written and absorbs the ordering constraint (§5.4 C1). No third "refined" schema generation is produced, and `interleaved_children` probes `False` against both generations present.
+
+---
+
+## 15. Amendment Log — 2026-08-30 Referee Configuration Amendment
+
+Source: `docs/20260830_144415_referee_setup_verification_cli_usage_and_base_url_gap.md`,
+adopting its proposals P-1a, P-2, P-3 and P-4 with the user's approval.
+Applied as an **interstitial amendment, not a cycle**: Cycle 8 is complete,
+Cycle 9 is **not started and is not begun by this work**.
+
+Record: `dev/20260801_145839_complete_development_plan_lexml_non_statutory_parser/20260830_184109_referee_configuration_amendment_report.md`.
+
+| ID | Section(s) | Amendment |
+|---|---|---|
+| A-C.1 | §8 (Cycle 8 deliverables), §7.3 | The CLI referee flags gain **`--referee-base-url`**, and `--referee-model` / `--referee-base-url` take their defaults from **`LEXML_REFEREE_MODEL`** / **`LEXML_REFEREE_BASE_URL`**. Precedence is flag > environment > `api.DEFAULT_*`. §8's flag list (`--profile/--emitter/--schema/--referee/--strict`) predates `.env.example`, which was committed after Cycle 8 and already documented both variables as live while no code read them. Any OpenAI-compatible provider is now a configuration choice rather than a code edit |
+| A-C.2 | §8, §7.3 | **Defect repair: `--referee` was inert on the whole unified CLI.** `cli.py` built a referee and discarded it — `build_model()` never received it — so `parse` and `decisions-report` accepted the flag, made no network call, and always reported "not consulted". `build_model()` gains a `referee=None` parameter threaded into `assess_viability`. Cycle 8's exit criterion E-7 ("confidence and referee status surfaced") passed on a status that could not vary. The default stays `None`, so §9.3 and every golden are unaffected |
+| A-C.3 | §9.3 | The **live smoke test** §9.3 reserves now exists: `tests/unit/test_referee_live.py`, `@pytest.mark.live`, double-guarded by `addopts = "-m 'not live'"` and a skip on the absent key. The marker was declared in Cycle 4b but no test had ever used it |
+| A-C.4 | §9.3, `tests/referee_fixtures/` | The four recorded fixtures are **re-keyed** from `deepseek-chat` to `deepseek-v4-flash`. The cache key covers the model, so the post-Cycle-8 refresh of `api.DEFAULT_MODEL` moved every key and broke seven tests by falling through to the assert-never-called transport. Verdicts, confidences and rationales are unchanged; the hand-authored `origin` provenance (A-4b.5) stands. New keys were derived by replaying the corpus, not typed |
+| A-C.5 | §12 (deliverables) | A **`README.md`** is added — the plan scoped no user-facing documentation, which is defensible for cycles 0–8 and not for a tool intended for publication. It names `parse` as the XML-producing command, which is the omission that prompted this amendment |
+
+**Decisions taken with the user while applying this amendment (2026-08-30):**
+
+1. **Fixtures re-keyed rather than re-recorded.** Recording live fixtures (the
+   record's P-5, and LLM-doc open question 4) remains **open and out of scope**:
+   it changes what the fixtures assert, and A-4b.5's reasoning — that they test
+   plumbing, not the model — still holds.
+2. **The full README was written**, not a minimal usage note, including the
+   referee section and the reproduction statement.
+3. **The inert-`--referee` defect (A-C.2) was fixed now**, not deferred to
+   Cycle 9, because P-1a's base-URL flag would otherwise plumb into a dead end
+   on `cli.py`.
+
+**Still open, and explicitly not decided here:** LLM-doc §8 questions 1
+(provider adoption), 3 (`AnthropicReferee`), 4 (P-5, recording live fixtures)
+and 5 (a live referee pass over the 300+ corpus as Cycle 9 scope).

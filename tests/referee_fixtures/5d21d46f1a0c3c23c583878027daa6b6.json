@@ -5,7 +5,7 @@
     "rationale": "O parágrafo anterior abre a citação com 'Lei nº 7.713, de 1988 - \"Art. 1º-'; este é o artigo seguinte da mesma lei transcrita, não do parecer."
   },
   "meta": {
-    "model": "deepseek-chat",
+    "model": "deepseek-v4-flash",
     "kind": "own_articulation",
     "sample": "par_cosit_26_20000629",
     "locator": "p#46",

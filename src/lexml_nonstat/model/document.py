@@ -94,13 +94,19 @@ def build_model(
     hierarchy: Any = None,
     viability: Any = None,
     log: Any = None,
+    referee: Any = None,
 ) -> DocumentModel:
     """Assemble a :class:`DocumentModel`, computing whatever was not supplied.
 
     The call chain is the one ``scripts/regen_goldens.py`` already uses, so a
-    model built here and a golden regenerated there cannot drift apart. The
-    referee is deliberately not consulted: routing's default is
-    ``referee=None`` and plan §9.3 pins that for the whole suite.
+    model built here and a golden regenerated there cannot drift apart.
+
+    ``referee`` defaults to ``None`` — routing's own default, and what plan §9.3
+    pins for the whole suite, so a model built without one is unchanged in every
+    respect. It is a *parameter* rather than a hardcoded ``None`` because the
+    CLI's ``--referee`` has to reach :func:`~..routing.assess_viability`
+    somehow; before this it was built and then dropped, which made the flag
+    inert on every subcommand that accepted it.
     """
     from ..hierarchy import infer_hierarchy
     from ..profile import select_profile
@@ -129,6 +135,7 @@ def build_model(
             segmentation=segmentation,
             hierarchy=hierarchy,
             log=log,
+            referee=referee,
         )
 
     return DocumentModel(

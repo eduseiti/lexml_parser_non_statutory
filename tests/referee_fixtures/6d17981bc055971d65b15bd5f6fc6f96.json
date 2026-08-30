@@ -5,7 +5,7 @@
     "rationale": "Precedido de omissis ('.....'), marca clássica de supressão em transcrição; um parecer não elide artigos que ele próprio institui."
   },
   "meta": {
-    "model": "deepseek-chat",
+    "model": "deepseek-v4-flash",
     "kind": "own_articulation",
     "sample": "par_cosit_26_20000629",
     "locator": "p#53",

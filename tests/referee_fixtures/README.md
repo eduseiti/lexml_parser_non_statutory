@@ -21,10 +21,21 @@ quotation verdict the deterministic rules reached with confidence below
 
 | Key | Sample | Locator | Rule verdict (conf.) | Fixture verdict |
 |---|---|---|---|---|
-| `2b9c8bda…` | `par_cosit_26_20000629` | `p#46` | quoted (0.55) | quoted |
-| `c476d7f5…` | `par_cosit_26_20000629` | `p#47` | quoted (0.50) | quoted |
-| `a80195c5…` | `par_cosit_26_20000629` | `p#53` | quoted (0.50) | quoted |
-| `3f881540…` | `parecer_93_2018_decor_cgu_agu` | `p#36` | quoted (0.55) | quoted |
+| `5d21d46f…` | `par_cosit_26_20000629` | `p#46` | quoted (0.55) | quoted |
+| `1a2ea8e5…` | `par_cosit_26_20000629` | `p#47` | quoted (0.50) | quoted |
+| `6d17981b…` | `par_cosit_26_20000629` | `p#53` | quoted (0.50) | quoted |
+| `8ac716a4…` | `parecer_93_2018_decor_cgu_agu` | `p#36` | quoted (0.55) | quoted |
+
+> **Re-keyed 2026-08-30.** These files were originally written under
+> `model="deepseek-chat"` (keys `2b9c8bda…`, `c476d7f5…`, `a80195c5…`,
+> `3f881540…`). When `api.DEFAULT_MODEL` was refreshed to `deepseek-v4-flash`,
+> the key — which covers the model — moved with it, every lookup missed, and
+> seven tests failed by falling through to a transport that asserts it is never
+> called. The four files were renamed to the keys the new model computes and
+> their `meta.model` updated; **verdicts, confidences and rationales are
+> untouched**, and the `origin` line still records that they are hand-authored.
+> The new keys were *derived* by replaying the corpus, not typed: the old keys
+> reproduce exactly under `deepseek-chat`, which is what proves the mapping.
 
 Three of the four are plan §2.6's residual case: `par_cosit_26` "resists
 indentation entirely", so its quoted statutes carry no band and are convicted
@@ -59,7 +70,7 @@ reviewed diff"):
 ```bash
 export LEXML_REFEREE_API_KEY=…
 python3 -m lexml_nonstat.routing --referee=api \
-        --referee-model=deepseek-chat \
+        --referee-model=deepseek-v4-flash \
         --referee-cache=tests/referee_fixtures \
         --decisions-report samples/*.docx
 git diff tests/referee_fixtures/    # review before committing

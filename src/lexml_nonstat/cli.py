@@ -48,7 +48,7 @@ from typing import Any, Sequence
 
 from .ingest import DocxReadError, StyledDoc, UnsupportedFormatError, read_document
 from .profile import UnknownProfileError, all_profiles, get_profile
-from .referee import REFEREE_MODES, build_referee
+from .referee import DEFAULT_BASE_URL, REFEREE_MODES, build_referee
 from .routing.viability import EMITTERS
 from .telemetry import DecisionLog, render_report
 from .validate.schema import (
@@ -130,6 +130,10 @@ def _build_referee(args, stderr):
     if args.referee == "api":
         if args.referee_model:
             kwargs["model"] = args.referee_model
+        # Only for `api`: LocalReferee has no base_url, and passing one would
+        # be a TypeError rather than a no-op.
+        if getattr(args, "referee_base_url", None):
+            kwargs["base_url"] = args.referee_base_url
         kwargs["api_key"] = os.environ.get("LEXML_REFEREE_API_KEY")
         kwargs["cache"] = args.referee_cache
     elif args.referee == "local":
@@ -336,7 +340,9 @@ def _cmd_parse(args, streams) -> int:
 
         from .model import build_model
 
-        model = build_model(doc, filename=path.name, profile=profile, log=log)
+        model = build_model(
+            doc, filename=path.name, profile=profile, log=log, referee=referee
+        )
         rendered = _render(model, args.emitter)
 
         report = _validate_documents(
@@ -556,7 +562,9 @@ def _cmd_decisions_report(args, streams) -> int:
                 return _MISUSE
             status = _FAILED
             continue
-        build_model(doc, filename=path.name, profile=profile, log=log)
+        build_model(
+            doc, filename=path.name, profile=profile, log=log, referee=referee
+        )
 
     _emit(render_report(log), stdout)
     return status
@@ -643,13 +651,34 @@ def _add_schema(sub: argparse.ArgumentParser) -> None:
 
 
 def _add_referee(sub: argparse.ArgumentParser) -> None:
+    """The referee flags, shared by `parse` and `decisions-report`.
+
+    ``--referee-model`` and ``--referee-base-url`` fall back to
+    ``LEXML_REFEREE_MODEL`` / ``LEXML_REFEREE_BASE_URL``, so `.env.example`'s
+    provider presets are configuration rather than documentation. Precedence is
+    flag > environment > `api.DEFAULT_*`, matching how the API key already
+    resolves. Reading the environment *here*, as an argparse default, is what
+    lets ``--help`` show the value that will actually be used.
+    """
     sub.add_argument(
         "--referee",
         default="none",
         choices=REFEREE_MODES,
         help="adjudicator for low-confidence decisions (default: none — no network)",
     )
-    sub.add_argument("--referee-model", default=None, help="model id or GGUF path")
+    sub.add_argument(
+        "--referee-model",
+        default=os.environ.get("LEXML_REFEREE_MODEL"),
+        help="model id or GGUF path (default: $LEXML_REFEREE_MODEL)",
+    )
+    sub.add_argument(
+        "--referee-base-url",
+        default=os.environ.get("LEXML_REFEREE_BASE_URL"),
+        help=(
+            "OpenAI-compatible endpoint root for --referee=api "
+            f"(default: $LEXML_REFEREE_BASE_URL, then {DEFAULT_BASE_URL})"
+        ),
+    )
     sub.add_argument(
         "--referee-cache", type=Path, default=None, help="referee disk cache directory"
     )

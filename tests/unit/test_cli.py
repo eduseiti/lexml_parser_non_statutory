@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import subprocess
 import sys
 from contextlib import redirect_stderr, redirect_stdout
@@ -26,6 +27,7 @@ import pytest
 from lxml import etree
 
 from lexml_nonstat import cli
+from lexml_nonstat.referee import api as referee_api
 from lexml_nonstat.ingest import read_docx
 from lexml_nonstat.model import build_model
 from lexml_nonstat.profile import all_profiles
@@ -573,3 +575,169 @@ def test_the_console_script_points_at_cli_main() -> None:
     text = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert 'lexml-nonstat = "lexml_nonstat.cli:main"' in text
     assert callable(cli.main)
+
+
+# ---------------------------------------------------------------------------
+# referee configuration — P-1a, the 2026-08-30 amendment
+# ---------------------------------------------------------------------------
+#
+# `.env.example` shipped `LEXML_REFEREE_BASE_URL` and `LEXML_REFEREE_MODEL`
+# before any code read them, so the presets it documents silently called
+# DeepSeek whatever they said. These tests pin the fix: the two variables are
+# real configuration, the flags override them, and the value reaches the
+# referee that is actually constructed.
+#
+# Every test here builds a referee but never adjudicates with it, so nothing
+# below can make a network call. §9.3's default stays `--referee=none`.
+
+
+def _referee_for(argv: list[str]):
+    """The referee `cli` would build for `argv`, without running the command."""
+    args = cli.build_parser().parse_args(argv)
+    referee, ok = cli._build_referee(args, io.StringIO())
+    assert ok, "the referee should have been constructible"
+    return referee
+
+
+def test_referee_base_url_flag_is_accepted() -> None:
+    """The flag exists at all — it did not before this amendment."""
+    args = cli.build_parser().parse_args(
+        ["parse", "--referee=api", "--referee-base-url=https://example.test/v1",
+         str(SAMPLE)]
+    )
+    assert args.referee_base_url == "https://example.test/v1"
+
+
+def test_referee_base_url_reaches_the_referee() -> None:
+    """The bug of record: a non-DeepSeek provider must not call DeepSeek.
+
+    Asserting on `args` alone would not have caught the original defect — the
+    value has to arrive at the object that makes the request.
+    """
+    referee = _referee_for(
+        ["parse", "--referee=api", "--referee-base-url=https://api.z.ai/api/paas/v4",
+         str(SAMPLE)]
+    )
+    assert referee.base_url == "https://api.z.ai/api/paas/v4"
+    assert "deepseek" not in referee.base_url
+
+
+def test_referee_base_url_defaults_to_environment(monkeypatch) -> None:
+    monkeypatch.setenv("LEXML_REFEREE_BASE_URL", "https://env.test/v1")
+    referee = _referee_for(["parse", "--referee=api", str(SAMPLE)])
+    assert referee.base_url == "https://env.test/v1"
+
+
+def test_referee_model_defaults_to_environment(monkeypatch) -> None:
+    monkeypatch.setenv("LEXML_REFEREE_MODEL", "glm-4.7-flash")
+    referee = _referee_for(["parse", "--referee=api", str(SAMPLE)])
+    assert referee.model == "glm-4.7-flash"
+
+
+def test_referee_flag_beats_environment(monkeypatch) -> None:
+    """Precedence: flag > environment > `api.DEFAULT_*`."""
+    monkeypatch.setenv("LEXML_REFEREE_BASE_URL", "https://env.test/v1")
+    monkeypatch.setenv("LEXML_REFEREE_MODEL", "from-env")
+    referee = _referee_for(
+        ["parse", "--referee=api", "--referee-base-url=https://flag.test/v1",
+         "--referee-model=from-flag", str(SAMPLE)]
+    )
+    assert referee.base_url == "https://flag.test/v1"
+    assert referee.model == "from-flag"
+
+
+def test_referee_without_configuration_uses_the_defaults(monkeypatch) -> None:
+    monkeypatch.delenv("LEXML_REFEREE_BASE_URL", raising=False)
+    monkeypatch.delenv("LEXML_REFEREE_MODEL", raising=False)
+    referee = _referee_for(["parse", "--referee=api", str(SAMPLE)])
+    assert referee.base_url == referee_api.DEFAULT_BASE_URL
+    assert referee.model == referee_api.DEFAULT_MODEL
+
+
+def test_local_referee_is_not_given_a_base_url(monkeypatch) -> None:
+    """`LocalReferee` has no such parameter; passing one is a TypeError."""
+    monkeypatch.setenv("LEXML_REFEREE_BASE_URL", "https://env.test/v1")
+    referee = _referee_for(
+        ["parse", "--referee=local", "--referee-model=/nonexistent/model.gguf",
+         str(SAMPLE)]
+    )
+    assert not hasattr(referee, "base_url")
+
+
+def test_decisions_report_accepts_the_base_url_too() -> None:
+    """Both referee-bearing subcommands share `_add_referee`, so both gain it."""
+    args = cli.build_parser().parse_args(
+        ["decisions-report", "--referee=api",
+         "--referee-base-url=https://example.test/v1", str(SAMPLE)]
+    )
+    assert args.referee_base_url == "https://example.test/v1"
+
+
+def test_routing_and_cli_agree_on_referee_configuration(monkeypatch) -> None:
+    """`_build_referee`'s docstring promises it mirrors `routing/__main__`.
+
+    That promise was previously untested, and the two entry points are edited
+    together precisely because it is easy to update one and forget the other.
+    """
+    monkeypatch.setenv("LEXML_REFEREE_BASE_URL", "https://mirror.test/v1")
+    monkeypatch.setenv("LEXML_REFEREE_MODEL", "mirror-model")
+
+    # `routing/__main__` builds its parser inside `main()`, so the help text is
+    # the honest way to ask it what flags it has, and it reads the environment
+    # at parse time exactly as the CLI does.
+    routing_help = subprocess.run(
+        [sys.executable, "-m", "lexml_nonstat.routing", "--help"],
+        capture_output=True, text=True, check=True,
+        cwd=REPO_ROOT, env={**os.environ, "PYTHONPATH": str(REPO_ROOT / "src")},
+    ).stdout
+    assert "--referee-base-url" in routing_help
+    assert "--referee-model" in routing_help
+
+    cli_referee = _referee_for(["parse", "--referee=api", str(SAMPLE)])
+    assert cli_referee.base_url == "https://mirror.test/v1"
+    assert cli_referee.model == "mirror-model"
+
+
+def test_parse_consults_the_referee_it_was_given() -> None:
+    """The Cycle 8 defect this amendment repairs.
+
+    `--referee` was accepted, the referee was built, and then it was dropped on
+    the floor: `build_model` never received it, so no subcommand of the unified
+    CLI could consult anyone. The flag was inert, and the printed status said
+    "not consulted" no matter what was asked for.
+
+    An offline stub referee proves the wiring without a network call: if the
+    referee is reached, it records the questions.
+    """
+    from lexml_nonstat.referee.protocol import Verdict
+
+    asked: list[str] = []
+
+    class Recorder:
+        enabled = True
+        name = "recorder"
+
+        def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
+            asked.append(excerpt)
+            return Verdict.abstain("stub")
+
+        def is_heading(self, para: str, ctx: str) -> Verdict:
+            return Verdict.abstain("stub")
+
+        def section_kind(self, label: str, heading: str) -> Verdict:
+            return Verdict.abstain("stub")
+
+    flagged = REPO_ROOT / "samples" / "par_cosit_26_20000629.docx"
+    doc = read_docx(flagged)
+    model = build_model(doc, filename=flagged.name, referee=Recorder())
+
+    assert asked, "the referee was never consulted; the flag is inert again"
+    consulted = [r for r in model.decisions if r.referee_consulted]
+    assert len(consulted) == len(asked)
+
+
+def test_referee_none_still_consults_nobody() -> None:
+    """§9.3's invariant, unchanged: the default reaches no referee at all."""
+    flagged = REPO_ROOT / "samples" / "par_cosit_26_20000629.docx"
+    model = build_model(read_docx(flagged), filename=flagged.name)
+    assert not any(r.referee_consulted for r in model.decisions)
