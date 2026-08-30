@@ -3,9 +3,13 @@
     python -m lexml_nonstat.ingest samples/parecer_93_2018_decor_cgu_agu.docx
     python -m lexml_nonstat.ingest --format=text samples/*.docx
 
-Mirrors Cycle 0's ``python -m lexml_nonstat.validate``. The unified ``cli.py``
-with a ``dump-styled`` subcommand is Cycle 8's deliverable; this is the debug
-view Cycle 1 owes.
+Cycle 8 delivered the unified CLI, whose ``dump-styled`` subcommand shows the
+same thing over any supported format::
+
+    python3 -m lexml_nonstat dump-styled --format=text samples/*.docx
+
+Both remain: that one dispatches on suffix and takes the global options, this
+one is the DOCX debug view Cycle 1 owes and takes ``--keep-strikethrough``.
 """
 
 from __future__ import annotations

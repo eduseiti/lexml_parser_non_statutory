@@ -2,9 +2,10 @@
 
     python -m lexml_nonstat.validate --schema=both file.xml [file.xml ...]
 
-Cycle 8 delivers the full CLI (``parse``, ``segment``, ``validate``, …). This
-exists so the ``--schema`` selector required by Cycle 0 is exercised end to end
-rather than only through the library API.
+Cycle 8 delivered the full CLI, whose ``validate`` subcommand is the supported
+form (it adds ``--generation``). This exists so the ``--schema`` selector
+required by Cycle 0 is exercised end to end rather than only through the
+library API, and both call the same :func:`~.schema.validate`.
 """
 
 from __future__ import annotations

@@ -5,8 +5,9 @@
     python3 -m lexml_nonstat.segment --format=xml samples/ad_srf_22_19970430.docx
 
 Mirrors Cycle 1's ``python -m lexml_nonstat.ingest`` and Cycle 2's
-``python -m lexml_nonstat.model``. The unified ``cli.py`` arrives in Cycle 8;
-until then each package carries its own debug view.
+``python -m lexml_nonstat.model``. Cycle 8's unified CLI has no equivalent —
+front/back-matter *spans* are an internal division, not a citable output — so
+this remains the only view of them.
 
 The text format shows spans as ``start-end`` with the block text beside them,
 because a segmentation bug is nearly always a boundary off by one block, and

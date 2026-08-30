@@ -4,9 +4,9 @@
     PYTHONPATH=src python3 -m lexml_nonstat.segments --format=jsonl tests/golden/generico/*.xml
 
 A DOCX runs the whole pipeline and segments the model (the primary path); an
-XML file is read back through whichever reader its markup calls for. Cycle 8
-folds this into the real CLI; until then it is the same shape every other
-package here already offers.
+XML file is read back through whichever reader its markup calls for. Cycle 8's
+``python3 -m lexml_nonstat segment`` is the supported form and takes the global
+options; this one stays as the package's own debug view.
 """
 
 from __future__ import annotations

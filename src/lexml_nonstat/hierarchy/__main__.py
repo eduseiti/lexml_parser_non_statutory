@@ -4,8 +4,9 @@
     python3 -m lexml_nonstat.hierarchy --format=json samples/*.docx
     python3 -m lexml_nonstat.hierarchy --why samples/parecer_93_2018_decor_cgu_agu.docx
 
-Mirrors Cycles 1–3's package debug views; the unified ``cli.py`` arrives in
-Cycle 8.
+Mirrors Cycles 1–3's package debug views. Cycle 8's
+``python3 -m lexml_nonstat dump-tree`` delegates to exactly the renderers below,
+so the two agree by construction rather than by maintenance.
 
 ``--why`` is the one that earns its keep. When a document comes back flat, the
 question is always *what did you throw away and why*, and

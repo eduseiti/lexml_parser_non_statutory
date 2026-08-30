@@ -15,6 +15,12 @@ dependencies = [
     "python-docx>=1.1",
 ]
 
+# The unified CLI (Cycle 8). The module form
+# `PYTHONPATH=src python3 -m lexml_nonstat` reaches the same entry point and is
+# what the suite uses, because the package is deliberately not installed.
+[project.scripts]
+lexml-nonstat = "lexml_nonstat.cli:main"
+
 [project.optional-dependencies]
 # The referee is consulted over an OpenAI-compatible HTTP API (plan §7.2).
 # Never required by the regression suite, which pins --referee=none.

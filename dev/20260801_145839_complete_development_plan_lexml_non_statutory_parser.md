@@ -266,11 +266,13 @@ src/lexml_nonstat/
   model/       document.py  nodes.py  metadata.py  urn.py
   render/      generico.py  generico_aninhado.py  norma.py  anexo.py
                common.py  ids.py
-  validate/    schema.py  rules.py  report.py
-  segmentation/ api.py  xslt/segment_generico.xsl  xslt/segment_norma.xsl
-                xslt/segment_generico_aninhado.xsl
+  validate/    schema.py  report.py            # rules.py not built — A-8.2
+  segments/    api.py  ids.py  model.py  roundtrip.py  writers.py  xslt.py
+               stylesheets/segment_generico.xsl  stylesheets/segment_norma.xsl
+               stylesheets/segment_generico_aninhado.xsl      # A-7.1, A-8.2
   telemetry/   decisions.py  report.py
-  cli.py
+  warnings.py                                    # A-8.3
+  cli.py  __main__.py
 tests/
   unit/  golden/  fixtures/  regression/  referee_fixtures/  conftest.py
 ```
@@ -1610,6 +1612,20 @@ Tests
 
 Exit: "handles any document" demonstrated — valid output or a clean diagnostic for every fixture.
 
+**Amendments from executing this cycle (2026-08-30).**
+
+- **A-8.1 — the `generic` catch-all profile was delivered in Cycle 2, so this cycle discharges the bullet by assertion rather than by code.** `profile/generic.py` has existed since Cycle 2 (`base_score=0.05`, no epigraph patterns by design) and gained its three pattern fields in Cycle 3 (A-3.3). Registering a second would give `select_profile` two weak claimants and make its answer depend on registration order. What Cycle 8 owes is the *guarantee*, so `test_the_generic_catch_all_profile_is_registered` pins that it exists, that its `base_score` is above zero, and that no other profile's is higher — and every degenerate and non-DOCX fixture is asserted to profile as something rather than nothing.
+
+- **A-8.2 — §3's layout is corrected in three places, and `validate/rules.py` is deliberately not built.** The tree names `segmentation/api.py` with an `xslt/` subfolder (delivered as `segments/api.py` + `segments/stylesheets/`, **A-7.1**) and `validate/rules.py`. Every check `rules.py` would hold already has an owner — `render_norma_checked`'s four gates, `render/ids.py`'s Rule A, the conservation comparison, `probe_capabilities` — so a module re-implementing them would be a second source of truth, which is the failure Cycle 4b's report warns about for routing. Recorded rather than silently skipped.
+
+- **A-8.3 — "structured warnings" and "confidence reporting" are one channel: `lexml_nonstat/warnings.py`.** A frozen `Warning(code, detail, source)` over a closed `WARNING_CODES` tuple, mirroring `BLOCKER_CODES`, collected by a `collect_warnings` that is a **pure function of already-computed objects** — it validates nothing, infers nothing, and reads only conclusions `routing`, `hierarchy` and `render` already reached. Kept out of `telemetry/` deliberately: §7.4 counts *decisions*, and folding a CLI diagnostic in would make `render_report`'s counts include things that are not decisions. `--strict` changes the **exit code and nothing else** — stdout is asserted byte-identical with and without it. *Decided with the user.*
+
+- **A-8.4 — the CLI's `--emitter` defaults to `auto`, which follows the route.** A `norma`-routed document goes through §4.2's `render_statutory`, everything else through the flat emitter; `RenderedDocument.emitter` (A-6.3) reports which one actually produced the bytes. This is the only default that exercises Cycle 6's validate-then-fallback from the command line, and `test_auto_matches_render_statutory` pins the CLI's answer to the library's on all 15 samples rather than to a literal. *Decided with the user.*
+
+- **A-8.5 — §5.2's "emitter selection refuses" is confirmed as written, and the refusal is what a bare checkout must show.** Running the suite without `lexml-proposed/` initially failed 32 tests, all because `--emitter=generico-aninhado` exits 2 when the capability is absent. That is correct: §5.2 distinguishes *selection* (refuses, with the probe's diagnostic) from the *renderer* (always renders, A-5b.3), and A-R.9 asks for exactly this. The nested CLI tests are gated on `requires_nested` like every other nested assertion, and one **ungated** test asserts the answer is clean — exit 0 with parseable XML, or exit 2 with a diagnostic and empty stdout — in *both* configurations, which is what makes A-R.9 checkable on the bare checkout it most concerns.
+
+- **A-8.6 — an encoding bug is invisible to every invariant this plan has, so the HTML reader decodes explicitly.** lxml decodes bytes *lazily* and falls back to latin-1 (the HTML4 default), so an undeclared UTF-8 file read `SEÇÃO` as `SEÃÃO` — and **conservation could not detect it**, because both the source side and the emitted side of the comparison carried the same mojibake. Two further faults compounded it: forcing `encoding="utf-8"` on the parser *overrode* a correct latin-1 declaration and raised `UnicodeDecodeError` from `element.text` deep inside the walk, and an XML declaration on an HTML document made lxml return an **empty tree** — silent, total text loss. The reader now decodes once, up front: a declaration wins, UTF-8 is assumed when there is none, latin-1 is the last candidate because it maps every byte so the decision cannot fail, and a leading XML declaration is stripped before parsing. Only reading the output found any of this.
+
 ### Cycle 9 — Regression consolidation and corpus scale-out
 
 Promote all goldens to `tests/regression/`; `make regression`; coverage gate; corpus-expansion guide (new document = fixture + expected route + golden); **batch mode for the 300+ corpus** with an aggregate decisions report; documentation of `docs/`/`dev/` conventions.
@@ -1769,8 +1785,8 @@ A tracked, reviewable sequence — not a rewrite:
 Revised 2026-08-28 (§14). Cycle order:
 
 ```
-0, 1, 2, 3, 4, 4b, 5, 5b  ✅ complete  →  6, 7, 8, 9
-                                          └── 6b withdrawn; round-trip reader → 7
+0, 1, 2, 3, 4, 4b, 5, 5b, 6, 7, 8  ✅ complete  →  9
+                     └── 6b withdrawn; round-trip reader → 7
 ```
 
 | Cycle | Deliverable | Key exit criterion |
@@ -1783,10 +1799,10 @@ Revised 2026-08-28 (§14). Cycle order:
 | 4b ✅ | Routing + LLM referee + telemetry | routes match §4.4; overrides logged and counted |
 | 5 ✅ | Emitter `generico` (flat, **default**) | 14 samples valid on the **shipped** schemas; Rules A/B hold — **all 15 rendered and pinned (A-5.5); conservation covers the 40 inter-part blocks (A-5.1)** |
 | 5b ✅ | Emitter `generico-aninhado` (nested, opt-in) | native axes recover hierarchy; text and URNs ≡ flat emitter — **16 documents rendered and pinned; Constraint 1 binds `Bloco` too (A-5b.1); `ordem` on every child (A-5b.2)** |
-| 6 | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both documents |
+| 6 ✅ | Emitter `norma` + `Anexo` split | `port_mf_277` split, conservation across both documents — **`leaf_texts` reads the statutory elements (A-6.4); one shared annex module (A-6.5)** |
 | ~~6b~~ | ~~Emitter `articulado-sintetico`~~ | **withdrawn (A-R.6)** — round-trip reader relocated to Cycle 7 |
-| 7 | Segmentation output (API + XSLT) | **three-way oracle agreement**; breadcrumbs complete |
-| 8 | Robustness + CLI | every degenerate input handled cleanly; capabilities reported |
+| 7 ✅ | Segmentation output (API + XSLT) | **three-way oracle agreement**; breadcrumbs complete — **the package is `segments/` (A-7.1); two addresses, `urn` and `path` (A-7.2)** |
+| 8 ✅ | Robustness + CLI | every degenerate input handled cleanly; capabilities reported — **10 degenerate fixtures valid on both schemas; 60 CLI×emitter invocations; suite green with `lexml-proposed/` absent (A-8.5)** |
 | 9 | Regression consolidation + batch | mutation test bites; corpus report reconciles; **suite green without `lexml-proposed/`** |
 
 ---

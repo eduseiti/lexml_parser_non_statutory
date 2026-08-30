@@ -4,8 +4,10 @@
     python3 -m lexml_nonstat.model --format=xml samples/parecer_93_*.docx
     python3 -m lexml_nonstat.model --format=json samples/*.docx
 
-Mirrors Cycle 1's ``python -m lexml_nonstat.ingest``. The unified ``cli.py``
-arrives in Cycle 8; until then each package carries its own debug view.
+Mirrors Cycle 1's ``python -m lexml_nonstat.ingest``. Cycle 8's unified CLI
+covers neighbouring ground — ``lexml_nonstat parse --format=json`` reports the
+URN, profile and route — but no subcommand prints the extraction *provenance*
+this does, which is what it is for.
 
 The text format leads with provenance (``date_source``, ``authority_source``)
 because that is what you need when a URN comes out wrong: the value alone does

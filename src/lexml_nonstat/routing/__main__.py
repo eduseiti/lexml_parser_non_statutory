@@ -5,9 +5,11 @@
     python3 -m lexml_nonstat.routing --decisions-report samples/*.docx
     python3 -m lexml_nonstat.routing --emitter=generico-aninhado samples/pn_cst_38_19801031.docx
 
-Mirrors Cycles 1–3's per-package debug views; the unified ``cli.py`` arrives in
-Cycle 8. ``--referee`` defaults to ``none`` (§7.3 constraint 7): this command
-makes no network call unless asked to.
+Mirrors Cycles 1–3's per-package debug views. Cycle 8's
+``python3 -m lexml_nonstat decisions-report`` covers §7.4's summary; this stays
+because no CLI subcommand prints a *per-document* verdict with its gates.
+``--referee`` defaults to ``none`` (§7.3 constraint 7) here and there alike:
+neither makes a network call unless asked to.
 
 The text format leads with the blockers rather than the route, because on this
 corpus the route is `generico` fourteen times out of fifteen and the
