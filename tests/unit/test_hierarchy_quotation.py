@@ -48,6 +48,7 @@ from lexml_nonstat.hierarchy.quotation import (
     is_omissis,
     names_external_norm,
     opens_with_quote,
+    quotation_head,
 )
 from lexml_nonstat.ingest import Inline, StyledPara, read_docx
 from lexml_nonstat.model import extract_metadata
@@ -637,3 +638,188 @@ def test_module_constants_keep_their_measured_values() -> None:
     assert MIN_BAND_PARAGRAPHS == 3
     assert SERIES_START_MAX == 2
     assert SERIES_MAX_GAP == 3
+
+
+# ---------------------------------------------------------------------------
+# Quotation runs and quotation heads (amendments A-Q.1, A-Q.2)
+# ---------------------------------------------------------------------------
+#
+# `quoted` is a `frozenset[int]`: it says *which* paragraphs are quoted and
+# cannot say where one quotation ends and the next begins. `par_cosit_26`'s
+# item `14.` announces four laws and transcribes them as one flat run of 35
+# paragraphs; a reader sees four quotations, and the set sees thirty-five
+# indices. `runs` is the second, richer reading of the same verdicts — and it
+# is *additive*, which is the property these tests pin first.
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_runs_partition_the_quoted_set(sample, name):
+    """T-8c.1. Every quoted paragraph lands in exactly one run.
+
+    The whole of A-Q.4 rests on this: a section is divided by moving each run's
+    paragraphs into a child, so a paragraph in two runs would be duplicated and
+    a paragraph in none would be lost. Both are invariant #2 failures, and both
+    would be invisible in a set.
+    """
+    analysis = sample(name).analysis
+    covered = [index for run in analysis.runs for index in run.indices]
+
+    assert len(covered) == len(set(covered)), f"{name}: a paragraph is in two runs"
+    assert set(covered) == set(analysis.quoted), (
+        f"{name}: runs do not cover `quoted` exactly; "
+        f"missing={sorted(set(analysis.quoted) - set(covered))[:5]} "
+        f"extra={sorted(set(covered) - set(analysis.quoted))[:5]}"
+    )
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_runs_are_contiguous_and_in_document_order(sample, name):
+    """T-8c.2. A run is a *span*, and the runs march forward through the body."""
+    parsed = sample(name)
+    position = {para.index: order for order, para in enumerate(parsed.paras)}
+
+    last = -1
+    for run in parsed.analysis.runs:
+        assert run.indices, f"{name}: an empty run is not a span"
+        offsets = [position[index] for index in run.indices]
+        assert offsets == sorted(offsets), f"{name}: run out of document order"
+        assert offsets == list(range(offsets[0], offsets[-1] + 1)), (
+            f"{name}: run {run.indices[:4]}… has a hole in it"
+        )
+        assert offsets[0] > last, f"{name}: runs overlap or go backwards"
+        last = offsets[-1]
+
+
+def test_par_cosit_26_finds_the_four_quoted_laws(sample):
+    """T-8c.3. The amendment's whole motivation, as an assertion.
+
+    Item `14.` says it will quote four laws, names them in order, and then
+    transcribes them with nothing but a norm designation to mark each change.
+    """
+    analysis = sample(PAR_COSIT_26).analysis
+    named = [(run.head, run.norm) for run in analysis.runs if run.norm]
+
+    assert named == [
+        (45, "Lei nº 7.713, de 1988"),
+        (63, "Lei 8.134, de 1990"),
+        (69, "Lei 8.383, de 1991"),
+        (76, "Lei 8.981, de 1995"),
+    ]
+
+
+def test_block_45_is_quoted(sample):
+    """T-8c.5. The defect the investigation record found on the way (its §3).
+
+    Block 45 opens `Lei nº 7.713, de 1988 - “Art. 1º-…`. It is quoted material
+    by any reading, and it was rendering as a bare `<p>` in a wall of
+    `class="quote"`, because it opens with neither a quote mark nor `Art.`, and
+    `names_external_norm` only ever made it an *antecedent* for block 46 — never
+    a conviction of itself. Blocks 63, 69 and 76 have the same shape and were
+    only marked because they sit inside an already-open run; the first one in a
+    section is the one that escapes.
+    """
+    parsed = sample(PAR_COSIT_26)
+    assert parsed.analysis.is_quoted(45), parsed.text(45)[:80]
+    for index in (63, 69, 76):
+        assert parsed.analysis.is_quoted(index)
+
+
+def test_quotation_head_reads_the_corpus_heads():
+    """T-8c.6, positive half. The four shapes `par_cosit_26` actually uses."""
+    assert quotation_head(
+        'Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital'
+    ) == "Lei nº 7.713, de 1988"
+    assert quotation_head(
+        'Lei 8.134, de 1990 - "Art. 2º - O imposto de renda das pessoas físicas'
+    ) == "Lei 8.134, de 1990"
+    assert quotation_head(
+        "Lei 8.383, de 1991, Art. 12. ........................................"
+    ) == "Lei 8.383, de 1991"
+    assert quotation_head(
+        'Lei 8.981, de 1995, "Art. 21. O ganho de capital percebido'
+    ) == "Lei 8.981, de 1995"
+    # Written from the shape, not from the corpus: a norm this corpus never
+    # quotes must read the same way.
+    assert quotation_head(
+        'Decreto-lei nº 200, de 1967 - "Art. 5º O serviço público'
+    ) == "Decreto-lei nº 200, de 1967"
+
+
+def test_quotation_head_rejects_the_near_misses():
+    """T-8c.4. The negatives, and they are the point.
+
+    The investigation record's own census counted "paragraph opens with a norm
+    noun, inside a quoted run" and found two more heads in `parecer_93`. Read,
+    they are not heads at all — one is the *tail* of a citation and the other a
+    quotation opener — and a generator keyed on that looser shape would fire on
+    both. That is the over-firing the record's §4 warns about, made concrete on
+    the only other sample that could have supplied it.
+
+    The article marker is what separates them, so it is required.
+    """
+    # `parecer_93` block 268 — a trailing citation fragment; no article follows.
+    assert quotation_head("Lei no 12.618. de 2012)") is None
+    # `parecer_93` block 321 — a quotation opener naming a numbered norm.
+    assert quotation_head('"Súmula 207') is None
+    # A norm named mid-sentence is a reference, not a head.
+    assert quotation_head("A Lei nº 9.430, de 1996, Art. 3º dispõe que") is None
+    # A bare article is not a head: nothing says whose article it is.
+    assert quotation_head("Art. 2º- O imposto de renda das pessoas físicas") is None
+    # A norm without a number is prose about the law.
+    assert quotation_head("Constituição Federal, Art. 5º") is None
+    # An ordinary numbered paragraph of the document's own argument.
+    assert quotation_head(
+        "13. O Código Tributário Nacional - CTN (Lei nº 5.172, de 1966) estabelece"
+    ) is None
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_no_head_is_invented_outside_par_cosit_26(sample, name):
+    """T-8c.4, corpus-wide. Exactly one sample has a multi-norm quoted run.
+
+    The corpus is 15 documents standing in for 300+ unseen ones, so the number
+    that matters is not "four heads found" but "no head found anywhere else".
+    A generator that fires on a second sample here is a generator that will
+    fire unpredictably out there.
+    """
+    named = [run for run in sample(name).analysis.runs if run.norm]
+    if name == PAR_COSIT_26:
+        assert len(named) == 4
+    else:
+        assert named == [], f"{name}: unexpected quotation head {named[:2]}"
+
+
+def test_a_head_that_introduces_nothing_is_rejected_not_promoted():
+    """T-8c.7. A head with no excerpt under it is recorded, not made a run.
+
+    The `DocSignals.rejected` precedent (A-4.2): telemetry has to be able to
+    explain why a boundary was *not* drawn, and a generator whose rejections
+    vanish cannot be tuned against the 300 documents nobody has read.
+
+    Here the second quotation is a single paragraph that is *itself* the head —
+    a norm designation and an article and nothing after it. Naming it as a
+    boundary would create a `citacao` section holding only the heading it was
+    named from, so it is rejected and its index recorded.
+    """
+    paras = (
+        StyledPara(inlines=(Inline("Dispõem as normas a seguir, in verbis:"),), index=0),
+        StyledPara(
+            inlines=(Inline('Lei nº 7.713, de 1988 - "Art. 1º- Os rendimentos'),),
+            index=1,
+        ),
+        StyledPara(inlines=(Inline("Art. 2º- O imposto será devido."),), index=2),
+        StyledPara(inlines=(Inline('Lei 8.134, de 1990 - "Art. 2º- O imposto'),), index=3),
+        StyledPara(inlines=(Inline("4. O parecer retoma seu argumento."),), index=4),
+    )
+    analysis = analyse_quotation(paras)
+
+    assert 3 in analysis.rejected_heads, (
+        "a head with no excerpt beneath it must be recorded as rejected"
+    )
+    assert 3 not in {run.head for run in analysis.runs if run.norm}, (
+        "and must not become a named run"
+    )
+    # It is still quoted material — rejecting the *boundary* must not lose the
+    # paragraph, which is invariant #2 and the reason the guard never deletes.
+    covered = {index for run in analysis.runs for index in run.indices}
+    assert set(analysis.quoted) == covered

@@ -1877,3 +1877,50 @@ Record: `dev/20260801_145839_complete_development_plan_lexml_non_statutory_parse
 **Still open, and explicitly not decided here:** LLM-doc §8 questions 1
 (provider adoption), 3 (`AnthropicReferee`), 4 (P-5, recording live fixtures)
 and 5 (a live referee pass over the 300+ corpus as Cycle 9 scope).
+
+---
+
+## 16. Amendment Log — 2026-08-30 Cycle 8c: nested quotation structure
+
+Source: `docs/20260830_203420_nested_quotation_structure_referee_feasibility_and_amendment.md`,
+adopting its proposals A-Q.1–A-Q.6 in full, plus its §9 open question 3 as
+**A-Q.7**, with the user's approval.
+
+Placement: a **new Cycle 8c**, between the 2026-08-30 referee configuration
+amendment and Cycle 9. Cycle 9 is **not started and is not begun by this work**.
+
+Record: `dev/20260801_145839_complete_development_plan_lexml_non_statutory_parser/20260830_224646_cycle_8c_report.md`.
+
+| ID | Section(s) | Amendment |
+|---|---|---|
+| A-Q.1 | §3.1, Cycle 4 | **The quotation guard returns spans, not only a set.** `QuotationAnalysis` gains `runs: tuple[QuoteRun, ...]` and `rejected_heads`. `quoted` keeps its exact meaning *and value*, so every existing consumer — `Para.kind`, the routing census, all goldens — is untouched. A `frozenset[int]` cannot say where one quotation ends and the next begins, which is why `par_cosit_26`'s four quoted laws were indistinguishable from thirty-five paragraphs |
+| A-Q.2 | §2.6, Cycle 4 | **The "inline-introduced quotation head" is recognised**: a paragraph opening with a norm designation *and* a following article marker, adjacent to quoted material. Discharges the record's §3 defect — `par_cosit_26` block 45 was rendering as a bare `<p>` in a wall of `class="quote"`. **The record's own census over-counted the corpus surface**: `parecer_93`'s blocks 268 (`Lei no 12.618. de 2012)`) and 321 (`"Súmula 207`) open with a norm noun but have no article after them — they are a citation *tail* and a quotation opener, not heads. The true surface is **4 paragraphs in 1 sample**, and those two are pinned as negatives |
+| A-Q.3 | §7.1, §7.3 | **A fourth referee question, `quotation_boundary`, and it is confirm-only.** Vocabulary `("boundary", "continuation")`. The referee is asked *only* about candidates the deterministic head detector already proposed, so it can veto or confirm but never volunteer — invariant #8 becomes an argument about the generator rather than a hope about the model. Its `ctx` is the **announcing paragraph**, which is the context the per-paragraph question structurally could not include. Asserted as an attack: an adversarial referee answering `"boundary"` at confidence 1.0 to every question changes no sample beyond the four real candidates |
+| A-Q.4 | §3.1, §5.1, §5.2 | **Confirmed runs become child `Section`s** with `kind="citacao"` and `heading` = the norm as written. `SECTION_KINDS` gains one member; `Agrupamento/@nome` is an open `xsd:string`, so there is **no schema work** — verified by validating all 15 samples with nesting active on both shipped schemas. The head paragraph is **split** at the norm's name, as `_finish` already does for a rótulo, because promoting the name to a heading *and* leaving it in the paragraph duplicates text |
+| A-Q.5 | §9.2 (invariant #2) | **Conservation is a precondition of nesting, not a check after it.** A section divides only if two or more named runs exist, every body node is assignable to exactly one, and the children's bodies plus the parent's remainder reproduce the original exactly. Otherwise it stays flat. Single-run sections are never wrapped. The A-6.3 lesson: a render can be valid on both schemas and 29 words short |
+| A-Q.6 | §9.2 (invariant #11) | **Cross-emitter equivalence re-measured with a citation level in the tree**, on `Segment.path`/normalised URNs rather than raw `urn` (A-7.2). No *third* notational drift appears. Text is compared as a **character** multiset, not a leaf or word multiset: splitting moves a leaf boundary, so `1991,` legitimately becomes `1991` + `,` — a coarser comparison cannot tell that from real damage, and two genuine defects (a duplicated norm name, then two lost `-` and two lost commas) were caught here and nowhere else |
+| A-Q.7 | §7.3 | **`own_articulation`'s `ctx` is the nearest preceding citation antecedent**, not merely the paragraph above. The record's §2.3 measured the damage: the referee overrode `par_cosit_26` p#47 and p#53 wrongly at confidence 0.95 and 0.70, because the sentence naming the owning law sat two paragraphs back, outside the window. The cap is unchanged, so §7.3's privacy guarantees are untouched — only *which* paragraph is spent. Two of the four fixtures re-keyed by replay (A-C.4's method); no golden changes |
+
+**Decisions taken with the user before implementing (2026-08-30):**
+
+1. **Full scope**, not the record's own recommended reduction to A-Q.1+A-Q.2.
+2. **`citacao`** as the `Section.kind`, over `transcricao` and `excerto`.
+3. **A-Q.7 included**, with its cache-key and fixture costs stated in advance.
+4. **Fixtures hand-authored**, per A-4b.5 and A-C.4 — the record's §2.3 is
+   itself the argument against recording whatever the live model says.
+
+**A defect closed that the record only diagnosed:** before this cycle the
+referee could change the *route* and nothing else — `parse` with and without
+`--referee=api` produced byte-identical XML on `par_cosit_26` even while the
+decisions report showed two overrides. It now changes exactly one thing in the
+emitted XML, on the one channel where it is safe to: confirming a boundary the
+rules found. `--referee=none` still produces the identical document it always
+did.
+
+**Still open, and explicitly not decided here:** LLM-doc §8 questions 1
+(provider adoption), 3 (`AnthropicReferee`), 4 (P-5, recording live fixtures)
+and 5 (a live referee pass over the 300+ corpus as Cycle 9 scope); and the
+record's §8 counter-argument — whether multi-norm quotation runs are common
+enough in the 300+ unseen documents to justify A-Q.3–A-Q.6, which **Cycle 9's
+corpus scale-out is the thing that will answer**, now with `runs` in place to
+measure it.

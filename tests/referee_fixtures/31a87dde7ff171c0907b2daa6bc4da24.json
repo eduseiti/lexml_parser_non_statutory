@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "boundary",
+    "confidence": 0.9,
+    "rationale": "O trecho nomeia a quarta e última lei anunciada, a Lei 8.981, abrindo a transcrição de norma distinta da Lei 8.383 que a precede."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "quotation_boundary",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#76",
+    "rule_verdict": "continuation",
+    "rule_confidence": 0.55,
+    "excerpt": "Lei 8.981, de 1995, \"Art. 21. O ganho de capital percebido por pessoa física em decorrência da alienação de bens e direitos de qualquer natureza sujeita-se à incidência do imposto de renda à alíquota de quinze por cento.",
+    "norm": "Lei 8.981, de 1995",
+    "origin": "hand-authored (see README.md); never recorded from a live provider",
+    "ctx": "14. A diferença positiva entre o valor de alienação e o custo de aquisição do título configurará ganho de capital e estará sujeita ao imposto de renda, como dispõem os arts. 1º a 3º e 16 da Lei nº 7.713, de dezembro de 1988, com as alterações dadas pelos arts. 2º e 18 da Lei nº 8.134, 27 de dezembro de 1990, 52 da Lei nº 8.383, de 30 de dezembro 1991, e 21 da Lei nº 8.981, de 20 de janeiro de 1995, in verbis:"
+  }
+}

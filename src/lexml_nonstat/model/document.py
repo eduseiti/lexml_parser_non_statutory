@@ -126,7 +126,12 @@ def build_model(
         segmentation = segment_document(doc, profile=profile, metadata=metadata)
     if hierarchy is None:
         hierarchy = infer_hierarchy(
-            doc, segmentation=segmentation, profile=profile, metadata=metadata
+            doc,
+            segmentation=segmentation,
+            profile=profile,
+            metadata=metadata,
+            referee=referee,
+            log=log,
         )
     if viability is None:
         viability = assess_viability(

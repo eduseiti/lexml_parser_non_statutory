@@ -26,6 +26,7 @@ import logging
 from typing import Any
 
 from ..telemetry.decisions import DecisionLog, DecisionRecord
+from .prompts import VOCABULARIES
 from .protocol import (
     FLAG_THRESHOLD,
     REFEREE_MIN_CONFIDENCE,
@@ -40,6 +41,7 @@ _METHODS = {
     "own_articulation": "is_own_articulation",
     "heading": "is_heading",
     "section_kind": "section_kind",
+    "quotation_boundary": "quotation_boundary",
 }
 
 
@@ -99,6 +101,22 @@ def adjudicate(
         # it exactly like a malformed API reply: abstain, keep the rule, say so.
         verdict = Verdict.abstain(
             f"referee returned {type(verdict).__name__}, expected Verdict"
+        )
+
+    # §7.3's closed vocabulary, enforced here as well as in the transports.
+    # `api.py` and `local.py` each check the answer they parsed, which covers
+    # every referee that speaks over a wire — but an in-process referee reaches
+    # this function directly, and before amendment A-Q.3 nothing stopped one
+    # from having an out-of-vocabulary verdict recorded as an override. It
+    # could never *produce* a wrong outcome (a verdict outside the vocabulary
+    # matches no branch the callers test for), but it would be counted and
+    # reported as though the referee had said something. An answer nobody asked
+    # for is an abstention.
+    vocabulary = VOCABULARIES.get(kind)
+    if vocabulary and not verdict.abstained and verdict.verdict not in vocabulary:
+        verdict = Verdict.abstain(
+            f"referee answered {verdict.verdict!r}, outside {kind}'s vocabulary "
+            f"{vocabulary}"
         )
 
     overridable = (

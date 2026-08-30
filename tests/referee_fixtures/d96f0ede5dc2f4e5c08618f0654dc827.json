@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "boundary",
+    "confidence": 0.9,
+    "rationale": "O trecho nomeia a terceira lei anunciada, a Lei 8.383, e reinicia a numeração em Art. 12: é o início da transcrição de outra norma, não continuação da Lei 8.134."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "quotation_boundary",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#69",
+    "rule_verdict": "continuation",
+    "rule_confidence": 0.55,
+    "excerpt": "Lei 8.383, de 1991, Art. 12. ..............................................................",
+    "norm": "Lei 8.383, de 1991",
+    "origin": "hand-authored (see README.md); never recorded from a live provider",
+    "ctx": "14. A diferença positiva entre o valor de alienação e o custo de aquisição do título configurará ganho de capital e estará sujeita ao imposto de renda, como dispõem os arts. 1º a 3º e 16 da Lei nº 7.713, de dezembro de 1988, com as alterações dadas pelos arts. 2º e 18 da Lei nº 8.134, 27 de dezembro de 1990, 52 da Lei nº 8.383, de 30 de dezembro 1991, e 21 da Lei nº 8.981, de 20 de janeiro de 1995, in verbis:"
+  }
+}

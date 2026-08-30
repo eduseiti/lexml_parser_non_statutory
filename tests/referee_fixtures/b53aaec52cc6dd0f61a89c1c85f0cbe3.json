@@ -12,6 +12,8 @@
     "rule_verdict": "quoted",
     "rule_confidence": 0.5,
     "excerpt": "Art. 16 - O custo de aquisição dos bens e direitos será o preço ou valor pago, e, na ausência deste, conforme o caso:",
-    "origin": "hand-authored (see README.md); never recorded from a live provider"
+    "origin": "hand-authored (see README.md); never recorded from a live provider",
+    "ctx": "Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliadas no Brasil, serão tributados pelo imposto de renda na forma da legislação vigente, com as modificações introduzidas por esta Lei.",
+    "rekeyed_from": "6d17981bc055971d65b15bd5f6fc6f96"
   }
 }

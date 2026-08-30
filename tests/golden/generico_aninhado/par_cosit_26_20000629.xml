@@ -153,7 +153,7 @@
         <Bloco nome="ordem">12</Bloco>
         <Agrupamento id="pp1_agh13_txt1" nome="texto">
           <p>A diferença positiva entre o valor de alienação e o custo de aquisição do título configurará ganho de capital e estará sujeita ao imposto de renda, como dispõem os arts. 1º a 3º e 16 da Lei nº 7.713, de dezembro de 1988, com as alterações dadas pelos arts. 2º e 18 da Lei nº 8.134, 27 de dezembro de 1990, 52 da Lei nº 8.383, de 30 de dezembro 1991, e 21 da Lei nº 8.981, de 20 de janeiro de 1995, in verbis:</p>
-          <p>Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliadas no Brasil, serão tributados pelo imposto de renda na forma da legislação vigente, com as modificações introduzidas por esta Lei.</p>
+          <p class="quote">Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliadas no Brasil, serão tributados pelo imposto de renda na forma da legislação vigente, com as modificações introduzidas por esta Lei.</p>
           <p class="quote">Art. 2º- O imposto de renda das pessoas físicas será devido, mensalmente, à medida em que os rendimentos e ganhos de capital forem percebidos.</p>
           <p class="quote">Art. 3º- O imposto incidirá sobre o rendimento bruto, sem qualquer dedução, ressalvado o disposto nos arts. 9º a 14 desta Lei.</p>
           <p class="omissis">..............................................................</p>

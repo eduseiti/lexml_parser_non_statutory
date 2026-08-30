@@ -72,7 +72,17 @@ PARECER_93 = "parecer_93_2018_decor_cgu_agu"
 #: document §2.6 calls the residual hard case, because it "resists indentation
 #: entirely" and its quoted statutes are convicted by a citation antecedent or
 #: by excerpt-run extension alone. See ``tests/referee_fixtures/README.md``.
-PAR_COSIT_26_FLAGGED = ("p#46", "p#47", "p#53")
+PAR_COSIT_26_ARTICULATION = ("p#46", "p#47", "p#53")
+
+#: Amendment A-Q.3's boundary candidates in the same document: the three points
+#: where item ``14.``'s single 35-paragraph run changes from one quoted law to
+#: the next. Flagged by design — see `BOUNDARY_RULE_CONFIDENCE`.
+PAR_COSIT_26_BOUNDARY = ("p#63", "p#69", "p#76")
+
+#: Every flagged decision in `par_cosit_26`, **in the order they are recorded**.
+#: Boundaries come first because the hierarchy is built before the route is
+#: assessed, and `assess_viability` infers one when it is not handed one.
+PAR_COSIT_26_FLAGGED = PAR_COSIT_26_BOUNDARY + PAR_COSIT_26_ARTICULATION
 
 #: The fourth and last flagged decision in the whole corpus.
 PARECER_93_FLAGGED = ("p#36",)
@@ -680,14 +690,29 @@ def test_par_cosit_26_resolves_from_recorded_fixture():
 
     for record in consulted:
         assert record.doc == f"{PAR_COSIT_26}.docx"
-        assert record.kind == "own_articulation"
         assert record.rule_flagged is True
         assert record.rule_confidence < 0.60
-        assert record.abstained is False, "every one of the three was answered"
-        assert record.overridden is False, "the referee agreed; nothing was rescued"
-        assert record.agreed is True
-        assert record.final_verdict == record.rule_verdict == "quoted"
-        assert record.referee_verdict == "quoted"
+        assert record.abstained is False, "every one was answered"
+
+        if record.kind == "own_articulation":
+            assert record.locator in PAR_COSIT_26_ARTICULATION
+            assert record.overridden is False, "the referee agreed; nothing was rescued"
+            assert record.agreed is True
+            assert record.final_verdict == record.rule_verdict == "quoted"
+            assert record.referee_verdict == "quoted"
+            continue
+
+        # Amendment A-Q.3. A boundary fixture *overrides* by design: the rule
+        # verdict is `continuation` — stay flat, invariant #8's default — and
+        # confirming the boundary is exactly what an override is here. The
+        # referee still cannot invent one: it was only asked about candidates
+        # the deterministic head detector had already proposed.
+        assert record.kind == "quotation_boundary"
+        assert record.locator in PAR_COSIT_26_BOUNDARY
+        assert record.rule_verdict == "continuation"
+        assert record.referee_verdict == "boundary"
+        assert record.final_verdict == "boundary"
+        assert record.overridden is True
         assert record.referee_confidence >= 0.60
         assert record.referee_name == "api"
         assert record.cache_hit is True
@@ -752,13 +777,17 @@ def test_fixture_referee_over_whole_corpus():
 
     report = DecisionsReport.from_log(log)
     assert report.check() is None, report.check()
-    assert (report.total, report.rule_only, report.flagged) == (47, 43, 4)
-    assert (report.consulted, report.agreed) == (4, 4)
-    assert (report.overrode, report.abstained) == (0, 0)
-    assert report.cache_hits == 4
+    assert (report.total, report.rule_only, report.flagged) == (50, 43, 7)
+    # Seven consulted; the four `own_articulation` fixtures agree, and the three
+    # `quotation_boundary` fixtures confirm a boundary against a rule verdict of
+    # `continuation`, which the report counts as an override (A-Q.3). The claim
+    # that matters is the one above: **no route moved**.
+    assert (report.consulted, report.agreed, report.overrode) == (7, 4, 3)
+    assert report.abstained == 0
+    assert report.cache_hits == 7
 
     assert referee.calls == 0
-    assert referee.cache.hits == 4
+    assert referee.cache.hits == 7
     assert referee.cache.misses == 0, "every flagged question is recorded"
 
     flagged = {(r.doc, r.locator) for r in log if r.rule_flagged}
@@ -771,7 +800,7 @@ def test_fixture_referee_over_whole_corpus():
 def test_the_referee_is_only_asked_about_flagged_decisions(name: str):
     """§7.3 constraint 1, per sample: a confident rule is never put to a vote.
 
-    43 of the corpus's 47 decisions never reach the referee. That ratio is the
+    43 of the corpus's 50 decisions never reach the referee. That ratio is the
     cost model (§7.2 sizes the corpus at a dollar or three) *and* the safety
     model: a referee that saw every decision could move one the rules already
     knew the answer to.

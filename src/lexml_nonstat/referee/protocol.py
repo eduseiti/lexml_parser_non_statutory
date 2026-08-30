@@ -31,7 +31,9 @@ from dataclasses import dataclass
 from typing import Any, Protocol, runtime_checkable
 
 __all__ = [
+    "BOUNDARY_VERDICTS",
     "FLAG_THRESHOLD",
+    "HEADING_VERDICTS",
     "OWN_ARTICULATION_VERDICTS",
     "REFEREE_MIN_CONFIDENCE",
     "RULE_HIGH_CONFIDENCE",
@@ -55,6 +57,14 @@ OWN_ARTICULATION_VERDICTS: tuple[str, ...] = ("own", "quoted")
 
 #: The vocabulary of ``is_heading``.
 HEADING_VERDICTS: tuple[str, ...] = ("heading", "prose")
+
+#: The vocabulary of ``quotation_boundary`` (A-Q.3). Two answers, and the
+#: question is only ever asked about a candidate the deterministic generator
+#: already proposed — so ``"boundary"`` **confirms** and ``"continuation"``
+#: **vetoes**. Neither can create a boundary the rules did not find, which is
+#: what keeps invariant #8 an argument about the generator rather than a hope
+#: about the model.
+BOUNDARY_VERDICTS: tuple[str, ...] = ("boundary", "continuation")
 
 
 @dataclass(frozen=True)
@@ -98,7 +108,14 @@ class Verdict:
 
 @runtime_checkable
 class Referee(Protocol):
-    """Plan §7.3's protocol. Three questions, no more.
+    """Plan §7.3's protocol. Four questions, no more.
+
+    The fourth, ``quotation_boundary``, was added by amendment A-Q.3 and is
+    deliberately shaped differently from the other three: it is **confirm-only**
+    — put to the referee about a candidate the rules already found, never asked
+    open-endedly. Record §2.3 measured why that inversion is necessary: on the
+    per-paragraph questions the model answered two of three wrongly, at
+    confidences of 0.95 and 0.70.
 
     Each returns a :class:`Verdict` and **never raises**. Implementations are
     free to be slow, cached, remote or absent; they are not free to fail.
@@ -114,6 +131,15 @@ class Referee(Protocol):
 
     def section_kind(self, label: str, heading: str) -> Verdict:
         """What kind of section does ``label``/``heading`` name?"""
+
+    def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+        """Does ``excerpt`` begin a NEW quotation, of a different norm?
+
+        Asked **only** about a candidate the deterministic head detector already
+        proposed. A referee cannot volunteer a boundary, so the worst a wrong
+        answer can do is leave a document flat — never fabricate a citable unit
+        (A-Q.3).
+        """
 
 
 def is_flagged(confidence: float) -> bool:

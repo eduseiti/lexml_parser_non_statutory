@@ -727,13 +727,24 @@ def test_parse_consults_the_referee_it_was_given() -> None:
         def section_kind(self, label: str, heading: str) -> Verdict:
             return Verdict.abstain("stub")
 
+        def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+            return Verdict.abstain("stub")
+
     flagged = REPO_ROOT / "samples" / "par_cosit_26_20000629.docx"
     doc = read_docx(flagged)
     model = build_model(doc, filename=flagged.name, referee=Recorder())
 
     assert asked, "the referee was never consulted; the flag is inert again"
     consulted = [r for r in model.decisions if r.referee_consulted]
-    assert len(consulted) == len(asked)
+    # `asked` records only `own_articulation` excerpts; A-Q.3's boundary
+    # questions reach `quotation_boundary`, which this recorder answers without
+    # appending. The claim under test is that the flag is *live* — so compare
+    # against the decisions of the kind the recorder actually watches.
+    articulation = [r for r in consulted if r.kind == "own_articulation"]
+    assert len(articulation) == len(asked)
+    assert len(consulted) > len(articulation), (
+        "A-Q.3's boundary questions should reach the referee too"
+    )
 
 
 def test_referee_none_still_consults_nobody() -> None:

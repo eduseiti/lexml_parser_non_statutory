@@ -44,5 +44,8 @@ class NullReferee:
     def section_kind(self, label: str, heading: str) -> Verdict:
         return Verdict.abstain(_REASON)
 
+    def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+        return Verdict.abstain(_REASON)
+
     def __repr__(self) -> str:  # pragma: no cover - debugging aid
         return "NullReferee()"

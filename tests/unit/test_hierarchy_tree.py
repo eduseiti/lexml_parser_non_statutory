@@ -48,11 +48,23 @@ from lexml_nonstat.hierarchy import (
     infer_hierarchy,
     split_inlines,
 )
-from lexml_nonstat.hierarchy.tree import _items, _list_node
+from lexml_nonstat.hierarchy.quotation import quotation_head
+from lexml_nonstat.hierarchy.tree import (
+    BOUNDARY_RULE_CONFIDENCE,
+    _items,
+    _list_node,
+)
+from lexml_nonstat.referee import NullReferee
+from lexml_nonstat.referee.protocol import (
+    FLAG_THRESHOLD,
+    REFEREE_MIN_CONFIDENCE,
+    Verdict,
+)
 from lexml_nonstat.ingest import Inline, StyledPara, StyledTable, read_docx
 from lexml_nonstat.model import extract_metadata
 from lexml_nonstat.model.nodes import (
     PARA_KINDS,
+    SECTION_KINDS,
     Evidence,
     ListItem,
     ListNode,
@@ -66,6 +78,9 @@ from lexml_nonstat.segment import segment_document
 from tests.conftest import REPO_ROOT
 
 SAMPLES_DIR = REPO_ROOT / "samples"
+
+#: The one sample with a multi-norm quotation run (amendments A-Q.1–A-Q.5).
+PAR_COSIT_26 = "par_cosit_26_20000629"
 
 #: Every sample in the corpus, by stem. Fifteen documents standing in for the
 #: 300+ unseen ones.
@@ -951,3 +966,208 @@ def test_annex_tree(corpus):
     assert {s.level for s in tree.walk()} == {1}
     assert {s.kind for s in tree.walk()} == {"item"}
     assert tree.sections[0].label == "Súmula CARF nº 1"
+
+
+# ---------------------------------------------------------------------------
+# Nested quotations (amendments A-Q.3, A-Q.4, A-Q.5)
+# ---------------------------------------------------------------------------
+#
+# `par_cosit_26`'s item `14.` announces four laws and transcribes them as one
+# flat run of 35 `<p>` siblings. A human reader sees four quotations; the XML
+# said "thirty-five paragraphs, some of them quoted". These tests pin the
+# division — and, far more importantly, pin that it cannot happen by accident.
+
+
+class _Boundary:
+    """A referee that confirms every boundary put to it, and nothing else.
+
+    Deliberately answers the *other* three questions with an abstention: this
+    is the seam for A-Q.4, and a double that also moved `own_articulation`
+    would make a failure here ambiguous between the two.
+    """
+
+    name = "always-boundary"
+    enabled = True
+    last_cache_hit = False
+
+    def __init__(self, verdict: str = "boundary", confidence: float = 0.9) -> None:
+        self._verdict = verdict
+        self._confidence = confidence
+        self.asked: list[tuple[str, str]] = []
+
+    def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
+        return Verdict.abstain("not under test")
+
+    def is_heading(self, para: str, ctx: str) -> Verdict:
+        return Verdict.abstain("not under test")
+
+    def section_kind(self, label: str, heading: str) -> Verdict:
+        return Verdict.abstain("not under test")
+
+    def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+        self.asked.append((excerpt, ctx))
+        return Verdict(self._verdict, self._confidence, "test double")
+
+
+def _refereed(stem: str, referee=None):
+    """One sample's hierarchy, built with ``referee`` in the loop."""
+    path = SAMPLES_DIR / f"{stem}.docx"
+    doc = read_docx(path)
+    metadata = extract_metadata(doc, filename=path.name)
+    return infer_hierarchy(
+        doc,
+        metadata=metadata,
+        segmentation=segment_document(doc, metadata=metadata),
+        referee=referee,
+    )
+
+
+def _citations(result) -> list:
+    return [
+        section
+        for tree in result.trees
+        for section in tree.walk()
+        if section.kind == "citacao"
+    ]
+
+
+def test_citacao_is_a_ratified_section_kind():
+    """T-8c.18. `Agrupamento/@nome` is an open `xsd:string`, so this is the
+    only place the new kind has to be declared — but it does have to be, or
+    Cycle 5's "every nome comes from SECTION_KINDS" assertion fails."""
+    assert "citacao" in SECTION_KINDS
+
+
+def test_par_cosit_26_nests_four_citacoes_when_confirmed():
+    """T-8c.14. The amendment's target, end to end.
+
+    Four child sections, one per announced law, each headed by the norm exactly
+    as the document writes it — which is what becomes `NomeAgrupador`, and what
+    makes the quotation `ancestor::`-addressable for §6.1's segmentation.
+    """
+    result = _refereed(PAR_COSIT_26, _Boundary())
+    citations = _citations(result)
+
+    assert [section.heading for section in citations] == [
+        "Lei nº 7.713, de 1988",
+        "Lei 8.134, de 1990",
+        "Lei 8.383, de 1991",
+        "Lei 8.981, de 1995",
+    ]
+    parents = [
+        section
+        for tree in result.trees
+        for section in tree.walk()
+        if any(child.kind == "citacao" for child in section.children)
+    ]
+    assert len(parents) == 1, "all four belong to the one section that announced them"
+    assert parents[0].label == "14."
+    for child in citations:
+        assert child.level == parents[0].level + 1
+        assert child.body, "a citation with no body is not a citation"
+
+
+def test_no_referee_means_no_nesting():
+    """T-8c.9 / invariant #8. The default configuration changes nothing.
+
+    `BOUNDARY_RULE_CONFIDENCE` sits below `FLAG_THRESHOLD` precisely so that a
+    candidate nobody confirmed stays a candidate. This is what keeps §9.3's
+    pinned `--referee=none` suite and all 135 goldens honest, and it is the
+    reason the amendment is safe to land at all.
+    """
+    assert BOUNDARY_RULE_CONFIDENCE < FLAG_THRESHOLD
+    for stem in SAMPLES:
+        assert _citations(_refereed(stem)) == [], stem
+        assert _citations(_refereed(stem, NullReferee())) == [], stem
+
+
+def test_a_vetoing_referee_leaves_the_document_flat():
+    """T-8c.13's sibling. `continuation` is a veto, and a veto is respected."""
+    assert _citations(_refereed(PAR_COSIT_26, _Boundary("continuation", 0.9))) == []
+
+
+def test_an_unsure_referee_cannot_confirm():
+    """T-8c.13. `REFEREE_MIN_CONFIDENCE` still gates, on the new question too.
+
+    An LLM asked a hard question answers *something*; this is what stops
+    "something" from becoming a citable unit with its own URN.
+    """
+    unsure = _Boundary("boundary", REFEREE_MIN_CONFIDENCE - 0.01)
+    assert _citations(_refereed(PAR_COSIT_26, unsure)) == []
+    assert unsure.asked, "it must still have been consulted, just not obeyed"
+
+
+def test_the_referee_is_only_asked_about_generated_candidates():
+    """T-8c.12, first half. The referee cannot volunteer a boundary.
+
+    It is asked exactly three times on the whole corpus, always about a
+    paragraph the deterministic head detector proposed. This is A-Q.3's
+    inversion stated as a count: whatever the model says, it is answering a
+    closed question about a candidate that already exists.
+    """
+    referee = _Boundary()
+    for stem in SAMPLES:
+        _refereed(stem, referee)
+
+    assert len(referee.asked) == 3
+    for excerpt, ctx in referee.asked:
+        assert quotation_head(excerpt) is not None, excerpt[:60]
+        # The prompt carries the *announcing* paragraph, not merely the one
+        # above — the repair the record's §2.3 asked for (A-Q.3, A-Q.7).
+        assert "1º a 3º e 16 da Lei nº 7.713" in ctx
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_an_adversarial_referee_changes_nothing_it_was_not_asked(name):
+    """T-8c.12. The A-4b.6 attack, for the boundary question.
+
+    A referee answering "boundary" to every question, at maximum confidence,
+    must not change any sample's output beyond the candidates the rules already
+    found. Invariant #8's promise — *low confidence degrades to flat, never
+    invents structure* — is thereby an argument about the candidate generator
+    rather than a hope about the model, which is the whole reason the question
+    is confirm-only.
+
+    A wrong `class="quote"` is a mislabelling. A wrong nested `Agrupamento` is
+    a fabricated citable unit with its own URN, which §6.1's segmentation would
+    hand to a RAG system as an addressable fact.
+    """
+    hostile = _refereed(name, _Boundary("boundary", 1.0))
+    citations = _citations(hostile)
+
+    if name == PAR_COSIT_26:
+        assert len(citations) == 4
+    else:
+        assert citations == [], (
+            f"{name}: an adversarial referee invented {len(citations)} citations "
+            "out of candidates that do not exist"
+        )
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_conservation_holds_across_the_split(name):
+    """T-8c.15. A-Q.5's gate, asserted as invariant #2 over the whole corpus.
+
+    The split *moves* nodes out of a parent's body and into children. Moving is
+    the only safe operation: a copy duplicates text and a partial move loses
+    it, and neither is visible to any schema — Cycle 6's first statutory render
+    was valid on both schemas and 29 words short.
+    """
+    flat = _refereed(name)
+    split = _refereed(name, _Boundary())
+
+    assert sorted(split.source_indices) == sorted(flat.source_indices)
+    assert len(split.source_indices) == len(flat.source_indices), "duplication"
+
+
+def test_a_single_run_section_is_not_wrapped():
+    """T-8c.17. One quotation is not a division.
+
+    Wrapping a lone excerpt in a child that adds no distinction is structure
+    for its own sake, and it would churn a golden on every sample in the corpus
+    that quotes anything at all.
+    """
+    for stem in SAMPLES:
+        if stem == PAR_COSIT_26:
+            continue
+        assert _citations(_refereed(stem, _Boundary())) == [], stem

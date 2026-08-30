@@ -241,10 +241,13 @@ def test_decisions_report_over_the_whole_corpus() -> None:
     code, out, _ = _run(["decisions-report"] + [str(p) for p in SAMPLES])
     assert code == 0
     assert "Decisions:" in out
-    # A-4b.3: the corpus flags exactly four decisions and consults nobody,
-    # because §9.3 pins `--referee=none`.
-    assert "Flagged:               4" in out
+    # A-4b.3, as amended by A-Q.3: the corpus flags exactly seven decisions —
+    # four `own_articulation` and three `quotation_boundary` — and consults
+    # nobody, because §9.3 pins `--referee=none`. The boundary candidates are
+    # flagged *and unconfirmed*, which is why `par_cosit_26` stays flat here.
+    assert "Flagged:               7" in out
     assert "put to a referee:    0" in out
+    assert "own_articulation 4" in out and "quotation_boundary 3" in out
 
 
 def test_every_sample_dumps_and_segments() -> None:

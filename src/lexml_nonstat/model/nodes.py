@@ -61,6 +61,13 @@ SECTION_KINDS = frozenset(
         "inciso",
         "alinea",
         "tema",
+        # A quotation of one external norm, nested inside the section that
+        # transcribes it (A-Q.4). Not a rótulo-derived kind like the others:
+        # it is assigned when a section's quoted material divides into two or
+        # more runs, each headed by a different norm. `Agrupamento/@nome` is an
+        # open `xsd:string` (`lexml-base.xsd:241`), so this needs no schema
+        # work on either shipped generation.
+        "citacao",
         "agrupamento",
     }
 )

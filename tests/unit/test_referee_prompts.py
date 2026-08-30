@@ -55,8 +55,15 @@ PAR_COSIT_26 = "par_cosit_26_20000629"
 #: leave the building.
 PAR_COSIT_26_SIGNER = "Carlos Alberto de Niza e Castro"
 
-#: Every kind :func:`build_prompt` knows how to ask.
-KINDS: tuple[str, ...] = ("own_articulation", "heading", "section_kind")
+#: Every kind :func:`build_prompt` knows how to ask. ``quotation_boundary`` is
+#: amendment A-Q.3's; listing it here is what puts it through every PII,
+#: determinism and truncation test in this file rather than a bespoke pair.
+KINDS: tuple[str, ...] = (
+    "own_articulation",
+    "heading",
+    "section_kind",
+    "quotation_boundary",
+)
 
 #: A conservative sweep: an address in any of the shapes a machine leaks one.
 EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
@@ -314,3 +321,48 @@ def test_unknown_kind_raises():
         build_prompt("nonsense", "Art. 1º Teste.")
     with pytest.raises(KeyError):
         build_prompt("", "Art. 1º Teste.")
+
+
+def test_the_boundary_prompt_asks_a_closed_question():
+    """T-8c.10. A-Q.3's prompt, and what it must and must not contain.
+
+    Two properties, both load-bearing:
+
+    * the **announcing paragraph** is the context — not merely the paragraph
+      above. The investigation record's §2.3 traced two wrong high-confidence
+      overrides to exactly that gap: the sentence naming the owning law sat two
+      paragraphs back and was structurally outside `MAX_CONTEXT_CHARS`' window.
+      Putting the announcement and the candidate head in the same prompt is
+      half the fix, and the other half is that the question is now confirm-only.
+    * the answer space is **closed and two-valued**, so a model that free-associates
+      produces an abstention rather than a novel kind of structure.
+    """
+    announcement = (
+        "14. A diferença positiva entre o valor de alienação e o custo de "
+        "aquisição do título configurará ganho de capital, como dispõem os "
+        "arts. 1º a 3º e 16 da Lei nº 7.713, de dezembro de 1988, com as "
+        "alterações dadas pelos arts. 2º e 18 da Lei nº 8.134, in verbis:"
+    )
+    head = 'Lei 8.134, de 1990 - "Art. 2º - O imposto de renda das pessoas físicas'
+
+    system, user = build_prompt("quotation_boundary", head, announcement)
+
+    assert "Lei nº 7.713" in user and "Lei nº 8.134" in user
+    assert head in user
+    assert '"boundary"' in user and '"continuation"' in user
+    assert VOCABULARIES["quotation_boundary"] == ("boundary", "continuation")
+    assert "JSON" in system
+
+
+def test_every_asked_kind_has_a_vocabulary_or_is_deliberately_open():
+    """A kind with a template but no vocabulary cannot be validated.
+
+    ``section_kind`` is the one deliberate exception — §7.3 leaves its answer
+    open because the space of grouping names is not closed — so it is named
+    here rather than silently permitted.
+    """
+    for kind in KINDS:
+        if kind == "section_kind":
+            assert kind not in VOCABULARIES
+            continue
+        assert VOCABULARIES[kind], kind

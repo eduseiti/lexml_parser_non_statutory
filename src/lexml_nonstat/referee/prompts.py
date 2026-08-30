@@ -18,7 +18,7 @@ in that form.
 
 from __future__ import annotations
 
-from .protocol import HEADING_VERDICTS, OWN_ARTICULATION_VERDICTS
+from .protocol import BOUNDARY_VERDICTS, HEADING_VERDICTS, OWN_ARTICULATION_VERDICTS
 
 __all__ = [
     "MAX_CONTEXT_CHARS",
@@ -34,6 +34,13 @@ MAX_EXCERPT_CHARS = 1200
 
 #: One paragraph of antecedent. §2.6's cue is the *preceding* paragraph naming
 #: an external norm, so one is enough and two would only add exposure.
+#:
+#: Which paragraph that *is* changed with amendments A-Q.3 and A-Q.7: the
+#: caller now passes the nearest preceding **citation antecedent** rather than
+#: whatever paragraph happened to be immediately above. Record §2.3 traced two
+#: wrong high-confidence overrides to exactly that gap — the sentence naming
+#: the owning law sat two paragraphs back, outside this window. The cap is
+#: unchanged; only the caller's choice of which paragraph to spend it on is.
 MAX_CONTEXT_CHARS = 600
 
 SYSTEM_PROMPT = (
@@ -61,6 +68,15 @@ _TEMPLATES: dict[str, str] = {
         "Trecho em julgamento:\n{excerpt}\n\n"
         'Responda "verdict": "heading" ou "prose".'
     ),
+    "quotation_boundary": (
+        "O documento anunciou que vai transcrever trechos de VÁRIAS normas "
+        "diferentes. O trecho em julgamento inicia a transcrição de uma norma "
+        "DIFERENTE da anterior, ou é continuação da mesma transcrição?\n\n"
+        "Parágrafo que anuncia as normas transcritas:\n{ctx}\n\n"
+        "Trecho em julgamento:\n{excerpt}\n\n"
+        'Responda "verdict": "boundary" se o trecho inicia a transcrição de '
+        'outra norma, ou "continuation" se pertence à transcrição anterior.'
+    ),
     "section_kind": (
         "Que tipo de agrupamento o rótulo abaixo introduz?\n\n"
         "Rótulo:\n{excerpt}\n\n"
@@ -74,6 +90,7 @@ _TEMPLATES: dict[str, str] = {
 VOCABULARIES: dict[str, tuple[str, ...]] = {
     "own_articulation": OWN_ARTICULATION_VERDICTS,
     "heading": HEADING_VERDICTS,
+    "quotation_boundary": BOUNDARY_VERDICTS,
 }
 
 

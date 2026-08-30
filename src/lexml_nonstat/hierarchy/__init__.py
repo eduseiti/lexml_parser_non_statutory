@@ -184,12 +184,21 @@ def infer_hierarchy(
     segmentation: Segmentation | None = None,
     profile: DocumentProfile | None = None,
     metadata: Metadata | None = None,
+    referee: Any | None = None,
+    log: Any | None = None,
+    logger: Any | None = None,
 ) -> HierarchyDoc:
     """Infer the hierarchy of ``doc``'s body and of each of its annexes.
 
     Never raises, and never invents. A document whose evidence does not hold
     together comes back flat — complete, citable, and honest about having no
     structure worth claiming.
+
+    ``referee`` defaults to ``None``, which is what plan §9.3 pins for the whole
+    suite. Amendment A-Q.3 is the first thing in the plan to put a referee
+    *inside* hierarchy inference rather than only in routing, and it does so
+    confirm-only: with no referee, nothing is confirmed, no quotation is nested,
+    and every tree is exactly the tree this function built before.
     """
     if profile is None:
         profile = select_profile(doc)
@@ -203,7 +212,15 @@ def infer_hierarchy(
     def span_blocks(span):
         return [blocks[i] for i in span.indices if i in blocks] if span else []
 
-    body = build_tree(span_blocks(segmentation.body), span=segmentation.body)
+    name = doc.source or ""
+    body = build_tree(
+        span_blocks(segmentation.body),
+        span=segmentation.body,
+        doc_name=name,
+        referee=referee,
+        log=log,
+        logger=logger,
+    )
     annexes = tuple(
         AnnexHierarchy(
             label=annex.label,
@@ -212,7 +229,14 @@ def infer_hierarchy(
             # The annex's own marker paragraph is its title, not part of its
             # body: `ANEXO ÚNICO` is the heading Cycle 6 renders, and leaving it
             # in would make it the first section of its own annex.
-            tree=build_tree(span_blocks(annex.span)[1:], span=annex.span),
+            tree=build_tree(
+                span_blocks(annex.span)[1:],
+                span=annex.span,
+                doc_name=name,
+                referee=referee,
+                log=log,
+                logger=logger,
+            ),
         )
         for annex in segmentation.annexes
     )

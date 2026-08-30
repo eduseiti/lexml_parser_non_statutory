@@ -64,12 +64,26 @@ def doc_name(stem: str) -> str:
 
 # -- measured ground truth --------------------------------------------------
 #
-# Cycle 4b, whole corpus, `referee=None`. One `route` decision per sample plus
-# one `own_articulation` decision per article paragraph found.
+# Cycle 4b, whole corpus, `referee=None`. One `route` decision per sample, one
+# `own_articulation` decision per article paragraph found, and — since
+# amendment A-Q.3 — one `quotation_boundary` decision per candidate boundary
+# the quotation-head detector proposes. `sweep()` reaches the third kind
+# because `assess_viability` infers a hierarchy when it is not handed one
+# (`routing/viability.py:404`), and boundaries are raised while the tree builds.
 
-CORPUS_TOTAL = 47
+CORPUS_TOTAL = 50
 CORPUS_RULE_ONLY = 43
-CORPUS_FLAGGED = 4
+
+#: Flagged `own_articulation` decisions — Cycle 4b's original four.
+CORPUS_FLAGGED_ARTICULATION = 4
+
+#: Flagged `quotation_boundary` decisions — amendment A-Q.3's candidates.
+#: Three, all in `par_cosit_26`: the norm changes at blocks 63, 69 and 76. The
+#: run's *first* norm (block 45) is not a boundary — it opens the quotation
+#: rather than changing norms — so it is never put to a referee.
+CORPUS_FLAGGED_BOUNDARY = 3
+
+CORPUS_FLAGGED = CORPUS_FLAGGED_ARTICULATION + CORPUS_FLAGGED_BOUNDARY
 
 #: The only four decisions in 15 documents that fall below `FLAG_THRESHOLD`,
 #: with the substring of the reason each must carry. Three are plan §2.6's
@@ -80,6 +94,13 @@ FLAGGED_DECISIONS: dict[str, dict[str, tuple[float, str]]] = {
         "p#46": (0.55, "citation antecedent"),
         "p#47": (0.50, "excerpt-run extension"),
         "p#53": (0.50, "excerpt-run extension"),
+        # A-Q.3's boundary candidates. Flagged by construction, not by
+        # weakness: `BOUNDARY_RULE_CONFIDENCE` is *deliberately* below
+        # `FLAG_THRESHOLD` so that no candidate can become a nested citation
+        # without a referee confirming it.
+        "p#63": (0.55, "quotation head proposed a norm change"),
+        "p#69": (0.55, "quotation head proposed a norm change"),
+        "p#76": (0.55, "quotation head proposed a norm change"),
     },
     "parecer_93_2018_decor_cgu_agu": {
         "p#36": (0.55, "citation antecedent"),
@@ -516,13 +537,21 @@ def test_unconsulted_decision_logs_referee_skipped(caplog):
 
 
 def test_corpus_run_logs_exactly_four_rule_failures(caplog):
-    """The threshold-drift alarm: 15 documents, four flagged decisions.
+    """The threshold-drift alarm: 15 documents, seven flagged decisions.
 
     If a change to the quotation guard's confidences moves this number, the
     referee starts being consulted about paragraphs the rules used to be sure
     of — a change in cost, in determinism under a cold cache, and in what
     `--decisions-report` means. That must never happen quietly, so the count
-    and the four locators are pinned here rather than derived.
+    and the locators are pinned here rather than derived.
+
+    **Amendment A-Q.3 moved it from four to seven, deliberately.** The three
+    additions are `par_cosit_26`'s quotation-boundary candidates (p#63, p#69,
+    p#76), flagged *by design*: `BOUNDARY_RULE_CONFIDENCE` sits below
+    `FLAG_THRESHOLD` precisely so that every candidate is put to a referee and
+    none can become structure without one. The alarm keeps its bite, and gains
+    some: the counts are pinned per kind, so a drift in either one still trips
+    it, and `FLAGGED_DECISIONS` still names every locator.
     """
     caplog.set_level(logging.INFO, logger=LOGGER_NAME)
     sweep(referee=None)
@@ -567,7 +596,10 @@ def test_report_identities_reconcile_over_the_corpus(corpus_log):
     assert corpus.flagged == CORPUS_FLAGGED
     assert corpus.consulted == 0, "§9.3: the default suite consults no referee"
     assert corpus.agreed == corpus.overrode == corpus.abstained == 0
-    assert corpus.flagged_by_kind == (("own_articulation", CORPUS_FLAGGED),)
+    assert corpus.flagged_by_kind == (
+        ("own_articulation", CORPUS_FLAGGED_ARTICULATION),
+        ("quotation_boundary", CORPUS_FLAGGED_BOUNDARY),
+    )
 
 
 def test_plan_identity_holds_with_an_active_referee(refereed_log):
@@ -586,8 +618,16 @@ def test_plan_identity_holds_with_an_active_referee(refereed_log):
     assert report.flagged == CORPUS_FLAGGED
     assert report.consulted == CORPUS_FLAGGED
     assert report.agreed + report.overrode == report.flagged
-    assert report.agreed == CORPUS_FLAGGED, "every fixture confirms the rule"
-    assert report.overrode == 0 and report.abstained == 0
+    assert report.agreed == CORPUS_FLAGGED_ARTICULATION, (
+        "every own_articulation fixture confirms the rule"
+    )
+    # The boundary fixtures *do* override, and that is the mechanism working
+    # rather than a referee disagreeing with a good rule: the rule verdict for
+    # a candidate boundary is `continuation` (stay flat), and confirming the
+    # boundary is precisely what an override is here. A-Q.3's inversion means
+    # the referee can only move a candidate the rules already proposed.
+    assert report.overrode == CORPUS_FLAGGED_BOUNDARY
+    assert report.abstained == 0
     assert report.cache_hits == CORPUS_FLAGGED
     assert report.cache_hit_pct == 100.0
     assert report.total == CORPUS_TOTAL
@@ -704,7 +744,7 @@ def test_report_renders_every_section(refereed_log):
 
     assert "Decisions:" in text and str(CORPUS_TOTAL) in text
     assert "Rule-only (confident):" in text and str(CORPUS_RULE_ONLY) in text
-    assert "Flagged:" in text and "(8.5%)" in text
+    assert "Flagged:" in text and "(14.0%)" in text
     assert "put to a referee:" in text
     assert "referee agreed:" in text and "referee overrode:" in text
     assert "referee abstained:" in text

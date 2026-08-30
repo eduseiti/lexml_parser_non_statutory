@@ -107,6 +107,9 @@ class CachedAPIReferee:
     def section_kind(self, label: str, heading: str) -> Verdict:
         return self.ask("section_kind", label, heading)
 
+    def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+        return self.ask("quotation_boundary", excerpt, ctx)
+
     # -- the machinery -----------------------------------------------------
 
     def ask(self, kind: str, excerpt: str, ctx: str = "") -> Verdict:

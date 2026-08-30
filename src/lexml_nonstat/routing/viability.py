@@ -33,7 +33,13 @@ import logging
 from dataclasses import dataclass, field
 from typing import Any, Literal, Sequence
 
-from ..hierarchy import HierarchyDoc, QuotationAnalysis, analyse_quotation, infer_hierarchy
+from ..hierarchy import (
+    HierarchyDoc,
+    QuotationAnalysis,
+    analyse_quotation,
+    infer_hierarchy,
+    names_external_norm,
+)
 from ..ingest import StyledDoc, StyledPara, StyledTable
 from ..model import Metadata, extract_metadata
 from ..profile import DocumentProfile, select_profile
@@ -319,13 +325,34 @@ def _adjudicate_articles(
     """
     by_index = {p.index: p for p in paras}
     order = [p.index for p in paras]
+
+    # Amendment A-Q.7. `ctx` is the nearest preceding **citation antecedent** —
+    # the nearest earlier paragraph that names an external norm and hands off to
+    # it — and only the immediately preceding paragraph when there is none.
+    #
+    # This is a repair, and the investigation record measured the damage.
+    # `par_cosit_26` p#47 (`Art. 3º…`) is quoted text from Lei 7.713; the rule
+    # had it right at confidence 0.50. The referee overrode it at 0.95, saying
+    # "Art. 3º is the article after Art. 2º in the same statute, therefore it is
+    # the document's own articulation" — reasoning correctly about the statute
+    # and drawing the exact wrong conclusion about **whose** it is, because the
+    # sentence naming the owner (`Lei nº 7.713, de 1988 - "Art. 1º-…`) sat two
+    # paragraphs back and was structurally outside the one-paragraph window.
+    # Widening the window does not make the referee right; it stops the prompt
+    # from withholding the one fact the question turns on.
+    #
+    # The cap (`MAX_CONTEXT_CHARS`) is unchanged, so §7.3's privacy guarantees
+    # are untouched — this changes *which* paragraph is spent, not how much.
     previous: dict[int, str] = {}
     last = ""
+    antecedent = ""
     for para in paras:
-        previous[para.index] = last
+        previous[para.index] = antecedent or last
         text = (getattr(para, "text", "") or "").strip()
         if text:
             last = text
+            if names_external_norm(text):
+                antecedent = text
 
     consulted = overrode = False
     quoted = set(census_.quoted)
@@ -402,8 +429,21 @@ def assess_viability(
     if segmentation is None:
         segmentation = segment_document(doc, profile=profile, metadata=metadata)
     if hierarchy is None:
+        # The referee and the log travel with it. Amendment A-Q.3 raises
+        # `quotation_boundary` decisions inside `build_tree`, and a hierarchy
+        # this function had to infer for itself must not be a place where
+        # decisions are made and then dropped — `--decisions-report` would
+        # under-count by exactly the boundaries, and only when the caller had
+        # not built the hierarchy first. `build_model` always supplies one, so
+        # this path is the batch and test callers'.
         hierarchy = infer_hierarchy(
-            doc, segmentation=segmentation, profile=profile, metadata=metadata
+            doc,
+            segmentation=segmentation,
+            profile=profile,
+            metadata=metadata,
+            referee=referee,
+            log=log,
+            logger=logger,
         )
 
     doc_name = doc.source or "<document>"

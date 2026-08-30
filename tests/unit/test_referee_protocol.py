@@ -78,6 +78,9 @@ class StubReferee:
     def section_kind(self, label: str, heading: str) -> Verdict:
         return self._answer()
 
+    def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+        return self._answer()
+
 
 class AlwaysOwnReferee(StubReferee):
     """The adversary: maximally confident that nothing is ever quoted."""

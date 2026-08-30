@@ -15,9 +15,10 @@ become a live call on the next run, which is precisely what §9.3 forbids.
 
 ## What is here
 
-Exactly the four decisions the 15-sample corpus flags — every paragraph whose
+Exactly the seven decisions the 15-sample corpus flags — every paragraph whose
 quotation verdict the deterministic rules reached with confidence below
-`FLAG_THRESHOLD` (0.60):
+`FLAG_THRESHOLD` (0.60), plus (since amendment A-Q.3) every candidate quotation
+boundary, which is flagged by construction:
 
 | Key | Sample | Locator | Rule verdict (conf.) | Fixture verdict |
 |---|---|---|---|---|
@@ -25,6 +26,35 @@ quotation verdict the deterministic rules reached with confidence below
 | `1a2ea8e5…` | `par_cosit_26_20000629` | `p#47` | quoted (0.50) | quoted |
 | `6d17981b…` | `par_cosit_26_20000629` | `p#53` | quoted (0.50) | quoted |
 | `8ac716a4…` | `parecer_93_2018_decor_cgu_agu` | `p#36` | quoted (0.55) | quoted |
+| `9eb516e8…` | `par_cosit_26_20000629` | `p#63` | continuation (0.55) | **boundary** |
+| `d96f0ede…` | `par_cosit_26_20000629` | `p#69` | continuation (0.55) | **boundary** |
+| `31a87dde…` | `par_cosit_26_20000629` | `p#76` | continuation (0.55) | **boundary** |
+
+> **Amendment A-Q.3 (2026-08-30) added the last three**, of a new kind:
+> `quotation_boundary`. They are the three points where `par_cosit_26`'s item
+> `14.` — one flat run of 35 paragraphs — changes from one quoted law to the
+> next: Lei 8.134, Lei 8.383, Lei 8.981. The run's *first* norm (Lei 7.713,
+> block 45) is not a boundary, because it opens the quotation rather than
+> changing norms, so it is never put to a referee.
+>
+> These three **override** their rule verdict, and that is the mechanism rather
+> than a disagreement: the rule verdict for a candidate boundary is
+> `continuation` — *stay flat* — because `BOUNDARY_RULE_CONFIDENCE` (0.55) sits
+> deliberately below `FLAG_THRESHOLD`, so that nothing becomes a nested
+> citation without a referee confirming it. Confirming is what an override is
+> here. The referee still cannot invent a boundary: it is only ever asked about
+> candidates the deterministic head detector already proposed.
+
+> **Re-keyed again 2026-08-30 (A-Q.7).** `own_articulation`'s prompt context
+> was widened from "the immediately preceding paragraph" to "the nearest
+> preceding citation antecedent". Two keys moved — `p#47` (`1a2ea8e5…` →
+> `04f000a5…`) and `p#53` (`6d17981b…` → `b53aaec5…`); `p#46` and `parecer_93`
+> `p#36` were already being given their antecedent and did not move. Verdicts,
+> confidences, rationales and `origin` are untouched, and the new keys were
+> **derived by replaying the corpus**, never typed. This is the repair the
+> investigation record's §2.3 asked for: the referee had overridden `p#47` and
+> `p#53` wrongly, at confidence 0.95 and 0.70, because the paragraph naming the
+> owning law sat two paragraphs back and was outside the one-paragraph window.
 
 > **Re-keyed 2026-08-30.** These files were originally written under
 > `model="deepseek-chat"` (keys `2b9c8bda…`, `c476d7f5…`, `a80195c5…`,
@@ -43,7 +73,8 @@ by a citation antecedent or by excerpt-run extension alone. The fourth is the
 one paragraph in `parecer_93`'s 415 that its declared quote band does not
 reach.
 
-**Every fixture agrees with the rule.** That is the finding, not a convenience:
+**Every `own_articulation` fixture agrees with the rule.** That is the finding,
+not a convenience:
 Cycle 4's guard already convicts all thirty quoted articles in the corpus
 correctly, so the referee's job on these documents is to confirm a verdict that
 is right but unsure — not to rescue one that is wrong. A future document where
@@ -58,9 +89,12 @@ them by hand rather than make an outbound call, because what the test needs to
 prove is the *plumbing*: cache hit ⇒ zero calls, verdict ⇒ adjudication ⇒
 `DecisionRecord` ⇒ report. The `meta.origin` field of every file says so.
 
-A wrong fixture cannot pass silently. Each is consumed by a test that asserts
-the referee **agreed**, so a fixture saying `own` would surface as a spurious
-override and a changed route, not as a green run.
+A wrong fixture cannot pass silently. Each `own_articulation` fixture is
+consumed by a test that asserts the referee **agreed**, so one saying `own`
+would surface as a spurious override and a changed route, not as a green run.
+Each `quotation_boundary` fixture is consumed by a test that asserts the four
+nested `citacao` sections appear with the right norms, so one saying
+`continuation` would surface as a document that stayed flat.
 
 ## Refreshing them from a live provider
 

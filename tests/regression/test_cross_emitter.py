@@ -99,6 +99,7 @@ import pytest
 
 from lexml_nonstat.ingest import StyledDoc, StyledPara, StyledTable, read_docx
 from lexml_nonstat.model import build_model
+from lexml_nonstat.referee.protocol import Verdict
 from lexml_nonstat.render import (
     EMPTY_BLOCO,
     ORDER_BLOCO,
@@ -842,3 +843,137 @@ def test_front_and_back_region_ids_are_identical(name):
         assert order == [i for i, _ in nested_regions], (
             f"{name} ({where}): regions appear in a different order"
         )
+
+
+# ---------------------------------------------------------------------------
+# Nested quotations across the two emitters (amendment A-Q.6)
+# ---------------------------------------------------------------------------
+#
+# A-Q.4 adds a level of nesting under `par_cosit_26`'s `pp1_agr17`, and the
+# risk A-5b.4 already identified is that a new level introduces a *third* way
+# the two emitters can drift. It cannot be checked by re-running the tests
+# above, because the default model has no referee and therefore no citations —
+# so these build the confirmed model explicitly.
+
+
+class _ConfirmBoundaries:
+    """Confirms every boundary candidate; abstains on everything else."""
+
+    name = "confirm-boundaries"
+    enabled = True
+    last_cache_hit = False
+
+    def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
+        return Verdict.abstain("not under test")
+
+    def is_heading(self, para: str, ctx: str) -> Verdict:
+        return Verdict.abstain("not under test")
+
+    def section_kind(self, label: str, heading: str) -> Verdict:
+        return Verdict.abstain("not under test")
+
+    def quotation_boundary(self, excerpt: str, ctx: str) -> Verdict:
+        return Verdict("boundary", 0.9, "test double")
+
+
+def _confirmed(name: str):
+    """One sample rendered both ways from **one** model with citations nested."""
+    path = SAMPLES_DIR / f"{name}.docx"
+    doc = read_docx(path)
+    model = build_model(doc, filename=path.name, referee=_ConfirmBoundaries())
+    return model, render_generico(model), render_generico_aninhado(model)
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_text_multiset_survives_nesting(name):
+    """T-8c.19. T-17's guarantee, re-asserted with citations in the tree.
+
+    A `Counter`, not a `set` and not a sequence: Constraint 1 reorders, and
+    only a multiset is blind to reordering while still catching a paragraph
+    emitted twice or dropped.
+    """
+    _model, flat, nested = _confirmed(name)
+    assert Counter(nested.texts) == Counter(flat.texts), (
+        f"{name}: nesting a citation moved text between the emitters\n"
+        f"  only nested: {list((Counter(nested.texts) - Counter(flat.texts)).items())[:5]}\n"
+        f"  only flat:   {list((Counter(flat.texts) - Counter(nested.texts)).items())[:5]}"
+    )
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_nesting_conserves_text_against_the_unnested_render(name):
+    """The other half of A-Q.5, measured where it is actually visible.
+
+    Compared on **characters**, not on the leaf multiset and not on words, and
+    the granularity is the whole difficulty. Splitting a quotation moves a leaf
+    *boundary*: the head paragraph
+
+        Lei nº 7.713, de 1988 - "Art. 1º- Os rendimentos…
+
+    becomes a `NomeAgrupador` carrying `Lei nº 7.713, de 1988` and a `<p>`
+    carrying `- "Art. 1º- Os rendimentos…`, so one leaf legitimately becomes
+    two and `1991,` legitimately becomes `1991` + `,`. Neither a leaf multiset
+    nor a word multiset can tell that apart from real damage; the character
+    multiset can, and it is what invariant #2 actually claims.
+
+    Two real defects were caught here, both silent to every schema. The first
+    implementation left the norm's name at the head of the paragraph *as well
+    as* promoting it to the heading — invariant #2's duplication half. The
+    second consumed the separator into the cut, losing two `-` and two commas —
+    the loss half. Only reading the output found either.
+    """
+    plain = render_generico(
+        build_model(read_docx(SAMPLES_DIR / f"{name}.docx"), filename=f"{name}.docx")
+    )
+    _model, split, _ = _confirmed(name)
+
+    assert Counter(re.sub(r"\s+", "", "".join(split.texts))) == Counter(
+        re.sub(r"\s+", "", "".join(plain.texts))
+    ), f"{name}: splitting a quotation changed the document's text"
+
+
+def test_par_cosit_26_emits_four_nested_citacao_agrupamentos():
+    """T-8c.20's concrete half, on both emitters.
+
+    §2.3's sanctioned hierarchy channel on the flat emitter — a deeper id path
+    under `pp1_agr17` — and a real nested element with a real `NomeAgrupador`
+    on the nested one, which is the shape §11.2's argument to the maintainers
+    is asking for.
+    """
+    _model, flat, nested = _confirmed("par_cosit_26_20000629")
+
+    flat_xml = flat.to_xml_string()
+    assert flat_xml.count('nome="citacao"') == 4
+    for ordinal in range(1, 5):
+        assert f'id="pp1_agr17_agr{ordinal}"' in flat_xml
+
+    nested_xml = nested.to_xml_string()
+    assert nested_xml.count('nome="citacao"') == 4
+    for norm in (
+        "Lei nº 7.713, de 1988",
+        "Lei 8.134, de 1990",
+        "Lei 8.383, de 1991",
+        "Lei 8.981, de 1995",
+    ):
+        assert f"<NomeAgrupador>{norm}</NomeAgrupador>" in nested_xml
+
+
+@pytest.mark.parametrize("name", SAMPLES)
+def test_segment_addresses_survive_nesting(name):
+    """T-8c.20. Invariant #11, re-measured with a citation level in the tree.
+
+    A-Q.6's real worry: A-5b.4 already documented that the two emitters differ
+    in **two** ways — D-2's `agr`/`agh` token and a top-level ordinal origin —
+    and a new level under `pp1_agr17` must not introduce a *third*. This reuses
+    the same normalisation the unnested test uses, so a third difference shows
+    up here as a failure rather than being absorbed.
+    """
+    _model, flat, nested = _confirmed(name)
+    flat_urns = flat_segment_urns(flat, offsets_of(nested))
+    nested_urns = nested_segment_urns(nested)
+
+    assert nested_urns == flat_urns, (
+        f"{name}: body segment URNs diverge once a citation nests.\n"
+        f"  only nested: {sorted(nested_urns - flat_urns)[:5]}\n"
+        f"  only flat:   {sorted(flat_urns - nested_urns)[:5]}"
+    )

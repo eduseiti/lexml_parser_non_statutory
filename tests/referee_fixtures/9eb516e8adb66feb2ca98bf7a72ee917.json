@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "boundary",
+    "confidence": 0.9,
+    "rationale": "O parágrafo anunciador lista quatro leis a transcrever; este trecho nomeia a segunda delas, a Lei 8.134, iniciando a transcrição de norma distinta da anterior (Lei 7.713)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "quotation_boundary",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#63",
+    "rule_verdict": "continuation",
+    "rule_confidence": 0.55,
+    "excerpt": "Lei 8.134, de 1990 - \"Art. 2º - O imposto de renda das pessoas físicas será devido à medida em que os rendimentos e ganhos de capital forem percebidos, sem prejuízo do ajuste estabelecido no artigo 11.\"",
+    "norm": "Lei 8.134, de 1990",
+    "origin": "hand-authored (see README.md); never recorded from a live provider",
+    "ctx": "14. A diferença positiva entre o valor de alienação e o custo de aquisição do título configurará ganho de capital e estará sujeita ao imposto de renda, como dispõem os arts. 1º a 3º e 16 da Lei nº 7.713, de dezembro de 1988, com as alterações dadas pelos arts. 2º e 18 da Lei nº 8.134, 27 de dezembro de 1990, 52 da Lei nº 8.383, de 30 de dezembro 1991, e 21 da Lei nº 8.981, de 20 de janeiro de 1995, in verbis:"
+  }
+}

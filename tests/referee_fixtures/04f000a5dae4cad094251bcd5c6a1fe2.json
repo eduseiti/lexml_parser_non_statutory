@@ -12,6 +12,8 @@
     "rule_verdict": "quoted",
     "rule_confidence": 0.5,
     "excerpt": "Art. 3º- O imposto incidirá sobre o rendimento bruto, sem qualquer dedução, ressalvado o disposto nos arts. 9º a 14 desta Lei.",
-    "origin": "hand-authored (see README.md); never recorded from a live provider"
+    "origin": "hand-authored (see README.md); never recorded from a live provider",
+    "ctx": "Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliadas no Brasil, serão tributados pelo imposto de renda na forma da legislação vigente, com as modificações introduzidas por esta Lei.",
+    "rekeyed_from": "1a2ea8e52a0fbb76688f6acb3b8d6672"
   }
 }

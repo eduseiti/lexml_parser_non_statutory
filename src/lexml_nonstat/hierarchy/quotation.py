@@ -37,6 +37,7 @@ from dataclasses import dataclass, field
 from typing import Iterable, Sequence
 
 from ..ingest import StyledPara
+from ..model.nodes import Evidence
 from .labels import ARTICLE_RE, fold, looks_like_heading, parse_label, strip_leading_quote
 
 __all__ = [
@@ -44,12 +45,14 @@ __all__ = [
     "QUOTE_INDENT_MARGIN",
     "QuotationAnalysis",
     "QuoteBands",
+    "QuoteRun",
     "analyse_quotation",
     "detect_quote_bands",
     "is_monotonic_series",
     "is_omissis",
     "names_external_norm",
     "opens_with_quote",
+    "quotation_head",
 ]
 
 #: How far above the body indent a paragraph must sit to read as a block quote.
@@ -255,6 +258,160 @@ def detect_quote_bands(paras: Iterable[StyledPara]) -> QuoteBands:
     return QuoteBands(modal_indent, frozenset(), "none", "indent_effective")
 
 
+#: The norm nouns, accent-tolerant, for matching against **unfolded** text.
+#: `fold()` cannot be used here: it drops non-ASCII rather than transliterating
+#: it, so `nº` becomes `no` and every offset after it shifts. A quotation head
+#: has to return the norm *as written*, which means matching the original
+#: string, which means spelling the accents into the pattern.
+_NORM_WORD_PATTERNS = (
+    r"leis?",
+    r"decretos?(?:[-\s]leis?)?",
+    r"medidas?\s+provis[oó]rias?",
+    r"emendas?\s+constitucionais?",
+    r"constitui[cç][aã]o",
+    r"portarias?",
+    r"instru[cç][oõ]es?\s+normativas?",
+    r"instru[cç][aã]o\s+normativa",
+    r"resolu[cç][oõ]es?",
+    r"resolu[cç][aã]o",
+    r"atos?\s+declarat[oó]rios?",
+    r"c[oó]digos?",
+    r"estatutos?",
+    r"regimentos?",
+    r"s[uú]mulas?",
+    r"ac[oó]rd[aã]os?",
+)
+
+#: A norm designation at the *start* of a paragraph — `Lei nº 7.713, de 1988`,
+#: `Lei 8.134, de 1990`, `Decreto-lei nº 200, de 1967`. The **number is
+#: required**: a paragraph opening with a bare norm noun is prose about a law,
+#: not a citation of one. A trailing `de <year>` is absorbed when present, so
+#: the captured name is the one the document actually writes.
+_NORM_DESIGNATION_RE = re.compile(
+    r"^[\s\"\u201c\u201d\'«]*"
+    r"(?P<norm>(?:" + "|".join(_NORM_WORD_PATTERNS) + r")"
+    r"(?:\s+complementar(?:es)?)?"
+    r"[\s,]*(?:n[o\u00ba\u00b0]?\.?\s*)?"
+    r"\d[\d.]*(?:[\u00ba\u00b0]|\-[A-Z])?"
+    r"(?:\s*,?\s*de\s+\d{1,2}\s+de\s+\w+\s+de\s+\d{4}"
+    r"|\s*,?\s*de\s+\d{4})?"
+    r")",
+    re.IGNORECASE,
+)
+
+#: The article marker that must follow the norm for the paragraph to be a
+#: quotation *head* rather than a bare citation. `Art. 2º`, `Artigo 12`, and
+#: the `Art. 12. ……` omissis form all qualify.
+_HEAD_ARTICLE_RE = re.compile(
+    r"[\s,;:.\-\u2013\u2014\"\u201c\u201d\']*art(?:igo)?\.?\s*\d",
+    re.IGNORECASE,
+)
+
+#: How far past the norm designation the article marker may sit and still be
+#: the same head. `Lei nº 7.713, de 1988 - "Art. 1º-` spans a separator and a
+#: quote mark, and nothing legitimate needs much more.
+HEAD_ARTICLE_WINDOW = 8
+
+
+def quotation_head(text: str) -> str | None:
+    """The norm a quotation head names, or ``None`` if this is not one.
+
+    A **quotation head** is the shape `par_cosit_26` uses to change norms
+    mid-run with no indentation to mark it (record §3):
+
+        Lei nº 7.713, de 1988 - "Art. 1º- Os rendimentos …
+        Lei 8.134, de 1990 - "Art. 2º - O imposto de renda …
+        Lei 8.383, de 1991, Art. 12. ……………
+        Lei 8.981, de 1995, "Art. 21. O ganho de capital …
+
+    Two things must both hold: the paragraph **opens** with a norm designation
+    carrying a number, and an **article marker follows it closely**. Both halves
+    are load-bearing, and the corpus supplies the negatives that prove it
+    (spec C-2). `parecer_93` block 268 —
+
+        Lei no 12.618. de 2012)
+
+    — opens with a norm designation and sits *inside* a quoted run, but no
+    article follows it: that is the tail of a citation, not the head of one.
+    Block 321 —
+
+        "Súmula 207
+
+    — names a norm with a number and again has no article. A generator keyed on
+    "opens with a norm noun", which is what the investigation record's census
+    counted, fires on both; this one fires on neither.
+
+    The norm comes back **as written**, never normalised — it becomes a
+    ``NomeAgrupador``, and a document's own spelling of a law is the citable
+    fact.
+    """
+    stripped = (text or "").strip()
+    if not stripped:
+        return None
+    match = _NORM_DESIGNATION_RE.match(stripped)
+    if match is None:
+        return None
+    end = match.end("norm")
+    if not _HEAD_ARTICLE_RE.match(stripped, end, end + HEAD_ARTICLE_WINDOW + 6):
+        return None
+    norm = match.group("norm").strip()
+    return norm.rstrip(" ,;:-\u2013\u2014\"\u201c\u201d") or None
+
+
+@dataclass(frozen=True)
+class QuoteRun:
+    """One contiguous quotation — the span between two norm changes.
+
+    ``quoted`` (a ``frozenset`` of indices) says *which* paragraphs are quoted;
+    it cannot say where one quotation ends and the next begins. That is the gap
+    this closes, and it is why amendment A-Q.1 is additive: ``quoted`` keeps its
+    exact meaning and its exact value, and a run is a second, richer reading of
+    the same verdicts.
+    """
+
+    indices: tuple[int, ...] = ()
+    head: int | None = None
+    norm: str | None = None
+    antecedent: int | None = None
+    evidence: Evidence = field(default_factory=Evidence)
+    #: The head paragraph's text, and the announcing paragraph's — carried on
+    #: the run so the referee prompt (A-Q.3) can be built from the run alone.
+    #: This is what puts the *announcement* and the *candidate head* in the same
+    #: prompt, which is the context the per-paragraph question structurally
+    #: could not include and which record §2.3 traced two wrong overrides to.
+    head_text: str = ""
+    antecedent_text: str = ""
+
+    @property
+    def start(self) -> int | None:
+        return self.indices[0] if self.indices else None
+
+    @property
+    def end(self) -> int | None:
+        return self.indices[-1] if self.indices else None
+
+    def to_dict(self) -> dict[str, object]:
+        data: dict[str, object] = {"indices": list(self.indices)}
+        if self.head is not None:
+            data["head"] = self.head
+        if self.norm is not None:
+            data["norm"] = self.norm
+        if self.antecedent is not None:
+            data["antecedent"] = self.antecedent
+        data["evidence"] = self.evidence.to_dict()
+        return data
+
+    @classmethod
+    def from_dict(cls, data: dict[str, object]) -> "QuoteRun":
+        return cls(
+            indices=tuple(data.get("indices", ())),
+            head=data.get("head"),
+            norm=data.get("norm"),
+            antecedent=data.get("antecedent"),
+            evidence=Evidence.from_dict(data.get("evidence")),
+        )
+
+
 @dataclass(frozen=True)
 class QuotationAnalysis:
     """Per-document quotation verdicts, keyed by source block index."""
@@ -265,9 +422,22 @@ class QuotationAnalysis:
     citation_antecedent: frozenset[int] = frozenset()
     article_values: tuple[int, ...] = ()
     article_monotonic: bool = False
+    #: The quoted paragraphs read as *spans* rather than as a set (A-Q.1).
+    #: Additive: ``quoted`` keeps its exact meaning and its exact value.
+    runs: tuple[QuoteRun, ...] = ()
+    #: Paragraphs the head detector proposed and the run builder did not use —
+    #: recorded rather than dropped, the `DocSignals.rejected` precedent (A-4.2).
+    rejected_heads: tuple[int, ...] = ()
 
     def is_quoted(self, index: int) -> bool:
         return index in self.quoted
+
+    def run_for(self, index: int) -> QuoteRun | None:
+        """The run containing ``index``, if any."""
+        for run in self.runs:
+            if index in run.indices:
+                return run
+        return None
 
     @property
     def article_count(self) -> int:
@@ -281,6 +451,8 @@ class QuotationAnalysis:
             "citation_antecedent": sorted(self.citation_antecedent),
             "article_values": list(self.article_values),
             "article_monotonic": self.article_monotonic,
+            "runs": [r.to_dict() for r in self.runs],
+            "rejected_heads": list(self.rejected_heads),
         }
 
 
@@ -357,6 +529,22 @@ def analyse_quotation(paras: Sequence[StyledPara]) -> QuotationAnalysis:
     if bands.rule == "none" and articles and not monotonic:
         quoted |= _extend_flat_excerpts(body, quoted)
 
+    # A-Q.2. A quotation head is quoted material by construction: it *names*
+    # the norm whose text follows, and the text that follows is already
+    # convicted. This is what block 45 of `par_cosit_26` needed — it opens with
+    # `Lei` rather than a quote mark or `Art.`, so `opens_with_quote` is false,
+    # `carries_omissis` is false, and the weak rule's `ARTICLE_RE.match` misses.
+    # It was an *antecedent* for block 46 and never a conviction of itself, so
+    # `_extend_flat_excerpts` opened the run one paragraph too late and left it
+    # outside, rendering as a bare `<p>` in a wall of `class="quote"`.
+    #
+    # Gated on adjacency to an already-quoted paragraph. A head that introduces
+    # nothing is a citation in running prose, and convicting it would be exactly
+    # the over-firing the record's §4 warns about across 300 unseen documents.
+    quoted |= _convict_quotation_heads(body, quoted)
+
+    runs, rejected = _build_runs(body, quoted)
+
     return QuotationAnalysis(
         bands=bands,
         quoted=frozenset(quoted),
@@ -364,7 +552,116 @@ def analyse_quotation(paras: Sequence[StyledPara]) -> QuotationAnalysis:
         citation_antecedent=frozenset(antecedents),
         article_values=tuple(articles),
         article_monotonic=monotonic,
+        runs=runs,
+        rejected_heads=rejected,
     )
+
+
+def _convict_quotation_heads(
+    body: Sequence[StyledPara], quoted: set[int]
+) -> set[int]:
+    """Quotation heads adjacent to quoted material are quoted material (A-Q.2).
+
+    "Adjacent" means the paragraph immediately after it is already convicted —
+    which is what makes this a *head*: it introduces an excerpt that is there.
+    """
+    extra: set[int] = set()
+    for position, para in enumerate(body):
+        if para.index in quoted or _is_style_heading(para):
+            continue
+        if quotation_head(para.text.strip()) is None:
+            continue
+        following = body[position + 1] if position + 1 < len(body) else None
+        if following is not None and following.index in quoted:
+            extra.add(para.index)
+    return extra
+
+
+def _build_runs(
+    body: Sequence[StyledPara], quoted: set[int]
+) -> tuple[tuple[QuoteRun, ...], tuple[int, ...]]:
+    """The quoted set, read as maximal contiguous spans split at norm changes.
+
+    Two levels of division, and the order matters:
+
+    1. **Contiguity.** A run breaks wherever the document's own prose resumes.
+       This alone gives `par_cosit_26` its 4 runs and `parecer_93` its 58.
+    2. **Norm changes.** Inside one contiguous span, a quotation head opens a
+       *new* run — this is what separates Lei 7.713 from Lei 8.134 inside
+       `par_cosit_26`'s single 35-paragraph span, which no set of indices could
+       express.
+
+    Every quoted paragraph lands in exactly one run: the runs partition
+    ``quoted``, which is asserted over the whole corpus (T-8c.1). A head that
+    would open a run of nothing but itself is **rejected** rather than
+    promoted — recorded in ``rejected_heads``, never silently dropped.
+    """
+    runs: list[QuoteRun] = []
+    rejected: list[int] = []
+
+    #: The announcing paragraph for a span: the nearest preceding non-quoted
+    #: paragraph that hands off to an external norm.
+    def announcing(position: int) -> tuple[int | None, str]:
+        for earlier in range(position - 1, -1, -1):
+            para = body[earlier]
+            if para.index in quoted:
+                continue
+            if names_external_norm(para.text):
+                return para.index, para.text.strip()
+            break
+        return None, ""
+
+    position = 0
+    while position < len(body):
+        if body[position].index not in quoted:
+            position += 1
+            continue
+
+        span_start = position
+        while position < len(body) and body[position].index in quoted:
+            position += 1
+        span = body[span_start:position]
+        antecedent, antecedent_text = announcing(span_start)
+
+        # Split the span at its quotation heads.
+        starts: list[int] = [0]
+        norms: list[str | None] = [quotation_head(span[0].text.strip())]
+        for offset, para in enumerate(span[1:], start=1):
+            norm = quotation_head(para.text.strip())
+            if norm is None:
+                continue
+            if offset == starts[-1]:
+                continue
+            starts.append(offset)
+            norms.append(norm)
+
+        for number, begin in enumerate(starts):
+            finish = starts[number + 1] if number + 1 < len(starts) else len(span)
+            paragraphs = span[begin:finish]
+            norm = norms[number]
+            evidence = Evidence()
+            if norm is not None:
+                # A head that introduces nothing but itself is not a boundary.
+                if len(paragraphs) < 2:
+                    rejected.append(paragraphs[0].index)
+                    norm = None
+                else:
+                    evidence = evidence.with_signal("quotation_head", 0.6)
+            if antecedent is not None:
+                evidence = evidence.with_signal("citation_antecedent", 0.4)
+            runs.append(
+                QuoteRun(
+                    indices=tuple(p.index for p in paragraphs),
+                    head=paragraphs[0].index if norm is not None else None,
+                    norm=norm,
+                    antecedent=antecedent,
+                    evidence=evidence,
+                    head_text=paragraphs[0].text.strip() if norm is not None else "",
+                    antecedent_text=antecedent_text,
+                )
+            )
+
+    return tuple(runs), tuple(rejected)
 
 
 def _extend_flat_excerpts(body: Sequence[StyledPara], quoted: set[int]) -> set[int]:

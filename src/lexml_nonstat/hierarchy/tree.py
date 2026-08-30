@@ -35,10 +35,12 @@ from typing import Sequence
 
 from ..ingest import Inline, StyledDoc, StyledPara, StyledTable
 from ..model.nodes import Evidence, ListItem, ListNode, Node, Para, Section, Table
+from ..referee.adjudicate import adjudicate
+from ..referee.protocol import FLAG_THRESHOLD
 from ..segment.model import Span
 from .evidence import CONFIDENCE_THRESHOLD, DocSignals, document_confidence
 from .labels import parse_label
-from .quotation import QuotationAnalysis, analyse_quotation
+from .quotation import QuotationAnalysis, QuoteRun, analyse_quotation
 from .unify import (
     Assignment,
     collect_candidates,
@@ -50,10 +52,24 @@ from .unify import (
 __all__ = [
     "AnnexHierarchy",
     "HierarchyTree",
+    "BOUNDARY_RULE_CONFIDENCE",
     "build_tree",
+    "split_citations",
     "split_inlines",
     "table_node",
 ]
+
+#: How much a quotation head is worth on its own, before a referee is asked.
+#:
+#: Deliberately **below** :data:`~..referee.protocol.FLAG_THRESHOLD` (0.60), so
+#: every boundary candidate is flagged and every candidate is put to a referee
+#: when one is configured. That is the whole point of A-Q.3's inversion: the
+#: rule is confident enough to *propose* a boundary and not confident enough to
+#: *impose* one, so with no referee the document stays flat (invariant #8) and
+#: with a referee the answer is confirm-or-veto on a candidate that already
+#: exists. It is also below :data:`RULE_HIGH_CONFIDENCE`, so invariant #9 never
+#: blocks the veto.
+BOUNDARY_RULE_CONFIDENCE = 0.55
 
 
 def split_inlines(inlines: Sequence[Inline], offset: int) -> tuple[Inline, ...]:
@@ -393,10 +409,300 @@ def _finish(
     )
 
 
+def _split_tree(
+    section: Section,
+    analysis: QuotationAnalysis,
+    doc_name: str,
+    referee: object | None,
+    log: object | None,
+    logger: object | None,
+) -> Section:
+    """Apply :func:`split_citations` to ``section`` and to every descendant."""
+    children = tuple(
+        _split_tree(child, analysis, doc_name, referee, log, logger)
+        for child in section.children
+    )
+    if children != section.children:
+        section = Section(
+            label=section.label,
+            heading=section.heading,
+            level=section.level,
+            kind=section.kind,
+            body=section.body,
+            children=children,
+            evidence=section.evidence,
+            source_indices=section.source_indices,
+        )
+    return split_citations(
+        section,
+        analysis,
+        doc_name=doc_name,
+        referee=referee,
+        log=log,
+        logger=logger,
+    )
+
+
+def _run_of(node: Node, analysis: QuotationAnalysis) -> QuoteRun | None:
+    """The single run a content node belongs to, or ``None``.
+
+    ``None`` for an unquoted node **and** for a node straddling two runs. A
+    straddling node cannot be assigned to one child without splitting it, and
+    splitting a ``ListNode`` or a ``Table`` to make a quotation boundary fall
+    where we want it would be inventing structure inside content — so it is
+    reported as unassignable and A-Q.5's gate refuses the whole section.
+    """
+    indices = node.all_source_indices
+    if not indices:
+        return None
+    runs = {analysis.run_for(index) for index in indices}
+    if len(runs) != 1:
+        return None
+    return runs.pop()
+
+
+def split_citations(
+    section: Section,
+    analysis: QuotationAnalysis,
+    *,
+    doc_name: str = "",
+    referee: object | None = None,
+    log: object | None = None,
+    logger: object | None = None,
+) -> Section:
+    """Divide one section's body into a child ``Section`` per quoted norm.
+
+    This is amendment A-Q.4, and every guard in it is amendment A-Q.5.
+
+    `par_cosit_26`'s item ``14.`` announces four laws and then transcribes them
+    as **one flat run of 35 paragraphs**. A human reader sees four quotations;
+    the XML said "thirty-five paragraphs, some of them quoted". The boundary
+    between Lei 7.713 and Lei 8.134 is a paragraph that literally begins
+    ``Lei 8.134, de 1990 - "Art. 2º…`` and it was invisible in the output.
+
+    Four conditions, all of which must hold, or the section is returned
+    **unchanged**:
+
+    1. **Two or more named runs.** One quotation is not a division — wrapping a
+       lone excerpt in a child that adds no distinction is structure for its own
+       sake, and it would churn a golden on every sample in the corpus for no
+       gain.
+    2. **Every body node assignable.** A node straddling two runs, or a run
+       whose paragraphs are not contiguous among the body nodes, aborts the
+       whole split.
+    3. **A referee confirms each boundary**, when one is configured. The rule
+       alone sits at :data:`BOUNDARY_RULE_CONFIDENCE`, below the flag
+       threshold, so with no referee nothing is confirmed and the section stays
+       flat — invariant #8, for free, exactly as ``--referee=none`` requires.
+    4. **Conservation.** The children's bodies plus the parent's remaining body
+       must reproduce the original body exactly, in order, with nothing lost
+       and nothing duplicated. Checked *before* the new section is returned,
+       not after — the A-6.3 lesson, where a render was valid on both schemas
+       and 29 words short.
+
+    The referee is **confirm-only**: it is asked about candidates the head
+    detector already proposed and can only veto them. It cannot volunteer a
+    boundary, so no answer it gives — however confident, however wrong — can
+    fabricate a citable unit with its own URN.
+    """
+    if not section.body:
+        return section
+
+    # 1. Group the body nodes into consecutive stretches by run.
+    groups: list[tuple[QuoteRun | None, list[Node]]] = []
+    for node in section.body:
+        run = _run_of(node, analysis)
+        if groups and groups[-1][0] is run:
+            groups[-1][1].append(node)
+            continue
+        groups.append((run, [node]))
+
+    named = [(run, nodes) for run, nodes in groups if run is not None and run.norm]
+    if len(named) < 2:
+        return section
+
+    # 2. A run must not be scattered across several groups: that would mean the
+    #    document's own prose interleaves the quotation, and a child section
+    #    would silently reorder it.
+    seen: set[tuple[int, ...]] = set()
+    for run, _ in named:
+        if run.indices in seen:
+            return section
+        seen.add(run.indices)
+
+    # 3. Adjudicate each candidate boundary. The *first* named run is not a
+    #    boundary — it opens the quotation rather than changing norms — but it
+    #    still becomes a child once any later boundary is confirmed, because a
+    #    division into "the rest" and "Lei 8.134" would misattribute the first
+    #    norm's text.
+    confirmed: set[tuple[int, ...]] = set()
+    for run, _ in named[1:]:
+        if _confirm_boundary(
+            run,
+            doc_name=doc_name,
+            referee=referee,
+            log=log,
+            logger=logger,
+        ):
+            confirmed.add(run.indices)
+
+    if not confirmed:
+        return section
+
+    # 4. Build the children, keeping every unassigned node where it was.
+    body: list[Node] = []
+    children: list[Section] = list(section.children)
+    citations: list[Section] = []
+    for run, nodes in groups:
+        if run is not None and run.norm and (run.indices in confirmed or run is named[0][0]):
+            citations.append(
+                Section(
+                    label=None,
+                    heading=run.norm,
+                    level=section.level + 1,
+                    kind="citacao",
+                    body=_promote_head(tuple(nodes), run),
+                    children=(),
+                    evidence=run.evidence.with_signal("referee_confirmed", 0.8)
+                    if run.indices in confirmed
+                    else run.evidence,
+                    source_indices=(),
+                )
+            )
+            continue
+        body.extend(nodes)
+
+    if len(citations) < 2:
+        return section
+
+    # 5. Conservation, as a precondition (A-Q.5). Compared on source indices in
+    #    document order: the split moves nodes, so the multiset *and* the order
+    #    of what the section accounts for must be exactly what it accounted for
+    #    before.
+    before = [i for node in section.body for i in node.all_source_indices]
+    after = [
+        i
+        for node in body
+        for i in node.all_source_indices
+    ] + [
+        i
+        for child in citations
+        for node in child.body
+        for i in node.all_source_indices
+    ]
+    if sorted(before) != sorted(after) or len(before) != len(after):
+        return section
+
+    return Section(
+        label=section.label,
+        heading=section.heading,
+        level=section.level,
+        kind=section.kind,
+        body=tuple(body),
+        children=tuple(citations) + tuple(children),
+        evidence=section.evidence.with_signal("citacao_split", 0.6),
+        source_indices=section.source_indices,
+    )
+
+
+def _promote_head(nodes: tuple[Node, ...], run: QuoteRun) -> tuple[Node, ...]:
+    """Cut the norm's name off the head paragraph, since it becomes the heading.
+
+    Without this the split **duplicates text**: ``Lei nº 7.713, de 1988`` would
+    appear once as the child's ``NomeAgrupador`` and again at the front of the
+    paragraph the heading was taken from. Invariant #2 forbids loss *and*
+    duplication, and a `Counter` comparison across the two emitters catches it
+    immediately — which is how this was found.
+
+    It is the same move ``_finish`` already makes for a rótulo, done with the
+    same tool: :func:`split_inlines` cuts at a character offset with run
+    boundaries intact, because a norm name and the article after it are
+    routinely one Word run.
+    """
+    if not nodes or run.norm is None:
+        return nodes
+    head = nodes[0]
+    if not isinstance(head, Para):
+        return nodes
+
+    text = head.text
+    offset = text.find(run.norm)
+    if offset < 0:
+        return nodes
+
+    # Cut **exactly** at the end of the norm's name, then drop only whitespace.
+    # The separator characters stay with the remainder, and that is not
+    # fastidiousness: `Lei 8.383, de 1991, Art. 12` and
+    # `Lei nº 7.713, de 1988 - "Art. 1º-` were losing a comma and a dash to the
+    # cut, and punctuation is text. Invariant #2 counts words, and the words it
+    # counted came back two `-` and two commas short.
+    cut = offset + len(run.norm)
+    while cut < len(text) and text[cut].isspace():
+        cut += 1
+
+    remainder = split_inlines(head.inlines, cut)
+    if not "".join(i.text for i in remainder).strip():
+        # The head is nothing but the norm's name. Dropping the paragraph would
+        # lose no text (the heading carries it) but would lose the block, so
+        # keep the run's other nodes and let the heading stand alone.
+        return nodes[1:]
+
+    return (
+        Para(
+            inlines=remainder,
+            kind=head.kind,
+            indent=head.indent,
+            source_indices=head.source_indices,
+        ),
+    ) + nodes[1:]
+
+
+def _confirm_boundary(
+    run: QuoteRun,
+    *,
+    doc_name: str,
+    referee: object | None,
+    log: object | None,
+    logger: object | None,
+) -> bool:
+    """Put one candidate boundary to the referee; ``True`` only if confirmed.
+
+    The rule verdict is **``"continuation"``** at
+    :data:`BOUNDARY_RULE_CONFIDENCE`. That is not pessimism about the head
+    detector — it is invariant #8 expressed as the default: a candidate nobody
+    confirmed does not become structure. With ``--referee=none`` this function
+    always returns ``False`` and every document stays exactly as it was, which
+    is what keeps §9.3's pinned suite and all 135 goldens honest.
+    """
+    excerpt = run.head_text
+    ctx = run.antecedent_text
+    final, _record = adjudicate(
+        kind="quotation_boundary",
+        doc=doc_name,
+        locator=f"p#{run.head}",
+        rule_verdict="continuation",
+        rule_confidence=BOUNDARY_RULE_CONFIDENCE,
+        excerpt=excerpt,
+        ctx=ctx,
+        reason=(
+            "quotation head proposed a norm change; a referee must confirm it "
+            "before it becomes a nested citation (A-Q.3, confirm-only)"
+        ),
+        referee=referee,
+        log=log,
+        logger=logger,
+    )
+    return final == "boundary"
+
+
 def build_tree(
     blocks: Sequence[StyledPara | StyledTable],
     *,
     span: Span | None = None,
+    doc_name: str = "",
+    referee: object | None = None,
+    log: object | None = None,
+    logger: object | None = None,
 ) -> HierarchyTree:
     """Infer the hierarchy of one contiguous span of blocks.
 
@@ -443,6 +749,18 @@ def build_tree(
         )
 
     sections, preamble = _assemble(assignments, blocks, analysis)
+
+    # A-Q.4. Applied after assembly rather than during it: a section's quoted
+    # material can only be divided once the section knows its whole body, and
+    # doing it here keeps `_assemble` the single answer to "which blocks belong
+    # to which header". With no referee configured this is an identity
+    # transform on every sample — `split_citations` confirms nothing, so it
+    # returns each section unchanged.
+    sections = tuple(
+        _split_tree(section, analysis, doc_name, referee, log, logger)
+        for section in sections
+    )
+
     return HierarchyTree(
         sections=sections,
         preamble=preamble,
