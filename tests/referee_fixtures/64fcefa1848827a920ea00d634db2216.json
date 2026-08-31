@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Número de processo/recurso, identifica um caso e não abre seção temática."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "sumula_stj_125",
+    "locator": "p#370",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "RECURSO ESPECIAL N. 47.692-SP",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "ANEXO",
+    "next_ctx": "VOTO VENCIDO EM PARTE"
+  }
+}

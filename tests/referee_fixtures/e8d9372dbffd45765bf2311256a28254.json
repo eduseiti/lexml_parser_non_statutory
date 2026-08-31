@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Marcador isolado sem conteúdo de seção temática própria neste documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "sumula_stj_125",
+    "locator": "p#369",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "ANEXO",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "O Sr. Ministro Cesar Asfor Rocha: Sr. Presidente, o meu entendimento é de que cabe imposto de renda nos dois casos. Juntarei voto proferido em caso análogo.",
+    "next_ctx": "RECURSO ESPECIAL N. 47.692-SP"
+  }
+}

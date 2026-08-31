@@ -101,8 +101,8 @@ class CachedAPIReferee:
     def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
         return self.ask("own_articulation", excerpt, ctx)
 
-    def is_heading(self, para: str, ctx: str) -> Verdict:
-        return self.ask("heading", para, ctx)
+    def is_heading(self, para: str, ctx: str, next_ctx: str = "") -> Verdict:
+        return self.ask("heading", para, ctx, next_ctx)
 
     def section_kind(self, label: str, heading: str) -> Verdict:
         return self.ask("section_kind", label, heading)
@@ -112,10 +112,12 @@ class CachedAPIReferee:
 
     # -- the machinery -----------------------------------------------------
 
-    def ask(self, kind: str, excerpt: str, ctx: str = "") -> Verdict:
+    def ask(
+        self, kind: str, excerpt: str, ctx: str = "", next_ctx: str = ""
+    ) -> Verdict:
         """Adjudicate one question. Never raises."""
         self.last_cache_hit = False
-        key = cache_key(self.model, kind, excerpt, ctx)
+        key = cache_key(self.model, kind, excerpt, ctx, next_ctx)
 
         if self.cache is not None:
             cached = self.cache.get(key)
@@ -123,7 +125,7 @@ class CachedAPIReferee:
                 self.last_cache_hit = True
                 return cached
 
-        verdict = self._call(kind, excerpt, ctx)
+        verdict = self._call(kind, excerpt, ctx, next_ctx)
 
         # Abstentions are not cached: a timeout is a fact about the network,
         # not about the question, and caching it would make one bad minute
@@ -136,12 +138,14 @@ class CachedAPIReferee:
             )
         return verdict
 
-    def _call(self, kind: str, excerpt: str, ctx: str) -> Verdict:
+    def _call(
+        self, kind: str, excerpt: str, ctx: str, next_ctx: str = ""
+    ) -> Verdict:
         if not self.api_key:
             return Verdict.abstain("no API key configured; referee unavailable")
 
         try:
-            system, user = build_prompt(kind, excerpt, ctx)
+            system, user = build_prompt(kind, excerpt, ctx, next_ctx)
         except KeyError:
             return Verdict.abstain(f"no prompt template for decision kind {kind!r}")
 

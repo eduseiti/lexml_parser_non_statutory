@@ -12,7 +12,16 @@ hole in it.
 **Structure.** Assignments are threaded onto a depth stack; blocks between two
 headers belong to the earlier one; blocks before the first header become the
 tree's ``preamble``, which is how ``par_cosit_26``'s opening paragraphs survive
-the fact that its ``1.`` sits in the front matter.
+the fact that the document **never numbers its first item at all** — its body
+opens at ``2.``, and a regex for a leading ``1.`` over every block returns zero
+matches. (This example previously read "its ``1.`` sits in the front matter",
+which is not what the file contains; corrected by A-H's cycle.)
+
+Since amendment A-H.1 there is a third admission route into ``Section``: a
+paragraph that is a header **by meaning alone**, with no outline level and no
+rótulo, confirmed one at a time by a referee. It is confirm-only — see
+:func:`_confirm_prose_headers` — so with no referee this module's answer is
+exactly what it was.
 
 **Judgement.** If the fused evidence does not clear
 :data:`~.evidence.CONFIDENCE_THRESHOLD`, the sections are thrown away and the
@@ -42,10 +51,12 @@ from .evidence import CONFIDENCE_THRESHOLD, DocSignals, document_confidence
 from .labels import parse_label
 from .quotation import QuotationAnalysis, QuoteRun, analyse_quotation
 from .unify import (
+    PROSE_HEADER_RULE_CONFIDENCE,
     Assignment,
     collect_candidates,
     demote_numbered_containers,
     detect_unit_series,
+    is_prose_form_header,
     unify_levels,
 )
 
@@ -695,6 +706,64 @@ def _confirm_boundary(
     return final == "boundary"
 
 
+def _confirm_prose_headers(
+    paras: Sequence[StyledPara],
+    analysis: QuotationAnalysis,
+    *,
+    doc_name: str,
+    referee: object | None,
+    log: object | None,
+    logger: object | None,
+) -> frozenset[int]:
+    """Which prose-form candidates a referee confirmed as section headers.
+
+    The rule verdict is **``"nao"``** at
+    :data:`~.unify.PROSE_HEADER_RULE_CONFIDENCE`, mirroring
+    :func:`_confirm_boundary` exactly. That is invariant #8 expressed as the
+    default: a paragraph nobody confirmed does not become structure. With
+    ``--referee=none`` this returns an empty set on every document, so
+    `collect_candidates` sees what it always saw and all 135 goldens hold.
+
+    Both neighbours are passed as context (A-H.2), because a heading is defined
+    by what follows it as much as by what precedes it.
+    """
+    if referee is None or not getattr(referee, "enabled", True):
+        return frozenset()
+
+    texts = {p.index: p.text.strip() for p in paras if not p.is_empty}
+    order = [p.index for p in paras if not p.is_empty]
+    position = {index: i for i, index in enumerate(order)}
+
+    confirmed: set[int] = set()
+    for para in paras:
+        if not is_prose_form_header(para, quoted=analysis.is_quoted(para.index)):
+            continue
+        i = position[para.index]
+        prev = texts[order[i - 1]] if i > 0 else ""
+        following = texts[order[i + 1]] if i + 1 < len(order) else ""
+        final, _record = adjudicate(
+            kind="heading",
+            doc=doc_name,
+            locator=f"p#{para.index}",
+            rule_verdict="nao",
+            rule_confidence=PROSE_HEADER_RULE_CONFIDENCE,
+            excerpt=texts[para.index],
+            ctx=prev,
+            next_ctx=following,
+            reason=(
+                "unlabelled, unstyled paragraph proposed as a section header on "
+                "typographic evidence alone; a referee must confirm it before it "
+                "becomes structure (A-H.3, confirm-only)"
+            ),
+            referee=referee,
+            log=log,
+            logger=logger,
+        )
+        if final == "secao":
+            confirmed.add(para.index)
+    return frozenset(confirmed)
+
+
 def build_tree(
     blocks: Sequence[StyledPara | StyledTable],
     *,
@@ -717,7 +786,15 @@ def build_tree(
 
     analysis = analyse_quotation(paras)
     unit_heads = detect_unit_series(paras)
-    candidates = collect_candidates(paras, analysis, unit_heads=unit_heads)
+    # A-H.1/A-H.3. `build_tree` is already called per *span* — the body and each
+    # annex separately — so gating the generator to `Segmentation.body` needs no
+    # extra check here: front and back matter never reach this function.
+    prose_form = _confirm_prose_headers(
+        paras, analysis, doc_name=doc_name, referee=referee, log=log, logger=logger
+    )
+    candidates = collect_candidates(
+        paras, analysis, unit_heads=unit_heads, prose_form_indices=prose_form
+    )
     assignments, rejected = unify_levels(candidates)
     assignments = demote_numbered_containers(
         assignments, texts={p.index: p.text.strip() for p in paras}

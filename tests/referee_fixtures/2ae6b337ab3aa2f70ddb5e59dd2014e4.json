@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Artefato de página (número de folha), não cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#4",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "Fl. 6 DF COSIT RFB",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "Dispositivos Legais: Arts. 123 da Lei nº 5.172, de 1966 (Código Tributário Nacional), 986, 987, 1065 e 1066 da Lei nº 3.071, de 1916 (Código Civil), 1º, 3º, caput e §§ 2º a 4º, e 16, caput e § 4º, da Lei nº 7.713, de 1988, 21, caput e §§ 1º e 2º, e 32 da Lei nº 8.981, de 1995, e 2º, 25 e 27 da Lei nº 9.430, de 1996.",
+    "next_ctx": "COSIT"
+  }
+}

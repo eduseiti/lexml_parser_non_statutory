@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Rótulo de campo de formulário, não cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO",
+    "locator": "p#80",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "CBO",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "CTPS",
+    "next_ctx": "Data de admissão"
+  }
+}

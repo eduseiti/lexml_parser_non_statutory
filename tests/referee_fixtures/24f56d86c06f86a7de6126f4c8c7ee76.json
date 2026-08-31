@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.95,
+    "rationale": "Abre a divisão de fundamentação legal do parecer."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#36",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "FUNDAMENTOS LEGAIS",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "8. A justificação centrou-se no entendimento de que “... os rendimentos a serem percebidos pelos servidores, em virtude da alienação de seus precatórios, conservam sua natureza originária (rendimentos do trabalho assalariado), devendo receber o tratamento tributário respectivo, eis que a causa real pelo qual o beneficiário percebe o rendimento é o seu esforço laboral. As características formais da operação – alienação do precatório – não tem o condão de modificar a realidade fática da situação econômica tributada – auferimento de renda resultante do trabalho assalariado.”",
+    "next_ctx": "9. A essência da discussão consiste em se definir qual o tratamento tributário a ser dado na cessão de direitos sobre precatórios recebidos da Fazenda pública decorrentes de ações judiciais que discutiam questões laborais."
+  }
+}

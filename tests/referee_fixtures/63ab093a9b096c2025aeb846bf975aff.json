@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.95,
+    "rationale": "Abre a divisão do voto vencido em parte, dentro do acórdão."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "sumula_stj_125",
+    "locator": "p#371",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "VOTO VENCIDO EM PARTE",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "RECURSO ESPECIAL N. 47.692-SP",
+    "next_ctx": "O Sr. Ministro Cesar Asfor Rocha (Relator):"
+  }
+}

@@ -37,7 +37,13 @@ from dataclasses import dataclass, replace
 from typing import Sequence
 
 from ..ingest import StyledPara
-from .evidence import W_LABEL_SERIES, W_LABEL_SOLO, W_STYLE, W_UNIT_SERIES
+from .evidence import (
+    W_LABEL_SERIES,
+    W_LABEL_SOLO,
+    W_PROSE_HEADER_CONFIRMED,
+    W_STYLE,
+    W_UNIT_SERIES,
+)
 from .labels import Label, fold, looks_like_heading, parse_label
 from .quotation import QuotationAnalysis, is_monotonic_series
 
@@ -45,10 +51,16 @@ __all__ = [
     "Assignment",
     "Candidate",
     "MIN_UNIT_SERIES",
+    "PROSE_HEADER_MAX_CHARS",
+    "PROSE_HEADER_MAX_WORDS",
+    "PROSE_HEADER_MIN_UPPER",
+    "PROSE_HEADER_RULE_CONFIDENCE",
     "collect_candidates",
     "demote_numbered_containers",
     "detect_unit_series",
+    "is_prose_form_header",
     "style_level",
+    "upper_ratio",
     "unify_levels",
     "validate_top_series",
 ]
@@ -63,6 +75,29 @@ MIN_DEMOTION_RUN = 4
 
 #: The largest step a sibling sequence may take before it stops being one.
 MAX_SIBLING_GAP = 3
+
+#: How confident the typographic gate is on its own, before a referee is asked
+#: (A-H.1). Deliberately **below** ``FLAG_THRESHOLD`` (0.60), exactly as
+#: ``BOUNDARY_RULE_CONFIDENCE`` is: the gate is confident enough to *propose* a
+#: header and not confident enough to *impose* one. With no referee configured
+#: nothing is confirmed, no prose-form paragraph becomes a section, and every
+#: tree is the tree Cycle 8c built.
+PROSE_HEADER_RULE_CONFIDENCE = 0.55
+
+#: The prose-form gate's shape limits. A section header is short; a paragraph
+#: that runs on is prose however it is cased.
+PROSE_HEADER_MAX_WORDS = 7
+PROSE_HEADER_MAX_CHARS = 60
+
+#: …and this fraction of its letters are upper-case. 0.85 rather than 1.0
+#: admits `0 SECRETARIA DA RECEITA FEDERAL` and `RECURSO ESPECIAL N. 34.988-SP`
+#: — both of which the referee then correctly refuses. Over-inclusion here is
+#: safe by construction (the referee can only remove); under-inclusion is not.
+PROSE_HEADER_MIN_UPPER = 0.85
+
+#: A candidate must contain at least one letter. `_______________` and
+#: `2.08.30.00` are not headers in any casing.
+_HAS_LETTER_RE = re.compile(r"[^\W\d_]", re.UNICODE)
 
 _UNIT_LINE_RE = re.compile(
     r"^\s*(?P<head>[^\d\n]{2,60}?)\s*(?:n[ºo°]\.?|n\.)\s*(?P<num>\d{1,4})\s*$",
@@ -157,12 +192,20 @@ class Candidate:
     style: int | None = None
     quoted: bool = False
     text: str = ""
+    #: A referee **confirmed** this paragraph as a section header (A-H.1).
+    #: Never set by :func:`collect_candidates` from the text alone — only from
+    #: `prose_form_indices`, which is populated by the confirmation step in
+    #: `tree.py`. So a candidate nobody confirmed is invisible here, and the
+    #: `--referee=none` tree is unchanged.
+    prose_form: bool = False
 
     @property
     def is_candidate(self) -> bool:
         if self.quoted:
             return False
         if self.style is not None:
+            return True
+        if self.prose_form:
             return True
         return self.label is not None and not self.label.is_dispositivo
 
@@ -181,13 +224,65 @@ class Assignment:
     signals: tuple[str, ...]
 
 
+def upper_ratio(text: str) -> float:
+    """What fraction of ``text``'s letters are upper-case. No letters ⇒ 0.0."""
+    letters = [c for c in text if c.isalpha()]
+    if not letters:
+        return 0.0
+    return sum(1 for c in letters if c.isupper()) / len(letters)
+
+
+def is_prose_form_header(para: StyledPara, *, quoted: bool = False) -> bool:
+    """Is ``para`` typographically distinctive but formally unlabelled (A-H.1)?
+
+    This is a **generator**, not a decision. It proposes candidates for a
+    referee to confirm or veto, and it is deliberately over-inclusive: measured
+    over the corpus it proposes **33 paragraphs across 7 samples** for **6**
+    true headers. Over-inclusion is safe because the confirmation step can only
+    ever remove; precision here would cost real headers and buy nothing.
+
+    Five refusals, each forced by a real paragraph:
+
+    * **quoted** — a header inside a transcribed norm belongs to that norm, and
+      the quotation guard has already ruled on it;
+    * **styled** — Word already said it is a heading, so the existing route
+      admits it and this one must not compete (`sumula_stj_125` is entirely
+      this case, which is why it contributes 10 candidates and not 48);
+    * **labelled** — a rótulo is its own admission route;
+    * **too long** — `PROSE_HEADER_MAX_WORDS` / `_MAX_CHARS`;
+    * **not enough letters, or none** — `_______________` at `par_cosit_26`
+      block 7, and `2.08.30.00`.
+    """
+    if quoted or para.is_empty:
+        return False
+    if para.outline_level is not None or style_level(para) is not None:
+        return False
+    text = para.text.strip()
+    if not text:
+        return False
+    if len(text) > PROSE_HEADER_MAX_CHARS or len(text.split()) > PROSE_HEADER_MAX_WORDS:
+        return False
+    if not _HAS_LETTER_RE.search(text):
+        return False
+    if upper_ratio(text) < PROSE_HEADER_MIN_UPPER:
+        return False
+    return parse_label(text) is None
+
+
 def collect_candidates(
     paras: Sequence[StyledPara],
     analysis: QuotationAnalysis,
     *,
     unit_heads: frozenset[str] = frozenset(),
+    prose_form_indices: frozenset[int] = frozenset(),
 ) -> tuple[Candidate, ...]:
-    """Parse every non-empty paragraph into a (possibly empty) candidate."""
+    """Parse every non-empty paragraph into a (possibly empty) candidate.
+
+    ``prose_form_indices`` names the paragraphs a referee has **already
+    confirmed** as section headers (A-H.1). It is empty by default and empty
+    under ``--referee=none``, which is what makes this function's answer — and
+    every tree built from it — identical to Cycle 8c's on that path.
+    """
     out: list[Candidate] = []
     for para in paras:
         if para.is_empty:
@@ -200,6 +295,7 @@ def collect_candidates(
                 style=style_level(para),
                 quoted=analysis.is_quoted(para.index),
                 text=text,
+                prose_form=para.index in prose_form_indices,
             )
         )
     return tuple(out)
@@ -269,7 +365,55 @@ def unify_levels(
         if not candidate.is_candidate:
             continue
 
+        # A-H.4. A referee-confirmed prose header parents whatever runs through
+        # it. It clears the stack and opens at depth 1 under a key unique to
+        # itself, so two of them are never read as a series — `RELATÓRIO` and
+        # `CONCLUSÃO` are not `1.` and `2.` of anything.
+        #
+        # Checked before `style`, though the two are mutually exclusive by the
+        # gate in `is_prose_form_header`, because that exclusivity belongs to
+        # the generator and this loop should not depend on it holding.
+        if candidate.prose_form and candidate.style is None:
+            # **A confirmed prose header never outranks a styled one.** Where
+            # the document declares outline levels, those are the author's own
+            # statement of its structure and a referee's answer must slot
+            # *inside* them, not above. So the header opens directly beneath
+            # the innermost styled section still on the stack, and only becomes
+            # a depth-1 division when there is none — which is the
+            # `par_cosit_26` case this amendment was written for, where Word
+            # declares nothing at all.
+            #
+            # Measured on `sumula_stj_125` under an adversarial referee: without
+            # this, its 7 cases × 4 styled subsections collapse into 48 (and,
+            # with only the styled branch anchored, into 13 with publication
+            # dates parenting the subsections). With it, the styled tree is
+            # untouched whatever the referee says.
+            styled_open = next(
+                (o for o in reversed(stack) if o.key[0] == "style"), None
+            )
+            depth = styled_open.depth + 1 if styled_open is not None else 1
+            while stack and stack[-1].depth >= depth:
+                stack.pop()
+            stack.append(_Open(("prose", candidate.index), depth, ()))
+            out.append(
+                Assignment(
+                    index=candidate.index,
+                    depth=depth,
+                    kind=section_kind(None, depth),
+                    label=None,
+                    style=None,
+                    heading=candidate.text.strip() or None,
+                    score=W_PROSE_HEADER_CONFIRMED,
+                    signals=("prose_form", "referee_confirmed"),
+                )
+            )
+            previous_depth = depth
+            continue
+
         if candidate.style is not None:
+            # A styled heading always reclaims its own rank, popping any prose
+            # header that opened beneath it (A-H.4). Word's declaration is the
+            # stronger evidence and must not be displaced by a referee's.
             depth = style_rank[candidate.style]
             while stack and stack[-1].depth >= depth:
                 stack.pop()
@@ -301,9 +445,26 @@ def unify_levels(
             if len(label.value) == 1:
                 if not top_ok:
                     continue
-                depth = 1
-                key: tuple = ("numeric", ())
-                stack = []
+                # A-H.4. A top-level numeric normally *is* the top level, and
+                # resets the stack. But when a confirmed prose header is open,
+                # the series runs underneath it: `par_cosit_26` numbers `2.` …
+                # `18.` inside RELATÓRIO and continues `19.` inside CONCLUSÃO,
+                # so the numbering is evidence about the items, not about the
+                # divisions holding them. Anchor to the header rather than
+                # emptying the stack, and the parenting the user asked for
+                # falls out with no change to any other branch.
+                prose_open = next(
+                    (o for o in reversed(stack) if o.key[0] == "prose"), None
+                )
+                if prose_open is not None:
+                    depth = prose_open.depth + 1
+                    key: tuple = ("numeric", ())
+                    while stack and stack[-1].depth >= depth:
+                        stack.pop()
+                else:
+                    depth = 1
+                    key = ("numeric", ())
+                    stack = []
             else:
                 parent = label.value[:-1]
                 anchor = next(
@@ -432,23 +593,34 @@ def demote_numbered_containers(
         return tuple(assignments)
 
     result = list(assignments)
+    # A-H.4. A referee-confirmed prose header sits *inside* the styled tree, so
+    # it must not break a styled run in half — that would silently disable this
+    # rule for the rest of the document. Measured on `sumula_stj_125` under an
+    # adversarial referee: one confirmed `DJ 22.08.1994` between two `Heading 1`
+    # blocks split the 38-heading run and left all 38 at depth 1, undoing A-4.3
+    # entirely. Prose headers are therefore skipped over when the run is
+    # collected, and are never themselves demoted — they are already positioned
+    # relative to the styled heading above them.
+    demotable = [i for i, a in enumerate(result) if "prose_form" not in a.signals]
+
     start = 0
-    while start < len(result):
-        depth = result[start].depth
+    while start < len(demotable):
+        depth = result[demotable[start]].depth
         end = start
         while (
-            end < len(result)
-            and result[end].depth == depth
-            and result[end].style is not None
+            end < len(demotable)
+            and result[demotable[end]].depth == depth
+            and result[demotable[end]].style is not None
         ):
             end += 1
-        run = result[start:end]
+        run = [result[i] for i in demotable[start:end]]
         if len(run) >= MIN_DEMOTION_RUN:
             flags = [_is_numbered_heading(texts.get(a.index, "")) for a in run]
             if flags[0] and sum(flags) >= 2 and sum(1 for f in flags if not f) >= 1:
                 for offset, (assignment, numbered) in enumerate(zip(run, flags)):
                     if not numbered:
-                        result[start + offset] = replace(
+                        index = demotable[start + offset]
+                        result[index] = replace(
                             assignment,
                             depth=depth + 1,
                             kind="subsecao",

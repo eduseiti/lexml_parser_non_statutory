@@ -55,8 +55,17 @@ REFEREE_MIN_CONFIDENCE = 0.60
 #: abstains — a referee inventing a third answer is a referee to ignore.
 OWN_ARTICULATION_VERDICTS: tuple[str, ...] = ("own", "quoted")
 
-#: The vocabulary of ``is_heading``.
-HEADING_VERDICTS: tuple[str, ...] = ("heading", "prose")
+#: The vocabulary of ``is_heading`` (A-H.2). ``"secao"`` **confirms** that the
+#: paragraph opens a thematic division of the document; ``"nao"`` **vetoes**.
+#:
+#: It was ``("heading", "prose")`` until amendment A-H.2, and the rename is the
+#: point rather than cosmetic. That question was typographic — *is this set like
+#: a title, or is it an emphasised phrase?* — and put live to the corpus it
+#: answered "heading" for `Fl. 9 DF COSIT RFB` at 0.95 and for the signatory's
+#: name at 0.80, because both **are** set like titles. The question the tree
+#: needs is structural, and a vocabulary naming typographic roles invites the
+#: typographic answer.
+HEADING_VERDICTS: tuple[str, ...] = ("secao", "nao")
 
 #: The vocabulary of ``quotation_boundary`` (A-Q.3). Two answers, and the
 #: question is only ever asked about a candidate the deterministic generator
@@ -126,8 +135,19 @@ class Referee(Protocol):
     def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
         """Is ``excerpt`` this document's own article, or one it quotes?"""
 
-    def is_heading(self, para: str, ctx: str) -> Verdict:
-        """Is ``para`` a heading, or an emphasised sentence?"""
+    def is_heading(self, para: str, ctx: str, next_ctx: str = "") -> Verdict:
+        """Does ``para`` open a thematic division of the document (A-H.2)?
+
+        Asked **only** about a paragraph the deterministic prose-form gate
+        already proposed, so — like ``quotation_boundary`` — it confirms or
+        vetoes and can never volunteer a header.
+
+        ``next_ctx`` is the following paragraph, and it is not padding: a
+        heading is defined by what follows it as much as by what precedes it.
+        ``CONCLUSÃO`` followed by ``19. A cessão de direitos…`` reads as a
+        heading; ``COORDENADOR-GERAL DA COSIT`` followed by a disclaimer does
+        not.
+        """
 
     def section_kind(self, label: str, heading: str) -> Verdict:
         """What kind of section does ``label``/``heading`` name?"""

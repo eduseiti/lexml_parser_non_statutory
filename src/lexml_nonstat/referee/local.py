@@ -143,8 +143,8 @@ class LocalReferee:
     def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
         return self.ask("own_articulation", excerpt, ctx)
 
-    def is_heading(self, para: str, ctx: str) -> Verdict:
-        return self.ask("heading", para, ctx)
+    def is_heading(self, para: str, ctx: str, next_ctx: str = "") -> Verdict:
+        return self.ask("heading", para, ctx, next_ctx)
 
     def section_kind(self, label: str, heading: str) -> Verdict:
         return self.ask("section_kind", label, heading)
@@ -177,14 +177,16 @@ class LocalReferee:
             "-",
         ]
 
-    def ask(self, kind: str, excerpt: str, ctx: str = "") -> Verdict:
+    def ask(
+        self, kind: str, excerpt: str, ctx: str = "", next_ctx: str = ""
+    ) -> Verdict:
         """Adjudicate one question locally. Never raises."""
         self.last_cache_hit = False
         # The **resolved** path, not the basename: `models/q4/qwen2.5-7b.gguf`
         # and `models/q8/qwen2.5-7b.gguf` are the ordinary quantisation layout,
         # they answer differently, and keying on the filename alone would serve
         # one model's verdicts for the other.
-        key = cache_key(f"local:{self.model_path}", kind, excerpt, ctx)
+        key = cache_key(f"local:{self.model_path}", kind, excerpt, ctx, next_ctx)
 
         if self.cache is not None:
             cached = self.cache.get(key)
@@ -192,14 +194,16 @@ class LocalReferee:
                 self.last_cache_hit = True
                 return cached
 
-        verdict = self._call(kind, excerpt, ctx)
+        verdict = self._call(kind, excerpt, ctx, next_ctx)
         if self.cache is not None and not verdict.abstained:
             self.cache.put(key, verdict, meta={"model": str(self.model_path), "kind": kind})
         return verdict
 
-    def _call(self, kind: str, excerpt: str, ctx: str) -> Verdict:
+    def _call(
+        self, kind: str, excerpt: str, ctx: str, next_ctx: str = ""
+    ) -> Verdict:
         try:
-            system, user = build_prompt(kind, excerpt, ctx)
+            system, user = build_prompt(kind, excerpt, ctx, next_ctx)
         except KeyError:
             return Verdict.abstain(f"no prompt template for decision kind {kind!r}")
 

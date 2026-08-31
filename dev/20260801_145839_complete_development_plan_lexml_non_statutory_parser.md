@@ -1924,3 +1924,72 @@ record's §8 counter-argument — whether multi-norm quotation runs are common
 enough in the 300+ unseen documents to justify A-Q.3–A-Q.6, which **Cycle 9's
 corpus scale-out is the thing that will answer**, now with `runs` in place to
 measure it.
+
+---
+
+## 17. Amendment Log — 2026-08-31 Cycle 8d: unlabelled section headers
+
+Source: `docs/20260830_235814_unlabelled_section_headers_referee_detection_analysis.md`,
+adopting its deliverables F-1 … F-8 as **A-H.1 … A-H.5**, with the user's
+answers to its §8 open questions Q-1 … Q-3 (and the analysis's Q-3 ordering
+question) taken before implementation.
+
+Placement: a **new Cycle 8d**, between Cycle 8c and Cycle 9, continuing the
+interstitial run the 2026-08-30 referee configuration amendment opened. Cycle 9
+is **not started and is not begun by this work**.
+
+Record: `dev/20260801_145839_complete_development_plan_lexml_non_statutory_parser/20260831_000406_cycle_8d_report.md`.
+
+**The defect this closes.** A paragraph that is a section header **by meaning
+alone** could never open a section. `Candidate.is_candidate` admitted a
+paragraph only on Word's outline level or a parseable rótulo — two *formal*
+routes — so `par_cosit_26`'s `RELATÓRIO` and `CONCLUSÃO` fell through into body
+prose, `CONCLUSÃO` attaching to the *preceding* header (`18.1.`) and item `19.`
+becoming its sibling rather than its child. The paragraph carries
+`style='Normal'`, `outline_level=None`, `bold=False`, `indent_effective=0` —
+formatting **byte-for-byte identical** to `Fl. 7 DF COSIT RFB` and to the
+signatory's name. No deterministic formatting rule can separate them, because
+there is no formatting difference to read. `sumula_stj_125` gets the *same
+words* right, on `Heading 1`; the gap is documents whose conversion destroyed
+the styling, which is most of the corpus and presumably most of the 300+.
+
+| ID | Section(s) | Amendment |
+|---|---|---|
+| A-H.1 | §8 Cycle 4, §9.2 (invariant #8) | **A third admission route: the prose-form candidate.** A paragraph that is typographically distinctive (≤7 words, ≤60 chars, ≥85 % uppercase letters, in `Segmentation.body`, unquoted, unstyled, unlabelled) is *proposed* at `PROSE_HEADER_RULE_CONFIDENCE = 0.55` — deliberately **below** `FLAG_THRESHOLD` (0.60), the `BOUNDARY_RULE_CONFIDENCE` precedent. The gate is intentionally **over-inclusive**: it proposes **31 candidates across 5 samples** for **6** true headers, because the next stage can only ever *remove*. With `--referee=none` nothing is confirmed and **every tree is byte-identical to Cycle 8c's** — invariant #8 for free |
+| A-H.2 | §7.1, §7.3 | **The `heading` question is rewritten, and its vocabulary with it: `("heading","prose")` → `("secao","nao")`.** The existing prompt was measured **unusable**, not merely imperfect: put live to `deepseek-v4-flash` over `par_cosit_26`'s 17 uppercase paragraphs it answered "heading" to **15**, including `Fl. 9 DF COSIT RFB` at 0.95 and the signatory's name at 0.80. It asks a **typographic** question ("title, or emphasised phrase?") when the tree needs a **structural** one. The replacement asks whether the paragraph opens a thematic division of the document's own reasoning, names the five negative classes the corpus actually contains (page artifacts, letterhead, signature blocks, form-field labels, emphasised prose), and supplies **both** neighbours — a heading is defined by what follows it as much as by what precedes it. Measured **31/31 correct** corpus-wide. `is_heading` gains `next_ctx`; `cache_key` gains it too, appended last so existing keys with an empty value do not move |
+| A-H.3 | §7.3 | **Confirm-only, exactly as A-Q.3.** The rule verdict is `"nao"` at 0.55, so a referee's *confirmation* is the override. The referee is asked only about candidates the deterministic generator already proposed, and can therefore veto or confirm but never volunteer — no answer, however confident or wrong, can fabricate a citable unit with its own URN. Asserted as an attack: an adversarial referee answering `"secao"` at 1.0 to every question changes no sample beyond the real candidates, and changes `sumula_stj_125` not at all |
+| A-H.4 | §8 Cycle 4, §5.1, §5.2 | **A confirmed header parents the series that runs through it.** It clears the stack, opens at depth 1 with a key unique to itself, and a top-level numeric then anchors *beneath* it rather than resetting the stack. So `par_cosit_26`'s `2.`–`18.1.` become descendants of `RELATÓRIO` and `19.` a child of `CONCLUSÃO` — the shape the user reported as correct. **This deepens the tree by one level and moves every body `id` on that sample, in both emitters and in `segments`.** *Decided with the user (Q-1), with the golden churn stated in advance.* Score `W_PROSE_HEADER_CONFIRMED = 0.8`, matching `W_UNIT_SERIES`: strong, but not style-strong |
+| A-H.5 | §9.2 (invariant #2) | **The header's text moves to `heading`; it is not also left as a `<p>`.** `_assemble` already drops a header paragraph from the body, and `leaf_texts` already counts `nomeAgrupador` as text-bearing, so conservation stays arithmetic with **no emitter change at all**. This is A-6.4's rule (a `Caput`'s echoed `Rotulo`) applied to a second construct, and it is asserted on the character multiset per A-Q.6, not assumed |
+
+**Decisions taken with the user before implementing (2026-08-31):**
+
+1. **Parent, not sibling** (Q-1) — the load-bearing choice, accepted with its
+   golden churn stated first.
+2. **Confirm-only**, not a referee free to volunteer headers (Q-2).
+3. **Vocabulary replaced** with `("secao","nao")` (Q-3), a major change to a
+   ratified constant, confirmed in advance.
+4. **Proceed before the running-header work** — the ~13 `Fl. n` / footer
+   artifacts are proposed and correctly vetoed, costing questions rather than
+   correctness; `docs/20260830_205825_…` stays a separate later cycle.
+
+**A dead question brought to life.** `Referee.is_heading` had been declared in
+the protocol since Cycle 4b, implemented in all three backends, prompted,
+cached and covered by four test modules — and **no production code ever called
+it**. The infrastructure was built and never wired up. That is why this cycle
+is small: the transport, cache, adjudication, telemetry, override accounting
+and fixture conventions all already existed and were tested. What was missing
+was a *generator* of candidates to ask about, and a prompt worth asking.
+
+**Two true positives the source record never saw**, found by the corpus census
+this cycle ran before implementing: `sumula_stj_125` block 371
+`VOTO VENCIDO EM PARTE` and `sumula_carf_42` block 2 `ACÓRDÃOS PARADIGMAS`.
+The record's estimate of the candidate surface (one sample) was also wrong; it
+is **7 samples, 33 candidates**.
+
+**Still open, and explicitly not decided here:** whether the 33 verdicts
+generalise to the 300+ unseen documents. The corpus is 15 samples standing in
+for them, and the argument that the *negative classes* generalise even though
+the samples do not is a design argument, not a measurement — **Cycle 9's corpus
+scale-out is the thing that will answer it.** Also unchanged and still open: the
+running-header/footer artifact work (`docs/20260830_205825_…`), and LLM-doc §8
+questions 1, 3, 4 and 5.

@@ -287,6 +287,28 @@ def _parse_json(model, rendered, warnings, written) -> dict[str, Any]:
     }
 
 
+def _nested_hint(rendered) -> str:
+    """Say when the nested emitter was available and simply not chosen.
+
+    A reader who sees `Bloco nome="nivel"` in the output and knows the
+    maintainers' recursive `AgrupamentoHierarquico` exists has no way, from the
+    artifact alone, to tell "this parser cannot nest" from "you did not ask it
+    to". `--emitter=auto` follows the route (A-R.7) and the route says
+    `generico`, so the flat emitter is correct *and* surprising. One line
+    removes the ambiguity.
+    """
+    if rendered.emitter != "generico":
+        return ""
+    try:
+        from .validate import probe_capabilities
+
+        if not probe_capabilities(generation="proposed").nested_agrupamento:
+            return ""
+    except Exception:  # noqa: BLE001 - a hint must never fail a parse
+        return ""
+    return "  (generico-aninhado available: --emitter=generico-aninhado --generation=proposed)"
+
+
 def _parse_text_summary(model, rendered, written) -> str:
     viability = model.viability
     lines = [
@@ -295,7 +317,7 @@ def _parse_text_summary(model, rendered, written) -> str:
         f"profile    : {model.profile}",
         f"route      : {model.route}  (confidence "
         f"{float(getattr(viability, 'confidence', 0.0)):.2f})",
-        f"emitter    : {rendered.emitter}",
+        f"emitter    : {rendered.emitter}{_nested_hint(rendered)}",
         f"hierarchy  : {'flat' if getattr(model.body, 'flat', True) else 'structured'}"
         f"  (confidence {float(getattr(model.body, 'confidence', 0.0)):.2f})",
         f"referee    : {'consulted' if getattr(viability, 'referee_consulted', False) else 'not consulted'}"

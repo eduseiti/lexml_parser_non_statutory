@@ -61,12 +61,31 @@ _TEMPLATES: dict[str, str] = {
         'Responda "verdict": "own" se for articulação própria do documento, '
         'ou "quoted" se for citação de norma externa.'
     ),
+    # A-H.2. The previous template asked a *typographic* question — "é um
+    # TÍTULO de seção, ou uma frase enfatizada?" — and was measured unusable:
+    # over `par_cosit_26`'s 17 uppercase paragraphs it answered "heading" to
+    # 15, including `Fl. 9 DF COSIT RFB` at 0.95. It was not wrong about
+    # typography; a folio stamp *is* set like a heading. It was the wrong
+    # question. This one asks the structural role, names the negative classes
+    # the corpus actually contains, and supplies both neighbours.
     "heading": (
-        "O trecho abaixo é um TÍTULO de seção, ou uma frase enfatizada dentro "
-        "do texto corrido?\n\n"
-        "Parágrafo anterior (contexto):\n{ctx}\n\n"
+        "Em um documento jurídico não articulado, um CABEÇALHO DE SEÇÃO abre "
+        "uma divisão temática do raciocínio do próprio documento "
+        "(ex.: RELATÓRIO, FUNDAMENTOS, CONCLUSÃO, VOTO, EMENTA).\n\n"
+        "NÃO são cabeçalhos de seção:\n"
+        "- artefatos de página: número de folha, rodapé de autenticação, URL, "
+        '"Fl. 9", "Página 2 de 7", código de localização;\n'
+        "- timbre ou órgão emissor no alto da primeira página "
+        "(ex.: MINISTÉRIO DA FAZENDA, nome de coordenação);\n"
+        "- nome de pessoa e cargo em bloco de assinatura;\n"
+        "- rótulo de campo de formulário (ex.: DOMICÍLIO FISCAL, INTERESSADO);\n"
+        "- título de norma citada (ex.: LEI Nº 12.618, DE 2012);\n"
+        "- frase enfatizada dentro do texto corrido.\n\n"
+        "Contexto — parágrafo anterior:\n{ctx}\n\n"
+        "Contexto — parágrafo seguinte:\n{next}\n\n"
         "Trecho em julgamento:\n{excerpt}\n\n"
-        'Responda "verdict": "heading" ou "prose".'
+        'Responda "verdict": "secao" se o trecho abre uma seção temática do '
+        'documento, ou "nao" caso contrário.'
     ),
     "quotation_boundary": (
         "O documento anunciou que vai transcrever trechos de VÁRIAS normas "
@@ -100,8 +119,15 @@ def truncate(text: str, limit: int) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
-def build_prompt(kind: str, excerpt: str, ctx: str = "") -> tuple[str, str]:
+def build_prompt(
+    kind: str, excerpt: str, ctx: str = "", next_ctx: str = ""
+) -> tuple[str, str]:
     """Return ``(system, user)`` for one question.
+
+    ``next_ctx`` is the *following* paragraph, used only by the ``heading``
+    template (A-H.2). Templates that do not name ``{next}`` simply ignore it —
+    ``str.format`` discards unused keywords — so the other three questions send
+    exactly the bytes they always did, and their cache keys do not move.
 
     Raises:
         KeyError: if ``kind`` is not a known decision kind — better than
@@ -111,4 +137,5 @@ def build_prompt(kind: str, excerpt: str, ctx: str = "") -> tuple[str, str]:
     return SYSTEM_PROMPT, template.format(
         excerpt=truncate(excerpt, MAX_EXCERPT_CHARS),
         ctx=truncate(ctx, MAX_CONTEXT_CHARS) or "(nenhum)",
+        next=truncate(next_ctx, MAX_CONTEXT_CHARS) or "(nenhum)",
     )

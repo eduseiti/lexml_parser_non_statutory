@@ -15,7 +15,7 @@ become a live call on the next run, which is precisely what §9.3 forbids.
 
 ## What is here
 
-Exactly the seven decisions the 15-sample corpus flags — every paragraph whose
+Exactly the **thirty-eight** decisions the 15-sample corpus flags — every paragraph whose
 quotation verdict the deterministic rules reached with confidence below
 `FLAG_THRESHOLD` (0.60), plus (since amendment A-Q.3) every candidate quotation
 boundary, which is flagged by construction:
@@ -29,6 +29,47 @@ boundary, which is flagged by construction:
 | `9eb516e8…` | `par_cosit_26_20000629` | `p#63` | continuation (0.55) | **boundary** |
 | `d96f0ede…` | `par_cosit_26_20000629` | `p#69` | continuation (0.55) | **boundary** |
 | `31a87dde…` | `par_cosit_26_20000629` | `p#76` | continuation (0.55) | **boundary** |
+
+…plus, since amendment **A-H.1**, **31 `heading` decisions** — one per
+prose-form header candidate. They are summarised rather than listed one by one,
+because the interesting fact about them is the ratio:
+
+| Sample | Candidates | `secao` | `nao` |
+|---|---|---|---|
+| `par_cosit_26_20000629` | 15 | `RELATÓRIO`, `FUNDAMENTOS LEGAIS`, `CONCLUSÃO`, `ORDEM DE INTIMAÇÃO` | 6× `Fl. n DF COSIT RFB`, the letterhead block (`COSIT`, `MINISTÉRIO DA FAZENDA`, `0 SECRETARIA DA RECEITA FEDERAL`, `COORDENAÇÃO-GERAL…`), `DOMICÍLIO FISCAL`, `COORDENADOR-GERAL DA COSIT` |
+| `sumula_stj_125` | 10 | `VOTO VENCIDO EM PARTE` | 7× `DJ dd.mm.yyyy`, `RECURSO ESPECIAL N. 47.692-SP`, `ANEXO` |
+| `sistema_…_CARNE_LEAO` | 4 | — | `NIT/PIS`, `CTPS`, `CBO`, `CPF` |
+| `parecer_93_…` | 1 | — | `LEI NO 12.618, DE 2012` |
+| `sumula_carf_42` | 1 | `ACÓRDÃOS PARADIGMAS` | — |
+| **Total** | **31** | **6** | **25** |
+
+> **Amendment A-H.1 (2026-08-31) added these thirty-one**, of a fourth kind:
+> `heading`. They are the corpus's whole prose-form candidate surface — every
+> unlabelled, unstyled, upper-case short paragraph inside `Segmentation.body`.
+> The generator that proposes them is **deliberately over-inclusive**, because
+> the referee can only ever *remove*: 31 proposed, 6 confirmed. The 25
+> refusals are not waste — they are the mechanism. A folio stamp and a section
+> header are typographically identical in `par_cosit_26`, and the refusals are
+> what keep the former out of the tree.
+>
+> As with the boundary fixtures, a confirmation is recorded as an **override**:
+> the rule verdict is `nao` at `PROSE_HEADER_RULE_CONFIDENCE` (0.55, below
+> `FLAG_THRESHOLD`), so nothing becomes a section without a referee saying so.
+> With `--referee=none` the generator is not even run, and all 135 goldens are
+> byte-identical.
+>
+> **The vocabulary changed with them**: `("heading","prose")` → `("secao","nao")`
+> (A-H.2). The old prompt asked a *typographic* question and, put live to the
+> corpus, called `Fl. 9 DF COSIT RFB` a heading at confidence 0.95 and the
+> signatory's name one at 0.80 — 15 of 17 wrong on `par_cosit_26` alone. The
+> replacement asks the *structural* question and scores 31/31. A stale fixture
+> answering `heading` or `prose` is now outside the vocabulary and abstains;
+> `test_no_heading_fixture_answers_in_the_old_vocabulary` fails on one rather
+> than letting a document quietly lose a section.
+>
+> **`cache_key` gained `next_ctx`**, appended **only when non-empty**, so the
+> seven keys above did **not** move — asserted by
+> `test_cache_key_unchanged_without_next_ctx` rather than assumed.
 
 > **Amendment A-Q.3 (2026-08-30) added the last three**, of a new kind:
 > `quotation_boundary`. They are the three points where `par_cosit_26`'s item
@@ -81,9 +122,20 @@ is right but unsure — not to rescue one that is wrong. A future document where
 the rules *are* wrong is what the override path exists for, and
 `tests/unit/test_referee_protocol.py` exercises it directly.
 
-## Provenance — these are hand-authored
+## Provenance
 
-They were **not** recorded from a live provider. No API key was available when
+**The 31 `heading` fixtures are different from the other seven, and their
+`meta.origin` says so.** Their *verdicts and confidences were measured against a
+live provider* — `deepseek-v4-flash` at temperature 0, during Cycle 8d's
+feasibility probe (`docs/20260830_235814_…` §5) — and then transcribed by hand
+into these files; only the `rationale` strings are written by us. That probe is
+the evidence for A-H.2, so recording what the model actually said is the point:
+a hand-invented verdict would have made the 31/31 measurement unfalsifiable.
+They were not *written* by a live run, so `read_only=True` still holds and no
+test makes a call.
+
+**The seven older fixtures are hand-authored** and were **not** recorded from a
+live provider. No API key was available when
 Cycle 4b was built, and the cycle's decision (taken with the user) was to author
 them by hand rather than make an outbound call, because what the test needs to
 prove is the *plumbing*: cache hit ⇒ zero calls, verdict ⇒ adjudication ⇒

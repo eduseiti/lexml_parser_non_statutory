@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Timbre/órgão emissor no alto da página, não cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#5",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "COSIT",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "Fl. 6 DF COSIT RFB",
+    "next_ctx": "Fls. 1"
+  }
+}

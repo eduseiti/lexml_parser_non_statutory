@@ -38,7 +38,7 @@ class NullReferee:
     def is_own_articulation(self, excerpt: str, ctx: str) -> Verdict:
         return Verdict.abstain(_REASON)
 
-    def is_heading(self, para: str, ctx: str) -> Verdict:
+    def is_heading(self, para: str, ctx: str, next_ctx: str = "") -> Verdict:
         return Verdict.abstain(_REASON)
 
     def section_kind(self, label: str, heading: str) -> Verdict:

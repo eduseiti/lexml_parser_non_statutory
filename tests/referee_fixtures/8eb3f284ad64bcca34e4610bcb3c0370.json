@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 1.0,
+    "rationale": "Abre a conclusão do parecer; o item 19 que se segue é o seu conteúdo."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#92",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "CONCLUSÃO",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "18.1. Em função da natureza jurídica do crédito cedido, ocorrerá a incidência de imposto de renda retido na fonte, quando cabível, no momento do pagamento do precatório, considerado como tal a homologação da compensação do precatório com débitos do cessionário para com a Fazenda Pública.",
+    "next_ctx": "19. A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita à apuração de ganho de capital, sobre o qual incidirá imposto de renda na forma da legislação pertinente à matéria, observado o disposto neste parecer."
+  }
+}

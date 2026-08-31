@@ -71,8 +71,17 @@ def doc_name(stem: str) -> str:
 # because `assess_viability` infers a hierarchy when it is not handed one
 # (`routing/viability.py:404`), and boundaries are raised while the tree builds.
 
+#: **Refereeless** — §9.3's pinned default. A-H.1's prose-form candidates are
+#: generated only when a referee is configured (`_confirm_prose_headers`
+#: returns an empty set otherwise), so this pair is exactly what it was before
+#: that amendment. That is invariant #8 visible as a number.
 CORPUS_TOTAL = 50
 CORPUS_RULE_ONLY = 43
+
+#: **With a referee active.** The 31 header questions are asked only on this
+#: path, which is why the two totals now differ — and why they are two
+#: constants rather than one.
+CORPUS_TOTAL_REFEREED = 81
 
 #: Flagged `own_articulation` decisions — Cycle 4b's original four.
 CORPUS_FLAGGED_ARTICULATION = 4
@@ -83,7 +92,25 @@ CORPUS_FLAGGED_ARTICULATION = 4
 #: rather than changing norms — so it is never put to a referee.
 CORPUS_FLAGGED_BOUNDARY = 3
 
+#: Flagged `heading` decisions — amendment A-H.1's prose-form candidates.
+#: Thirty-one, spread over five documents, and **flagged by construction**: the
+#: typographic gate sits at 0.55, below `FLAG_THRESHOLD`, so every candidate it
+#: proposes becomes a question. Deliberately over-inclusive — only six are
+#: confirmed — because the referee can only ever remove, never volunteer.
+CORPUS_FLAGGED_HEADING = 31
+
+#: Flagged, refereeless: the headings are not generated, so they are not here.
 CORPUS_FLAGGED = CORPUS_FLAGGED_ARTICULATION + CORPUS_FLAGGED_BOUNDARY
+
+#: Flagged with a referee active.
+CORPUS_FLAGGED_REFEREED = CORPUS_FLAGGED + CORPUS_FLAGGED_HEADING
+
+#: How many of the 31 header candidates the fixtures **confirm**: `RELATÓRIO`,
+#: `FUNDAMENTOS LEGAIS`, `CONCLUSÃO` and `ORDEM DE INTIMAÇÃO` in `par_cosit_26`,
+#: `VOTO VENCIDO EM PARTE` in `sumula_stj_125`, `ACÓRDÃOS PARADIGMAS` in
+#: `sumula_carf_42`. The other 25 are refused, and the refusals are what keep
+#: folio stamps, letterhead and signature blocks out of the tree.
+CORPUS_CONFIRMED_HEADING = 6
 
 #: The only four decisions in 15 documents that fall below `FLAG_THRESHOLD`,
 #: with the substring of the reason each must carry. Three are plan §2.6's
@@ -615,22 +642,26 @@ def test_plan_identity_holds_with_an_active_referee(refereed_log):
     report = DecisionsReport.from_log(refereed_log)
 
     assert report.check() is None, report.check()
-    assert report.flagged == CORPUS_FLAGGED
-    assert report.consulted == CORPUS_FLAGGED
+    assert report.flagged == CORPUS_FLAGGED_REFEREED
+    assert report.consulted == CORPUS_FLAGGED_REFEREED
     assert report.agreed + report.overrode == report.flagged
-    assert report.agreed == CORPUS_FLAGGED_ARTICULATION, (
-        "every own_articulation fixture confirms the rule"
-    )
+    # A-H.1 changed what `agreed` is mostly made of. It is now the four
+    # `own_articulation` confirmations plus the **25 header candidates the
+    # referee refused** — a refusal agrees with the rule verdict `nao`, and
+    # refusing is what an over-inclusive generator needs its referee to do.
+    assert report.agreed == CORPUS_FLAGGED_ARTICULATION + (
+        CORPUS_FLAGGED_HEADING - CORPUS_CONFIRMED_HEADING
+    ), "every own_articulation fixture confirms the rule; 25 of 31 headers are refused"
     # The boundary fixtures *do* override, and that is the mechanism working
     # rather than a referee disagreeing with a good rule: the rule verdict for
     # a candidate boundary is `continuation` (stay flat), and confirming the
     # boundary is precisely what an override is here. A-Q.3's inversion means
     # the referee can only move a candidate the rules already proposed.
-    assert report.overrode == CORPUS_FLAGGED_BOUNDARY
+    assert report.overrode == CORPUS_FLAGGED_BOUNDARY + CORPUS_CONFIRMED_HEADING
     assert report.abstained == 0
-    assert report.cache_hits == CORPUS_FLAGGED
+    assert report.cache_hits == CORPUS_FLAGGED_REFEREED
     assert report.cache_hit_pct == 100.0
-    assert report.total == CORPUS_TOTAL
+    assert report.total == CORPUS_TOTAL_REFEREED
 
 
 def test_check_detects_a_broken_identity():
@@ -742,9 +773,9 @@ def test_report_renders_every_section(refereed_log):
     """
     text = render_report(refereed_log)
 
-    assert "Decisions:" in text and str(CORPUS_TOTAL) in text
+    assert "Decisions:" in text and str(CORPUS_TOTAL_REFEREED) in text
     assert "Rule-only (confident):" in text and str(CORPUS_RULE_ONLY) in text
-    assert "Flagged:" in text and "(14.0%)" in text
+    assert "Flagged:" in text and "(46.9%)" in text
     assert "put to a referee:" in text
     assert "referee agreed:" in text and "referee overrode:" in text
     assert "referee abstained:" in text

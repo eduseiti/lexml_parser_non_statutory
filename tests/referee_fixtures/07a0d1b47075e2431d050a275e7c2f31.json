@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Título de norma citada, não cabeçalho de seção do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "parecer_93_2018_decor_cgu_agu",
+    "locator": "p#100",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "LEI NO 12.618, DE 2012",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "111 - NATUREZA JURÍDICA DO BENEFÍCIO ESPECIAL PREVISTO NO S r DO ART. 3º DA",
+    "next_ctx": "A respeito da natureza jurídica do beneficio especial, a Gerência Jurídica junto à FUNPRESP-EXE sustentou: \"o Beneficio Especial corresponde a uma compensação pelas contribuições vertidas ao Regime Próprio de Previdência Social pelo servidor público, no período anterior a alteração do regime previdenciário (opção prevista no art. 40, §16, da CF), em fitnção de contribuições realizadas sob uma base de contribuição superior à proteção que será efetivamente disponibilizada quando da ocorrência das necessidades sociais tuteladas. \""
+  }
+}

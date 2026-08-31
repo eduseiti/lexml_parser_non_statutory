@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Data de publicação (DJ), não cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "sumula_stj_125",
+    "locator": "p#182",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "DJ 27.06.1994",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "Ministro Humberto Gomes de Barros, Relator",
+    "next_ctx": "RELATÓRIO"
+  }
+}

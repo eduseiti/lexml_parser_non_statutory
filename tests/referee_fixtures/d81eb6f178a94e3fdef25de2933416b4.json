@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Artefato de página (número de folha), não cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#42",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "Fl. 9 DF COSIT RFB",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "Documento de 7 página(s) autenticado digitalmente. Pode ser consultado no endereço https://cav.receita.fazenda.gov.br/eCAC/publico/login.aspx pelo código de localização EP23.0118.14172.QC77. Consulte a página de autenticação no final deste documento.",
+    "next_ctx": "13. O Código Tributário Nacional - CTN (Lei nº 5.172, de 25 de outubro de 1966) estabelece em seu art. 123 que as convenções particulares não podem ser opostas à Fazenda Pública no que se refere à responsabilidade tributária, ou seja, os particulares podem pactuar o que desejarem desde que não deixem de pagar os tributos decorrentes."
+  }
+}

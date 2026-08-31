@@ -46,7 +46,7 @@ MODEL = "/nonexistent/models/qwen2.5-7b-instruct-q4_k_m.gguf"
 #: ``(method name, positional args, a verdict the kind's vocabulary allows)``
 PROTOCOL_METHODS = (
     ("is_own_articulation", ("Art. 2º Teste.", "Lei nº 7.713, de 1988 -"), "quoted"),
-    ("is_heading", ("CONCLUSÃO", "…"), "heading"),
+    ("is_heading", ("CONCLUSÃO", "…", "19. A cessão…"), "secao"),
     ("section_kind", ("I -", "DA COMPETÊNCIA"), "capitulo"),
 )
 

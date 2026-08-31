@@ -24,9 +24,22 @@ from .protocol import Verdict
 __all__ = ["RefereeCache", "cache_key"]
 
 
-def cache_key(model: str, kind: str, excerpt: str, ctx: str = "") -> str:
-    """A stable, filesystem-safe key for one question put to one model."""
-    payload = "\x1f".join((model, kind, excerpt, ctx)).encode("utf-8")
+def cache_key(
+    model: str, kind: str, excerpt: str, ctx: str = "", next_ctx: str = ""
+) -> str:
+    """A stable, filesystem-safe key for one question put to one model.
+
+    ``next_ctx`` (A-H.2) is **appended last, and only when non-empty**. It
+    changes the answer, so this module's own rule — the key covers everything
+    that could — requires it in the key; appending it conditionally is what
+    keeps the seven pre-8d fixtures from moving, since every one of them was
+    recorded with no following-paragraph context. Asserted, not assumed, by
+    `test_cache_key_unchanged_without_next_ctx`.
+    """
+    parts = [model, kind, excerpt, ctx]
+    if next_ctx:
+        parts.append(next_ctx)
+    payload = "\x1f".join(parts).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()[:32]
 
 

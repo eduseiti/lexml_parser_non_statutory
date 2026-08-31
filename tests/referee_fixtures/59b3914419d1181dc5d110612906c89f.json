@@ -1,0 +1,19 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.8,
+    "rationale": "Abre a divisão dispositiva do parecer, com a ordem de ciência."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "sample": "par_cosit_26_20000629",
+    "locator": "p#94",
+    "rule_verdict": "nao",
+    "rule_confidence": 0.55,
+    "excerpt": "ORDEM DE INTIMAÇÃO",
+    "origin": "verdict measured against a live provider (deepseek-v4-flash, temperature 0) during the Cycle 8d feasibility probe and transcribed by hand; rationale is hand-authored. See README.md",
+    "ctx": "19. A cessão de direitos representados por créditos líquidos e certos contra a Fazenda Pública está sujeita à apuração de ganho de capital, sobre o qual incidirá imposto de renda na forma da legislação pertinente à matéria, observado o disposto neste parecer.",
+    "next_ctx": "Dê-se ciência desta decisão."
+  }
+}

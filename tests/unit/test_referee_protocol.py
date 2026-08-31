@@ -454,4 +454,7 @@ def test_adversarial_referee_is_recorded_when_it_overrides():
 def test_vocabularies_are_closed():
     """A referee inventing a third answer is a referee to ignore."""
     assert OWN_ARTICULATION_VERDICTS == ("own", "quoted")
-    assert HEADING_VERDICTS == ("heading", "prose")
+    # A-H.2 replaced the typographic pair with a structural one. The rename is
+    # the point: asked "title or emphasised phrase?", the model called
+    # `Fl. 9 DF COSIT RFB` a heading at 0.95, because it *is* set like one.
+    assert HEADING_VERDICTS == ("secao", "nao")

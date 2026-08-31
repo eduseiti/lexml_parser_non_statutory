@@ -31,6 +31,7 @@ __all__ = [
     "Evidence",
     "W_LABEL_SERIES",
     "W_LABEL_SOLO",
+    "W_PROSE_HEADER_CONFIRMED",
     "W_STYLE",
     "W_UNIT_SERIES",
     "document_confidence",
@@ -45,6 +46,14 @@ W_UNIT_SERIES = 0.8
 #: A label with no series behind it. Deliberately below the threshold: on its
 #: own it is never enough to build a document's structure on.
 W_LABEL_SOLO = 0.25
+
+#: A prose-form header a referee confirmed (A-H.4). Matches `W_UNIT_SERIES`:
+#: strong evidence, but deliberately not `W_STYLE`-strong — Word declaring a
+#: heading remains the better witness than a model agreeing with a typographic
+#: guess. Comfortably above `CONFIDENCE_THRESHOLD`, so a document whose only
+#: structure is confirmed prose headers is still declared structured rather
+#: than flattened.
+W_PROSE_HEADER_CONFIRMED = 0.8
 
 #: Below this, the tree is discarded and the body is emitted flat.
 CONFIDENCE_THRESHOLD = 0.5

@@ -40,6 +40,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -79,13 +80,41 @@ PAR_COSIT_26_ARTICULATION = ("p#46", "p#47", "p#53")
 #: the next. Flagged by design — see `BOUNDARY_RULE_CONFIDENCE`.
 PAR_COSIT_26_BOUNDARY = ("p#63", "p#69", "p#76")
 
-#: Every flagged decision in `par_cosit_26`, **in the order they are recorded**.
-#: Boundaries come first because the hierarchy is built before the route is
-#: assessed, and `assess_viability` infers one when it is not handed one.
-PAR_COSIT_26_FLAGGED = PAR_COSIT_26_BOUNDARY + PAR_COSIT_26_ARTICULATION
+#: Amendment A-H.1's prose-form header candidates in the same document: every
+#: unlabelled, unstyled, upper-case short paragraph in the body. Deliberately
+#: **over-inclusive** — 15 proposed for 4 true headers — because the referee can
+#: only ever remove. Eleven of these fixtures answer `nao`: six folio stamps,
+#: the letterhead block, a form-field label and the signatory's cargo.
+PAR_COSIT_26_PROSE_HEADERS = (
+    "p#4", "p#5", "p#8", "p#9", "p#10", "p#12", "p#16", "p#21",
+    "p#32", "p#36", "p#42", "p#89", "p#92", "p#94", "p#98",
+)
 
-#: The fourth and last flagged decision in the whole corpus.
-PARECER_93_FLAGGED = ("p#36",)
+#: Every flagged decision in `par_cosit_26`, **in the order they are recorded**.
+#: Prose headers come first, then boundaries, then articulation: the hierarchy
+#: is built before the route is assessed, and within `build_tree` the header
+#: candidates are confirmed before the tree they may reshape is assembled.
+PAR_COSIT_26_FLAGGED = (
+    PAR_COSIT_26_PROSE_HEADERS + PAR_COSIT_26_BOUNDARY + PAR_COSIT_26_ARTICULATION
+)
+
+#: `parecer_93`'s two: one prose-form candidate (`LEI NO 12.618, DE 2012`, which
+#: the referee correctly refuses — a quoted law's title is not a section) and
+#: the one paragraph in its 415 that its declared quote band does not reach.
+PARECER_93_FLAGGED = ("p#100", "p#36")
+
+#: A-H.1's prose-form candidates in the other three samples that have any. All
+#: of `sumula_stj_125`'s ten are **refused** but one: seven `DJ dd.mm.yyyy`
+#: publication dates, a case number, and the bare `ANEXO` that A-3.3 records is
+#: not an annex here — leaving `VOTO VENCIDO EM PARTE` (p#371) as its single
+#: confirmed header. `CARNE_LEAO`'s four are form-field labels, all refused.
+#: `sumula_carf_42`'s one is confirmed.
+SUMULA_STJ_125_PROSE_HEADERS = (
+    "p#34", "p#86", "p#182", "p#221", "p#268",
+    "p#306", "p#347", "p#369", "p#370", "p#371",
+)
+CARNE_LEAO_PROSE_HEADERS = ("p#78", "p#79", "p#80", "p#83")
+SUMULA_CARF_42_PROSE_HEADERS = ("p#2",)
 
 #: A test key must not need an API key to be a real one.
 API_KEY = "test-key-not-a-secret"
@@ -626,7 +655,7 @@ def test_a_trailing_slash_in_the_base_url_does_not_double():
     "method,args,answer",
     [
         ("is_own_articulation", ("Art. 2º Teste.", "Lei nº 7.713 -"), "quoted"),
-        ("is_heading", ("CONCLUSÃO", "…"), "heading"),
+        ("is_heading", ("CONCLUSÃO", "…", "19. A cessão…"), "secao"),
         ("section_kind", ("I -", "DA COMPETÊNCIA"), "capitulo"),
     ],
 )
@@ -700,6 +729,22 @@ def test_par_cosit_26_resolves_from_recorded_fixture():
             assert record.agreed is True
             assert record.final_verdict == record.rule_verdict == "quoted"
             assert record.referee_verdict == "quoted"
+            continue
+
+        # Amendment A-H.1/A-H.3. Same confirm-only shape as a boundary: the
+        # rule verdict is `nao` — stay prose — and a confirmation *is* the
+        # override. Unlike the boundary candidates, most of these are refused:
+        # 11 of the 15 are folio stamps, letterhead, a form-field label or the
+        # signatory's cargo, and the referee saying `nao` leaves them exactly
+        # where the rules had them. That asymmetry is the point of an
+        # over-inclusive generator.
+        if record.kind == "heading":
+            assert record.locator in PAR_COSIT_26_PROSE_HEADERS
+            assert record.rule_verdict == "nao"
+            assert record.referee_verdict in ("secao", "nao")
+            assert record.final_verdict == record.referee_verdict
+            assert record.overridden is (record.referee_verdict == "secao")
+            assert record.cache_hit is True
             continue
 
         # Amendment A-Q.3. A boundary fixture *overrides* by design: the rule
@@ -777,33 +822,63 @@ def test_fixture_referee_over_whole_corpus():
 
     report = DecisionsReport.from_log(log)
     assert report.check() is None, report.check()
-    assert (report.total, report.rule_only, report.flagged) == (50, 43, 7)
+    # Amendment A-H.1 moved this census 50/43/7 → 81/43/38. Pinned **per kind**
+    # rather than loosened, following A-Q.3's precedent: the 31 new questions
+    # are all one kind, and a total alone could absorb a real change in any of
+    # the other three without anyone noticing.
+    assert (report.total, report.rule_only, report.flagged) == (81, 43, 38)
+    flagged_by_kind = Counter(r.kind for r in log if r.rule_flagged)
+    assert flagged_by_kind == {
+        "heading": 31,             # A-H.1's over-inclusive generator
+        "own_articulation": 4,     # §2.6's residual hard cases
+        "quotation_boundary": 3,   # A-Q.3's candidates
+    }
+    # Six of the 31 heading questions are confirmed; the other 25 are refused,
+    # and the refusals are what keep folio stamps out of the tree.
+    assert Counter(r.kind for r in log if r.overridden) == {
+        "heading": 6,
+        "quotation_boundary": 3,
+    }
     # Seven consulted; the four `own_articulation` fixtures agree, and the three
     # `quotation_boundary` fixtures confirm a boundary against a rule verdict of
     # `continuation`, which the report counts as an override (A-Q.3). The claim
     # that matters is the one above: **no route moved**.
-    assert (report.consulted, report.agreed, report.overrode) == (7, 4, 3)
+    # A-H.1 moved these too. `agreed` is now dominated by the 25 heading
+    # questions the referee *refused* — a refusal agrees with the rule verdict
+    # `nao`, which is exactly what an over-inclusive generator should produce.
+    assert (report.consulted, report.agreed, report.overrode) == (38, 29, 9)
     assert report.abstained == 0
-    assert report.cache_hits == 7
+    assert report.cache_hits == 38
 
     assert referee.calls == 0
-    assert referee.cache.hits == 7
+    assert referee.cache.hits == 38
     assert referee.cache.misses == 0, "every flagged question is recorded"
 
+    # A-H.1 widened this from two documents to five: the prose-form generator
+    # reaches any document with a short upper-case body paragraph, and three
+    # more samples have one. Enumerated per document rather than counted, so a
+    # candidate appearing in a *new* document fails loudly.
     flagged = {(r.doc, r.locator) for r in log if r.rule_flagged}
-    assert flagged == {
-        (f"{PAR_COSIT_26}.docx", locator) for locator in PAR_COSIT_26_FLAGGED
-    } | {(f"{PARECER_93}.docx", locator) for locator in PARECER_93_FLAGGED}
+    assert flagged == (
+        {(f"{PAR_COSIT_26}.docx", loc) for loc in PAR_COSIT_26_FLAGGED}
+        | {(f"{PARECER_93}.docx", loc) for loc in PARECER_93_FLAGGED}
+        | {("sumula_stj_125.docx", loc) for loc in SUMULA_STJ_125_PROSE_HEADERS}
+        | {
+            ("sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx", loc)
+            for loc in CARNE_LEAO_PROSE_HEADERS
+        }
+        | {("sumula_carf_42.docx", loc) for loc in SUMULA_CARF_42_PROSE_HEADERS}
+    )
 
 
 @pytest.mark.parametrize("name", SAMPLES)
 def test_the_referee_is_only_asked_about_flagged_decisions(name: str):
     """§7.3 constraint 1, per sample: a confident rule is never put to a vote.
 
-    43 of the corpus's 50 decisions never reach the referee. That ratio is the
-    cost model (§7.2 sizes the corpus at a dollar or three) *and* the safety
-    model: a referee that saw every decision could move one the rules already
-    knew the answer to.
+    43 of the corpus's 81 decisions never reach the referee (50 and 7 before
+    A-H.1 added 31 header questions). The ratio is the cost model (§7.2 sizes
+    the corpus at a dollar or three) *and* the safety model: a referee that saw
+    every decision could move one the rules already knew the answer to.
     """
     referee = fixture_referee()
     log = DecisionLog()

@@ -54,6 +54,7 @@ def adjudicate(
     rule_confidence: float,
     excerpt: str = "",
     ctx: str = "",
+    next_ctx: str = "",
     reason: str = "",
     referee: Any | None = None,
     log: DecisionLog | None = None,
@@ -95,7 +96,18 @@ def adjudicate(
             log.add(record)
         return rule_verdict, record
 
-    verdict = getattr(referee, method)(excerpt, ctx)
+    # Only `heading` takes a following-paragraph context (A-H.2). Passing it
+    # positionally to the others would break every referee written against the
+    # three-question protocol, so the extra argument is spent only where the
+    # protocol declares it — and a referee whose `is_heading` predates the
+    # amendment still works, by falling back to the two-argument call.
+    if next_ctx and kind == "heading":
+        try:
+            verdict = getattr(referee, method)(excerpt, ctx, next_ctx)
+        except TypeError:
+            verdict = getattr(referee, method)(excerpt, ctx)
+    else:
+        verdict = getattr(referee, method)(excerpt, ctx)
     if not isinstance(verdict, Verdict):
         # A referee that returns something else has broken the protocol. Treat
         # it exactly like a malformed API reply: abstain, keep the rule, say so.
