@@ -245,6 +245,8 @@ the corpus.
 
 ## Status
 
-Development follows a numbered plan in `dev/`; cycles 0–8 are complete and
-Cycle 9 (regression consolidation and corpus scale-out) is not yet started. See
-`dev/*/STATUS.md` for the current state.
+Development follows a numbered plan in `dev/`; cycles 0–8, 8c and 8d are
+complete. Two remain: **8e** (external reference URNs — resolving cited
+statutes to `urn:lex:` via the LexML linker, as an optional capability) and
+**9** (regression consolidation and corpus scale-out). See `dev/*/STATUS.md`
+for the current state.

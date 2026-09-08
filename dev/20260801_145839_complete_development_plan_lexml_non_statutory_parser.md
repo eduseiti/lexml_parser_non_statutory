@@ -1782,10 +1782,11 @@ A tracked, reviewable sequence — not a rewrite:
 
 ## 12. Cycle Summary
 
-Revised 2026-08-28 (§14). Cycle order:
+Revised 2026-08-28 (§14); interstitial cycles added 2026-08-30/31 (§15–§17)
+and 2026-09-08 (§18). Cycle order:
 
 ```
-0, 1, 2, 3, 4, 4b, 5, 5b, 6, 7, 8  ✅ complete  →  9
+0, 1, 2, 3, 4, 4b, 5, 5b, 6, 7, 8, 8c, 8d  ✅ complete  →  8e  →  9
                      └── 6b withdrawn; round-trip reader → 7
 ```
 
@@ -1803,6 +1804,9 @@ Revised 2026-08-28 (§14). Cycle order:
 | ~~6b~~ | ~~Emitter `articulado-sintetico`~~ | **withdrawn (A-R.6)** — round-trip reader relocated to Cycle 7 |
 | 7 ✅ | Segmentation output (API + XSLT) | **three-way oracle agreement**; breadcrumbs complete — **the package is `segments/` (A-7.1); two addresses, `urn` and `path` (A-7.2)** |
 | 8 ✅ | Robustness + CLI | every degenerate input handled cleanly; capabilities reported — **10 degenerate fixtures valid on both schemas; 60 CLI×emitter invocations; suite green with `lexml-proposed/` absent (A-8.5)** |
+| 8c ✅ | Nested quotation structure (§16) | quotation runs become `citacao` sections, confirm-only via a fourth referee question |
+| 8d ✅ | Unlabelled section headers (§17) | a third admission route into `Section`; a confirmed header parents its series |
+| 8e | External reference URNs (§18) | cited statutes resolve to `<Remissao xlink:href="urn:lex:…">`; **all 125 existing goldens byte-identical**; suite green with no `linkertool` |
 | 9 | Regression consolidation + batch | mutation test bites; corpus report reconciles; **suite green without `lexml-proposed/`** |
 
 ---
@@ -1993,3 +1997,97 @@ the samples do not is a design argument, not a measurement — **Cycle 9's corpu
 scale-out is the thing that will answer it.** Also unchanged and still open: the
 running-header/footer artifact work (`docs/20260830_205825_…`), and LLM-doc §8
 questions 1, 3, 4 and 5.
+
+---
+
+## 18. Amendment Log — 2026-09-08 Cycle 8e: external reference URNs
+
+Source: `docs/20260908_200804_external_reference_urns_linker_feasibility.md`,
+adopting its §8 recommendation as **A-L.1 … A-L.8**, with the user's two
+decisions of 2026-09-08 taken before any implementation.
+
+Placement: a **new Cycle 8e**, between Cycle 8d and Cycle 9, continuing the
+interstitial run the 2026-08-30 referee configuration amendment opened. Cycle 9
+is **not started and is not begun by this work** — and this work must land
+*before* it, because Cycle 9's deliverable is to freeze the goldens this cycle
+moves.
+
+Record: to be written as
+`dev/20260801_145839_complete_development_plan_lexml_non_statutory_parser/<ts>_cycle_8e_report.md`.
+**Not yet executed.**
+
+**The gap this closes.** The parser generates URNs only for a document's own
+identity. `model/urn.py:173` (`build_urn`) has three call sites — the
+document's `Identificacao/@URN` (`model/metadata.py:147`), its own `!anexoN`
+fragment (`:163`), and `ReferenciaAnexo/@AlvoURN` (`render/anexo.py:71`) — and
+the committed goldens hold **16 distinct URNs across 15 samples**: one per
+sample plus one annex fragment. A citation in the body survives only as the
+source file's own hyperlink — `<a xlink:href="http://normas.receita.fazenda.gov.br/…">`
+in `tests/golden/generico/…CARNE_LEAO.xml:102` — never as
+`<Remissao xlink:href="urn:lex:…">`, although `Remissao`, `RemissaoMultipla`
+and `Alteracao` have been legal inline elements in both vendored schemas since
+Cycle 0 (`lexml/lexml-base.xsd:125-129`, `:760-768`) and no emitter has ever
+constructed one. Citation→URN was sketched as an *optional* Cycle 9 in the
+pre-plan investigation (`docs/20260801_004745_…:556`) and cut when this plan
+was ratified; §1's out-of-scope list is amended by A-L.1 rather than ignored.
+
+| ID | Section(s) | Amendment |
+|---|---|---|
+| A-L.1 | §1, §3, §10 | **External reference URNs enter scope, as an optional capability.** §1's out-of-scope list is narrowed: RAG chunking and embedding stay out, but resolving a cited norm to `urn:lex:` comes in. A new subpackage `src/lexml_nonstat/refs/` mirrors `referee/` module for module — `protocol.py` (`Reference(start, end, urn, text)`; a `Linker` Protocol with `find_refs(text, context_urn)`), `null.py` (`NullLinker`, **the default everywhere**), `linkertool.py` (the co-process backend), `cache.py`, `probe.py`. The recogniser itself is **not** ported: `../lexml-linker` is a Haskell Alex+Parsec compiler carrying ~5,561 municípios, the states, the apelidos and the STF legacy codes, and reimplementing that grammar in Python is a different project from calling it |
+| A-L.2 | §2.1, §5.1 | **The encoding is `<Remissao xlink:href="urn:lex:…">texto</Remissao>`, and it is *pinned*, not argued.** `Remissao` extends `inline`, is `mixed`, and carries the `link` attribute group, which declares `xlink:href` **required** (`lexml-base.xsd:252-254`) — the same group A-5.3 already measured for `<a>`. A row joins `tests/unit/matrix_cases.py` so the claim is executable on both schemas and, per A-R.2, both generations. The corpus forces a second measurement the schema text does not settle: `CARNE_LEAO` carries citations **inside** source hyperlinks, so whether `Remissao` may nest within `<a>` (and in which order) is measured before the encoding is chosen. `RemissaoMultipla` requires `xml:base` and is **not** used; `Alteracao` is out of scope, since a non-statutory document does not amend |
+| A-L.3 | §3.1, §5.1, §5.2, §5.3 | **References resolve at render time, from a `linker=` argument; they are not stored on `Para`.** A citation spans runs, so `Inline` is the wrong unit — a `Reference` is a character span over `Para.text`, and `render_inlines` (`render/common.py:146`) splits runs at span boundaries, extending the existing outermost-first nesting order. Keeping references out of the model is what leaves the `styled`, `hierarchy`, `metadata`, `segment` and `routing` goldens structurally untouched, and keeps the hierarchy inference of Cycles 4/8c/8d entirely unaffected by whether a linker was configured |
+| A-L.4 | §9.2 (invariant #2) | **`leaf_texts` must read through `Remissao`, and so must the segment readers and both stylesheets.** A `Remissao` wraps existing text and adds none, so conservation *should* be free — but only if every extractor descends into it. This is exactly the A-6.4 failure mode, where Cycle 6's first statutory render was valid on both schemas and **29 words short**; no schema can detect lost text. `render/common.py:470`, `segments/api.py`'s three readers (A-7.3) and both files in `src/lexml_nonstat/segments/stylesheets/` are all in scope, and conservation is asserted on the **character** multiset, per A-Q.6 — splitting a run moves a leaf boundary, and a coarser comparison cannot tell that from real damage |
+| A-L.5 | §2.11, §9.2 (invariant #12) | **The linker is probed, never assumed — the third external thing this repository works without.** `refs/probe.py` follows `validate/schema.py:359` `probe_capabilities` exactly: it never raises, and a missing binary answers `available=False` with a diagnostic saying *why*. `tests/conftest.py` gains `requires_linker` beside `requires_nested` (`:98`), carrying the probe's own diagnostic as the skip reason. Nothing branches on a linker *version*; only on what a probe of the binary actually present reported. *Decided with the user (2026-09-08)* |
+| A-L.6 | §9.3, §9.4 | **Fixtures are the seam, and the existing 125 goldens must not move.** `refs/cache.py` reuses `referee/cache.py`'s shape — one JSON file per key, `read_only` for fixture directories — keyed by `(context_urn, paragraph text)`. Existing golden kinds render with `NullLinker`, so **all 125 stay byte-identical**; two new kinds, `generico-linked` and `norma-linked`, join `scripts/regen_goldens.py`'s `KINDS` (`:186`) and are generated against the fixture-backed linker, so they compare with **no binary present**. Refreshing fixtures is an explicit documented command, `scripts/record_linker_fixtures.py`, never automatic — the §9.3 rule, so a linker upgrade shows up as a reviewed diff |
+| A-L.7 | §8 Cycle 8 (CLI), A-R.9 | **`--linker=none\|auto\|<path>`, defaulting to `none` everywhere**, exactly as the referee does and as §9.3 pins for the whole suite. `auto` probes and uses the binary if present. The `capabilities` command reports linker availability alongside the schema generations, so one command answers "what can this checkout do". A-C.1's lesson applies in advance: the flag must be *threaded*, not accepted and discarded — the cycle asserts that `--linker` changes the output, on a document where it demonstrably should |
+| A-L.8 | §1, §10, §8 Cycle 9 | **The linker's reach is statutory-only, and the cycle must measure the gap rather than imply there is none.** `Regras2.hs:995-1016` recognises lei, lei complementar and delegada, decreto, decreto-lei, decreto legislativo, emenda constitucional, medida provisória, constituição, the apelidos and the STF legacy codes. It recognises **no** portaria, instrução normativa, parecer, ato declaratório or solução de consulta — the genres this parser exists for — and its **`súmula` rule is commented out** (`:1009-1012`). It has no rule for relative references (*desta Lei*, *do artigo anterior*): `--contexto` supplies locality and authority defaults only (`Atalhos.hs:89-102`). Two consequences: the cycle report states the **measured** resolution rate per norm type, and the context URN we pass — ours carry `;`-joined authorities and A-2.3's `0000` sentinels — is measured against `parseURNLexML` before use, with `urn:lex:br:federal:lei:2000-01-01;1` (`FECmdLine.scala:114`) as the documented fallback |
+
+### Cycle 8e — External reference URNs (deliverables)
+
+- `src/lexml_nonstat/refs/` — `protocol.py`, `null.py`, `linkertool.py`,
+  `cache.py`, `probe.py` (A-L.1, A-L.5)
+- `<Remissao>` emission in the three emitters, via `render/common.py`
+  (A-L.2, A-L.3)
+- `leaf_texts`, the three segment readers and both stylesheets read through
+  `Remissao` (A-L.4)
+- `tests/linker_fixtures/` + `scripts/record_linker_fixtures.py` (A-L.6)
+- `generico-linked` and `norma-linked` golden kinds (A-L.6)
+- `--linker` on `parse`; `capabilities` reports the linker (A-L.7)
+- A `Remissao` row in `tests/unit/matrix_cases.py` (A-L.2)
+
+Tests
+
+- **all 125 existing goldens byte-identical** — the cycle's first exit criterion
+- conservation holds on every linked document, on the character multiset
+- rendering twice is byte-identical (invariant #4), across process restarts
+- `<Remissao>` valid on **both** schemas and **both** generations, pinned in the
+  matrix; the `<a>`-nesting question answered by measurement
+- **bare checkout** — no `linkertool`, no `lexml-proposed/`: nothing fails;
+  reference assertions skip with the probe's diagnostic; linked goldens still
+  compare, because the fixtures carry the answers
+- **fixtures only** — linked goldens byte-identical and **zero subprocess
+  spawns**, asserted the way the referee asserts zero network calls
+- **binary present** — `scripts/record_linker_fixtures.py` reproduces every
+  committed fixture unchanged, proving the recorded answers are live answers
+- `--linker=none` and `--linker=auto` produce demonstrably different output on
+  a document that cites a statute (A-C.1's lesson: a flag that is accepted and
+  discarded passes every test that only checks it is accepted)
+- the report states the measured resolution rate **per norm type** (A-L.8)
+
+**Decisions taken with the user (2026-09-08):**
+
+1. **A cycle before Cycle 9, not a Cycle 9 sub-item.** Cycle 9 promotes the
+   goldens, adds the coverage gate and makes a mutation bite; this work moves
+   goldens across up to four kinds, and §9.4 requires that a golden diff always
+   represent a *reviewed* behaviour change. Landing 8e first also lets Cycle 9's
+   300+ corpus sweep measure citation resolution in the same pass.
+2. **The linker is an optional, probed capability, never a required runtime
+   dependency** — joining the LLM referee and `lexml-proposed/`. That is what
+   preserves A-R.9 ("the suite must stay green against `lexml/` alone") and
+   Cycle 9's "no network dependency anywhere".
+
+**Not decided here, and deliberately left open:** whether a native Python
+recogniser should later cover the non-statutory genres the Haskell linker
+cannot reach (§5 of the source record). Cycle 8e's measured per-type resolution
+rate is the evidence that question needs, and taking it now would be the
+assumption this plan's method exists to avoid.
