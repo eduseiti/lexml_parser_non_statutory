@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 148,
+      "end": 197,
+      "urn": "urn:lex:br:federal:lei:1995-01-20;8981!art51",
+      "text": "art. 51 da Lei nº 8.981, de 20 de janeiro de 1995"
+    }
+  ],
+  "meta": {
+    "text": "O arbitramento do lucro em procedimento de ofício pode ser efetuado mediante a utilização de qualquer uma das alternativas de cálculo enumeradas no art. 51 da Lei nº 8.981, de 20 de janeiro de 1995, quando não conhecida a receita bruta.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

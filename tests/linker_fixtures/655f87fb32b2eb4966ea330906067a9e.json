@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 168,
+      "end": 206,
+      "urn": "urn:lex:br:federal:lei:1916-01-01;3071",
+      "text": "Lei nº 3.071, de 1º de janeiro de 1916"
+    }
+  ],
+  "meta": {
+    "text": "Quanto à pessoa do cessionário, este sub-roga-se no crédito do cedente, que para aquele transfere todos os direitos, inclusive os acessórios do crédito (Código Civil - Lei nº 3.071, de 1º de janeiro de 1916, arts. 986, 987, 1065 e 1066).",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

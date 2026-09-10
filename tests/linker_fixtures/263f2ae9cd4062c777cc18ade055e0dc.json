@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 56,
+      "end": 100,
+      "urn": "urn:lex:br:federal:lei:1990;8134!art18_cpt_inc1",
+      "text": "inciso I do art. 18 da Lei nº 8.134, de 1990"
+    }
+  ],
+  "meta": {
+    "text": "§ 1º Os ganhos a que se referem o art. 26 desta lei e o inciso I do art. 18 da Lei nº 8.134, de 1990, serão apurados e tributados em separado, não integrarão a base de cálculo do imposto de renda na declaração de ajuste anual e o imposto pago não poderá ser deduzido na declaração.",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

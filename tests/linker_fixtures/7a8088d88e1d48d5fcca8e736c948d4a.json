@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 64,
+      "end": 86,
+      "urn": "urn:lex:br:federal:lei:1990;8112!par1",
+      "text": "§ 1, Lei n. 8.112/1990"
+    }
+  ],
+  "meta": {
+    "text": "Deveras, a questão não se prende às férias “vendidas” (art. 78, § 1, Lei n. 8.112/1990), hipótese em que, constituindo-se em anômala fonte de renda, parece-me que ocorrerá a incidência do tributo.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 189,
+      "end": 221,
+      "urn": "urn:lex:br:federal:medida.provisoria:2016;765",
+      "text": "Medida Provisória nº 765 de 2016"
+    }
+  ],
+  "meta": {
+    "text": "- a parcela relativa ao Bônus de Eficiência e Produtividade na Atividade Auditoria-Fiscal do Trabalho, recebida pelos servidores da Carreira de Auditoria-Fiscal do Trabalho. (Incluído pela Medida Provisória nº 765 de 2016)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

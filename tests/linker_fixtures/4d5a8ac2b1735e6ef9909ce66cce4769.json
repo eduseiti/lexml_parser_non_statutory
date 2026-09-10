@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 200,
+      "end": 231,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art3_par8",
+      "text": "art. 3, § 8, da Lei 12.618/2012"
+    }
+  ],
+  "meta": {
+    "text": "\"A homologação, pela União, da opção de adesão ao novo regime previdenciário realizada pelo servidor confere ao ato de adesão o caráter de definitividade, tornando a opção irrevogável e irretratável (art. 3, § 8, da Lei 12.618/2012). Ao exercer seu direito de opção constitucionalmente garantido, o servidor adere aos termos e condições previstos em lei para a migração de regime, termos e condições que se referem, basicamente:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

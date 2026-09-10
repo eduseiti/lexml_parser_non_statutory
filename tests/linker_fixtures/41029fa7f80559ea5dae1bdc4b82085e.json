@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 14,
+      "end": 46,
+      "urn": "urn:lex:br:federal:lei:1993;8688!art2",
+      "text": "art. 2º da Lei no 8.688, de 1993"
+    },
+    {
+      "start": 156,
+      "end": 189,
+      "urn": "urn:lex:br:federal:lei:2004;10887!art4",
+      "text": "art. 4º da Lei no 10.887, de 2004"
+    }
+  ],
+  "meta": {
+    "text": "Nos termos do art. 2º da Lei no 8.688, de 1993, a contribuição mensal do servidor ao Plano de Seguridade Social incidirá sobre sua remuneração (art. 2º). O art. 4º da Lei no 10.887, de 2004, por sua vez, disciplina:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 158,
+      "end": 188,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art40",
+      "text": "art.40 da Constituição Federal"
+    }
+  ],
+  "meta": {
+    "text": "186. Em suma, o que parece constituir do texto constitucional, e das manifestações dos tribunais judiciais e administrativos, até o presente momento, é que o art.40 da Constituição Federal disciplina exclusivamente o Regime Próprio de Previdência Social - RPPS dos servidores públicos (civis), ao passo que os militares se submetem a regime jurídico integralmente infraconstitucional, por força dos arts. 42 e 142, § 3º, X, da CF.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

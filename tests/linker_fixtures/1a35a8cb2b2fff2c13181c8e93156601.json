@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 65,
+      "end": 114,
+      "urn": "urn:lex:br:federal:lei:1995-12-04;9140!art11",
+      "text": "art. 11 da Lei nº 9.140, de 4 de dezembro de 1995"
+    }
+  ],
+  "meta": {
+    "text": "DECLARA, que a indenização, a título reparatório, de que trata o art. 11 da Lei nº 9.140, de 4 de dezembro de 1995, não está sujeita à incidência do Imposto de Renda.",
+    "sample": "ad_srf_22_19970430.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

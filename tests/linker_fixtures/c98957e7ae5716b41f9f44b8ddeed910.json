@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 65,
+      "end": 103,
+      "urn": "urn:lex:br:federal:lei:1995-12-04;9140",
+      "text": "Lei nº 9.140, de 4 de dezembro de 1995"
+    }
+  ],
+  "meta": {
+    "text": "Dispõe sobre a indenização, a título reparatório, de que trata a Lei nº 9.140, de 4 de dezembro de 1995.",
+    "sample": "ad_srf_22_19970430.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

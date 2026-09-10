@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 28,
+      "end": 54,
+      "urn": "urn:lex:br:federal:lei:1996;9430!art42",
+      "text": "art. 42 da Lei nº 9.430/96"
+    }
+  ],
+  "meta": {
+    "text": "A presunção estabelecida no art. 42 da Lei nº 9.430/96 dispensa o Fisco de comprovar o consumo da renda representada pelos depósitos bancários sem origem comprovada.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

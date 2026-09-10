@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 15,
+      "end": 37,
+      "urn": "urn:lex:br:federal:lei:2012;12688",
+      "text": "Lei no 12.688, de 2012"
+    }
+  ],
+  "meta": {
+    "text": "(Incluído pela Lei no 12.688, de 2012)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

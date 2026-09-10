@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 0,
+      "end": 17,
+      "urn": "urn:lex:br:federal:lei:1990;8112",
+      "text": "Lei n. 8.112/1990"
+    }
+  ],
+  "meta": {
+    "text": "Lei n. 8.112/1990, art. 78, § 1º.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

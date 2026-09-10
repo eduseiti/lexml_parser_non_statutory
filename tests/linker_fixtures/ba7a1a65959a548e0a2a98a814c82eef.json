@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 164,
+      "end": 200,
+      "urn": "urn:lex:br:federal:emenda.constitucional:1998;18",
+      "text": "Emenda Constitucional no 18, de 1998"
+    }
+  ],
+  "meta": {
+    "text": "§3º Os membros das Forças Armadas são denominados militares, aplicando-se-lhes, além das que vierem a ser fixadas em lei, as seguintes disposições: .(lncluido pela Emenda Constitucional no 18, de 1998)(...)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -372,8 +372,14 @@ def test_fallback_on_forced_invalid_render(monkeypatch, caplog):
     """
     original = norma_module.render_articulacao
 
-    def with_illegal_id(articulacao):
-        element = original(articulacao)
+    def with_illegal_id(articulacao, **kwargs):
+        # `**kwargs` forwards whatever the real `render_articulacao` accepts —
+        # Cycle 8e gave it `linker`/`context_urn`. A stand-in that pins the
+        # signature it was written against turns any additive parameter into a
+        # `TypeError` here, which reads as a conservation failure and is not
+        # one. What this test asserts is unchanged: the id is still corrupted,
+        # so the render is still refused.
+        element = original(articulacao, **kwargs)
         if element is not None:
             for node in element.iter():
                 if node.get("id") == "art1":

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 49,
+      "end": 95,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art40_par16",
+      "text": "art. 40, parágrafo 16, da Constituição Federal"
+    }
+  ],
+  "meta": {
+    "text": "\"I — A expressão \"serviço público\", encartada no art. 40, parágrafo 16, da Constituição Federal, por constituir regra de transição de regimes previdenciários, deve ser interpretada restritivamente, a fim de beneficiar apenas aqueles que tinham expectativas de se aposentar com base nas regras do regime antigo, que foram modificadas pelo Poder Constituinte Derivado. Entendimento firmado no PARECER Nº028/2010/DECOWCGU/AGU, aprovado pelo Advogado-Gera1 da União em 31 de março de 2010.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 121,
+      "end": 142,
+      "urn": "urn:lex:br:federal:constituicao:88;88!art40_par16",
+      "text": "art. 40, §16 da CF/88"
+    }
+  ],
+  "meta": {
+    "text": "l. Trata-se de Mandado de Segurança no qual se busca a extensão aos serviços militares da regra de transição disposta no art. 40, §16 da CF/88, o que garantiria ao Impetrante o direito de ter o seu período militar reconhecido como tempo de serviço público para fins de permanência em Regime de Previdência Próprio.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

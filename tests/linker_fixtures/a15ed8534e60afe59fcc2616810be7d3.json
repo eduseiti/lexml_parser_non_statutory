@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 262,
+      "end": 304,
+      "urn": "urn:lex:br:federal:lei.complementar:1993;73!art4",
+      "text": "art. 4º da Lei Complementar no 73, de 1993"
+    }
+  ],
+  "meta": {
+    "text": "Das manifestações jurídicas carreadas aos autos não se vislumbra a existência de divergência jurídica a respeito da matéria ora trazida, destaca-se, no entanto, a sua complexidade e abrangência a justificar a necessidade de tratamento uniforme. Quanto a isso, o art. 4º da Lei Complementar no 73, de 1993, determina:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

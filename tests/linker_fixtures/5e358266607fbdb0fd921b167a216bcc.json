@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 145,
+      "end": 155,
+      "urn": "urn:lex:br:federal:constituicao:88;88!par16",
+      "text": "§16, CF/88"
+    }
+  ],
+  "meta": {
+    "text": "MANDADO DE SEGURANÇA. CONSTITUCIONAL. ADMINISTRATIVO. SERVIDOR PÚBLICO CIVIL. REGIME DE PREVIDÊNCIA COMPLEMENTAR. REGRA DE TRANSIÇÃO DO ART. 40, §16, CF/88. ILEGITIMIDADE PASSIVA AD CAUSAM DA FUNPRESP-EXE. SERVIDOR EGRESSO DO EXÉRCITO. REMESSA NECESSÁRIA E APELAÇÕES PROVIDAS.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

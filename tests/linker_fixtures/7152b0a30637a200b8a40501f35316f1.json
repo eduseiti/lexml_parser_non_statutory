@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 0,
+      "end": 18,
+      "urn": "urn:lex:br:federal:lei:1990;8134",
+      "text": "Lei 8.134, de 1990"
+    }
+  ],
+  "meta": {
+    "text": "Lei 8.134, de 1990 - \"Art. 2º - O imposto de renda das pessoas físicas será devido à medida em que os rendimentos e ganhos de capital forem percebidos, sem prejuízo do ajuste estabelecido no artigo 11.\"",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 36,
+      "end": 74,
+      "urn": "urn:lex:br:federal:lei:1966-10-25;5172",
+      "text": "Lei nº 5.172, de 25 de outubro de 1966"
+    }
+  ],
+  "meta": {
+    "text": "O Código Tributário Nacional - CTN (Lei nº 5.172, de 25 de outubro de 1966) estabelece em seu art. 123 que as convenções particulares não podem ser opostas à Fazenda Pública no que se refere à responsabilidade tributária, ou seja, os particulares podem pactuar o que desejarem desde que não deixem de pagar os tributos decorrentes.",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

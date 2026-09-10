@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 117,
+      "end": 157,
+      "urn": "urn:lex:br:federal:lei:1995-01-20;8981",
+      "text": "Leis nºs 8.981, de 20 de janeiro de 1995"
+    },
+    {
+      "start": 430,
+      "end": 451,
+      "urn": "urn:lex:br:federal:lei:1996;9430",
+      "text": "Lei nº 9.430, de 1996"
+    }
+  ],
+  "meta": {
+    "text": "Os ganhos de capital, quando apurados por pessoa jurídica, integrarão a base de cálculo do pagamento por estimativa (Leis nºs 8.981, de 20 de janeiro de 1995, art. 32, e 9.430, de 27 de dezembro de 1996, art. 2º), comporão o seu resultado e serão computados na determinação do lucro real e, no caso de pessoa jurídica que apure o imposto de renda com base no lucro presumido ou arbitrado, comporão o lucro do período de apuração (Lei nº 9.430, de 1996, arts. 25 e 27).",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

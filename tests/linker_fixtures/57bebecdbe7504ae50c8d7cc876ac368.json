@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 2,
+      "end": 35,
+      "urn": "urn:lex:br:federal:lei:1912;12618!art3_par1",
+      "text": "artigo 3º, § 1º, da Lei 12.618/12"
+    }
+  ],
+  "meta": {
+    "text": "O artigo 3º, § 1º, da Lei 12.618/12 prevê um beneficio especial para os servidores ingressados no serviço público antes da instituição do regime complementar que optem por este. Trata-se de uma compensação financeira concedida ao servidor pelos seus aportes em valores acima do teto ora instituído, haja vista que, em caso de opção, o valor de seus beneficios pagos pelo RPPS da União não excederá o teto do RGPS.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

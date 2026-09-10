@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 292,
+      "end": 321,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art3",
+      "text": "art. 3º da Lei no 12.618/2012"
+    }
+  ],
+  "meta": {
+    "text": "\"Portanto, ao homologar a opção constitucional, são transferidos ao patrimônio jurídico do servidor público os direitos e as obrigação previstos em lei, sob os quais se fundou a decisão pessoal de alteração de regime previdenciário, incluídas por óbvio, as regras de cálculo estabelecidas no art. 3º da Lei no 12.618/2012, constituindo-se-em verdadeiro direito adquirido.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -67,12 +67,13 @@ which since Cycle 6 lives in :mod:`.anexo` — this emitter asks it for the
 
 from __future__ import annotations
 
-from typing import Iterator
+from typing import TYPE_CHECKING, Iterator
 
 from lxml import etree
 
 from ..model.document import DocumentModel
 from ..model.nodes import Section
+from ..refs.protocol import DEFAULT_CONTEXT_URN
 from .anexo import anexos_element, lexml_root, render_anexo
 from .common import (
     agrupamento,
@@ -82,6 +83,9 @@ from .common import (
     render_node,
 )
 from .generico import RenderedDocument, Scope
+
+if TYPE_CHECKING:  # pragma: no cover - typing only
+    from ..refs.protocol import Linker
 
 __all__ = [
     "EMITTER",
@@ -118,7 +122,12 @@ def _native(tag: str, text: str) -> etree._Element:
 
 
 def _prose_leaf(
-    section: Section, ident: str, scope: Scope
+    section: Section,
+    ident: str,
+    scope: Scope,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ) -> etree._Element | None:
     """The section's own content as one ``Agrupamento nome="texto"``.
 
@@ -128,7 +137,10 @@ def _prose_leaf(
     children = [
         rendered
         for rendered in (
-            render_node(node, table_id=scope.table_id) for node in section.body
+            render_node(
+                node, table_id=scope.table_id, linker=linker, context_urn=context_urn
+            )
+            for node in section.body
         )
         if rendered is not None
     ]
@@ -136,7 +148,13 @@ def _prose_leaf(
 
 
 def _section_element(
-    section: Section, parent_id: str, scope: Scope, order: int
+    section: Section,
+    parent_id: str,
+    scope: Scope,
+    order: int,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ) -> etree._Element:
     """One section as a nested ``AgrupamentoHierarquico``.
 
@@ -144,6 +162,9 @@ def _section_element(
     *inside* its parent element, so there is no serialisation in which an
     ancestor is missing. The id is still composed from a parent the allocator
     has already issued, so the path scheme is unchanged from the flat emitter.
+
+    ``linker``/``context_urn`` (Cycle 8e) pass straight through to the prose
+    leaf and every subsection; ``linker=None`` reproduces Cycle 5b's output.
     """
     ident = scope.ids.child(parent_id, "agh")
     element = el("AgrupamentoHierarquico", id=ident, nome=section.kind)
@@ -157,20 +178,36 @@ def _section_element(
     # 3. Child sections first — Constraint 1. Their `ordem` is their true
     #    document-order position among *all* of this section's children.
     for index, child in enumerate(section.children):
-        element.append(_section_element(child, ident, scope, index))
+        element.append(
+            _section_element(
+                child, ident, scope, index, linker=linker, context_urn=context_urn
+            )
+        )
 
     # 4. This section's own order index, after the subsections (A-5b.1: a
     #    `Bloco` may not precede an `AgrupamentoHierarquico` either).
     element.append(_bloco(ORDER_BLOCO, str(order)))
 
     # 5. Own prose, or the Constraint 2 filler.
-    leaf = _prose_leaf(section, scope.ids.child(ident, "txt"), scope)
+    leaf = _prose_leaf(
+        section,
+        scope.ids.child(ident, "txt"),
+        scope,
+        linker=linker,
+        context_urn=context_urn,
+    )
     element.append(leaf if leaf is not None else _bloco(EMPTY_BLOCO))
 
     return element
 
 
-def _tree_elements(tree, scope: Scope) -> Iterator[etree._Element]:
+def _tree_elements(
+    tree,
+    scope: Scope,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> Iterator[etree._Element]:
     """A ``HierarchyTree``'s preamble and its top-level sections.
 
     The preamble keeps the flat emitter's shape — ``Agrupamento nome="texto"``
@@ -183,7 +220,10 @@ def _tree_elements(tree, scope: Scope) -> Iterator[etree._Element]:
         rendered = [
             node
             for node in (
-                render_node(n, table_id=scope.table_id) for n in tree.preamble
+                render_node(
+                    n, table_id=scope.table_id, linker=linker, context_urn=context_urn
+                )
+                for n in tree.preamble
             )
             if node is not None
         ]
@@ -192,10 +232,17 @@ def _tree_elements(tree, scope: Scope) -> Iterator[etree._Element]:
             yield element
 
     for index, section in enumerate(tree.sections):
-        yield _section_element(section, scope.ids.root, scope, index)
+        yield _section_element(
+            section, scope.ids.root, scope, index, linker=linker, context_urn=context_urn
+        )
 
 
-def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
+def render_generico_aninhado(
+    model: DocumentModel,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> RenderedDocument:
     """Render ``model`` as a nested ``DocumentoGenerico`` bundle.
 
     Never raises on a real document, on the same terms as the flat emitter:
@@ -205,6 +252,10 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
     The result is invalid against the **shipped** schemas by design — that is
     what ``generico-aninhado`` being opt-in *means*. Callers gate on
     :func:`~..validate.schema.probe_capabilities`; this function does not.
+
+    ``linker`` defaults to ``None`` (Cycle 8e, A-L.1), reproducing Cycle 5b's
+    output byte-for-byte; passed, it is threaded to every ``render_node`` call
+    the same way the flat emitter does.
     """
     root = lexml_root()
     root.append(model.metadata.to_xml())
@@ -218,12 +269,16 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
         table_id=scope.table_id,
         first_index=model.segmentation.first_index,
         prefix=scope.ids.root,
+        linker=linker,
+        context_urn=context_urn,
     )
     scope.adopt(front, "agr")
     for element in front:
         parte.append(element)
 
-    for element in _tree_elements(model.body, scope):
+    for element in _tree_elements(
+        model.body, scope, linker=linker, context_urn=context_urn
+    ):
         parte.append(element)
 
     back = back_region(
@@ -231,6 +286,8 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
         model.styled,
         table_id=scope.table_id,
         prefix=scope.ids.root,
+        linker=linker,
+        context_urn=context_urn,
     )
     scope.adopt(back, "agrf")
     for element in back:
@@ -241,7 +298,8 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
         documento.append(parte)
 
     annexes = tuple(
-        render_anexo(model, annex, nested=True) for annex in model.annexes
+        render_anexo(model, annex, nested=True, linker=linker, context_urn=context_urn)
+        for annex in model.annexes
     )
     anexos = anexos_element(model)
     if anexos is not None:
@@ -259,7 +317,11 @@ def render_generico_aninhado(model: DocumentModel) -> RenderedDocument:
 
 
 def render_generico_aninhado_from_docx(
-    path, *, filename: str | None = None
+    path,
+    *,
+    filename: str | None = None,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ) -> RenderedDocument:
     """Read a DOCX and render it nested — the whole pipeline in one call."""
     from pathlib import Path
@@ -269,4 +331,4 @@ def render_generico_aninhado_from_docx(
 
     path = Path(path)
     model = build_model(read_docx(path), filename=filename or path.name)
-    return render_generico_aninhado(model)
+    return render_generico_aninhado(model, linker=linker, context_urn=context_urn)

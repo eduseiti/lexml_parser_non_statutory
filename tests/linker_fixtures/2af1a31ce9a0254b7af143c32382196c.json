@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 48,
+      "end": 61,
+      "urn": "urn:lex:br:federal:lei:2007;1992",
+      "text": "Lei 1992/2007"
+    }
+  ],
+  "meta": {
+    "text": "\"Dê-se ao parágrafo 1º do art. 3º do Projeto de Lei 1992/2007 a seguinte redação:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

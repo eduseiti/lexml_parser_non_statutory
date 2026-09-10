@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 267,
+      "end": 307,
+      "urn": "urn:lex:br:federal:emenda.constitucional:0098-12-15;20",
+      "text": "Emenda Constitucional no 20, de 15/12/98"
+    }
+  ],
+  "meta": {
+    "text": "§ 16 - Somente mediante sua prévia e expressa opção, o disposto nos §§ 14 e 15 poderá ser aplicado ao servidor que tiver ingressado no serviço público até a data da publicação do ato de instituição do correspondente regime de previdência complementar. (Incluído pela Emenda Constitucional no 20, de 15/12/98)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

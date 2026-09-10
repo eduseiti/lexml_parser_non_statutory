@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 114,
+      "end": 141,
+      "urn": "urn:lex:br:federal:lei:1988;7713!art6",
+      "text": "art. 6 da Lei n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "E, notamos que isto não se dá no presente caso. Dentre as hipóteses de não incidência previstas nos parágrafos do art. 6 da Lei n. 7.713/1988, não encontramos menção às férias ou licença-prêmio convertidas em pecúnia. Assim, querer evitar a incidência do tributo sobre tais r endimentos na esfera do Poder Judiciário, seria o mesmo que conceder uma isenção tributária judicialmente, quando é sabido que ao Poder J udiciário não compete criar isenções; as isenções somente podem ser concedidas por lei. A criação de uma isenção por este órgão c onfi guraria uma anomalia, que além de patentemente nula, estaria, também, infringindo um dos princípios basilares de nossa ordem constitucional, a tripartição de poderes.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

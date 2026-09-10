@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 326,
+      "end": 343,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "É certo, conforme observei acima, que nem toda aquisição de disponibilidade econômica ou jurídica é tributável. Assim, estão fora do foco de incidência do tributo em análise várias indenizações. Todavia, há de ser ressaltado que isso d ecorre de isenção explicitamente concedida pela lei, de que são exemplos as tratadas pela Lei n. 7.713/1988.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

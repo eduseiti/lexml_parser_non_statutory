@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 266,
+      "end": 288,
+      "urn": "urn:lex:br:federal:lei:2012;12618",
+      "text": "Lei no 12.618, de 2012"
+    }
+  ],
+  "meta": {
+    "text": "Art. 42 A contribuição social do servidor público ativo de qualquer dos Poderes da União, incluídas suas autarquias e fundações, para a manutenção do respectivo regime próprio de previdência social, será de 11% (onze por cento), incidentes sobre: (Redação dada pela Lei no 12.618, de 2012)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

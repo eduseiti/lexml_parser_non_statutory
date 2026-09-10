@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 269,
+      "end": 310,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art3_par8",
+      "text": "§ 8º do art. 3º da Lei no 12.618, de 2012"
+    }
+  ],
+  "meta": {
+    "text": "O exercício dessa opção \"é irrevogável e inetratável, não sendo devida pela União e suas alitarquias e fimdações públicas qualquer contrapartida referente ao valor dos descontos já efetuados sobre a base de contribuição acima do limitepevisto no caput deste artigo. \" (§ 8º do art. 3º da Lei no 12.618, de 2012).",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

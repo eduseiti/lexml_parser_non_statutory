@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 50,
+      "end": 64,
+      "urn": "urn:lex:br:federal:lei:2018;13709",
+      "text": "Lei 13709/2018"
+    }
+  ],
+  "meta": {
+    "text": "Hipótese de tratamento de dados pessoais adotada (Lei 13709/2018)",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

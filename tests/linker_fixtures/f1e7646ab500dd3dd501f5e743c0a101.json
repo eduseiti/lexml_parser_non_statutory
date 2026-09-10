@@ -1,0 +1,27 @@
+{
+  "references": [
+    {
+      "start": 103,
+      "end": 144,
+      "urn": "urn:lex:br:federal:lei:1988-12-22;7713",
+      "text": "Leis nºs 7.713, de 22 de dezembro de 1988"
+    },
+    {
+      "start": 146,
+      "end": 175,
+      "urn": "urn:lex:br:federal:lei:1990-04-04;8012",
+      "text": "8.012, de 04 de abril de 1990"
+    },
+    {
+      "start": 177,
+      "end": 209,
+      "urn": "urn:lex:br:federal:lei:1990-12-28;8134",
+      "text": "8.134, de 28 de dezembro de 1990"
+    }
+  ],
+  "meta": {
+    "text": "O COORDENADOR DO SISTEMA DE TRIBUTAÇÃO, no uso de suas atribuições e tendo em vista as disposições das Leis nºs 7.713, de 22 de dezembro de 1988, 8.012, de 04 de abril de 1990, 8.134, de 28 de dezembro de 1990 e das Instruções Normativas do Diretor do Departamento da Receita Federal nºs 56, de 05 de abril de 1990 e 95, de 13 de julho de 1990.",
+    "sample": "adn_cst_10_19910417.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

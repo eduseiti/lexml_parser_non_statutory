@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 223,
+      "end": 262,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art40_par16",
+      "text": "§ 16 do art. 40 da Constituição Federal"
+    }
+  ],
+  "meta": {
+    "text": "Conforme visto, a sujeição ao regime de previdência complementar pelos membros e servidores que já se encontravam no serviço público, quando da sua vigência, depende de manifestação prévia e expressa, conforme disciplina o § 16 do art. 40 da Constituição Federal:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 25,
+      "end": 57,
+      "urn": "urn:lex:br:federal:medida.provisoria:2016;765",
+      "text": "Medida Provisória nº 765 de 2016"
+    }
+  ],
+  "meta": {
+    "text": "Brasil; e (Incluído pela Medida Provisória nº 765 de 2016)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

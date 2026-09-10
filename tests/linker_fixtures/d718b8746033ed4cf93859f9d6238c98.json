@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 88,
+      "end": 100,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988",
+      "text": "Constituição"
+    }
+  ],
+  "meta": {
+    "text": "180. Especialmente após a leitura dos dispositivos acima transcritos, verifica-se que a Constituição, no caso dos militares, previu situações bens distintas dos servidores civis, como se vê exemplificativamente:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

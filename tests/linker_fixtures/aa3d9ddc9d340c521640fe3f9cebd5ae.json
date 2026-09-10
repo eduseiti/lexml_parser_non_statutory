@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 90,
+      "end": 110,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988",
+      "text": "Constituição Federal"
+    },
+    {
+      "start": 171,
+      "end": 196,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei Federal n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "Sustenta a recorrente, em síntese, que o v. aresto hostilizado contrariou dispositivos da Constituição Federal (arts. 150 e 153), assim como do CTN (art. 43, I e II) e da Lei Federal n. 7.713/1988 (arts. 1º, 3º e 6º), uma vez que indenização paga por férias não gozadas constitui fato gerador da incidência do imposto sobre a renda, pois de renda se trata.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

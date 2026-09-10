@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 0,
+      "end": 18,
+      "urn": "urn:lex:br:federal:lei:1991;8383",
+      "text": "Lei 8.383, de 1991"
+    }
+  ],
+  "meta": {
+    "text": "Lei 8.383, de 1991, Art. 12. ..............................................................",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 149,
+      "end": 166,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "A recorrente sustenta, em síntese, que o acórdão atacado, ao assim decidir, violou os arts. 153, III, da Carta Magna; 43, I e II, do CTN; 3º e 6º da Lei n. 7.713/1988, vez que a indenização paga em razão de férias não gozadas “constitui fato gerador da incidência do imposto sobre a renda, uma vez que de renda se trata” (173).",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

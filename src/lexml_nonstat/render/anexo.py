@@ -40,10 +40,16 @@ correctly rejected on ``lexml/`` — which is what opt-in means.
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from lxml import etree
 
 from ..model.document import DocumentModel
+from ..refs.protocol import DEFAULT_CONTEXT_URN
 from .common import LEXML_NS, XLINK_NS, agrupamento, el
+
+if TYPE_CHECKING:  # pragma: no cover - typing only
+    from ..refs.protocol import Linker
 
 __all__ = [
     "ANEXO_FORMS",
@@ -90,7 +96,12 @@ def anexos_element(model: DocumentModel) -> etree._Element | None:
 
 
 def render_anexo(
-    model: DocumentModel, annex, *, nested: bool = False
+    model: DocumentModel,
+    annex,
+    *,
+    nested: bool = False,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ) -> etree._Element:
     """One annex as a standalone ``<LexML><Metadado/><Anexo>`` document.
 
@@ -98,6 +109,15 @@ def render_anexo(
     same ``anexoN_pp`` root, same ``anexoN_tabM`` tables, same ``!anexoN``
     fragment, same ``tituloAnexo`` block. That is what lets one conservation
     check cover both.
+
+    ``linker``/``context_urn`` (Cycle 8e) pass straight through to whichever
+    ``_tree_elements`` renders the annex's own body, so a citation inside an
+    annex resolves on the same terms as one in the primary document;
+    ``linker=None`` reproduces every prior golden. The ``tituloAnexo`` block
+    below is built from ``annex.label``, a plain string rather than a
+    :class:`~..model.nodes.Para` (A-4.5), so it carries no references — the
+    same reason :func:`~.common.render_node` only ever asks about ``Para``
+    text (N-5).
     """
     # Imported here: `generico` and `generico_aninhado` both import this
     # module, so a module-level import would close the cycle.
@@ -127,7 +147,9 @@ def render_anexo(
             parte.append(element)
 
     tree_elements = _nested_tree_elements if nested else _flat_tree_elements
-    for element in tree_elements(annex.tree, scope):
+    for element in tree_elements(
+        annex.tree, scope, linker=linker, context_urn=context_urn
+    ):
         parte.append(element)
 
     documento = el("DocumentoGenerico")

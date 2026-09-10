@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 337,
+      "end": 357,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988",
+      "text": "Constituição Federal"
+    }
+  ],
+  "meta": {
+    "text": "O Sr. Ministro Américo Luz: Contra acórdão da Segunda Câmara Civil do Tribunal de Justiça de São Paulo, concedendo a segurança para afastar a incidência do imposto de renda sobre a indenização por férias não gozadas por estrita necessidade do serviço, a Fazenda paulista interpôs recurso especial, com fundamento no art. 105, III, a, da Constituição Federal.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

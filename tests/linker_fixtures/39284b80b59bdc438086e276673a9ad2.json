@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 0,
+      "end": 14,
+      "urn": "urn:lex:br:federal:lei:1999;9779",
+      "text": "Lei 9.779/1999"
+    }
+  ],
+  "meta": {
+    "text": "Lei 9.779/1999, art. 16.",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

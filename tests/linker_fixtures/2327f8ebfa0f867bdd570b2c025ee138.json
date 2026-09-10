@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 135,
+      "end": 151,
+      "urn": "urn:lex:br:federal:lei:1912;12618",
+      "text": "Lei no 12.618/12"
+    }
+  ],
+  "meta": {
+    "text": "\" 158. Como visto, o Fator de Conversão (FC) corresponde à divisão do \"Tc\" sobre o \"TU', estando limitado a I (um) - art. 3º, §3 0, da Lei no 12.618/12.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

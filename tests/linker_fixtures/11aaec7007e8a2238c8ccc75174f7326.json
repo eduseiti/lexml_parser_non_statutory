@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 238,
+      "end": 270,
+      "urn": "urn:lex:br:federal:lei:1999;9779!art11",
+      "text": "art. 11 da Lei nº 9.779, de 1999"
+    }
+  ],
+  "meta": {
+    "text": "O direito ao aproveitamento dos créditos de IPI decorrentes da aquisição de matérias-primas, produtos intermediários e material de embalagem utilizados na fabricação de produtos cuja saída seja com isenção ou alíquota zero, nos termos do art. 11 da Lei nº 9.779, de 1999, alcança, exclusivamente, os insumos recebidos pelo estabelecimento do contribuinte a partir de 1º de janeiro de 1999.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

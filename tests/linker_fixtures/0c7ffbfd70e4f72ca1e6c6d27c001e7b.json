@@ -1,0 +1,69 @@
+{
+  "references": [
+    {
+      "start": 21,
+      "end": 55,
+      "urn": "urn:lex:br:federal:lei:1966;5172!art123",
+      "text": "Arts. 123 da Lei nº 5.172, de 1966"
+    },
+    {
+      "start": 111,
+      "end": 132,
+      "urn": "urn:lex:br:federal:lei:1916;3071",
+      "text": "Lei nº 3.071, de 1916"
+    },
+    {
+      "start": 157,
+      "end": 162,
+      "urn": "urn:lex:br:federal:lei:1988;7713!cpt",
+      "text": "caput"
+    },
+    {
+      "start": 165,
+      "end": 170,
+      "urn": "urn:lex:br:federal:lei:1988;7713!par2",
+      "text": "§§ 2º"
+    },
+    {
+      "start": 173,
+      "end": 175,
+      "urn": "urn:lex:br:federal:lei:1988;7713!par4",
+      "text": "4º"
+    },
+    {
+      "start": 179,
+      "end": 181,
+      "urn": "urn:lex:br:federal:lei:1988;7713!par16",
+      "text": "16"
+    },
+    {
+      "start": 183,
+      "end": 188,
+      "urn": "urn:lex:br:federal:lei:1988;7713!cpt",
+      "text": "caput"
+    },
+    {
+      "start": 191,
+      "end": 221,
+      "urn": "urn:lex:br:federal:lei:1988;7713!par4",
+      "text": "§ 4º, da Lei nº 7.713, de 1988"
+    },
+    {
+      "start": 255,
+      "end": 276,
+      "urn": "urn:lex:br:federal:lei:1995;8981",
+      "text": "Lei nº 8.981, de 1995"
+    },
+    {
+      "start": 295,
+      "end": 316,
+      "urn": "urn:lex:br:federal:lei:1996;9430",
+      "text": "Lei nº 9.430, de 1996"
+    }
+  ],
+  "meta": {
+    "text": "Dispositivos Legais: Arts. 123 da Lei nº 5.172, de 1966 (Código Tributário Nacional), 986, 987, 1065 e 1066 da Lei nº 3.071, de 1916 (Código Civil), 1º, 3º, caput e §§ 2º a 4º, e 16, caput e § 4º, da Lei nº 7.713, de 1988, 21, caput e §§ 1º e 2º, e 32 da Lei nº 8.981, de 1995, e 2º, 25 e 27 da Lei nº 9.430, de 1996.",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

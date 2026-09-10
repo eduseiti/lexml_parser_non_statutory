@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 107,
+      "end": 146,
+      "urn": "urn:lex:br:federal:lei:1988-12-22;7713",
+      "text": "Lei nº 7.713, de 22 de dezembro de 1988"
+    }
+  ],
+  "meta": {
+    "text": "O SECRETÁRIO DA RECEITA FEDERAL, no uso de suas atribuições, e tendo em vista o disposto no art. 6º, V, da Lei nº 7.713, de 22 de dezembro de 1988, declara que:",
+    "sample": "ad_srf_3_19990107.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

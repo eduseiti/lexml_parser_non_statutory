@@ -1,0 +1,27 @@
+{
+  "references": [
+    {
+      "start": 43,
+      "end": 48,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art3_par2",
+      "text": "§§ 2º"
+    },
+    {
+      "start": 51,
+      "end": 64,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art3_par3",
+      "text": "3º do art. 3º"
+    },
+    {
+      "start": 67,
+      "end": 100,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art22",
+      "text": "art. 22 da Lei no 12.618, de 2012"
+    }
+  ],
+  "meta": {
+    "text": "Assim sendo, tendo em vista o disposto nos §§ 2º e 3º do art. 3º e art. 22 da Lei no 12.618, de 2012, o beneficio especial será equivalente a diferença entre a média aritmética simples das maiores remunerações anteriores à data da mudança do regime, utilizadas como base para as contribuições efetuadas pelo membro ou servidor ao regime de previdência da União, dos Estados, do Distrito Federal ou dos Municípios.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

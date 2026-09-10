@@ -229,5 +229,72 @@ NESTED_MATRIX: tuple[MatrixCase, ...] = (
     ),
 )
 
-#: Every case, §2.1 table plus the nested surface. What the matrix test runs.
-ALL_CASES: tuple[MatrixCase, ...] = MATRIX + NESTED_MATRIX
+#: A resolved citation, as Cycle 8e emits it (A-L.2).
+_REMISSAO = (
+    '<Remissao xlink:href="urn:lex:br:federal:lei:1988-12-22;7713">'
+    "Lei nº 7.713</Remissao>"
+)
+
+#: The reference surface (A-L.2). Cycle 8e's encoding, pinned executable.
+#:
+#: Kept out of :data:`MATRIX` for the same reason :data:`NESTED_MATRIX` is: that
+#: tuple is the plan's §2.1 table and `PLAN_ROW_COUNT` pins its length.
+#:
+#: These rows carry **no** ``requires``. That is itself the claim: `Remissao`
+#: has been legal in both vendored schemas since Cycle 0 (`lexml-base.xsd`
+#: `:125-129`, `:760-768`) and needs no maintainer change, so every one of them
+#: must hold on **both** generations. If a future generation disagrees, the row
+#: fails rather than skipping — which is the difference between a capability
+#: and an assumption.
+REMISSAO_MATRIX: tuple[MatrixCase, ...] = (
+    MatrixCase(
+        "R1", "Remissao carrying xlink:href, inside p",
+        # The encoding itself. A-L.2 read `Remissao` off the XSD as `mixed`,
+        # extending `inline`, carrying the `link` attribute group; this is that
+        # reading put to both schemas instead of argued from them.
+        '<DocumentoGenerico><PartePrincipal id="pp1">'
+        f"<p>Conforme a {_REMISSAO} desta data.</p>"
+        "</PartePrincipal></DocumentoGenerico>",
+        True, True,
+    ),
+    MatrixCase(
+        "R2", "Remissao without xlink:href",
+        # `link` declares `xlink:href` **required** (`lexml-base.xsd:252-254`) —
+        # the same group A-5.3 measured for `<a>`. This row is why the renderer
+        # may never emit a `Remissao` it could not resolve: an unresolved
+        # citation has to stay plain text, because the half-built element is
+        # invalid on both schemas rather than merely untidy.
+        '<DocumentoGenerico><PartePrincipal id="pp1">'
+        "<p>Conforme a <Remissao>Lei nº 7.713</Remissao>.</p>"
+        "</PartePrincipal></DocumentoGenerico>",
+        False, True,
+    ),
+    MatrixCase(
+        "R3", "Remissao inside a",
+        # The corpus's own question, not the schema's: `CARNE_LEAO` carries
+        # citations **inside** source hyperlinks, so the two elements must
+        # coexist somehow. Measured legal, and this is the order the emitter
+        # writes (the user's 2026-09-10 decision) — the source's hyperlink
+        # stays the outer verbatim fact, the resolved URN sits inside it.
+        '<DocumentoGenerico><PartePrincipal id="pp1">'
+        f'<p>Ver <a xlink:href="http://normas.example/ato">{_REMISSAO}</a>.</p>'
+        "</PartePrincipal></DocumentoGenerico>",
+        True, True,
+    ),
+    MatrixCase(
+        "R4", "a inside Remissao",
+        # The same question asked the other way round. Also legal — so the
+        # choice of order was a decision, not a constraint, and this row is
+        # what keeps that distinction honest: if a schema revision later
+        # forbids one direction, the matrix says which.
+        '<DocumentoGenerico><PartePrincipal id="pp1">'
+        '<p>Ver <Remissao xlink:href="urn:lex:br:federal:lei:1988-12-22;7713">'
+        '<a xlink:href="http://normas.example/ato">Lei nº 7.713</a>'
+        "</Remissao>.</p>"
+        "</PartePrincipal></DocumentoGenerico>",
+        True, True,
+    ),
+)
+
+#: Every case, §2.1 table plus the nested and reference surfaces.
+ALL_CASES: tuple[MatrixCase, ...] = MATRIX + NESTED_MATRIX + REMISSAO_MATRIX

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 256,
+      "end": 281,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei Federal n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "Por outro lado, estão bem claros os artigos de lei federal que foram ofendidos pelo acórdão recorrido, tendo sido os mesmos analisados pelo v. acórdão proferido pela Quinta Câmara Civil do Tribunal de Justiça de São Paulo. Entre outras menções de ofensa à Lei Federal n. 7.713/1988, no recurso especial, temos o seguinte parágrafo:",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 64,
+      "end": 82,
+      "urn": "urn:lex:br:federal:lei:2012;12618",
+      "text": "LEI NO 12.618/2012"
+    }
+  ],
+  "meta": {
+    "text": "ASSUNTO: UNIFORMIZAÇÃO CONSUITIVA SOBRE O BENEFÍCIO ESPECIAL DA LEI NO 12.618/2012",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

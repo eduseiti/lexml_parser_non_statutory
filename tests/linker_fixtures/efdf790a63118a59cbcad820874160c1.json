@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 183,
+      "end": 204,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei n. 7.713, de 1988"
+    }
+  ],
+  "meta": {
+    "text": "Decidiu o acórdão recorrido que o pagamento das férias, em pecúnia, por sua natureza indenizatória, não está sujeito a imposto de renda. Daí o recurso especial, em que alega ofensa à Lei n. 7.713, de 1988, e ao art. 43 e incisos, do CTN.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

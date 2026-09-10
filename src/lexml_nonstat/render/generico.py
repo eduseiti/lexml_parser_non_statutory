@@ -33,12 +33,13 @@ refused.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterator
+from typing import TYPE_CHECKING, Iterator
 
 from lxml import etree
 
 from ..model.document import DocumentModel
 from ..model.nodes import Section
+from ..refs.protocol import DEFAULT_CONTEXT_URN
 from .anexo import anexos_element, lexml_root, render_anexo
 from .common import (
     agrupamento,
@@ -51,6 +52,9 @@ from .common import (
     to_xml_string,
 )
 from .ids import IdAllocator
+
+if TYPE_CHECKING:  # pragma: no cover - typing only
+    from ..refs.protocol import Linker
 
 __all__ = [
     "AUXILIARY_NOMES",
@@ -147,13 +151,23 @@ def _bloco(nome: str, text: str) -> etree._Element:
 
 
 def _section_elements(
-    section: Section, parent_id: str, scope: Scope
+    section: Section,
+    parent_id: str,
+    scope: Scope,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ) -> Iterator[etree._Element]:
     """One section, then its descendants — depth-first, pre-order, flattened.
 
     Yielding the parent before recursing is what keeps Rule A true: the child's
     id is composed from an id already issued, and the element carrying it has
     already been emitted.
+
+    ``linker``/``context_urn`` are threaded straight through to
+    :func:`~.common.render_node`, unchanged (Cycle 8e, A-L.3): this function
+    resolves nothing itself, so ``linker=None`` reproduces every byte Cycle 5
+    emitted.
     """
     ident = scope.ids.child(parent_id, "agr")
 
@@ -166,7 +180,9 @@ def _section_elements(
     # `Agrupamento` is never empty, which `blocksreq` rejects on both schemas.
     children.append(_bloco("nivel", str(section.level)))
     for node in section.body:
-        rendered = render_node(node, table_id=scope.table_id)
+        rendered = render_node(
+            node, table_id=scope.table_id, linker=linker, context_urn=context_urn
+        )
         if rendered is not None:
             children.append(rendered)
 
@@ -175,10 +191,18 @@ def _section_elements(
         yield element
 
     for child in section.children:
-        yield from _section_elements(child, ident, scope)
+        yield from _section_elements(
+            child, ident, scope, linker=linker, context_urn=context_urn
+        )
 
 
-def _tree_elements(tree, scope: Scope) -> list[etree._Element]:
+def _tree_elements(
+    tree,
+    scope: Scope,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> list[etree._Element]:
     """A ``HierarchyTree``'s preamble and sections, as ``PartePrincipal`` children.
 
     The preamble is wrapped in a single ``Agrupamento nome="texto"`` rather than
@@ -194,7 +218,10 @@ def _tree_elements(tree, scope: Scope) -> list[etree._Element]:
         rendered = [
             node
             for node in (
-                render_node(n, table_id=scope.table_id) for n in tree.preamble
+                render_node(
+                    n, table_id=scope.table_id, linker=linker, context_urn=context_urn
+                )
+                for n in tree.preamble
             )
             if node is not None
         ]
@@ -203,18 +230,32 @@ def _tree_elements(tree, scope: Scope) -> list[etree._Element]:
             out.append(element)
 
     for section in tree.sections:
-        out.extend(_section_elements(section, scope.ids.root, scope))
+        out.extend(
+            _section_elements(
+                section, scope.ids.root, scope, linker=linker, context_urn=context_urn
+            )
+        )
 
     return out
 
 
-def render_generico(model: DocumentModel) -> RenderedDocument:
+def render_generico(
+    model: DocumentModel,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> RenderedDocument:
     """Render ``model`` as a flat ``DocumentoGenerico`` bundle.
 
     Never raises on a real document: an empty body, absent front matter and
     absent back matter are all ordinary in this corpus (``ad_srf_22`` and
     ``adn_cosit_19`` are nothing *but* front and back matter), and each simply
     contributes nothing.
+
+    ``linker`` defaults to ``None`` (Cycle 8e, A-L.1): with it, this is exactly
+    the Cycle 5 renderer, which is what keeps the 125 committed goldens still.
+    Passed, it is threaded to every ``render_node`` call — body, preamble and
+    annexes alike — so a citation resolves the same way wherever it appears.
     """
     root = lexml_root()
     root.append(model.metadata.to_xml())
@@ -228,12 +269,16 @@ def render_generico(model: DocumentModel) -> RenderedDocument:
         table_id=scope.table_id,
         first_index=model.segmentation.first_index,
         prefix=scope.ids.root,
+        linker=linker,
+        context_urn=context_urn,
     )
     scope.adopt(front, "agr")
     for element in front:
         parte.append(element)
 
-    for element in _tree_elements(model.body, scope):
+    for element in _tree_elements(
+        model.body, scope, linker=linker, context_urn=context_urn
+    ):
         parte.append(element)
 
     back = back_region(
@@ -241,6 +286,8 @@ def render_generico(model: DocumentModel) -> RenderedDocument:
         model.styled,
         table_id=scope.table_id,
         prefix=scope.ids.root,
+        linker=linker,
+        context_urn=context_urn,
     )
     scope.adopt(back, "agrf")
     for element in back:
@@ -250,7 +297,10 @@ def render_generico(model: DocumentModel) -> RenderedDocument:
     if len(parte):
         documento.append(parte)
 
-    annexes = tuple(render_anexo(model, annex) for annex in model.annexes)
+    annexes = tuple(
+        render_anexo(model, annex, linker=linker, context_urn=context_urn)
+        for annex in model.annexes
+    )
     anexos = anexos_element(model)
     if anexos is not None:
         documento.append(anexos)
@@ -266,7 +316,13 @@ def render_generico(model: DocumentModel) -> RenderedDocument:
     )
 
 
-def render_generico_from_docx(path, *, filename: str | None = None) -> RenderedDocument:
+def render_generico_from_docx(
+    path,
+    *,
+    filename: str | None = None,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> RenderedDocument:
     """Read a DOCX and render it flat — the whole pipeline in one call."""
     from pathlib import Path
 
@@ -275,4 +331,4 @@ def render_generico_from_docx(path, *, filename: str | None = None) -> RenderedD
 
     path = Path(path)
     model = build_model(read_docx(path), filename=filename or path.name)
-    return render_generico(model)
+    return render_generico(model, linker=linker, context_urn=context_urn)

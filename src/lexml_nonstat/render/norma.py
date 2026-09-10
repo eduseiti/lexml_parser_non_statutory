@@ -51,16 +51,22 @@ from __future__ import annotations
 import logging
 import re
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from lxml import etree
 
+from ..ingest import Inline
 from ..model.document import DocumentModel
 from ..model.nodes import ListNode, Para, Table
 from ..hierarchy.labels import fold, parse_label
+from ..refs.protocol import DEFAULT_CONTEXT_URN
 from ..segment.render import render_parte_final, render_parte_inicial
 from .anexo import anexos_element, lexml_root, render_anexo
-from .common import el, words
+from .common import el, render_inlines, words
 from .generico import RenderedDocument, render_generico
+
+if TYPE_CHECKING:  # pragma: no cover - typing only
+    from ..refs.protocol import Linker
 
 __all__ = [
     "ARTIGO_ID_RE",
@@ -402,17 +408,64 @@ def build_articulacao(model: DocumentModel) -> tuple[Artigo, ...]:
 # --------------------------------------------------------------------------
 
 
-def _paragraphs(parent: etree._Element, texts: tuple[str, ...]) -> None:
+def _resolve_text_references(
+    text: str, linker: "Linker | None", context_urn: str
+) -> tuple["Reference", ...]:
+    """:func:`~.common.resolve_references`'s guard, transposed to a plain ``str``.
+
+    The articulation's ``Artigo``/``Caput``/``Paragrafo``/``Inciso`` dataclasses
+    (A-6.3) hold plain strings, not :class:`~..model.nodes.Para` — restructuring
+    them into ``Para``-bearing records to reuse ``resolve_references`` directly
+    would touch the id/label grammar this module reads from Cycle 4 and is out
+    of scope for threading a linker through (Cycle 8e, I-5). This function is
+    that guard copied verbatim rather than duplicated by accident: same "no
+    linker, or a disabled one, answers nothing" rule, same "blank text asks
+    nothing" rule, same "the protocol forbids raising, but a third-party
+    implementation might anyway" catch-all.
+    """
+    if linker is None or not getattr(linker, "enabled", True):
+        return ()
+    if not text.strip():
+        return ()
+    try:
+        return tuple(linker.find_refs(text, context_urn))
+    except Exception:  # pragma: no cover - the protocol forbids this
+        return ()
+
+
+def _paragraphs(
+    parent: etree._Element,
+    texts: tuple[str, ...],
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> None:
+    """Append one ``<p>`` per non-blank text, each carrying its own references.
+
+    With ``linker=None`` this sets ``paragraph.text`` exactly as Cycle 5/6 did
+    — ``render_inlines`` with no references and one all-plain-text ``Inline``
+    reduces to that same assignment, but going through it anyway is what makes
+    "byte-identical when no linker is configured" a property of the shared
+    renderer rather than a fact this function has to keep re-proving.
+    """
     for text in texts:
         if not text.strip():
             continue
         paragraph = el("p")
-        paragraph.text = text
+        references = _resolve_text_references(text, linker, context_urn)
+        render_inlines(paragraph, (Inline(text=text),), references)
         parent.append(paragraph)
 
 
 def _dispositivo(
-    tag: str, rotulo: str, ident: str, texts: tuple[str, ...], incisos=()
+    tag: str,
+    rotulo: str,
+    ident: str,
+    texts: tuple[str, ...],
+    incisos=(),
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ) -> etree._Element:
     """A ``DispositivoType`` element: ``Rotulo``, then ``p``s, then children.
 
@@ -423,19 +476,35 @@ def _dispositivo(
     label = el("Rotulo")
     label.text = rotulo
     element.append(label)
-    _paragraphs(element, texts)
+    _paragraphs(element, texts, linker=linker, context_urn=context_urn)
     for inciso in incisos:
         element.append(
-            _dispositivo("Inciso", inciso.rotulo, inciso.ident, inciso.paragraphs)
+            _dispositivo(
+                "Inciso",
+                inciso.rotulo,
+                inciso.ident,
+                inciso.paragraphs,
+                linker=linker,
+                context_urn=context_urn,
+            )
         )
     return element
 
 
-def render_articulacao(articulacao: tuple[Artigo, ...]) -> etree._Element | None:
+def render_articulacao(
+    articulacao: tuple[Artigo, ...],
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> etree._Element | None:
     """``<Articulacao>``, or ``None`` when there is nothing to articulate.
 
     ``None`` rather than an empty element: ``Articulacao`` requires at least one
     ``hierElements`` child and an empty one is rejected on both schemas.
+
+    ``linker``/``context_urn`` (Cycle 8e) reach every ``Caput``/``Paragrafo``/
+    ``Inciso`` paragraph through :func:`_dispositivo`; ``linker=None``
+    reproduces Cycle 6's output.
     """
     if not articulacao:
         return None
@@ -452,6 +521,8 @@ def render_articulacao(articulacao: tuple[Artigo, ...]) -> etree._Element | None
                 artigo.caput.ident,
                 artigo.caput.paragraphs,
                 artigo.caput.incisos,
+                linker=linker,
+                context_urn=context_urn,
             )
         )
         for paragrafo in artigo.paragrafos:
@@ -462,6 +533,8 @@ def render_articulacao(articulacao: tuple[Artigo, ...]) -> etree._Element | None
                     paragrafo.ident,
                     paragrafo.paragraphs,
                     paragrafo.incisos,
+                    linker=linker,
+                    context_urn=context_urn,
                 )
             )
         element.append(node)
@@ -552,12 +625,23 @@ def _parte_inicial(model: DocumentModel) -> etree._Element | None:
     return element if len(element) else None
 
 
-def render_norma(model: DocumentModel) -> RenderedDocument:
+def render_norma(
+    model: DocumentModel,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> RenderedDocument:
     """Render ``model`` as a ``Norma`` bundle — **ungated**.
 
     Raises nothing and checks nothing: it is :func:`render_statutory` that
     decides whether the result may be published. Kept separate so a test can
     inspect an unarticulable render rather than only its fallback.
+
+    ``linker`` defaults to ``None`` (Cycle 8e, A-L.1), reproducing Cycle 6's
+    output byte-for-byte. Passed, it reaches the articulation's own paragraphs
+    through :func:`render_articulacao` and the annex's body through
+    :func:`~.anexo.render_anexo` — ``ParteInicial``/``ParteFinal`` are built by
+    :mod:`~..segment.render`, outside this module, and are not touched here.
     """
     root = lexml_root()
     root.append(model.metadata.to_xml())
@@ -568,7 +652,9 @@ def render_norma(model: DocumentModel) -> RenderedDocument:
     if parte_inicial is not None:
         norma.append(parte_inicial)
 
-    articulacao = render_articulacao(build_articulacao(model))
+    articulacao = render_articulacao(
+        build_articulacao(model), linker=linker, context_urn=context_urn
+    )
     if articulacao is not None:
         norma.append(articulacao)
 
@@ -577,7 +663,10 @@ def render_norma(model: DocumentModel) -> RenderedDocument:
         norma.append(parte_final)
 
     # After ParteFinal — the sequence is the schema's, not document order (D-2).
-    annexes = tuple(render_anexo(model, annex) for annex in model.annexes)
+    annexes = tuple(
+        render_anexo(model, annex, linker=linker, context_urn=context_urn)
+        for annex in model.annexes
+    )
     anexos = anexos_element(model)
     if anexos is not None:
         norma.append(anexos)
@@ -650,7 +739,11 @@ def _conservation_blocker(rendered: RenderedDocument, reference: RenderedDocumen
 
 
 def render_norma_checked(
-    model: DocumentModel, *, generico: RenderedDocument | None = None
+    model: DocumentModel,
+    *,
+    generico: RenderedDocument | None = None,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
 ):
     """Render statutorily and report every reason it may not be published.
 
@@ -658,6 +751,12 @@ def render_norma_checked(
     order it is cheapest to fail them, and each is a
     :class:`~..routing.viability.Blocker` so the reason survives into telemetry
     rather than into a log line nobody reads.
+
+    ``linker``/``context_urn`` (Cycle 8e) reach :func:`render_norma`. When
+    ``generico`` is not supplied, the reference build for the conservation gate
+    is given the same ``linker`` — references are read through by
+    :func:`~.common.leaf_texts` regardless (A-L.4), so this changes no verdict,
+    but it keeps the two bundles being compared under identical conditions.
     """
     from ..routing.coverage import COVERAGE_MIN
     from ..routing.viability import BLOCKER_LOW_COVERAGE, Blocker
@@ -694,14 +793,18 @@ def render_norma_checked(
             )
         )
 
-    rendered = render_norma(model)
+    rendered = render_norma(model, linker=linker, context_urn=context_urn)
 
     if not blockers:
         invalid = _validation_blocker(rendered)
         if invalid is not None:
             blockers.append(invalid)
         else:
-            reference = generico if generico is not None else render_generico(model)
+            reference = (
+                generico
+                if generico is not None
+                else render_generico(model, linker=linker, context_urn=context_urn)
+            )
             lossy = _conservation_blocker(rendered, reference)
             if lossy is not None:
                 blockers.append(lossy)
@@ -709,7 +812,12 @@ def render_norma_checked(
     return rendered, tuple(blockers)
 
 
-def render_statutory(model: DocumentModel) -> RenderedDocument:
+def render_statutory(
+    model: DocumentModel,
+    *,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> RenderedDocument:
     """§4.2's validate-then-fallback: the statutory bundle, or the generic one.
 
     This is what makes "prefer statutory when possible" safe **by construction**
@@ -720,13 +828,20 @@ def render_statutory(model: DocumentModel) -> RenderedDocument:
     The returned :attr:`RenderedDocument.emitter` says which emitter actually
     produced the artifact, so a fallback is visible in the output and not only
     in the log.
+
+    ``linker`` defaults to ``None`` (Cycle 8e, A-L.1) and is threaded to both
+    the ``generico`` reference and the statutory attempt, so which emitter the
+    document actually lands on is decided on identical terms whether or not a
+    linker is configured.
     """
-    generico = render_generico(model)
+    generico = render_generico(model, linker=linker, context_urn=context_urn)
 
     if model.route != EMITTER:
         return generico
 
-    rendered, blockers = render_norma_checked(model, generico=generico)
+    rendered, blockers = render_norma_checked(
+        model, generico=generico, linker=linker, context_urn=context_urn
+    )
     if not blockers:
         return rendered
 
@@ -739,7 +854,13 @@ def render_statutory(model: DocumentModel) -> RenderedDocument:
     return generico
 
 
-def render_norma_from_docx(path, *, filename: str | None = None) -> RenderedDocument:
+def render_norma_from_docx(
+    path,
+    *,
+    filename: str | None = None,
+    linker: "Linker | None" = None,
+    context_urn: str = DEFAULT_CONTEXT_URN,
+) -> RenderedDocument:
     """Read a DOCX and render it statutorily, with §4.2's fallback applied."""
     from pathlib import Path
 
@@ -748,4 +869,4 @@ def render_norma_from_docx(path, *, filename: str | None = None) -> RenderedDocu
 
     path = Path(path)
     model = build_model(read_docx(path), filename=filename or path.name)
-    return render_statutory(model)
+    return render_statutory(model, linker=linker, context_urn=context_urn)

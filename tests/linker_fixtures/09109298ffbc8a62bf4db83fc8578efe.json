@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 144,
+      "end": 194,
+      "urn": "urn:lex:br:federal:lei:1996-12-27;9430!art44",
+      "text": "art. 44 da Lei nº 9.430, de 27 de dezembro de 1996"
+    }
+  ],
+  "meta": {
+    "text": "A falta de transcrição dos balanços ou balancetes de suspensão ou redução no Livro Diário não justifica a cobrança da multa isolada prevista no art. 44 da Lei nº 9.430, de 27 de dezembro de 1996, quando o sujeito passivo apresenta escrituração contábil e fiscal suficiente para comprovar a suspensão ou redução da estimativa.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

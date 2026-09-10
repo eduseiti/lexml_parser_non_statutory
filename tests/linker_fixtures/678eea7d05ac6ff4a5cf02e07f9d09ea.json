@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 62,
+      "end": 80,
+      "urn": "urn:lex:br:federal:lei:2017;13460",
+      "text": "Lei nº 13.460/2017"
+    }
+  ],
+  "meta": {
+    "text": "O usuário deverá receber, conforme os princípios expressos na Lei nº 13.460/2017, um atendimento pautado nas seguintes diretrizes:",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

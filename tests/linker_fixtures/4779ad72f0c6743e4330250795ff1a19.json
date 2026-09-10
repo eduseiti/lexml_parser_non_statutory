@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 273,
+      "end": 296,
+      "urn": "urn:lex:br:federal:decreto.lei:1978;1648",
+      "text": "Decreto-Lei nº 1.648/78"
+    }
+  ],
+  "meta": {
+    "text": "A base de cálculo do imposto de renda será determinada segundo escrituração contábil que apresente destaque das receitas tributáveis e dos correspondentes custos, despesas e encargos, e, na sua falta, mediante arbitramento, em conformidade com os critérios facultados pelo Decreto-Lei nº 1.648/78 e respectivas normas regulamentares.",
+    "sample": "pn_cst_38_19801031.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

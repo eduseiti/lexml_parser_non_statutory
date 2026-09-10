@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 145,
+      "end": 165,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988",
+      "text": "Constituição Federal"
+    }
+  ],
+  "meta": {
+    "text": "Considerando que esse beneficio se destina a compensar a redução do valor do beneficio devidopelo regime próprio de previdência da União e que a Constituição Federal assegura o cômputo dotempo de contribuição federal, estadual e municipal, assim como para o regime geral de",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

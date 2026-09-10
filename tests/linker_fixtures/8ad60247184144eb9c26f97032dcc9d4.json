@@ -1,0 +1,8 @@
+{
+  "references": [],
+  "meta": {
+    "text": "Através deste serviço você poderá emitir o DARF para pagar o carnê-leão, além de manter o registro dos rendimentos mensais utilizados no cálculo. No ano seguinte, os registros poderão ser importados para sua Declaração de Imposto de Renda (DIRPF), facilitando o preenchimento.",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

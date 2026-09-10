@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 359,
+      "end": 380,
+      "urn": "urn:lex:br:federal:lei:2007;1992",
+      "text": "Lei no 1.992, de 2007"
+    },
+    {
+      "start": 398,
+      "end": 420,
+      "urn": "urn:lex:br:federal:lei:2012;12618",
+      "text": "Lei no 12.618, de 2012"
+    }
+  ],
+  "meta": {
+    "text": "Avaliando-o à luz dos aspectos normativos, verifica-se que a utilização na base de cálculo das contribuições previdenciárias efetivamente vertidas ao regime próprio de previdência do servidor demonstra também a sua intenção compensatória. A respeito disso, destacou a Comissão de Trabalho, de Administração e Serviço Público, durante os debates do Projeto de Lei no 1.992, de 2007, que antecedeu a Lei no 12.618, de 2012. Eis o excerto extraído do Parecer PRL 2 CTASP do mencionado Projeto de Lei constante do sítio eletrônico da Câmara dos Deputados. Vejamos:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

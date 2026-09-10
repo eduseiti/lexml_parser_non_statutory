@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 105,
+      "end": 167,
+      "urn": "urn:lex:br:federal:lei:2002-07-19;10522!art19_cpt_inc2",
+      "text": "inciso II do art. 19, da Lei nº 10.522, de 19 de julho de 2002"
+    },
+    {
+      "start": 174,
+      "end": 227,
+      "urn": "urn:lex:br:federal:decreto:1997-10-10;2346!art5",
+      "text": "art. 5º do Decreto nº 2.346, de 10 de outubro de 1997"
+    }
+  ],
+  "meta": {
+    "text": "O PROCURADOR-GERAL DA FAZENDA NACIONAL, no uso da competência legal que lhe foi conferida, nos termos do inciso II do art. 19, da Lei nº 10.522, de 19 de julho de 2002, e do art. 5º do Decreto nº 2.346, de 10 de outubro de 1997, tendo em vista a aprovação do Parecer PGFN/PGA/Nº 1888 /2008, desta Procuradoria-Geral da Fazenda Nacional, pelo Senhor Ministro de Estado da Fazenda, conforme despacho publicado no DOU de 18/9/2008, DECLARA que fica autorizada a dispensa de apresentação de contestação e de interposição de recursos, bem como a desistência dos já interpostos, desde que inexista outro fundamento relevante:",
+    "sample": "ad_pgfn_3_20080918.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

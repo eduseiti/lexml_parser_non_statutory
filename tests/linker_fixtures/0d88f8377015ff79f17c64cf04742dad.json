@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 38,
+      "end": 56,
+      "urn": "urn:lex:br:federal:lei:2012;12618",
+      "text": "Lei no 12.618/2012"
+    }
+  ],
+  "meta": {
+    "text": "\"85.Cotejando estas informações com a Lei no 12.618/2012, a qual — como visto — instituiu o RPC na União e previu aos servidores públicos federais, já ingressos no serviço público antes dessa vigência, o pagamento de beneficio especial pela União quando da concessão de aposentadorias ou pensão por morte no RPPS. parece fácil chegar à conclusão de que a opção de alteração (migração) de regime previdenciário constitui contrato administrativo (em sentido amplo), na medida em que detém todos os requisitos necessários exigidos em lei. Vejamos:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

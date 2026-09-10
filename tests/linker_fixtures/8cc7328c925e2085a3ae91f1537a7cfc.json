@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 133,
+      "end": 161,
+      "urn": "urn:lex:br:federal:lei:1966;5021!art1",
+      "text": "art. 1º da Lei n. 5.021/1966"
+    }
+  ],
+  "meta": {
+    "text": "Irresignada, a Fazenda Estadual manifesta recurso especial, sob o pálio da letra a do admissivo constitucional, alegando violação ao art. 1º da Lei n. 5.021/1966 (fl s. 317-321).",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

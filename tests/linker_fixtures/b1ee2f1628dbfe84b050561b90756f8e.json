@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 28,
+      "end": 61,
+      "urn": "urn:lex:br:federal:lei:2007;11488!art14",
+      "text": "art. 14 da Lei nº 11.488, de 2007"
+    },
+    {
+      "start": 216,
+      "end": 231,
+      "urn": "urn:lex:br:federal:lei:1996;9430",
+      "text": "Lei nº 9.430/96"
+    }
+  ],
+  "meta": {
+    "text": "Aplica-se retroativamente o art. 14 da Lei nº 11.488, de 2007, que revogou a multa de oficio isolada por falta de acréscimo da multa de mora ao pagamento de tributo em atraso, antes prevista no art. 44, § 1º, II, da Lei nº 9.430/96.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

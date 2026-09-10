@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 24,
+      "end": 45,
+      "urn": "urn:lex:br:federal:lei:1995;9249",
+      "text": "Lei nº 9.249, de 1995"
+    }
+  ],
+  "meta": {
+    "text": "A partir da vigência da Lei nº 9.249, de 1995, a dedução de contraprestações de arrendamento mercantil exige a comprovação da necessidade de utilização dos bens arrendados para produção ou comercialização de bens e serviços.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

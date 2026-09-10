@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 2,
+      "end": 23,
+      "urn": "urn:lex:br:federal:lei:1994;8852",
+      "text": "Lei nº 8.852, de 1994"
+    }
+  ],
+  "meta": {
+    "text": "A Lei nº 8.852, de 1994, não outorga isenção nem enumera hipóteses de não incidência de Imposto sobre a Renda da Pessoa Física.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

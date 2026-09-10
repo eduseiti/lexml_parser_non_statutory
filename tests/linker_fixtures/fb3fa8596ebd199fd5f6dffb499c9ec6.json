@@ -1,0 +1,27 @@
+{
+  "references": [
+    {
+      "start": 101,
+      "end": 116,
+      "urn": "urn:lex:br:federal:lei:1971;5764",
+      "text": "Lei nº 5.764/71"
+    },
+    {
+      "start": 295,
+      "end": 338,
+      "urn": "urn:lex:br:federal:decreto:1975-09-02;76186",
+      "text": "Decreto nº 76.186, de 2 de setembro de 1975"
+    },
+    {
+      "start": 672,
+      "end": 705,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art153_par1",
+      "text": "artigo 153, § 1º, da Constituição"
+    }
+  ],
+  "meta": {
+    "text": "Os resultados das atividades estranhas ao objetivo social das cooperativas, segundo os postulados da Lei nº 5.764/71, conforme já foi exposto no Parecer Normativo CST nº 155/73 (D.O. de 0.5.11.73), estão abrangidos pela regra geral do artigo 226 do Regulamento do Imposto de Renda aprovado pelo Decreto nº 76.186, de 2 de setembro de 1975, que submete ao pagamento do imposto todas as pessoas jurídicas que tenham lucros apurados em conformidade com o mesmo RIR, cujo artigo 574 ainda declara ser irrelevante, na definição do fato gerador, a origem ou causa dos rendimentos. Esta conclusão se harmoniza com o princípio de igualdade de todos perante a lei, consagrado pelo artigo 153, § 1º, da Constituição da República.",
+    "sample": "pn_cst_38_19801031.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

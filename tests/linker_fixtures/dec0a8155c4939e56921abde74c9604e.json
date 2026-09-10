@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 423,
+      "end": 462,
+      "urn": "urn:lex:br:federal:emenda.constitucional:0098-12-15;20",
+      "text": "Emenda Constitucional no 20 de 15/12/98"
+    }
+  ],
+  "meta": {
+    "text": "§ 14 - A União, os Estados, o Distrito Federal e os Municípios, desde que instituam regime de previdência complementar para os seus respectivos servidores titulares de cargo efetivo, poderão fixar, para o valor das aposentadorias e pensões a serem concedidas pelo regime de que trata este artigo, o limite máximo estabelecido para os beneficios do regime geral de previdência social de que trata o art. 201. (Incluído pela Emenda Constitucional no 20 de 15/12/98)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

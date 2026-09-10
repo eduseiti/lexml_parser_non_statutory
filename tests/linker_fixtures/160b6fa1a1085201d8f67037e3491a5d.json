@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 312,
+      "end": 330,
+      "urn": "urn:lex:br:federal:lei:2000;10048",
+      "text": "Lei nº 10.048/2000"
+    }
+  ],
+  "meta": {
+    "text": "Têm direito a atendimento prioritário as pessoas com deficiência, pessoas com transtorno do espectro autista, os idosos com idade igual ou superior a 60 anos, as gestantes, as lactantes, as pessoas com crianças de colo, os obesos, pessoas com mobilidade reduzida e doadores de sangue, conforme estabelecido pela Lei nº 10.048/2000.",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

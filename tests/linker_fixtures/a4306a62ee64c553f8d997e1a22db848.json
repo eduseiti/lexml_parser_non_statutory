@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 671,
+      "end": 710,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art201_par9",
+      "text": "§9º do art. 201 da Constituição Federal"
+    }
+  ],
+  "meta": {
+    "text": "Art. 22. Aplica-se o beneficio especial de que tratam os §§ 1º a 8º do art. 3º ao servidor público titular de cargo efetivo da União, inclusive ao membro do Poder Judiciário, do Ministério Público e do Tribunal de Contas da União, oriundo, sem quebra de continuidade, de cargo público estatutário de outro ente da federaçàg que não tenha instituído o respectivo regime de previdência complementar e que ingresse em cargo público efetivo federal a partir da instituição do regime de previdência complementar de que trata esta Lei, considerando-se, para esse fim, o tempo de contribuição estadual, distrital ou municipal, assegurada a compensação financeira de que trata o §9º do art. 201 da Constituição Federal.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

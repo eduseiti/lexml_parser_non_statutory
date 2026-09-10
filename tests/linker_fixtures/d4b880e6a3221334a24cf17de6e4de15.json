@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 48,
+      "end": 81,
+      "urn": "urn:lex:br:federal:medida.provisoria:2017;805",
+      "text": "Medida Provisória no 805, de 2017"
+    }
+  ],
+  "meta": {
+    "text": "VI - o auxílio pré-escolar; .(Redação dada pela Medida Provisória no 805, de 2017). (Vigência encerrada )",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

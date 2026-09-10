@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 249,
+      "end": 258,
+      "urn": "urn:lex:br:federal:lei:1988;7713!art16_cpt_inc1",
+      "text": "incisos I"
+    },
+    {
+      "start": 261,
+      "end": 298,
+      "urn": "urn:lex:br:federal:lei:1988;7713!art16_cpt_inc5",
+      "text": "V do art. 16 da Lei nº 7.713, de 1988"
+    }
+  ],
+  "meta": {
+    "text": "O valor de alienação será o valor recebido do cessionário, e o custo de aquisição será igual a zero, já que não há valor pago pelo precatório e nem há a possibilidade de aplicação das modalidades de atribuição de custo de aquisição de que tratam os incisos I a V do art. 16 da Lei nº 7.713, de 1988 (Lei nº 7.713, art. 16, § 4º).",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

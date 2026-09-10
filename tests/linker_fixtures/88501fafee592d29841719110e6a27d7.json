@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 272,
+      "end": 294,
+      "urn": "urn:lex:br:federal:lei:2012;12618",
+      "text": "Lei no 12.618, de 2012"
+    }
+  ],
+  "meta": {
+    "text": "Por fim, convém ressaltar que a Comissão de Seguridade Social e Família destacou que referido beneficio especial é espécie de beneficio estatutário. Segue o trecho retirado do Parecer da PPP I CSSF, durante os debates do Projeto de Lei no I .992, de 2007, que antecedeu a Lei no 12.618, de 2012, constante do sítio eletrônico da Câmara dos Deputados:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

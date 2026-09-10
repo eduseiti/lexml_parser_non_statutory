@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 19,
+      "end": 33,
+      "urn": "urn:lex:br:federal:lei:1991;8212",
+      "text": "Lei 8.212/1991"
+    }
+  ],
+  "meta": {
+    "text": "9.250/1995 e 89 da Lei 8.212/1991 observando-se as disposições do art. 170-A do CTN.[ARE",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

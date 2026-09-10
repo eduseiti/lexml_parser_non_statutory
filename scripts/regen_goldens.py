@@ -156,6 +156,66 @@ def _norma_xml(sample: Path) -> dict[str, str]:
     return out
 
 
+def _fixture_linker():
+    """A linker serving only the committed fixtures (A-L.6).
+
+    Read-only, and pointed at no binary, so regenerating the linked goldens
+    **cannot** spawn a subprocess and works on a checkout with no `linkertool`.
+    Refreshing the answers themselves is a separate, explicit command —
+    `scripts/record_linker_fixtures.py` — which is §9.3's rule: a linker
+    upgrade must arrive as a reviewed fixture diff, never as output that
+    quietly changed under a passing test.
+    """
+    from lexml_nonstat.refs import LinkerCache, build_linker
+
+    return build_linker(
+        "fixtures",
+        cache=LinkerCache(REPO_ROOT / "tests" / "linker_fixtures", read_only=True),
+    )
+
+
+def _generico_linked_xml(sample: Path) -> dict[str, str]:
+    # `generico`, rendered with references resolved (Cycle 8e). Written for all
+    # 15 samples, `sumula_carf_42` included: it resolves **nothing**, and a
+    # committed golden that proves a document renders identically linked and
+    # unlinked is exactly as much a regression test as one full of `Remissao`.
+    from lexml_nonstat.render.generico import render_generico
+
+    model = build_model(read_docx(sample), filename=sample.name)
+    bundle = render_generico(model, linker=_fixture_linker())
+    out = {"": bundle.to_xml_string(bundle.primary)}
+    for ordinal, annex in enumerate(bundle.annexes, start=1):
+        out[f".anexo{ordinal}"] = bundle.to_xml_string(annex)
+    return out
+
+
+def _norma_linked_xml(sample: Path) -> dict[str, str]:
+    # The statutory emitter, linked — the same one sample §4.4 routes there.
+    doc = read_docx(sample)
+    metadata = extract_metadata(doc, filename=sample.name)
+    segmentation = segment_document(doc, metadata=metadata)
+    hierarchy = infer_hierarchy(doc, metadata=metadata, segmentation=segmentation)
+    viability = assess_viability(
+        doc, metadata=metadata, segmentation=segmentation, hierarchy=hierarchy
+    )
+    if viability.route != NORMA_EMITTER:
+        return {}
+
+    model = build_model(
+        doc,
+        filename=sample.name,
+        metadata=metadata,
+        segmentation=segmentation,
+        hierarchy=hierarchy,
+        viability=viability,
+    )
+    bundle = render_norma(model, linker=_fixture_linker())
+    out = {"": bundle.to_xml_string(bundle.primary)}
+    for ordinal, annex in enumerate(bundle.annexes, start=1):
+        out[f".anexo{ordinal}"] = bundle.to_xml_string(annex)
+    return out
+
+
 def _segments_jsonl(sample: Path) -> dict[str, str]:
     # From the **model**, on the flat emitter's ids — the primary path (§6.1)
     # addressed the way `--kind=generico` writes it, so a golden segment urn
@@ -197,6 +257,12 @@ KINDS: dict[str, tuple[Path, object, str]] = {
     ),
     "norma": (GOLDEN_ROOT / "norma", _norma_xml, ".xml"),
     "segments": (GOLDEN_ROOT / "segments", _segments_jsonl, ".jsonl"),
+    "generico-linked": (
+        GOLDEN_ROOT / "generico_linked",
+        _generico_linked_xml,
+        ".xml",
+    ),
+    "norma-linked": (GOLDEN_ROOT / "norma_linked", _norma_linked_xml, ".xml"),
 }
 
 

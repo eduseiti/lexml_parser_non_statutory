@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 234,
+      "end": 256,
+      "urn": "urn:lex:br:federal:lei:2016;13328",
+      "text": "Lei no 13.328, de 2016"
+    }
+  ],
+  "meta": {
+    "text": "§ 7º 0 prazo para a opção de que trata o inciso II do caput deste artigo será de 24 (vinte e quatro) meses, contados a partir do início da vigência do regime de previdência complementar instituído no caput do art. 1º desta Lei. (Vide Lei no 13.328, de 2016)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

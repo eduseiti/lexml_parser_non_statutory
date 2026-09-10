@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 67,
+      "end": 81,
+      "urn": "urn:lex:br:federal:lei:2018;13709",
+      "text": "Lei 13709/2018"
+    }
+  ],
+  "meta": {
+    "text": "Dados pessoais sensíveis tratados por este Serviço de acordo com a Lei 13709/2018, art. 5º, II",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

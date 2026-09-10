@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 22,
+      "end": 39,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "Argumentar-se-á que a Lei n. 7.713/1988 tratou de isenções a respeito de indenizações, no seu art. 62, IV e V. Entretanto, fê-lo, desnecessariamente; ou, como decidiu o ilustre magistrado Venício Antônio de Paula Salles, ao sentenciar, brilhantemente, o Processo n. 472/1990, da egrégia 9 Vara da Fazenda Pública: “... o legislador ordinário não poderia escolher estes fatos como desencadeadores do imposto de renda. O legislador ordinário foi totalmente ‘atécnico’, mas isto é absolutamente normal em nossa legislação, pois ‘a ele é dado cometer erros não permitidos no estudante de direito’” (Professor Geraldo Ataliba).",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

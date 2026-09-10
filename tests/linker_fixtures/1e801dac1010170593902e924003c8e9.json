@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 166,
+      "end": 183,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "Sustenta ter o v. acórdão recorrido, ao determinar a restituição das importâncias reclamadas, violado os arts. 535, inciso II e 267, inciso VI do CPC; 3º, 6º e 7º da Lei n. 7.713/1988, art. 45, parágrafo único, art. 4º e art. 121, II do CTN. Contra-razões oferecidas às fl s. 220-228.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

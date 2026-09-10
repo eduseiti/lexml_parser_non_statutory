@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 142,
+      "end": 167,
+      "urn": "urn:lex:br:federal:decreto:2010;7392",
+      "text": "Decreto no 7.392, de 2010"
+    }
+  ],
+  "meta": {
+    "text": "Com efeito, vislumbra-se atribuição deste Departamento para apreciação do pedido em destaque, tendo em vista o disposto no art. 14, I, \"a\" do Decreto no 7.392, de 2010, que assim preceitua:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

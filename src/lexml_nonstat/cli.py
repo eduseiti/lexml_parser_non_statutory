@@ -29,6 +29,11 @@ with the probe's own diagnostic and never a traceback.
 other entry point here. Nothing this module does makes a network call unless
 asked to in so many words.
 
+**The linker also defaults to ``none``** (Cycle 8e, A-L.7). ``parse`` accepts
+``--linker=none|auto|fixtures|<path>`` and ``--linker-cache=DIR``; ``fixtures``
+requires the cache and never spawns a subprocess. ``capabilities`` reports
+whether a linker binary is available alongside the schema generations.
+
 **Warnings go to stderr, output to stdout.** Always, in every format, so
 ``parse | validate -`` is never polluted by a diagnostic. ``--strict`` changes
 the *exit code* and nothing else — a test pins that stdout is identical with
@@ -49,6 +54,7 @@ from typing import Any, Sequence
 from .ingest import DocxReadError, StyledDoc, UnsupportedFormatError, read_document
 from .profile import UnknownProfileError, all_profiles, get_profile
 from .referee import DEFAULT_BASE_URL, REFEREE_MODES, build_referee
+from .refs import LINKER_MODES, LinkerCache, build_linker, probe_linker
 from .routing.viability import EMITTERS
 from .telemetry import DecisionLog, render_report
 from .validate.schema import (
@@ -152,6 +158,42 @@ def _build_referee(args, stderr):
         return None, False
 
 
+def _build_linker(args, stderr):
+    """``(linker, ok)``. Mirrors :func:`_build_referee` exactly (A-L.7).
+
+    ``--linker=fixtures`` needs an explicit ``--linker-cache`` — without one
+    there is nothing to serve answers from, and :func:`build_linker` would
+    raise rather than silently spawning a process the mode promises it never
+    will. Any other value that is neither a recognised mode nor an existing
+    file is rejected here, before :func:`build_linker` ever sees it: a typo
+    like ``--linker=fixures`` must not be treated as a path that simply never
+    resolves, which would look identical to ``none`` and mask the mistake.
+    """
+    value = args.linker
+    if value not in LINKER_MODES and not Path(value).is_file():
+        print(
+            f"error: --linker: {value!r} is not one of "
+            f"{', '.join(LINKER_MODES)}, nor an existing file",
+            file=stderr,
+        )
+        return None, False
+
+    if value == "fixtures" and args.linker_cache is None:
+        print("error: --linker=fixtures needs --linker-cache=DIR", file=stderr)
+        return None, False
+
+    kwargs: dict[str, Any] = {}
+    if args.linker_cache is not None:
+        kwargs["cache"] = LinkerCache(
+            args.linker_cache, read_only=(value == "fixtures")
+        )
+    try:
+        return build_linker(value, **kwargs), True
+    except ValueError as exc:
+        print(f"error: {exc}", file=stderr)
+        return None, False
+
+
 def _read(path: Path, stderr) -> tuple[StyledDoc | None, int]:
     """Read one source. Returns ``(doc, exit_code)``; ``doc`` is ``None`` on failure.
 
@@ -213,23 +255,30 @@ def _capabilities_blocker(emitter: str, generation: str) -> str | None:
 # ---------------------------------------------------------------------------
 
 
-def _render(model, emitter: str):
-    """The one place an emitter name becomes a rendering. Nothing else chooses."""
+def _render(model, emitter: str, linker=None):
+    """The one place an emitter name becomes a rendering. Nothing else chooses.
+
+    ``linker`` is threaded to every render call below (Cycle 8e, A-L.7). This
+    is the fix for the A-C.1 shape of defect: a previous cycle shipped
+    ``--referee`` accepted, built and then discarded here, inert on the whole
+    CLI. ``linker=None`` (the default) reproduces every byte the pre-8e
+    renderers emitted, so nothing changes for a caller that never asks.
+    """
     from .render import render_generico, render_generico_aninhado, render_statutory
     from .render.norma import render_norma_checked
 
     if emitter == "generico":
-        return render_generico(model)
+        return render_generico(model, linker=linker)
     if emitter == "generico-aninhado":
-        return render_generico_aninhado(model)
+        return render_generico_aninhado(model, linker=linker)
     if emitter == "norma":
         # Forcing `norma` still runs §4.2's gates: the point of the
         # validate-then-fallback is that it cannot be talked out of.
-        rendered, blockers = render_norma_checked(model)
-        return rendered if not blockers else render_generico(model)
+        rendered, blockers = render_norma_checked(model, linker=linker)
+        return rendered if not blockers else render_generico(model, linker=linker)
     # `auto` — follow the route. `render_statutory` is itself a no-op for a
     # `generico`-routed document, but going through it keeps one code path.
-    return render_statutory(model)
+    return render_statutory(model, linker=linker)
 
 
 def _validate_documents(rendered, selector: str, generation: str):
@@ -338,6 +387,9 @@ def _cmd_parse(args, streams) -> int:
     referee, ok = _build_referee(args, stderr)
     if not ok:
         return _MISUSE
+    linker, ok = _build_linker(args, stderr)
+    if not ok:
+        return _MISUSE
 
     unavailable = _capabilities_blocker(args.emitter, args.generation)
     if unavailable is not None:
@@ -365,7 +417,7 @@ def _cmd_parse(args, streams) -> int:
         model = build_model(
             doc, filename=path.name, profile=profile, log=log, referee=referee
         )
-        rendered = _render(model, args.emitter)
+        rendered = _render(model, args.emitter, linker=linker)
 
         report = _validate_documents(
             rendered, args.schema, _generation_for(rendered.emitter, args.generation)
@@ -602,8 +654,15 @@ def _cmd_capabilities(args, streams) -> int:
     """
     stdout, _ = streams
     probes = [probe_capabilities(g) for g in GENERATIONS]
+    linker_probe = probe_linker()
 
     if args.format == "json":
+        # The list-of-schema-probes shape here is pinned by
+        # `test_cli.py::test_capabilities_json_round_trips_the_probe`
+        # (`len(records) == len(GENERATIONS)`, each record equal to
+        # `probe_capabilities(...).to_dict()` exactly) — it cannot be
+        # reshaped or extended without moving that existing, out-of-scope
+        # test. The linker is reported in the text format only (below).
         _emit(json.dumps([p.to_dict() for p in probes], indent=2, ensure_ascii=False),
               stdout)
         return _OK
@@ -623,6 +682,20 @@ def _cmd_capabilities(args, streams) -> int:
         "emitter generico-aninhado: "
         + ("available" if nested else "unavailable on this checkout")
     )
+    lines.append("")
+    lines.append("linker (external references, --linker)")
+    lines.append(
+        f"  available            : {'yes' if linker_probe.available else 'no'}"
+    )
+    if linker_probe.available:
+        lines.append(f"  path                 : {linker_probe.path}")
+        # The installed build prints a `cmdargs` banner rather than a version,
+        # and `probe.py` declines to record a string with no digit in it. Say
+        # "unknown" rather than showing an empty field.
+        lines.append(
+            f"  version              : {linker_probe.version or 'unknown'}"
+        )
+    lines.append(f"  {linker_probe.diagnostic}")
     _emit("\n".join(lines), stdout)
     return _OK
 
@@ -706,6 +779,28 @@ def _add_referee(sub: argparse.ArgumentParser) -> None:
     )
 
 
+def _add_linker(sub: argparse.ArgumentParser) -> None:
+    """The linker flags, on ``parse`` only (Cycle 8e, A-L.7; Q-7 of the spec).
+
+    Mirrors :func:`_add_referee`'s shape. ``fixtures`` needs
+    ``--linker-cache`` to point at a recorded fixture directory — see
+    :func:`_build_linker` — while ``none``/``auto``/a path may use
+    ``--linker-cache`` as an ordinary read-write cache.
+    """
+    sub.add_argument(
+        "--linker",
+        default="none",
+        help=(
+            "external-reference resolver: none|auto|fixtures|<path to linkertool> "
+            "(default: none — no subprocess)"
+        ),
+    )
+    sub.add_argument(
+        "--linker-cache", type=Path, default=None,
+        help="linker disk cache directory (required for --linker=fixtures)",
+    )
+
+
 def _add_quiet(sub: argparse.ArgumentParser) -> None:
     sub.add_argument(
         "-q", "--quiet", action="store_true", help="suppress per-document headers"
@@ -727,6 +822,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_profile(p)
     _add_schema(p)
     _add_referee(p)
+    _add_linker(p)
     _add_quiet(p)
     p.add_argument(
         "--emitter",

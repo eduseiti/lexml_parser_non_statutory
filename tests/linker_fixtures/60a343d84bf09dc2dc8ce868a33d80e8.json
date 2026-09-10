@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 55,
+      "end": 76,
+      "urn": "urn:lex:br:federal:lei:1996;9363",
+      "text": "Lei nº 9.363, de 1996"
+    }
+  ],
+  "meta": {
+    "text": "Não integram a base de cálculo do crédito presumido da Lei nº 9.363, de 1996, as aquisições de combustíveis e energia elétrica uma vez que não são consumidos em contato direto com o produto, não se enquadrando nos conceitos de matéria-prima ou produto intermediário.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 117,
+      "end": 139,
+      "urn": "urn:lex:br:federal:lei:2017;13464",
+      "text": "Lei nº 13.464, de 2017"
+    }
+  ],
+  "meta": {
+    "text": "Aduaneira, recebida pelos servidores da carreira Tributária e Aduaneira da Receita Federal do Brasil; (Incluído pela Lei nº 13.464, de 2017)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

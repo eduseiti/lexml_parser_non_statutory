@@ -1,0 +1,27 @@
+{
+  "references": [
+    {
+      "start": 44,
+      "end": 82,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art40_par19",
+      "text": "§19 do art. 40 da Constituição Federal"
+    },
+    {
+      "start": 86,
+      "end": 99,
+      "urn": "urn:lex:br:federal:emenda.constitucional:2003-12-19;41!art2_par5",
+      "text": "§5º do art 2º"
+    },
+    {
+      "start": 104,
+      "end": 176,
+      "urn": "urn:lex:br:federal:emenda.constitucional:2003-12-19;41!art3_par1",
+      "text": "§1º do art. 3º da Emenda Constitucional nº 41, de 19 de dezembro de 2003"
+    }
+  ],
+  "meta": {
+    "text": "IX - o abono de permanência de que tratam o §19 do art. 40 da Constituição Federal, o §5º do art 2º e o §1º do art. 3º da Emenda Constitucional nº 41, de 19 de dezembro de 2003.",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

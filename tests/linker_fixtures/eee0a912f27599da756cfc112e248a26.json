@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 14,
+      "end": 40,
+      "urn": "urn:lex:br:federal:lei:2012;12618!art22",
+      "text": "art. 22 da Lei 12.618/2012"
+    }
+  ],
+  "meta": {
+    "text": "Além disso, o art. 22 da Lei 12.618/2012 também menciona expressamente o tempo de contribuição ao RPPS dos demais entes federativos ao assegurar o direito ao Beneficio Especial aos servidores públicos oriundos dos demais entes federativos que ingressem no serviço público federal após a data da entrada em vigor do novo regime previdenciário. De acordo com o dispositivo:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

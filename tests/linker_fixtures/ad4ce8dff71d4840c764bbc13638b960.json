@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 104,
+      "end": 127,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art40",
+      "text": "art. 40 da Constituição"
+    }
+  ],
+  "meta": {
+    "text": "Tc = quantidade de contribuições mensais efetuadas para o regime de previdência da União de que trata o art. 40 da Constituição Fcdcral, efetivamente pagas pelo servidor titular de cargo efetivo da União ou por membro do Poder Judiciário, do Tribunal de Contas e do Ministério Público da União até a data da opção;",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

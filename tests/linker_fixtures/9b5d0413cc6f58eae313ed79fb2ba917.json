@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 115,
+      "end": 132,
+      "urn": "urn:lex:br:federal:lei:2007;1992",
+      "text": "Lei no 1.992/2007"
+    }
+  ],
+  "meta": {
+    "text": "A respeito desse ponto, no entanto, foi apresentada a Emenda Modificativa no 5, no bojo da discussão do Projeto de Lei no 1.992/2007, com a seguinte justificativa:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

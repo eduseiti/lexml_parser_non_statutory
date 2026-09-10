@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 85,
+      "end": 103,
+      "urn": "urn:lex:br:federal:lei:1990;8134",
+      "text": "Lei 8.134, de 1990"
+    }
+  ],
+  "meta": {
+    "text": "§ 1º - O imposto incidente sobre ganhos de capital na alienação de bens ou direitos (Lei 8.134, de 1990, art. 18) deverá ser pago até o último dia útil do mês subseqüente àquele em que os ganhos houverem sido percebidos.\"",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

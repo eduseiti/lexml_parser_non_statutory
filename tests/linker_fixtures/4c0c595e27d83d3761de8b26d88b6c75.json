@@ -1,0 +1,33 @@
+{
+  "references": [
+    {
+      "start": 273,
+      "end": 311,
+      "urn": "urn:lex:br:federal:lei:1966-10-25;5172",
+      "text": "Lei nº 5.172, de 25 de outubro de 1966"
+    },
+    {
+      "start": 368,
+      "end": 407,
+      "urn": "urn:lex:br:federal:lei:1988-12-22;7713",
+      "text": "Lei nº 7.713, de 22 de dezembro de 1988"
+    },
+    {
+      "start": 415,
+      "end": 454,
+      "urn": "urn:lex:br:federal:lei:1992-12-23;8541",
+      "text": "Lei nº 8.541, de 23 de dezembro de 1992"
+    },
+    {
+      "start": 464,
+      "end": 503,
+      "urn": "urn:lex:br:federal:lei:1995-12-26;9250",
+      "text": "Lei nº 9.250, de 26 de dezembro de 1995"
+    }
+  ],
+  "meta": {
+    "text": "O COORDENADOR-GERAL DO SISTEMA DE TRIBUTAÇÃO, no uso das atribuições que lhe confere o art. 199, inciso IV, do Regimento Interno da Secretaria da Receita Federal, aprovado pela Portaria MF nº 227, de 3 de setembro de 1998; e tendo em vista o disposto nos arts. 111, II, da Lei nº 5.172, de 25 de outubro de 1966 (Código Tributário Nacional), 6º, XIV e XXI, 7º e 12 da Lei nº 7.713, de 22 de dezembro de 1988, 47 da Lei nº 8.541, de 23 de dezembro de 1992, e 30 da Lei nº 9.250, de 26 de dezembro de 1995,",
+    "sample": "adn_cosit_19_20001025.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

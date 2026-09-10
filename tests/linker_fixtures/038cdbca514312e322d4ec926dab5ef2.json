@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 42,
+      "end": 78,
+      "urn": "urn:lex:br:federal:lei:2006-10-19;11356",
+      "text": "Lei 11.356, de 19 de outubro de 2006"
+    }
+  ],
+  "meta": {
+    "text": "Pública Federal (GSISTE), instituída pela Lei 11.356, de 19 de outubro de 2006;",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

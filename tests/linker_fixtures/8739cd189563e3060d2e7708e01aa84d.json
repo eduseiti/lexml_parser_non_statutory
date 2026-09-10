@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 202,
+      "end": 233,
+      "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988!art40",
+      "text": "art. 40 da Constituição Federal"
+    },
+    {
+      "start": 259,
+      "end": 296,
+      "urn": "urn:lex:br:federal:lei:2004-06-18;10887",
+      "text": "Lei no 10.887, de 18 de junho de 2004"
+    }
+  ],
+  "meta": {
+    "text": "Art. 32 Aplica-se o limite máximo estabelecido para os beneficios do regime geral de previdência social às aposentadorias e pensões a serem concedidas pelo regime de previdência da União de que trata o art. 40 da Constituição Federal, observado o disposto na Lei no 10.887, de 18 de junho de 2004 aos servidores e membros referidos no caput do art. 1º desta Lei que tiverem ingressado no serviço público:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

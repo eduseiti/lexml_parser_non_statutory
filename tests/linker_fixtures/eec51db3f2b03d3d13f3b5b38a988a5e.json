@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 57,
+      "end": 75,
+      "urn": "urn:lex:br:federal:lei:2017;13460",
+      "text": "Lei nº 13.460/2017"
+    }
+  ],
+  "meta": {
+    "text": "O usuário do serviço público, conforme estabelecido pela Lei nº 13.460/2017, tem direito a atendimento presencial, quando necessário, em instalações salubres, seguras, sinalizadas, acessíveis e adequadas ao serviço e ao atendimento.",
+    "sample": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 0,
+      "end": 21,
+      "urn": "urn:lex:br:federal:lei:1988;7713",
+      "text": "Lei nº 7.713, de 1988"
+    }
+  ],
+  "meta": {
+    "text": "Lei nº 7.713, de 1988 - “Art. 1º- Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliadas no Brasil, serão tributados pelo imposto de renda na forma da legislação vigente, com as modificações introduzidas por esta Lei.",
+    "sample": "par_cosit_26_20000629.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

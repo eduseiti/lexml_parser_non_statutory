@@ -1,0 +1,21 @@
+{
+  "references": [
+    {
+      "start": 343,
+      "end": 348,
+      "urn": "urn:lex:br:federal:lei:2012;12618!par1",
+      "text": "§§ 1º"
+    },
+    {
+      "start": 351,
+      "end": 373,
+      "urn": "urn:lex:br:federal:lei:2012;12618!par80",
+      "text": "80, da Lei 12.618/2012"
+    }
+  ],
+  "meta": {
+    "text": "\"Do exposto, corroborando os principais argumentos e conclusões formulados pela Gerência Jurídica da Funpresp-Exe no Parecer Jurídico n. 30/2018/GEJUWFunpresp-Exe, são essas as conclusões desta Consultoria Jurídica sobre a interpretação e aplicação das normas que regulam a concessão e pagamento do Beneficio Especial, de que trata o art. 3º, §§ 1º a 80, da Lei 12.618/2012:",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

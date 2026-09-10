@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 76,
+      "end": 108,
+      "urn": "urn:lex:br:federal:lei:1988;7713!art3_par4",
+      "text": "art. 3, § 4 da Lei n. 7.713/1988"
+    }
+  ],
+  "meta": {
+    "text": "Com referência ao imposto de renda, vários dispositivos legais, inclusive o art. 3, § 4 da Lei n. 7.713/1988, e o art. 43, incisos I e II, do CTN, são apontados como atingidos pelo venerando aresto recorrido e houve o prequestionamento.",
+    "sample": "sumula_stj_125.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

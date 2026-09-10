@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 83,
+      "end": 130,
+      "urn": "urn:lex:br:federal:decreto.lei:1978-12-18;1648",
+      "text": "Decreto-lei nº 1.648, de 18 de dezembro de 1978"
+    }
+  ],
+  "meta": {
+    "text": "Far-se-á mister, então, arbitrar o lucro, como determinado pelo artigo 7º , IV, do Decreto-lei nº 1.648, de 18 de dezembro de 1978, e legislação regulamentar.",
+    "sample": "pn_cst_38_19801031.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

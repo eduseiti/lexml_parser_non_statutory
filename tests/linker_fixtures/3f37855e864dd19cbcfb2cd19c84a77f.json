@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 85,
+      "end": 121,
+      "urn": "urn:lex:br:federal:lei:1949-09-06;810",
+      "text": "Lei nº 810, de 6 de setembro de 1949"
+    }
+  ],
+  "meta": {
+    "text": "O prazo qüinqüenal citado neste item é contado segundo a definição de ano contida na Lei nº 810, de 6 de setembro de 1949.",
+    "sample": "port_mf_454_19770825.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

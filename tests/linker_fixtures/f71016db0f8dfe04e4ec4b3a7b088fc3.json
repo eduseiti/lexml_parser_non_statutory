@@ -1,0 +1,33 @@
+{
+  "references": [
+    {
+      "start": 137,
+      "end": 148,
+      "urn": "urn:lex:br:federal:lei:1996;9317!art9_cpt_inc3",
+      "text": "incisos III"
+    },
+    {
+      "start": 151,
+      "end": 154,
+      "urn": "urn:lex:br:federal:lei:1996;9317!art9_cpt_inc14",
+      "text": "XIV"
+    },
+    {
+      "start": 156,
+      "end": 160,
+      "urn": "urn:lex:br:federal:lei:1996;9317!art9_cpt_inc17",
+      "text": "XVII"
+    },
+    {
+      "start": 163,
+      "end": 204,
+      "urn": "urn:lex:br:federal:lei:1996;9317!art9_cpt_inc18",
+      "text": "XVIII do art. 9º da Lei nº 9.317, de 1996"
+    }
+  ],
+  "meta": {
+    "text": "No caso de contribuintes que fizeram a opção pelo SIMPLES Federal até 27 de julho de 2001, constatada uma das hipóteses de que tratam os incisos III a XIV, XVII e XVIII do art. 9º da Lei nº 9.317, de 1996, os efeitos da exclusão dar-se-ão a partir de 1º de janeiro de 2002, quando a situação excludente tiver ocorrido até 31 de dezembro de 2001 e a exclusão for efetuada a partir de 2002.",
+    "sample": "port_mf_277_20180607.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}

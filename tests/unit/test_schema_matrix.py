@@ -34,7 +34,13 @@ from lexml_nonstat.validate import (
     validate,
 )
 
-from .matrix_cases import ALL_CASES, MATRIX, NESTED_MATRIX, PLAN_ROW_COUNT
+from .matrix_cases import (
+    ALL_CASES,
+    MATRIX,
+    NESTED_MATRIX,
+    PLAN_ROW_COUNT,
+    REMISSAO_MATRIX,
+)
 
 
 #: Capability names a case may legitimately require: the boolean fields the
@@ -280,8 +286,30 @@ def test_nested_cases_are_marked_and_documented():
     assert len(NESTED_MATRIX) == 2
     assert [c.row for c in NESTED_MATRIX] == ["N1", "N2"]
     assert all(c.requires == "nested_agrupamento" for c in NESTED_MATRIX)
-    assert ALL_CASES == MATRIX + NESTED_MATRIX
+    assert ALL_CASES == MATRIX + NESTED_MATRIX + REMISSAO_MATRIX
     assert len({c.row for c in ALL_CASES}) == len(ALL_CASES), "duplicate rows"
+
+
+def test_remissao_cases_are_unconditional():
+    """T-M1…T-M4 — the reference surface needs no capability (A-L.2).
+
+    The absence of ``requires`` is the claim being made. ``Remissao`` has been
+    legal in both vendored schemas since Cycle 0 and needs no maintainer
+    change, so these rows must hold on **every** generation. Marking them
+    ``requires`` would let a generation that lost the element skip quietly,
+    which is precisely the difference between a capability and an assumption.
+    """
+    assert len(REMISSAO_MATRIX) == 4
+    assert [c.row for c in REMISSAO_MATRIX] == ["R1", "R2", "R3", "R4"]
+    assert all(c.requires == "" for c in REMISSAO_MATRIX)
+    assert all(c.generico for c in REMISSAO_MATRIX), (
+        "the reference surface lives inside DocumentoGenerico, so §2.8's "
+        "two-schema agreement must be asserted for every row"
+    )
+    # R2 is the only invalid one, and it is invalid for a stated reason:
+    # `xlink:href` is required, so an unresolved citation may never be emitted
+    # as a bare `Remissao`.
+    assert [c.expected for c in REMISSAO_MATRIX] == [True, False, True, True]
 
 
 def test_nested_agrupamento_is_valid_where_the_capability_is_present():

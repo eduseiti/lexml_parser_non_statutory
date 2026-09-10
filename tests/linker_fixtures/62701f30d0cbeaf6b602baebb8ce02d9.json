@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "start": 407,
+      "end": 443,
+      "urn": "urn:lex:br:federal:emenda.constitucional:1998;18",
+      "text": "Emenda Constitucional no 18, de 1998"
+    }
+  ],
+  "meta": {
+    "text": "X - a lei disporá sobre o ingresso nas Forças Armadas, os limites de idade, a estabilidade e outras condições de transferência do militar para a inatividade, os direitos, os deveres, a remuneração, as prerrogativas e outras situações especiais dos militares, consideradas as peculiaridades de suas atividades, inclusive aquelas cumpridas por força de compromissos internacionais e de guerra. (Incluído pela Emenda Constitucional no 18, de 1998)) (destaques adicionados)",
+    "sample": "parecer_93_2018_decor_cgu_agu.docx",
+    "context": "urn:lex:br:federal:lei:2000-01-01;1"
+  }
+}
