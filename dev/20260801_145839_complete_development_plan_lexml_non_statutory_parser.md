@@ -1783,10 +1783,11 @@ A tracked, reviewable sequence — not a rewrite:
 ## 12. Cycle Summary
 
 Revised 2026-08-28 (§14); interstitial cycles added 2026-08-30/31 (§15–§17)
-and 2026-09-08 (§18). Cycle order:
+and 2026-09-08 (§18); Cycle 9 amended 2026-09-12 (§19). Cycle order — **every
+cycle complete**:
 
 ```
-0, 1, 2, 3, 4, 4b, 5, 5b, 6, 7, 8, 8c, 8d  ✅ complete  →  8e  →  9
+0, 1, 2, 3, 4, 4b, 5, 5b, 6, 7, 8, 8c, 8d, 8e, 9  ✅ complete
                      └── 6b withdrawn; round-trip reader → 7
 ```
 
@@ -1807,7 +1808,7 @@ and 2026-09-08 (§18). Cycle order:
 | 8c ✅ | Nested quotation structure (§16) | quotation runs become `citacao` sections, confirm-only via a fourth referee question |
 | 8d ✅ | Unlabelled section headers (§17) | a third admission route into `Section`; a confirmed header parents its series |
 | 8e | External reference URNs (§18) | cited statutes resolve to `<Remissao xlink:href="urn:lex:…">`; **all 135 existing goldens byte-identical** (§18's "125" was stale — the corpus has held 135 across 9 kinds since Cycle 7 added `segments`); suite green with no `linkertool`, and green again with the binary at `/usr/local/bin/linkertool` |
-| 9 | Regression consolidation + batch | mutation test bites; corpus report reconciles; **suite green without `lexml-proposed/`** |
+| 9 ✅ | Regression consolidation + batch (§19) | mutation test bites; corpus report reconciles; **suite green without `lexml-proposed/`** — **the goldens stay in `tests/golden/` (A-9.1); the coverage gate omits the debug `__main__` views (A-9.2); batch mode is a `corpus` subcommand whose report *reconciles* as a checkable property (A-9.3); `make` wraps the documented commands verbatim (A-9.4)** |
 
 ---
 
@@ -2099,3 +2100,121 @@ recogniser should later cover the non-statutory genres the Haskell linker
 cannot reach (§5 of the source record). Cycle 8e's measured per-type resolution
 rate is the evidence that question needs, and taking it now would be the
 assumption this plan's method exists to avoid.
+
+---
+
+## 19. Amendment Log — 2026-09-12 Cycle 9: regression consolidation and corpus scale-out
+
+Source: the cycle's own reconciliation, taken with the user before implementing.
+Cycle 9 is the plan's **final** cycle. Four amendments, all decided with the
+user in one round; full text below and in
+[`…/20260912_190015_cycle_9_spec.md`](20260801_145839_complete_development_plan_lexml_non_statutory_parser/20260912_190015_cycle_9_spec.md) §2.
+
+| ID | Section(s) | Summary |
+|---|---|---|
+| **A-9.1** | §8 Cycle 9, §9.1 | **The goldens stay in `tests/golden/`.** "Promote all goldens to `tests/regression/`" is discharged by assertion, not by a move |
+| **A-9.2** | §8 Cycle 9 | **The coverage gate is a per-package aggregate with the debug `__main__.py` views omitted**, the omission declared in `pyproject.toml` |
+| **A-9.3** | §8 Cycle 9, §10 | **Batch mode is a new `corpus` subcommand** that walks directories, isolates per-document failures and emits one *reconciling* report |
+| **A-9.4** | §8 Cycle 9 | **`make regression` is a thin wrapper**, not a second source of truth: every recipe wraps a documented command, asserted by a test |
+
+### A-9.1 — the goldens stay where they are
+
+§8's Cycle 9 asks to "promote all goldens to `tests/regression/`". Taken
+literally that is a `git mv` of **143 tracked data files across 11 kinds** plus
+11 test modules, rewriting `GOLDEN_ROOT` and every golden test's paths, for a
+diff that moves **zero** behaviour.
+
+Two reasons it is refused, and one reason the bullet is nonetheless satisfied.
+
+**§9.1's own layer table lists *Golden* and *Round-trip / Cross-emitter /
+Conservation* as separate layers.** Collapsing the directories would collapse
+the distinction the test strategy draws: a golden pins *what this input
+produces*, a regression test asserts *a property that must hold for every
+input*. They fail differently and are debugged differently.
+
+**A mass relocation is the unreviewable diff §9.4 exists to forbid.** The
+golden policy's whole point is that a diff under `tests/golden/` always means a
+behaviour change; a commit moving 143 files makes that signal useless exactly
+once, and precisely when the tree is largest.
+
+**The bullet is discharged by assertion** — the A-8.1 precedent, where Cycle 8's
+`generic` catch-all profile was found already delivered and asserted rather than
+re-registered. The goldens are *already* consolidated in every sense the cycle
+cares about: one documented regeneration command (`scripts/regen_goldens.py`,
+eleven kinds), byte-stable, and each kind's module re-checks validity and id
+uniqueness **against the committed files** rather than against a fresh render.
+The A-7.1 precedent applies to the naming half: a divergence between the plan's
+word and the repository's layout is *recorded* as an amendment, not absorbed in
+silence. *Decided with the user.*
+
+### A-9.2 — the coverage gate's denominator
+
+"Coverage ≥ 85% on `hierarchy/`, `routing/`, `render/`" does not say whether the
+measurement is per file, per package, or in aggregate — and the reading decides
+whether the deliverable is a formality or a demand to test two superseded debug
+scripts. Measured before deciding: **92% aggregate**, with every module of real
+logic at 92–100%, and exactly two below the floor — `hierarchy/__main__.py` at
+52% and `routing/__main__.py` at **0%**, which the suite never imports at all.
+
+Both are **per-package debug entry points superseded by Cycle 8's unified CLI**,
+whose own tests cover the same behaviour through the library. The gate is
+therefore a **per-package aggregate with `*/__main__.py` omitted**, and the
+omission lives in `pyproject.toml` where it is visible and reviewed rather than
+inside a recipe. `tests/unit/test_build_targets.py` pins both the floor and the
+omit list, and refuses an omit pattern that hides anything but a `__main__`
+module — a gate that can be weakened invisibly is not a gate, which is §9.4's
+reasoning about goldens applied to the threshold itself.
+
+Measured after: **96.54%**, `Required test coverage of 85% reached`.
+*Decided with the user.*
+
+### A-9.3 — batch mode is a `corpus` subcommand
+
+`parse` and `decisions-report` already accept `nargs="+"`, already isolate
+per-document read failures, and are already exercised over all 15 samples in one
+invocation. Read narrowly, "batch mode for the 300+ corpus" was already
+delivered.
+
+It is built as a real command instead, because the thing §10's top risk ("15
+samples ⇏ 300+ corpus") actually asks for is not multi-file arguments: it is a
+**directory walk**, **per-document isolation** so one bad file among 300 cannot
+abandon the other 299, and **one aggregate report whose numbers are checked
+against each other**.
+
+`CorpusReport.check()` makes *reconciling* a checkable property rather than a
+word: the outcome counts must sum, every route must be in `EMITTERS`, every
+blocker and warning code must be in its closed vocabulary, a failed document
+must carry an error and no route while a successful one carries a route and no
+error, and the embedded §7.4 `DecisionsReport.check()` must pass. The referee
+report is **embedded, never re-derived** — a second implementation of §7.4's
+counts would be a second thing to keep right. A report printing plausible
+numbers that did not add up would be worse than no report, because it would be
+believed. *Decided with the user.*
+
+### A-9.4 — `make` is a table of contents
+
+The plan asks for `make regression`; the repository had no `Makefile`, and
+`python3 -m pytest tests/ -q` is what `CLAUDE.md`, the README and `STATUS.md`
+all document. A Makefile owning its own recipes would be a fourth place the
+invocation lives, and the first time someone changed one and not the others they
+would disagree silently — a contributor running `make test` and a maintainer
+running the documented command would be testing different things.
+
+Seven targets (`test`/`regression`, `coverage`, `goldens`, `schemas`, `corpus`,
+`fixtures`, `help`), each a **verbatim wrapper**, and
+`test_every_make_target_wraps_a_documented_command` asserts each recipe's
+distinguishing fragment appears in the documentation. *Decided with the user.*
+
+### Cycle 9 deliverables, as amended
+
+- `Makefile` — seven thin targets (A-9.4)
+- `[tool.coverage.*]` in `pyproject.toml` + `make coverage` — the ≥85% gate (A-9.2)
+- `src/lexml_nonstat/corpus.py` + the `corpus` subcommand — batch mode (A-9.3)
+- `tests/regression/test_mutation_bites.py` — the **committed** mutation harness.
+  Every prior cycle ran a throwaway sweep; this one ships the harness so it
+  re-runs forever, and it bites on §5.4's Constraint 1/2/3 as A-R.9 requires
+- `tests/regression/test_bare_checkout.py` — A-R.9's bare checkout and the
+  no-network property, **automated**: both were previously verified only by hand
+- `docs/20260912_190015_corpus_expansion_and_repository_conventions.md` —
+  the corpus-expansion guide (fixture + expected route + golden) and the
+  `docs/`/`dev/` conventions

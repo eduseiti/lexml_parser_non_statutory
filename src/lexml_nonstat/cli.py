@@ -83,6 +83,7 @@ COMMANDS: tuple[str, ...] = (
     "list-profiles",
     "decisions-report",
     "capabilities",
+    "corpus",
 )
 
 _OK, _FAILED, _MISUSE = 0, 1, 2
@@ -700,6 +701,70 @@ def _cmd_capabilities(args, streams) -> int:
     return _OK
 
 
+def _cmd_corpus(args, streams) -> int:
+    """Batch mode over a whole corpus — plan §8 Cycle 9, amendment **A-9.3**.
+
+    Distinct from ``parse`` over many files, and deliberately so. ``parse``
+    answers "render these documents"; this answers "what is in this corpus, and
+    do the numbers describing it add up" — the instrument §10's top risk ("15
+    samples ⇏ 300+ corpus") asks for. It renders to no file, walks directories,
+    and isolates every document so one bad file among 300 cannot abandon the
+    other 299.
+
+    Exit is ``1`` when any document failed, ``0`` otherwise — the same meaning
+    the other subcommands give the code. A report whose reconciliation check
+    fails is also ``1``: numbers that do not add up are a failure of the run,
+    not a footnote in it.
+    """
+    from .corpus import render_corpus_report, run_corpus
+
+    stdout, stderr = streams
+    profile, ok = _resolve_profile(args.profile, stderr)
+    if not ok:
+        return _MISUSE
+    referee, ok = _build_referee(args, stderr)
+    if not ok:
+        return _MISUSE
+    linker, ok = _build_linker(args, stderr)
+    if not ok:
+        return _MISUSE
+
+    unavailable = _capabilities_blocker(args.emitter, args.generation)
+    if unavailable is not None:
+        _report_warnings(
+            (Warning(EMITTER_UNAVAILABLE, unavailable, args.emitter),), stderr
+        )
+        print(f"error: emitter {args.emitter!r} is unavailable here", file=stderr)
+        return _MISUSE
+
+    paths = args.paths or [Path("samples")]
+    report = run_corpus(
+        paths,
+        emitter=args.emitter,
+        schema=args.schema,
+        generation=args.generation,
+        profile=profile,
+        referee=referee,
+        linker=linker,
+        validate_output=not args.no_validate,
+        stop_on_error=args.stop_on_error,
+        limit=args.limit,
+    )
+
+    if args.format == "json":
+        _emit(
+            json.dumps(report.to_dict(), indent=2, ensure_ascii=False), stdout
+        )
+    else:
+        _emit(render_corpus_report(report), stdout)
+
+    problem = report.check()
+    if problem is not None:
+        print(f"error: the corpus report does not reconcile: {problem}", file=stderr)
+        return _FAILED
+    return _FAILED if report.failed else _OK
+
+
 _DISPATCH = {
     "parse": _cmd_parse,
     "dump-styled": _cmd_dump_styled,
@@ -709,6 +774,7 @@ _DISPATCH = {
     "list-profiles": _cmd_list_profiles,
     "decisions-report": _cmd_decisions_report,
     "capabilities": _cmd_capabilities,
+    "corpus": _cmd_corpus,
 }
 
 
@@ -892,6 +958,39 @@ def build_parser() -> argparse.ArgumentParser:
         "capabilities", help="what the schemas present permit (A-R.9)"
     )
     p.add_argument("--format", default="text", choices=("text", "json"))
+
+    # Cycle 9 (A-9.3). `paths` is optional here, unlike everywhere else: a
+    # corpus run with no argument means `samples/`, which is the corpus this
+    # repository actually has. Directories are walked; files are taken as
+    # given.
+    p = subs.add_parser("corpus", help="batch mode: one reconciling report")
+    _add_documents(p, required=False)
+    _add_profile(p)
+    _add_schema(p)
+    _add_referee(p)
+    _add_linker(p)
+    p.add_argument(
+        "--emitter",
+        default="auto",
+        choices=CHOOSABLE_EMITTERS,
+        help="rendering; auto (default) follows the route",
+    )
+    p.add_argument(
+        "--format", default="text", choices=("text", "json"),
+        help="text (default) or the full report as JSON",
+    )
+    p.add_argument(
+        "--limit", type=int, default=None,
+        help="process at most this many documents (in sorted order)",
+    )
+    p.add_argument(
+        "--stop-on-error", action="store_true",
+        help="halt at the first failure (default: isolate it and continue)",
+    )
+    p.add_argument(
+        "--no-validate", action="store_true",
+        help="skip schema validation (faster on a large corpus)",
+    )
 
     return parser
 

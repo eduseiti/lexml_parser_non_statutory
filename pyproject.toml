@@ -36,6 +36,27 @@ where = ["src"]
 [tool.setuptools.package-data]
 lexml_nonstat = ["validate/stubs/*.xsd", "segments/stylesheets/*.xsl"]
 
+# Cycle 9's coverage gate (amendment A-9.2). The plan asks for "≥85% on
+# hierarchy/, routing/, render/"; `make coverage` applies the floor.
+#
+# The per-package `__main__.py` debug views are omitted from the denominator.
+# They are developer entry points superseded by Cycle 8's unified CLI — one of
+# them, `routing/__main__.py`, the suite never imports at all — and their
+# behaviour is covered through the library by the CLI's own tests. The omission
+# lives here, in the open, rather than inside a recipe: a gate that can be
+# weakened invisibly is not a gate, which is the same reasoning §9.4 applies to
+# goldens.
+[tool.coverage.run]
+source = ["lexml_nonstat"]
+omit = ["*/__main__.py"]
+
+[tool.coverage.report]
+exclude_also = [
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    "^\\s*\\.\\.\\.$",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [

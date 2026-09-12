@@ -69,8 +69,8 @@ pip install -e '.[dev]'       # pytest
 
 ## Commands
 
-Eight subcommands over one argument vocabulary. **`parse` is the one that emits
-LexML XML;** the other seven inspect, validate or explain.
+Nine subcommands over one argument vocabulary. **`parse` is the one that emits
+LexML XML;** the other eight inspect, validate or explain.
 
 | Command | What it does |
 |---|---|
@@ -82,6 +82,7 @@ LexML XML;** the other seven inspect, validate or explain.
 | `list-profiles` | the registered document profiles |
 | `decisions-report` | the rule-vs-referee summary (plan §7.4) |
 | `capabilities` | what the schemas in this checkout permit |
+| `corpus` | batch mode over a directory: one reconciling report |
 
 Common options: `--profile`, `--emitter`, `--schema`, `--strict`, `-o/--out`,
 `--format`, `-q/--quiet`. Run `--help` on any subcommand for the full set.
@@ -98,7 +99,17 @@ PYTHONPATH=src python3 -m lexml_nonstat parse --summary samples/*.docx
 
 # citable segments
 PYTHONPATH=src python3 -m lexml_nonstat segment --format=csv samples/port_mf_277_20180607.docx
+
+# batch mode over a whole corpus — one report, per-document failures isolated
+PYTHONPATH=src python3 -m lexml_nonstat corpus samples/
 ```
+
+`corpus` is the instrument for the question the 15 samples cannot answer on
+their own: **do the rules generalise?** It walks a directory, isolates each
+document so one unreadable file never abandons the rest, and prints a single
+report whose numbers are checked against each other — routes, profiles,
+emitters, blockers, warnings, the §7.4 decision counts and the resolved
+reference tally. `--format=json` gives the same report as data.
 
 **Exit codes:** `0` every document handled; `1` a document failed (unreadable
 source, invalid output, or any warning under `--strict`); `2` the invocation
@@ -213,6 +224,18 @@ python3 -m pytest tests/ -q                        # the full suite
 python3 scripts/build_proposed_schemas.py --check  # generated schemas current?
 ```
 
+The same commands have `make` targets, each a verbatim wrapper — the Makefile is
+a table of contents, never a second source of truth, and a test asserts that:
+
+```bash
+make test          # the full suite
+make coverage      # the suite with Cycle 9's gate: --cov-fail-under=85
+make goldens       # regenerate every golden (a reviewed diff)
+make schemas       # verify lexml-proposed/ is current
+make corpus        # python3 -m lexml_nonstat corpus samples/
+make fixtures      # python3 scripts/record_linker_fixtures.py --check
+```
+
 Goldens regenerate **only** on an explicit command, never as a side effect of
 running tests — so a golden diff is always a reviewed behaviour change:
 
@@ -234,6 +257,7 @@ python3 scripts/regen_goldens.py par_cosit_26_20000629  # one sample
 | `lexml/` | official schemas, vendored, never modified |
 | `lexml-proposed/` | generated schemas with the recursive-grouping change |
 | `scripts/` | golden regeneration, schema generation, reference XSLT |
+| `Makefile` | thin wrappers around the documented commands above |
 | `dev/` | the executing development plan and its cycle records |
 | `docs/` | the investigation record that led to the plan |
 
@@ -245,8 +269,11 @@ the corpus.
 
 ## Status
 
-Development follows a numbered plan in `dev/`; cycles 0–8, 8c and 8d are
-complete. Two remain: **8e** (external reference URNs — resolving cited
-statutes to `urn:lex:` via the LexML linker, as an optional capability) and
-**9** (regression consolidation and corpus scale-out). See `dev/*/STATUS.md`
-for the current state.
+Development follows a numbered plan in `dev/`, and **every cycle is complete** —
+0–8, the interstitial 8c/8d/8e, and **9** (regression consolidation and corpus
+scale-out). See `dev/*/STATUS.md` for the per-cycle record, including the
+amendment log.
+
+Adding a document to the corpus, and the `docs/`/`dev/` conventions, are
+documented in
+[`docs/20260912_190015_corpus_expansion_and_repository_conventions.md`](docs/20260912_190015_corpus_expansion_and_repository_conventions.md).
