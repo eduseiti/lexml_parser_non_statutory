@@ -94,6 +94,18 @@ all. Those are different facts, and the artifact does not separate them.
 
 ### 1.3 Finding B — 24 documents carry a best-effort URN, in six distinct shapes
 
+> **Corrected by Cycle 2 (amendment A-2.4, 2026-09-13): the true figure is 46.**
+> The table below counts `Metadata.missing` — components extraction did not
+> find. It does **not** count the 27 documents that silently take
+> `authority="federal"` from the `generic` profile default, whose URN therefore
+> names the *wrong* issuer rather than none. Read this section as a floor.
+> Cycle 2 reduced the 46 to a residue of 23, enumerated in its
+> [report](20260913_212337_corpus_233_hardening_plan/20260913_222009_cycle_2_report.md) §5.
+>
+> Cycle 2 also found a defect class this section does not model at all: four
+> documents emitted a **confidently wrong** URN, having read a citation of
+> another act as their own identity (amendment A-2.3).
+
 | Missing components | Count | Examples |
 |---|---|---|
 | `number, date` | 9 | the six `servico` declarations, `nota_pgfn_crj_1104_2017`, `parecer_pgfn_crj_701_2016`, `parecer_pgfn_pga_2683_2008` |

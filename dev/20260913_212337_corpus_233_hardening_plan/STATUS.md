@@ -15,7 +15,7 @@ Plan: [`20260913_212337_corpus_233_hardening_plan.md`](../20260913_212337_corpus
 | Cycle | Title | Date | State | Tests | Spec | Report |
 |---|---|---|---|---|---|---|
 | 1 | A truthful account of flatness | — | **not started** | — | — | — |
-| 2 | URN completeness and identity collisions | — | **not started** | — | — | — |
+| 2 | URN completeness and identity collisions | 2026-09-13 | **complete** | 6052 pass / 0 fail / 4 skip / 2 live-deselected | [spec](20260913_222009_cycle_2_spec.md) | [report](20260913_222009_cycle_2_report.md) |
 | 3 | A `solucao_consulta` profile | — | **not started** | — | — | — |
 | 4 | Repair the bare-checkout harness | 2026-09-13 | **complete** | 6028 pass / 0 fail / 4 skip / 2 live-deselected | [spec](20260913_220540_cycle_4_spec.md) | [report](20260913_220540_cycle_4_report.md) |
 | 5 | Batch robustness, negative cases | — | **not started** | — | — | — |
@@ -55,5 +55,11 @@ filenames on collision, the second only what happens after a failure.
 
 ## Amendments
 
-None yet. Amendments to this plan are recorded here as `A-<cycle>.<n>` once
-cycles begin.
+| Id | Cycle | Date | What changed, and why |
+|---|---|---|---|
+| **A-2.1** | 2 | 2026-09-13 | **The URN grammar admits a slug where a number goes.** Answers plan §5.1. Six service descriptions (DBF, DIMOB, DMED, DOI, DIRF, Carnê-Leão) state no number or date in any form, so A-2.3's sentinels collapsed all six onto one URN — the corpus's only collision, six documents claiming one identity. Each states its own name and acronym in its first line, so the slug comes from the document, not its filename. `lexml-base.xsd:1055` types the `URN` attribute `xsd:anyURI` with no pattern, so the grammar was the only constraint. A slug must begin with a letter and so can never collide with the `;0` sentinel. *Decided with the user (Q-4), golden movement confirmed separately (Q-5)* |
+| **A-2.2** | 2 | 2026-09-13 | **A profile may derive its URN type per document.** `jurisprudencia_generico` serves súmulas, acórdãos, recursos and ADIs under one fixed `urn_type="sumula"`, so `REsp_1306393` — an acórdão — claimed to be a súmula. `DocumentProfile.urn_type_res` reads the type off the epigraph; profiles declaring none behave exactly as before (verified: 13 of 15 samples byte-identical). The case number is left as the number: it is how these documents are actually cited. *Decided with the user (Q-6)* |
+| **A-2.3** | 2 | 2026-09-13 | **A confidently-wrong URN is a defect class the plan did not name, and it is worse than a sentinel.** Four documents read a *citation of another act* as their own identity — `nota_pgfn_crj_1114_2012` emitted `…:portaria:0000;294` from "Portaria PGFN Nº 294/2010" on its second paragraph. Root cause: `_EPIGRAPH_RE`'s type group forbade `/`, so `NOTA PGFN/CRJ/Nº 1114/2012` never matched and the scan fell through. A sentinel is visible to a consumer; a wrong number is not. The plan's §1.3 inventory counts only *incomplete* URNs and should be read as a floor |
+| **A-2.4** | 2 | 2026-09-13 | **§1.3's count of 24 is corrected to 46.** It counted `Metadata.missing` only, missing 27 documents that silently inherited `generic`'s `federal` authority default — Finding C (§1.4) surfacing as a URN defect. Cycle 2 was scoped to all 46 by the user; the residue is 23, enumerated in the cycle report §5 |
+
+Amendments to this plan are recorded here as `A-<cycle>.<n>`.
