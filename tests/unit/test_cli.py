@@ -151,6 +151,83 @@ def test_parse_without_out_warns_about_unwritten_annexes() -> None:
     assert "annexes_not_written" in err
 
 
+def test_parse_out_never_overwrites_on_a_shared_urn(tmp_path) -> None:
+    """Two documents, one degraded URN, two files — not one.
+
+    A-2.3's sentinels make ``…:servico:0000;0`` the URN of *every* document
+    carrying neither number nor date, and six of the 233-document corpus share
+    exactly that one. Naming by the URN alone silently overwrote the earlier
+    document: every parse succeeded, and the directory was short. The count is
+    the assertion, because that is the thing that was wrong.
+    """
+    first, second = tmp_path / "a.docx", tmp_path / "b.docx"
+    first.write_bytes(SAMPLE.read_bytes())
+    second.write_bytes(SAMPLE.read_bytes())
+    out_dir = tmp_path / "out"
+
+    code, _, err = run(["parse", "-o", str(out_dir), str(first), str(second)])
+    assert code == 0, err
+    assert len(list(out_dir.glob("*.xml"))) == 2, (
+        "two sources sharing a URN wrote one file: the second overwrote the "
+        "first, which is a silent loss — every document 'succeeded'"
+    )
+
+
+def test_parse_out_keeps_the_urn_the_metadata_resolved(tmp_path) -> None:
+    """Disambiguation renames the *file*, never the document's identity."""
+    first, second = tmp_path / "a.docx", tmp_path / "b.docx"
+    first.write_bytes(SAMPLE.read_bytes())
+    second.write_bytes(SAMPLE.read_bytes())
+    out_dir = tmp_path / "out"
+    run(["parse", "-o", str(out_dir), str(first), str(second)])
+
+    urns = {
+        etree.parse(str(p)).getroot().find(
+            ".//{http://www.lexml.gov.br/1.0}Identificacao"
+        ).get("URN")
+        for p in out_dir.glob("*.xml")
+    }
+    assert len(urns) == 1, (
+        "the filename collision changed a document's URN; only the filename "
+        f"may differ, got {urns}"
+    )
+
+
+def test_parse_isolates_a_failing_document(tmp_path, monkeypatch) -> None:
+    """One document that raises must not abandon the others (`corpus`'s rule).
+
+    Before this, everything after `_read` ran unguarded inside the loop, so the
+    first document to raise took every later document with it — at corpus scale,
+    one defect became hundreds of missing outputs.
+    """
+    from lexml_nonstat import cli as cli_module
+
+    real_render = cli_module._render
+    seen: list[str] = []
+
+    def explode(model, emitter, linker=None):
+        seen.append(model.source or "")
+        if len(seen) == 1:
+            raise RuntimeError("boom")
+        return real_render(model, emitter, linker=linker)
+
+    monkeypatch.setattr(cli_module, "_render", explode)
+
+    first, second = tmp_path / "a.docx", tmp_path / "b.docx"
+    first.write_bytes(SAMPLE.read_bytes())
+    second.write_bytes(SAMPLE.read_bytes())
+    out_dir = tmp_path / "out"
+
+    code, _, err = run(["parse", "-o", str(out_dir), str(first), str(second)])
+    assert code == 1, "a failed document must make the run fail"
+    assert "RuntimeError: boom" in err and "a.docx" in err
+    assert len(seen) == 2, "the run stopped at the first failure"
+    assert [p.name for p in out_dir.glob("*.xml")], (
+        "the surviving document wrote nothing; isolation is what lets the "
+        "other 232 documents of a 233-document run still land"
+    )
+
+
 def test_parse_with_out_does_not_warn_about_annexes(tmp_path) -> None:
     _, _, err = run(["parse", "-o", str(tmp_path), str(ANNEX_SAMPLE)])
     assert "annexes_not_written" not in err

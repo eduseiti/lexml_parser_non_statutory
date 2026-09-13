@@ -298,10 +298,41 @@ def _validate_documents(rendered, selector: str, generation: str):
     return None
 
 
-def _write_bundle(rendered, out_dir: Path, source: str | None) -> tuple[Path, ...]:
-    """§2.9's naming: ``<slug>.xml`` for the primary, ``<slug>!anexoN.xml`` beside it."""
+def _write_bundle(
+    rendered, out_dir: Path, source: str | None, taken: set[str] | None = None
+) -> tuple[Path, ...]:
+    """§2.9's naming: ``<slug>.xml`` for the primary, ``<slug>!anexoN.xml`` beside it.
+
+    **A degraded URN is not a unique filename.** A-2.3's sentinels mean two
+    documents that carry neither number nor date reduce to the *same* URN — six
+    of the 233-document corpus collapse onto
+    ``urn:lex:br:…:servico:0000;0`` — and naming by the URN alone would have
+    the later document silently overwrite the earlier one. A batch that writes
+    228 files for 233 sources and says nothing is the failure mode this guards:
+    the loss is invisible precisely because every individual document
+    succeeded.
+
+    ``taken`` is the set of base slugs already used by this run. On a clash the
+    source stem disambiguates, and only if that is taken too does a counter
+    follow. **Only the filename changes** — the URN inside the document is
+    whatever metadata resolved, because a filename is an artifact of writing a
+    bundle to a filesystem and must never be mistaken for the document's
+    identity.
+    """
     out_dir.mkdir(parents=True, exist_ok=True)
-    base = _slug(rendered.urn, Path(source or "documento").stem)
+    stem = Path(source or "documento").stem
+    base = _slug(rendered.urn, stem)
+
+    if taken is not None and base in taken:
+        candidate = _slug(f"{base}_{stem}", stem)
+        suffix = 2
+        while candidate in taken:
+            candidate = _slug(f"{base}_{stem}_{suffix}", stem)
+            suffix += 1
+        base = candidate
+    if taken is not None:
+        taken.add(base)
+
     written: list[Path] = []
     for i, xml in enumerate(rendered.to_xml_strings()):
         name = f"{base}.xml" if i == 0 else f"{base}!anexo{i}.xml"
@@ -402,6 +433,9 @@ def _cmd_parse(args, streams) -> int:
 
     status = _OK
     warned = False
+    #: Base slugs already written by this run, so a degraded URN shared by two
+    #: documents cannot silently overwrite — see :func:`_write_bundle`.
+    taken: set[str] = set()
     for position, path in enumerate(args.paths):
         doc, code = _read(path, stderr)
         if doc is None:
@@ -415,17 +449,36 @@ def _cmd_parse(args, streams) -> int:
 
         from .model import build_model
 
-        model = build_model(
-            doc, filename=path.name, profile=profile, log=log, referee=referee
-        )
-        rendered = _render(model, args.emitter, linker=linker)
+        # **Per-document isolation.** `_read` already isolates an unreadable
+        # source, but everything after it — model building, rendering,
+        # validation — ran unguarded, so a single document that raised
+        # abandoned every document after it in the same invocation. At 233
+        # sources that turns one defect into 232 missing outputs. `corpus`
+        # already works this way ("one bad file among 300 must not abandon the
+        # other 299"); `parse` writing the files is exactly where it matters
+        # most. `--stop-on-error` has no counterpart here: the failure is
+        # reported and the exit code is already `1`.
+        try:
+            model = build_model(
+                doc, filename=path.name, profile=profile, log=log, referee=referee
+            )
+            rendered = _render(model, args.emitter, linker=linker)
 
-        report = _validate_documents(
-            rendered, args.schema, _generation_for(rendered.emitter, args.generation)
-        )
-        written = (
-            _write_bundle(rendered, args.out, model.source) if args.out else ()
-        )
+            report = _validate_documents(
+                rendered, args.schema,
+                _generation_for(rendered.emitter, args.generation),
+            )
+            written = (
+                _write_bundle(rendered, args.out, model.source, taken)
+                if args.out
+                else ()
+            )
+        except Exception as exc:  # noqa: BLE001 - isolation is the point
+            print(f"error: {path}: {type(exc).__name__}: {exc}", file=stderr)
+            if os.environ.get("LEXML_TRACEBACK"):
+                traceback.print_exc()
+            status = _FAILED
+            continue
         warnings = collect_warnings(
             model,
             rendered,
