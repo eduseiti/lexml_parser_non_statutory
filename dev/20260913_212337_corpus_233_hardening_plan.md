@@ -71,6 +71,25 @@ Routing: 230 `generico`, 3 `norma`. Profiles: `servico` 67, `generic` 62,
 
 ### 1.2 Finding A — 107 documents render flat, and cannot be distinguished from genuinely flat ones
 
+> **Qualified by Cycle 3 (amendments A-3.1, A-3.3, 2026-09-13).** Two
+> corrections, both material to how this section should be read:
+>
+> 1. **The figures below are from a *refereed* run.** The rules-only figure at
+>    the same commit is **115/233**, with `sc_cosit` at **58**/109, not 52.
+>    §1.8 records the referee closing that gap (115 → 107), so the numbers are
+>    consistent — but this section does not say which configuration it measured,
+>    and a cycle whose headline is a flatness delta needs that stated.
+> 2. **The `sc_cosit` flatness was not a referee-reachable gap at all.** The
+>    *Relatório / Fundamentos / Conclusão* skeleton §2's Cycle 3 names is
+>    **title-case**, and `is_prose_form_header` requires an upper-case ratio of
+>    0.85 — so those headings were never proposed as candidates and **no
+>    referee was ever asked about them**. They were invisible under every
+>    configuration. A-3.1's `section_res` is the repair.
+>
+> Cycle 3 reduced flatness **115 → 86** overall and `sc_cosit` **58 → 33**,
+> rules-only. See its
+> [report](20260913_212337_corpus_233_hardening_plan/20260913_224424_cycle_3_report.md).
+
 Nearly **46%** of the corpus (107/233) emits `flat_fallback`: hierarchy
 inference found nothing and the body is a flat run of paragraphs at confidence
 `0.00`. The concentration is not uniform — it tracks genre:
@@ -128,6 +147,22 @@ and `sc_6007_20190325` in particular have both number and date in their
 filenames.
 
 ### 1.4 Finding C — 62 documents route through the `generic` profile
+
+> **Closed by Cycle 3 (2026-09-13).** The `solucao_consulta` profile now claims
+> **125 of the 127** sc/sci/sd documents, reading the right `urn_type` per
+> sub-genre off the epigraph. Two further findings this section does not model:
+>
+> - **Twelve of them were not on `generic` at all** — ten scored 0.40 on
+>   `jurisprudencia_generico`'s unanchored STJ pattern (a solução *discussing*
+>   STJ case law), and two tied at 0.9 with `servico` on a bare `carne-leao`
+>   pattern, winning on registration order. Those two emitted a `:servico:`
+>   URN type — a solução claiming to be a taxpayer service page.
+> - **A tie is a genre decided by a list literal.** `test_winning_margin` pins
+>   that for the 15 samples; Cycle 3 adds the same assertion over the 127.
+>
+> The residue is `sc_15_20090309` and `sc_6007_20190325`, bare-`sc` regional
+> soluções whose first line is a portal banner rather than an epigraph — already
+> recorded as residue in Cycle 2's report §5.
 
 `solução de consulta` is the corpus's dominant genre (109 `sc_cosit` + 12
 `sci_cosit` + 2 `sc` = 123 documents, **53% of the corpus**) and there is no
