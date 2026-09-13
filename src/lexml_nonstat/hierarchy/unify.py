@@ -41,6 +41,7 @@ from .evidence import (
     W_LABEL_SERIES,
     W_LABEL_SOLO,
     W_PROSE_HEADER_CONFIRMED,
+    W_SECTION_DECLARED,
     W_STYLE,
     W_UNIT_SERIES,
 )
@@ -56,6 +57,7 @@ __all__ = [
     "PROSE_HEADER_MIN_UPPER",
     "PROSE_HEADER_RULE_CONFIDENCE",
     "collect_candidates",
+    "declared_section_indices",
     "demote_numbered_containers",
     "detect_unit_series",
     "is_prose_form_header",
@@ -198,6 +200,15 @@ class Candidate:
     #: `tree.py`. So a candidate nobody confirmed is invisible here, and the
     #: `--referee=none` tree is unchanged.
     prose_form: bool = False
+    #: The document's **profile** declares this paragraph's text as one of its
+    #: genre's section headings (Cycle 3, M-1). Set only from
+    #: `declared_indices`, which `tree.py` computes from `profile.section_res`.
+    #:
+    #: Kept separate from `prose_form` rather than folded into it because the
+    #: two have different witnesses — a referee that judged this paragraph, or a
+    #: genre that declares this heading — and the assignment records which one
+    #: vouched. Merging them would make the signals lie about provenance.
+    declared: bool = False
 
     @property
     def is_candidate(self) -> bool:
@@ -205,7 +216,7 @@ class Candidate:
             return False
         if self.style is not None:
             return True
-        if self.prose_form:
+        if self.prose_form or self.declared:
             return True
         return self.label is not None and not self.label.is_dispositivo
 
@@ -269,12 +280,51 @@ def is_prose_form_header(para: StyledPara, *, quoted: bool = False) -> bool:
     return parse_label(text) is None
 
 
+def declared_section_indices(
+    paras: Sequence[StyledPara],
+    analysis: QuotationAnalysis,
+    *,
+    section_res: tuple[re.Pattern[str], ...] = (),
+) -> frozenset[int]:
+    """Paragraphs whose text the profile declares as a section heading (M-1).
+
+    Three refusals, and each is what keeps this from fabricating structure:
+
+    * **no patterns** — a profile declaring none matches nothing, so every
+      profile that predates Cycle 3 leaves this empty and every tree it builds
+      is the tree it built before;
+    * **quoted** — a heading inside a transcribed norm belongs to that norm.
+      A solução de consulta that quotes another one's ``Conclusão`` is quoting,
+      not dividing itself, and the quotation guard has already ruled on it;
+    * **styled** — Word already said it is a heading, so the existing route
+      admits it and this one must not compete, exactly as
+      :func:`is_prose_form_header` refuses the same case.
+
+    Matched against folded, stripped text, so ``Relatório``, ``RELATÓRIO`` and
+    ``relatorio`` are one heading.
+    """
+    if not section_res:
+        return frozenset()
+
+    out: set[int] = set()
+    for para in paras:
+        if para.is_empty or analysis.is_quoted(para.index):
+            continue
+        if para.outline_level is not None or style_level(para) is not None:
+            continue
+        text = fold(para.text.strip())
+        if any(r.match(text) for r in section_res):
+            out.add(para.index)
+    return frozenset(out)
+
+
 def collect_candidates(
     paras: Sequence[StyledPara],
     analysis: QuotationAnalysis,
     *,
     unit_heads: frozenset[str] = frozenset(),
     prose_form_indices: frozenset[int] = frozenset(),
+    declared_indices: frozenset[int] = frozenset(),
 ) -> tuple[Candidate, ...]:
     """Parse every non-empty paragraph into a (possibly empty) candidate.
 
@@ -282,6 +332,11 @@ def collect_candidates(
     confirmed** as section headers (A-H.1). It is empty by default and empty
     under ``--referee=none``, which is what makes this function's answer — and
     every tree built from it — identical to Cycle 8c's on that path.
+
+    ``declared_indices`` names the paragraphs whose text the document's profile
+    declares as one of its genre's headings (Cycle 3, M-1). Also empty by
+    default, and empty for every profile that declares no ``section_res`` —
+    which is all six that existed before Cycle 3.
     """
     out: list[Candidate] = []
     for para in paras:
@@ -296,6 +351,7 @@ def collect_candidates(
                 quoted=analysis.is_quoted(para.index),
                 text=text,
                 prose_form=para.index in prose_form_indices,
+                declared=para.index in declared_indices,
             )
         )
     return tuple(out)
@@ -365,15 +421,18 @@ def unify_levels(
         if not candidate.is_candidate:
             continue
 
-        # A-H.4. A referee-confirmed prose header parents whatever runs through
-        # it. It clears the stack and opens at depth 1 under a key unique to
-        # itself, so two of them are never read as a series — `RELATÓRIO` and
-        # `CONCLUSÃO` are not `1.` and `2.` of anything.
+        # A-H.4. A referee-confirmed prose header — or, since Cycle 3, one the
+        # profile declares by name — parents whatever runs through it. It clears
+        # the stack and opens at depth 1 under a key unique to itself, so two of
+        # them are never read as a series — `RELATÓRIO` and `CONCLUSÃO` are not
+        # `1.` and `2.` of anything. That reasoning was written for the referee
+        # route and holds verbatim for the declared one, which is why M-1 reuses
+        # this branch rather than adding a parallel one.
         #
         # Checked before `style`, though the two are mutually exclusive by the
         # gate in `is_prose_form_header`, because that exclusivity belongs to
         # the generator and this loop should not depend on it holding.
-        if candidate.prose_form and candidate.style is None:
+        if (candidate.prose_form or candidate.declared) and candidate.style is None:
             # **A confirmed prose header never outranks a styled one.** Where
             # the document declares outline levels, those are the author's own
             # statement of its structure and a referee's answer must slot
@@ -403,8 +462,22 @@ def unify_levels(
                     label=None,
                     style=None,
                     heading=candidate.text.strip() or None,
-                    score=W_PROSE_HEADER_CONFIRMED,
-                    signals=("prose_form", "referee_confirmed"),
+                    # Provenance decides the weight and the signal. A declared
+                    # heading is not a referee confirmation and must not claim
+                    # to be one: telemetry reads these signals to explain why a
+                    # document got the structure it did, and "a genre declares
+                    # this heading" is a different — and cheaper, and offline —
+                    # answer from "a model confirmed this paragraph".
+                    score=(
+                        W_PROSE_HEADER_CONFIRMED
+                        if candidate.prose_form
+                        else W_SECTION_DECLARED
+                    ),
+                    signals=(
+                        ("prose_form", "referee_confirmed")
+                        if candidate.prose_form
+                        else ("prose_form", "profile_declared")
+                    ),
                 )
             )
             previous_depth = depth

@@ -1,8 +1,9 @@
 """Document profiles: per-genre patterns, URN defaults and field allowlists.
 
-Six profiles, matching plan §8's Cycle 2 list. ``nota_tecnica`` appears in the
-plan's §3 layout but has no sample in the corpus, so it is deliberately not
-built — see the Cycle 2 spec, decision #5.
+Seven profiles: plan §8's Cycle 2 list of six, plus ``solucao_consulta``, added
+by Cycle 3 of the corpus-233 hardening plan for the genre that is 54% of that
+corpus. ``nota_tecnica`` appears in the plan's §3 layout but has no sample in
+the corpus, so it is deliberately not built — see the Cycle 2 spec, decision #5.
 """
 
 from .ato_declaratorio import ATO_DECLARATORIO
@@ -20,6 +21,7 @@ from .registry import (
     select_profile,
 )
 from .servico import SERVICO
+from .solucao_consulta import SOLUCAO_CONSULTA
 
 __all__ = [
     "ATO_DECLARATORIO",
@@ -29,6 +31,7 @@ __all__ = [
     "PARECER",
     "PORTARIA",
     "SERVICO",
+    "SOLUCAO_CONSULTA",
     "UnknownProfileError",
     "all_profiles",
     "fold",

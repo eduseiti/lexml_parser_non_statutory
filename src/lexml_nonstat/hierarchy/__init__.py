@@ -217,6 +217,9 @@ def infer_hierarchy(
         span_blocks(segmentation.body),
         span=segmentation.body,
         doc_name=name,
+        # M-1. The genre's declared skeleton applies to the document's own body
+        # and nowhere else — see the annex call below.
+        section_res=profile.section_res,
         referee=referee,
         log=log,
         logger=logger,
@@ -233,6 +236,12 @@ def infer_hierarchy(
                 span_blocks(annex.span)[1:],
                 span=annex.span,
                 doc_name=name,
+                # M-1, stated rather than left to the default: an annex is a
+                # *different document* travelling with this one, so the genre's
+                # skeleton does not describe it. A `Conclusão` inside an annex
+                # concludes the annex, and admitting it as a division of the
+                # body would put structure where the genre never promised any.
+                section_res=(),
                 referee=referee,
                 log=log,
                 logger=logger,

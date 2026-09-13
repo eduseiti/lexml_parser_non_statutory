@@ -4,6 +4,7 @@
   "authority": "ministerio.fazenda;conselho.administrativo.recursos.fiscais",
   "doc_type": "sumula",
   "number": "42",
+  "number_source": "epigraph",
   "authority_source": "epigraph",
   "epigraph": "Súmula CARF nº 42",
   "epigraph_index": 0,

@@ -137,6 +137,7 @@ class Metadata:
     number: str | None = None
     date: UrnDate | None = None
     date_source: str | None = None
+    number_source: str | None = None
     authority_source: str | None = None
     epigraph: str | None = None
     epigraph_index: int | None = None
@@ -198,6 +199,7 @@ class Metadata:
             "doc_type",
             "number",
             "date_source",
+            "number_source",
             "authority_source",
             "epigraph",
             "epigraph_index",
@@ -232,6 +234,7 @@ class Metadata:
             number=data.get("number"),
             date=UrnDate.from_dict(date) if date else None,
             date_source=data.get("date_source"),
+            number_source=data.get("number_source"),
             authority_source=data.get("authority_source"),
             epigraph=data.get("epigraph"),
             epigraph_index=data.get("epigraph_index"),
@@ -282,9 +285,19 @@ class Metadata:
 # besides ", de <data>", the corpus has "RECURSO ESPECIAL Nº 1.306.393 - DF
 # (2012/0013476-0)", where a court/case suffix follows. Anything that is not a
 # date simply yields no date, which the chain below then fills in.
+#
+# The ``tipo`` group admits ``/`` (Cycle 2, corpus-233 plan §2.2). Without it
+# ``NOTA PGFN/CRJ/Nº 1114/2012`` does not match at all, the scan falls through
+# to the next paragraph, and the document's *citation* of another act —
+# ``Portaria PGFN Nº 294/2010.`` — is read as its own identity. Four corpus
+# documents had that shape and emitted a confidently **wrong** URN, which is a
+# worse failure than the honest ``;0`` sentinel because nothing flags it.
+#
+# The slash may not be followed by whitespace, so an ordinary sentence
+# containing a slash cannot widen into a document type.
 _EPIGRAPH_RE = re.compile(
-    r"^\s*(?P<tipo>[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s\-]{2,60}?)"
-    r"\s+n[.ºo°]*\s*(?P<num>\d[\d.,]*)"
+    r"^\s*(?P<tipo>[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s\-]*(?:/[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\-]*)*)"
+    r"/?\s*n[.ºo°]*\s*(?P<num>\d[\d.,]*)"
     r"(?:\s*[,\-–]?\s*(?P<date>.*))?$",
     re.IGNORECASE,
 )
@@ -360,6 +373,13 @@ def _authority_from_preamble(paras: Iterable[StyledPara]) -> str | None:
             r"coordenador(-geral)?\s+d[oe]\s+sistema\s+de\s+tributacao",
             "ministerio.fazenda;secretaria.receita.federal",
         ),
+        # Cycle 2: `ad_mesa_cn_38_20051014`'s issuer is named in the preamble
+        # opener, not in a sigla — and the epigraph itself wraps across two
+        # paragraphs ("ATO DECLARATÓRIO DO PRESIDENTE DA MESA DO" /
+        # "CONGRESSO NACIONAL Nº 38, DE 2005"), so no sigla map could see it.
+        # The preamble is the seam that can.
+        (r"presidente\s+d[ae]\s+mesa\s+d[oe]\s+congresso\s+nacional", "congresso.nacional"),
+        (r"mesa\s+d[oe]\s+congresso\s+nacional", "congresso.nacional"),
         (r"advocacia-geral\s+da\s+uniao", "advocacia.geral.uniao"),
         (r"advogad[oa]-geral\s+da\s+uniao", "advocacia.geral.uniao"),
         (r"consultoria-geral\s+da\s+uniao", "advocacia.geral.uniao"),
@@ -393,6 +413,84 @@ def _date_from_filename(filename: str | None) -> UrnDate | None:
     if not (1 <= month <= 12 and 1 <= day <= 31):
         return None
     return UrnDate(year, month, day)
+
+
+#: A service description names itself and then gives its acronym in brackets or
+#: after a dash: "Declaração de Benefícios Fiscais — DBF",
+#: "Declaração sobre Operações Imobiliárias (DOI)", "Sistema de Recolhimento
+#: Mensal Obrigatório (Carnê-Leão)". The acronym is the identity these documents
+#: are actually known by, so it is what the URN carries.
+_SERVICE_ACRONYM_RE = re.compile(r"[(—–\-]\s*([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\-]{1,30})\s*\)?\s*$")
+
+
+def _service_slug(paras: list[StyledPara]) -> str | None:
+    """The slug identifying a service description, from its own first line.
+
+    Returns ``None`` when the document does not present the shape, so a
+    document that reaches the ``servico`` profile without being one of these
+    pages keeps the honest ``;0`` sentinel rather than acquiring a made-up
+    identity.
+    """
+    for para in paras[:3]:
+        text = para.text.strip()
+        if not text:
+            continue
+        m = _SERVICE_ACRONYM_RE.search(text)
+        if m:
+            slug = slugify_authority(m.group(1))
+            if slug and not slug[0].isdigit():
+                return slug
+        return None
+    return None
+
+
+def _number_from_filename(filename: str | None) -> str | None:
+    """``sc_15_20090309`` → ``15``; ``ad_cosar_47_20001127`` → ``47``.
+
+    The number counterpart of :func:`_date_from_filename`, and held to exactly
+    the same rank: **last resort only** (A-2.1). The 300+ corpus may not follow
+    this naming convention, so a filename-derived number must never pre-empt one
+    the document states itself.
+
+    The shape is a genre prefix, the number, and an optional trailing date —
+    the convention 209 of the 233 corpus filenames follow. The date is either a
+    full ``YYYYMMDD`` (``sc_15_20090309``) or a bare year (``parecer_pgfn_crj_701_2016``),
+    and in both cases it is the *number* that is returned: 15 and 701, never the
+    date. Requiring the trailing group to be exactly 4 or 8 digits is what keeps
+    a year from being mistaken for a number.
+    """
+    if not filename:
+        return None
+    stem = filename.rsplit(".", 1)[0]
+    m = re.fullmatch(r"[A-Za-z_]+?_(\d+)(?:_(\d{8}|\d{4}))?", stem)
+    if not m:
+        return None
+    return m.group(1).lstrip("0") or "0"
+
+
+#: Cues that a matched epigraph number belongs to a *cited* document rather than
+#: to this one. A document that opens by naming another act — "Portaria PGFN Nº
+#: 294/2010. Parecer PGFN/CDA Nº 2025/2011." — is summarising its subject, not
+#: identifying itself.
+#:
+#: This is the narrow exception to A-2.1's last-resort rule, sanctioned by the
+#: user during Cycle 2 reconciliation (Q-2): where the body number is detectably
+#: a citation *and* the filename offers a well-formed one, the filename wins.
+#: The epigraph fix above removes the usual cause of such reads, so this is a
+#: safety net rather than the primary mechanism.
+_CITATION_CUES = (
+    # More than one "N<sup>o</sup> <digits>" on the line: a self-identifying
+    # epigraph names one number, a summary of precedents names several.
+    re.compile(r"n[.ºo°]\s*\d[\d.,]*.*\bn[.ºo°]\s*\d", re.IGNORECASE),
+    # A sentence-ending period followed by another document type.
+    re.compile(r"\.\s+(?:portaria|parecer|nota|lei|decreto|acordao|instrucao)\b", re.IGNORECASE),
+)
+
+
+def _number_looks_like_citation(epigraph_text: str) -> bool:
+    """True when the epigraph line reads as a citation of other documents."""
+    folded = _fold(epigraph_text)
+    return any(cue.search(folded) for cue in _CITATION_CUES)
 
 
 def _find_epigraph(
@@ -507,7 +605,11 @@ def extract_metadata(
     # --- doc_type: the profile's URN vocabulary wins over the epigraph's
     # wording, so "Ato Declaratório Normativo Cosit" and "Ato Declaratório SRF"
     # both yield `ato.declaratorio` rather than two spellings of one type.
-    doc_type = prof.urn_type if epi_type or prof.name != "generic" else None
+    # `urn_type_for` lets a profile covering several document kinds pick the
+    # right one off the epigraph (Cycle 2, G-6). Profiles that declare no
+    # `urn_type_res` answer `urn_type`, exactly as before.
+    epi_text = epi_para.text if epi_para is not None else None
+    doc_type = prof.urn_type_for(epi_text) if epi_type or prof.name != "generic" else None
     if epi_type and prof.name == "generic":
         doc_type = slugify_authority(epi_type) or prof.urn_type
 
@@ -564,6 +666,38 @@ def extract_metadata(
     if date is None:
         _consider(_date_from_filename(source), "filename")
 
+    # --- number chain: epigraph → filename (Cycle 2, G-3/G-4).
+    #
+    # Held to A-2.1's rank — the filename is a last resort and never pre-empts a
+    # number the document states — with one narrow exception the user sanctioned
+    # during reconciliation (Q-2): when the epigraph line reads as a *citation*
+    # of other documents, the number found on it is not this document's own, and
+    # a well-formed filename number corrects it. `number_source` records which
+    # branch fired, so a filename-derived component is never mistaken for a
+    # document-derived one.
+    number_source = "epigraph" if number else None
+    if number and epi_para is not None and _number_looks_like_citation(epi_para.text):
+        corrected = _number_from_filename(source)
+        if corrected:
+            number, number_source = corrected, "filename:corrected"
+    if number is None:
+        from_name = _number_from_filename(source)
+        if from_name:
+            number, number_source = from_name, "filename"
+
+    # --- a service description's identity is its name (Cycle 2, G-5).
+    #
+    # Six taxpayer-facing service pages (DBF, DIMOB, DMED, DOI, DIRF,
+    # Carnê-Leão) are not legal acts: they state no number and no date in any
+    # form, so A-2.3's sentinels collapsed all six onto one URN — the corpus's
+    # only URN collision, six documents claiming a single identity. Each does
+    # state its own name and acronym in its first line, so the slug comes from
+    # the document itself rather than from its filename (user decision Q-4).
+    if number is None and prof.name == "servico":
+        slug = _service_slug(paras)
+        if slug:
+            number, number_source = slug, "service-name"
+
     fields = _extract_fields(paras, prof)
 
     return Metadata(
@@ -574,6 +708,7 @@ def extract_metadata(
         number=number,
         date=date,
         date_source=date_source,
+        number_source=number_source,
         authority_source=authority_source,
         epigraph=epi_para.text.strip() if epi_para is not None else None,
         epigraph_index=epi_para.index if epi_para is not None else None,

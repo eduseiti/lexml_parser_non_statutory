@@ -3,12 +3,13 @@
   "locality": "br",
   "authority": "ministerio.fazenda;secretaria.receita.federal",
   "doc_type": "servico",
+  "number": "carne.leao",
+  "number_source": "service-name",
   "authority_source": "profile",
   "source": "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO.docx",
-  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:servico:0000;0",
+  "urn": "urn:lex:br:ministerio.fazenda;secretaria.receita.federal:servico:0000;carne.leao",
   "complete": false,
   "missing": [
-    "number",
     "date"
   ]
 }

@@ -93,6 +93,10 @@ EXPECTED_REGISTRY = (
     "portaria",
     "jurisprudencia_generico",
     "servico",
+    # Cycle 3 of the corpus-233 hardening plan. The genre is 54% of that
+    # corpus (127 of 233) and had no profile at all; plan §1.4 is the finding.
+    # Registered before `generic` so the floor stays the floor.
+    "solucao_consulta",
     "generic",
 )
 

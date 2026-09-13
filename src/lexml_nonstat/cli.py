@@ -318,6 +318,21 @@ def _write_bundle(
     whatever metadata resolved, because a filename is an artifact of writing a
     bundle to a filesystem and must never be mistaken for the document's
     identity.
+
+    **`parse -o` is single-invocation, by design** (Cycle 2, deliverable 4).
+    ``taken`` lives in one process, so two concurrent ``parse`` runs writing to
+    one output directory can still overwrite each other's files — observed
+    directly during the 233-document measuring run, with eight parallel
+    processes. This is documented rather than locked: a lock file would have to
+    be correct across NFS and interrupted processes to be worth trusting, and
+    the honest single-process statement is more useful than a guard that looks
+    like a guarantee and is not. Run one ``parse`` per output directory, or give
+    each process its own ``-o`` and merge afterwards.
+
+    Cycle 2 also removed the *reason* the collision mattered most: the six
+    service descriptions that shared one sentinel URN now carry distinct
+    name-derived identities, so the corpus writes 233 distinct URNs and the
+    disambiguation below is a safety net rather than a load-bearing mechanism.
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     stem = Path(source or "documento").stem

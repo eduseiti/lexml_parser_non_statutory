@@ -39,6 +39,7 @@ structure — a property of the design rather than of a rule that could regress
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Sequence
 
@@ -56,6 +57,7 @@ from .unify import (
     collect_candidates,
     demote_numbered_containers,
     detect_unit_series,
+    declared_section_indices,
     is_prose_form_header,
     unify_levels,
 )
@@ -769,6 +771,7 @@ def build_tree(
     *,
     span: Span | None = None,
     doc_name: str = "",
+    section_res: tuple[re.Pattern[str], ...] = (),
     referee: object | None = None,
     log: object | None = None,
     logger: object | None = None,
@@ -778,6 +781,11 @@ def build_tree(
     Never raises. An empty span yields an empty tree, which is the correct
     answer for ``ad_srf_22`` and ``adn_cosit_19`` — documents whose whole
     content is front and back matter.
+
+    ``section_res`` carries the calling profile's declared section headings
+    (Cycle 3, M-1). It defaults to empty, so every caller that passes nothing —
+    which is every caller outside :func:`~.infer_hierarchy` — builds exactly the
+    tree it built before.
     """
     blocks = [b for b in blocks if isinstance(b, StyledTable) or not b.is_empty]
     paras = [b for b in blocks if isinstance(b, StyledPara)]
@@ -792,8 +800,15 @@ def build_tree(
     prose_form = _confirm_prose_headers(
         paras, analysis, doc_name=doc_name, referee=referee, log=log, logger=logger
     )
+    # M-1. Independent of the referee, and of `prose_form`'s typographic gate:
+    # these headings are title-case and that gate cannot see them at all.
+    declared = declared_section_indices(paras, analysis, section_res=section_res)
     candidates = collect_candidates(
-        paras, analysis, unit_heads=unit_heads, prose_form_indices=prose_form
+        paras,
+        analysis,
+        unit_heads=unit_heads,
+        prose_form_indices=prose_form,
+        declared_indices=declared,
     )
     assignments, rejected = unify_levels(candidates)
     assignments = demote_numbered_containers(

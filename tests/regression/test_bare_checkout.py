@@ -59,6 +59,7 @@ costs a fraction of a second; the symlinked inputs keep the 11 MB of goldens and
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import socket
 import subprocess
@@ -118,6 +119,18 @@ _SUBSET = (
 #: timeout is a guard against a hang, not a performance assertion.
 _TIMEOUT = 600
 
+#: ANSI SGR escapes, the `ESC [ … m` form pytest uses to colourise. Matched
+#: rather than assumed away: `_run_pytest` passes `--color=no`, so this harness
+#: should never see one, and stripping is the second line of defence for the
+#: case where something else turns colour back on (`PY_COLORS=1`, a pytest
+#: default change, a future caller bypassing `_run_pytest`).
+_ANSI = re.compile(r"\x1b\[[0-9;]*m")
+
+
+def _strip_ansi(text: str) -> str:
+    """`text` with any ANSI colour escapes removed."""
+    return _ANSI.sub("", text)
+
 
 def _build_mirror(root: Path) -> Path:
     """A checkout with no `lexml-proposed/`, built without touching the real one.
@@ -162,6 +175,16 @@ def _run_pytest(mirror: Path, args: list[str]) -> subprocess.CompletedProcess:
     cleared rather than passed through: inheriting a `PYTHONPATH=src` from the
     parent's shell would resolve against the real checkout and re-expose the
     schemas this mirror exists to hide.
+
+    `--color=no` is forced here rather than at the call sites so no future
+    caller can forget it. Every assertion below reads this subprocess's stdout
+    by string matching — the summary line's counts, and lines starting with
+    `SKIPPED` — and pytest colourises both when it believes it is writing to a
+    terminal. The escapes land exactly where the parsing looks: `'\\x1b[1m509'`
+    instead of `'509'`, and `'\\x1b[33mSKIPPED\\x1b[0m …'` instead of
+    `'SKIPPED …'`. Both parsers then fail *falsily* — 0 and `[]` — so the
+    harness reports "nothing ran" about a healthy run. That is what made three
+    tests in this module red at `ac7103f` on one machine and green on another.
     """
     env = dict(os.environ)
     env.pop("PYTHONPATH", None)
@@ -169,7 +192,7 @@ def _run_pytest(mirror: Path, args: list[str]) -> subprocess.CompletedProcess:
     env["PYTHONDONTWRITEBYTECODE"] = "1"
 
     return subprocess.run(
-        [sys.executable, "-m", "pytest", *args],
+        [sys.executable, "-m", "pytest", "--color=no", *args],
         cwd=str(mirror),
         env=env,
         capture_output=True,
@@ -288,7 +311,9 @@ def test_skips_carry_the_probe_diagnostic(bare_run) -> None:
     different remedies, and the diagnostic names which one holds.
     """
     reasons = [
-        line for line in bare_run.stdout.splitlines() if line.startswith("SKIPPED")
+        line
+        for line in map(_strip_ansi, bare_run.stdout.splitlines())
+        if line.startswith("SKIPPED")
     ]
     assert reasons, (
         "no skips at all in the bare checkout. The nested validity assertions "
@@ -338,7 +363,7 @@ def test_the_nested_assertions_are_the_ones_that_skip(bare_run) -> None:
     """
     skipped_modules = {
         line.split("tests/", 1)[1].split(":", 1)[0]
-        for line in bare_run.stdout.splitlines()
+        for line in map(_strip_ansi, bare_run.stdout.splitlines())
         if line.startswith("SKIPPED") and "tests/" in line
     }
     assert skipped_modules, "expected skips naming their module"
@@ -362,6 +387,100 @@ def test_the_nested_assertions_are_the_ones_that_skip(bare_run) -> None:
             "module skipping here means the parser's core now depends on the "
             "unreleased schemas."
         )
+
+
+# ---------------------------------------------------------------------------
+# 1b. the harness's own parsing (corpus-233 plan §1.7, Cycle 4)
+# ---------------------------------------------------------------------------
+#
+# Everything in section 1 is a claim about the bare checkout read out of a
+# subprocess's stdout by string matching. That makes the *parsing* load-bearing,
+# and it broke: at `ac7103f` three tests above were red on a machine where
+# pytest emitted colour, while the run they described was healthy (509 passed,
+# 131 skipped, exit 0).
+#
+# What makes it worth pinning rather than just fixing is the direction of the
+# failure. `_count` returned 0 and the skip filter returned `[]` — both falsy,
+# neither an error. One assertion therefore reported "nothing ran in the bare
+# checkout" about a run that passed 509, and had the surrounding assertions been
+# written the other way round ("no more than N skips"), a broken parser would
+# have read as *success*. These tests exist so the next change to pytest's
+# output format fails here, loudly and locally, instead of quietly degrading
+# section 1 into assertions that measure nothing.
+
+
+def test_count_reads_a_colourised_summary() -> None:
+    """The exact string that made this module red, parsed correctly.
+
+    Verbatim from the `ac7103f` failure, escapes included. The token before
+    `"passed"` is `'\\x1b[1m509'`, which is why the unstripped `int()` raised and
+    the count came back 0.
+    """
+    summary = (
+        "\x1b[32m\x1b[32m\x1b[1m509 passed\x1b[0m, "
+        "\x1b[33m131 skipped\x1b[0m\x1b[32m in 7.78s\x1b[0m\x1b[0m"
+    )
+    assert _count(summary, "passed") == 509, (
+        "`_count` cannot read a colourised summary. This is the precise defect "
+        "corpus-233 plan §1.7 records: the count silently reads 0 and the "
+        "bare-checkout assertions report that nothing ran."
+    )
+    assert _count(summary, "skipped") == 131
+
+
+def test_count_reads_a_plain_summary() -> None:
+    """The uncoloured form — what `--color=no` actually produces — still reads.
+
+    Guards the repair in the other direction: stripping escapes must not change
+    the answer for input that never had any.
+    """
+    summary = "128 passed, 4 skipped in 7.12s"
+    assert _count(summary, "passed") == 128
+    assert _count(summary, "skipped") == 4
+
+
+def test_count_is_absent_safe() -> None:
+    """A word the summary does not contain reads 0, not an exception.
+
+    Pre-existing behaviour, pinned here because the tests above are the reason
+    someone might later be tempted to make `_count` strict.
+    """
+    assert _count("509 passed, 131 skipped in 7.78s", "failed") == 0
+
+
+def test_the_harness_parses_its_own_subprocess_output(bare_run) -> None:
+    """The guard section 1 could not give itself.
+
+    The tests above pin `_count` against fixed strings, which cannot anticipate
+    a change in how pytest formats its output. This one asks the same question
+    of the *live* subprocess: whatever the child emitted, did this module manage
+    to read a total and find the skip lines?
+
+    It is deliberately weak about the values — section 1 already asserts what
+    they should be — and deliberately specific about the diagnosis, because the
+    whole point is to tell "the harness cannot parse this" apart from "the bare
+    checkout is broken", which is the confusion that cost three red tests.
+    """
+    summary = _strip_ansi(bare_run.stdout.strip().splitlines()[-1])
+    total = _count(summary, "passed") + _count(summary, "skipped")
+    assert total > 0, (
+        "the harness read no counts at all from the subprocess summary line. "
+        "That is a parsing failure in this module, not a failure of the bare "
+        "checkout — check how pytest now formats its summary before concluding "
+        f"anything about the parser.\n  summary: {summary!r}"
+    )
+
+    skipped_lines = [
+        line
+        for line in map(_strip_ansi, bare_run.stdout.splitlines())
+        if line.startswith("SKIPPED")
+    ]
+    assert skipped_lines, (
+        "the harness found no `SKIPPED` lines, though `-rs` asks for them and "
+        "the summary reports "
+        f"{_count(summary, 'skipped')} skips. Again: a parsing failure here, "
+        "not a finding about the bare checkout."
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -567,8 +686,21 @@ def test_no_network_in_the_default_configuration(tmp_path) -> None:
 
 
 def _count(summary: str, word: str) -> int:
-    """`N` from a pytest summary line's `N <word>`, or 0 if absent."""
-    tokens = summary.replace(",", " ").split()
+    """`N` from a pytest summary line's `N <word>`, or 0 if absent.
+
+    The summary is stripped of ANSI colour first. pytest colourises when it
+    believes it is writing to a terminal, and the escape attaches to the
+    *number*, not to the word:
+
+        '\\x1b[32m\\x1b[32m\\x1b[1m509 passed\\x1b[0m, \\x1b[33m131 skipped\\x1b[0m…'
+
+    so the token before `"passed"` is `'\\x1b[1m509'` and `int()` raises. This
+    used to return 0 for a run that had in fact passed 509 — a *falsy* failure,
+    which read as "nothing ran" rather than as "the parser broke". `--color=no`
+    in `_run_pytest` means this harness never sees colour; stripping here means
+    it survives seeing it anyway (a `PY_COLORS=1` in CI, a future default).
+    """
+    tokens = _strip_ansi(summary).replace(",", " ").split()
     for index, token in enumerate(tokens):
         if token.startswith(word) and index:
             try:

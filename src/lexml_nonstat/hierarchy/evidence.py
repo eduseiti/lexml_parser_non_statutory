@@ -32,6 +32,7 @@ __all__ = [
     "W_LABEL_SERIES",
     "W_LABEL_SOLO",
     "W_PROSE_HEADER_CONFIRMED",
+    "W_SECTION_DECLARED",
     "W_STYLE",
     "W_UNIT_SERIES",
     "document_confidence",
@@ -54,6 +55,17 @@ W_LABEL_SOLO = 0.25
 #: structure is confirmed prose headers is still declared structured rather
 #: than flattened.
 W_PROSE_HEADER_CONFIRMED = 0.8
+
+#: A heading the document's *profile* declares by name (Cycle 3, M-1). Matches
+#: `W_PROSE_HEADER_CONFIRMED`, and the parity is the point: both say "this
+#: unlabelled, unstyled paragraph is a section", and they differ only in who
+#: vouched for it — a referee looking at one paragraph, or a genre whose every
+#: document carries the same skeleton. The genre is at least as good a witness,
+#: and unlike the referee it is free, offline and deterministic.
+#:
+#: Not `W_STYLE`-strong, for the same reason as the confirmed prose header:
+#: Word declaring a heading remains the better witness than a name we matched.
+W_SECTION_DECLARED = 0.8
 
 #: Below this, the tree is discarded and the body is emitted flat.
 CONFIDENCE_THRESHOLD = 0.5

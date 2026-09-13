@@ -16,6 +16,7 @@ from .jurisprudencia_generico import JURISPRUDENCIA_GENERICO
 from .parecer import PARECER
 from .portaria import PORTARIA
 from .servico import SERVICO
+from .solucao_consulta import SOLUCAO_CONSULTA
 
 __all__ = [
     "UnknownProfileError",
@@ -81,6 +82,7 @@ for _p in (
     PORTARIA,
     JURISPRUDENCIA_GENERICO,
     SERVICO,
+    SOLUCAO_CONSULTA,
     GENERIC,
 ):
     register(_p)

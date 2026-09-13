@@ -56,6 +56,18 @@ PRIORS: dict[str, GenrePrior] = {
         0.10,
         "Súmulas and acórdãos are never articulated (decision #2)",
     ),
+    "solucao_consulta": GenrePrior(
+        "solucao_consulta",
+        0.12,
+        "Soluções de consulta interpret the law and quote it at length; they "
+        "answer a taxpayer's question and enact nothing. None of the 127 in "
+        "the 233-document corpus carries an article or an enacting formula, "
+        "and their own skeleton is Relatório/Fundamentos/Conclusão (Cycle 3). "
+        "Between `parecer` (0.15, argues and quotes) and "
+        "`jurisprudencia_generico` (0.10, never articulated), because the "
+        "quoted statutes are extensive enough that an article census alone "
+        "could mistake one for a norma",
+    ),
     "servico": GenrePrior(
         "servico",
         0.15,

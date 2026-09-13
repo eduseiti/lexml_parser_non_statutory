@@ -54,7 +54,21 @@ _DATE = r"\d{4}(?:-\d{2}-\d{2})?"
 
 # The number may carry a complement ("-A" style, rendered "-1" by the
 # reference parser's renderComplemento).
-_NUMBER = r"[0-9]+(?:-[0-9]+)?"
+#
+# A **slug** alternative sits beside the digits (Cycle 2, corpus-233 plan §2.3 /
+# Q-4). Six taxpayer-facing service descriptions — DBF, DIMOB, DMED, DOI, DIRF,
+# Carnê-Leão — are not legal acts and carry no number or date in any form, so
+# A-2.3's sentinels reduced all six to one identical URN: the corpus's *only*
+# URN collision, six documents claiming one identity. A slug taken from the
+# document's own name (``;carne.leao``) gives each a stable distinct identity.
+#
+# Safe against the schemas: `lexml-base.xsd:1055` types the `URN` attribute
+# `xsd:anyURI` with no pattern, so the grammar here is the only constraint, and
+# it is ours. The slug is deliberately spelled like an authority segment —
+# lowercase ASCII words joined by dots — so nothing downstream meets a shape it
+# has not already seen, and a leading letter is required so a slug can never be
+# confused with a number or with the `0` sentinel.
+_NUMBER = r"(?:[0-9]+(?:-[0-9]+)?|[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*)"
 
 LEXML_URN_RE = re.compile(
     rf"^urn:lex:(?P<locality>{_SEGMENT}):(?P<authority>{_SEGMENT})"

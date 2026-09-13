@@ -21,7 +21,27 @@ GENERIC = DocumentProfile(
     urn_authority="federal",
     epigraph_res=(),
     authority_res=(),
-    authority_map=(),
+    # Cycle 2 (corpus-233 plan §1.3/§2.1). 27 documents reached this profile and
+    # inherited its `federal` default, so their URN named the wrong issuer — a
+    # worse outcome than naming none, because nothing flags it. These are the
+    # siglas the 233-document corpus actually contains, read off the epigraph
+    # the documents already state ("Solução de Consulta Cosit nº 100").
+    #
+    # They live here rather than on a `solucao_consulta` profile because that
+    # profile is **Cycle 3's** deliverable; Cycle 3 should move them onto it.
+    authority_map=(
+        ("COSIT", "ministerio.fazenda;secretaria.receita.federal"),
+        ("DISIT", "ministerio.fazenda;secretaria.receita.federal"),
+        ("SRRF", "ministerio.fazenda;secretaria.receita.federal"),
+        ("RFB", "ministerio.fazenda;secretaria.receita.federal"),
+        ("SRF", "ministerio.fazenda;secretaria.receita.federal"),
+        ("PGFN", "procuradoria.geral.fazenda.nacional"),
+        ("AGU", "advocacia.geral.uniao"),
+        ("CARF", "ministerio.fazenda;conselho.administrativo.recursos.fiscais"),
+        ("TSE", "tribunal.superior.eleitoral"),
+        ("STJ", "superior.tribunal.justica"),
+        ("STF", "supremo.tribunal.federal"),
+    ),
     # Some labelled fields are genre-independent enough to be worth capturing
     # even when we could not identify the genre.
     field_labels=frozenset({"ASSUNTO", "EMENTA", "Assunto", "Ementa", "NUP"}),

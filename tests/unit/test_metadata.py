@@ -65,7 +65,13 @@ INCOMPLETE = {
     "sumula_carf_42": ("date",),
     "sumula_stj_125": ("date",),
     "REsp_1306393": ("date",),
-    "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO": ("number", "date"),
+    # Cycle 2 (G-5) gave the service descriptions an identity of their own: the
+    # acronym each states in its first line ("Sistema de Recolhimento Mensal
+    # Obrigatório (Carnê-Leão)" → `…;carne.leao`). So `number` is no longer
+    # missing here. The **date** still is, and honestly — a service page states
+    # no promulgation date, which is exactly the A-2.3 case the sentinel exists
+    # for. A-2.3 is amended in reach, not repealed.
+    "sistema_de_recolhimento_mensal_obrigatorio_CARNE_LEAO": ("date",),
 }
 
 # --------------------------------------------------------------------------

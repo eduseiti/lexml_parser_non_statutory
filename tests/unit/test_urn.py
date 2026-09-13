@@ -223,6 +223,45 @@ def test_fragment_is_dropped_when_falsy():
     assert not is_valid_urn(FEDERAL_URN + "!")
 
 
+def test_slug_number_is_a_valid_identity():
+    """Cycle 2: a slug may stand where a number does, and survives a round trip.
+
+    Six taxpayer-facing service descriptions (DBF, DIMOB, DMED, DOI, DIRF,
+    Carnê-Leão) are not legal acts and state no number or date in any form, so
+    A-2.3's sentinels collapsed all six onto one URN — the corpus's *only* URN
+    collision, six documents claiming a single identity. A slug taken from the
+    document's own name gives each a distinct one.
+
+    The schemas permit it: `lexml-base.xsd:1055` types the `URN` attribute
+    `xsd:anyURI` with no pattern, so this grammar is the only constraint.
+    """
+    urn = build_urn(
+        authority="ministerio.fazenda;secretaria.receita.federal",
+        doc_type="servico",
+        date=None,
+        number="carne.leao",
+    )
+    assert urn.endswith(":servico:0000;carne.leao")
+    assert is_valid_urn(urn)
+    assert parse_urn(urn).number == "carne.leao"
+    # The date is still the honest sentinel: a slug identity says nothing about
+    # when the document was issued.
+    assert parse_urn(urn).date.is_unknown
+
+
+def test_the_sentinel_number_survives_the_widened_grammar():
+    """A-2.3 is amended in reach, not repealed.
+
+    ``;0`` still means "this document states no number". Widening the grammar to
+    admit slugs must not make the sentinel unreachable or ambiguous — a slug is
+    required to start with a letter precisely so it can never collide with it.
+    """
+    urn = build_urn(authority="a.b", doc_type="sumula", date=None, number=None)
+    assert urn.endswith(":0000;0")
+    assert parse_urn(urn).number == "0"
+    assert parse_urn(urn).date.is_unknown
+
+
 def test_number_complement_round_trips():
     """``277-1`` is the reference parser's rendering of a "Portaria 277-A".
 
@@ -383,7 +422,14 @@ def test_slugify_is_idempotent():
         ("year and month only", "urn:lex:br:ministerio.fazenda:portaria:2018-06;277"),
         ("no number and no ';'", "urn:lex:br:ministerio.fazenda:portaria:2018-06-07"),
         ("';' present but number empty", "urn:lex:br:ministerio.fazenda:portaria:2018-06-07;"),
-        ("non-numeric number", "urn:lex:br:ministerio.fazenda:portaria:2018-06-07;abc"),
+        # A number that mixes digits into letters is neither a number nor a
+        # slug. `;abc` used to sit here as "non-numeric number"; Cycle 2 widened
+        # the grammar to admit a lowercase slug beside the digits (see
+        # `test_slug_number_is_a_valid_identity` below), so the shape that is
+        # still wrong is the *mixed* one, not the alphabetic one.
+        ("digits fused to letters", "urn:lex:br:ministerio.fazenda:portaria:2018-06-07;12ab"),
+        ("uppercase slug number", "urn:lex:br:ministerio.fazenda:servico:0000;DBF"),
+        ("slug number starting with a digit", "urn:lex:br:ministerio.fazenda:servico:0000;1dbf"),
         # Uppercase anywhere in a slug: the vocabulary is lowercase.
         ("uppercase locality and authority", "urn:lex:BR:MINISTERIO.FAZENDA:portaria:2018-06-07;277"),
         ("title-cased authority", "urn:lex:br:Ministerio.Fazenda:portaria:2018-06-07;277"),

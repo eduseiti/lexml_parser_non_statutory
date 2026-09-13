@@ -69,6 +69,13 @@ class DocumentProfile:
     urn_type: str
     urn_authority: str | None = None
     urn_locality: str = "br"
+    #: Epigraph pattern → URN type, for genres that cover several document
+    #: kinds under one profile (Cycle 2, G-6). ``jurisprudencia_generico`` is
+    #: the case that forced it: one profile serves súmulas, acórdãos, recursos
+    #: especiais and ADIs, and a single fixed ``urn_type`` made every one of
+    #: them a ``sumula`` — so ``REsp_1306393``, an acórdão, claimed to be a
+    #: súmula. First match wins; ``urn_type`` remains the fallback.
+    urn_type_res: tuple[tuple[re.Pattern[str], str], ...] = ()
     #: Patterns that identify this genre, matched against folded head text.
     epigraph_res: tuple[re.Pattern[str], ...] = ()
     #: Preamble openers naming the issuing authority ("o ministro de estado…").
@@ -81,6 +88,25 @@ class DocumentProfile:
     ementa_absent: bool = False
     #: Enacting formulas that open the dispositive part ("DECLARA", "RESOLVE:").
     enacting_res: tuple[re.Pattern[str], ...] = ()
+    #: Literal section headings this genre always carries ("Relatório",
+    #: "Fundamentos", "Conclusão"), matched against folded, stripped paragraph
+    #: text. A match admits the paragraph as a section **deterministically**,
+    #: with no referee (Cycle 3, M-1).
+    #:
+    #: This exists because `is_prose_form_header` cannot see these headings at
+    #: all: it requires `upper_ratio >= 0.85` and the soluções de consulta write
+    #: theirs in *title case* (`Relatório`, ratio ~0.11). They are never
+    #: proposed, so the referee is never asked, and 125 of the genre's 127
+    #: documents rendered flat for want of a heading every one of them states.
+    #: `par_cosit_26`'s upper-case `RELATÓRIO` — the paragraph A-H.1 was written
+    #: for — is why that gate looked sufficient.
+    #:
+    #: Safe by construction, and deliberately narrower than relaxing that gate:
+    #: the patterns are genre knowledge declared as *data*, they are empty on
+    #: every other profile, and a document that does not select this profile
+    #: cannot be touched by them. Invariant #8 is unchanged — this does not
+    #: guess at structure, it reads a skeleton the genre declares in words.
+    section_res: tuple[re.Pattern[str], ...] = ()
     #: Annex boundary markers ("ANEXO ÚNICO", "ANEXO I").
     #:
     #: Empty for genres that never carry an annex. This is deliberate and
@@ -125,6 +151,19 @@ class DocumentProfile:
             score = max(score, min(0.95, score + 0.15) if score else 0.4)
 
         return min(score, 1.0)
+
+    def urn_type_for(self, epigraph: str | None) -> str:
+        """The URN type for one document, from its epigraph.
+
+        Falls back to ``urn_type`` when nothing matches, so a profile that
+        declares no ``urn_type_res`` behaves exactly as before.
+        """
+        if epigraph:
+            folded = fold(epigraph)
+            for pattern, urn_type in self.urn_type_res:
+                if pattern.search(folded):
+                    return urn_type
+        return self.urn_type
 
     def matches_label(self, label: str) -> bool:
         """True when ``label`` is one this profile treats as metadata."""

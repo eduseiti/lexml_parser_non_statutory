@@ -34,6 +34,12 @@ ATO_DECLARATORIO = DocumentProfile(
         ("SRF", "ministerio.fazenda;secretaria.receita.federal"),
         ("COSIT", "ministerio.fazenda;secretaria.receita.federal"),
         ("CST", "ministerio.fazenda;secretaria.receita.federal"),
+        # Cycle 2 (corpus-233 plan §1.3): the two issuers the 233-document
+        # corpus contains that had no entry, so their URNs fell back to the
+        # `federal` default and named the wrong issuer.
+        ("COSAR", "ministerio.fazenda;secretaria.receita.federal"),
+        ("MESA DO CONGRESSO NACIONAL", "congresso.nacional"),
+        ("MESA CN", "congresso.nacional"),
     ),
     field_labels=frozenset({"JURISPRUDÊNCIA", "JURISPRUDENCIA", "REFERÊNCIA", "Nota Normas"}),
     ementa_absent=False,
