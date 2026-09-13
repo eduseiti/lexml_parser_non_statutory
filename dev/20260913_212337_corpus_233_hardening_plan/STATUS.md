@@ -2,16 +2,22 @@
 
 Plan: [`20260913_212337_corpus_233_hardening_plan.md`](../20260913_212337_corpus_233_hardening_plan.md)
 
-> **No cycle of this plan has been executed.** The plan was written on
-> 2026-09-13 from a measuring run over the 233-document corpus at
-> `../br-taxqa-r_v2.0/original/nao_articulados/`. See plan §1 for the evidence.
+> The plan was written on 2026-09-13 from a measuring run over the
+> 233-document corpus at `../br-taxqa-r_v2.0/original/nao_articulados/`. See
+> plan §1 for the evidence.
+>
+> **Cycle 4 is complete (2026-09-13)** — the first executed cycle, taken first
+> per §3. It repairs the three `test_bare_checkout.py` failures §1.7 records,
+> and **the suite is now fully green: 6 028 passed / 0 failed / 4 skipped / 2
+> live-deselected.** The baseline table below is preserved as written, as the
+> record of the state the plan was authored against.
 
 | Cycle | Title | Date | State | Tests | Spec | Report |
 |---|---|---|---|---|---|---|
 | 1 | A truthful account of flatness | — | **not started** | — | — | — |
 | 2 | URN completeness and identity collisions | — | **not started** | — | — | — |
 | 3 | A `solucao_consulta` profile | — | **not started** | — | — | — |
-| 4 | Repair the bare-checkout harness | — | **not started** | — | — | — |
+| 4 | Repair the bare-checkout harness | 2026-09-13 | **complete** | 6028 pass / 0 fail / 4 skip / 2 live-deselected | [spec](20260913_220540_cycle_4_spec.md) | [report](20260913_220540_cycle_4_report.md) |
 | 5 | Batch robustness, negative cases | — | **not started** | — | — | — |
 | 6 | Referee economics and reproducibility | — | **not started** | — | — | — |
 
