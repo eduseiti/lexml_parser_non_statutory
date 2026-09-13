@@ -490,6 +490,11 @@ def test_outcome_to_dict_keeps_every_field() -> None:
         "emitter": "generico",
         "confidence": 0.42,
         "flat": True,
+        # Cycle 1: `flat` alone cannot say whether the structure was absent or
+        # merely unrecognised.
+        "flat_cause": "",
+        "span_coverage": 0.0,
+        "genre": "",
         "documents": 2,
         "valid": True,
         "blockers": ["no_articles"],
@@ -538,6 +543,10 @@ def test_to_dict_keys_are_stable() -> None:
         "by_emitter",
         "by_blocker",
         "by_warning",
+        # Cycle 1: why the flat documents are flat, and where flatness
+        # concentrates by genre.
+        "by_flat_cause",
+        "by_genre_flatness",
         "decisions",
         "documents",
     }

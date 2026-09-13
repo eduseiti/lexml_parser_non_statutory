@@ -17,7 +17,9 @@
         "non-sequential 'IX -' at block 286",
         "solitary 'n.' at block 330"
       ],
-      "confidence": 0.85
+      "confidence": 0.85,
+      "flat_cause": "",
+      "span_coverage": 0.8822
     },
     "span": {
       "start": 13,

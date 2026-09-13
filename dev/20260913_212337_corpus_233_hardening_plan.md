@@ -107,9 +107,45 @@ inference found nothing and the body is a flat run of paragraphs at confidence
 document is flat is far more likely to be a **recogniser gap** than 15
 genuinely unstructured documents. `sc_cosit` at 52 of 109 is the volume case.
 
+> **Cycle 1 investigated this and the hypothesis did not hold (A-1.5).**
+> `ad_pgfn` is 14/15 flat because those documents genuinely have no internal
+> structure: the whole operative content of the act is **one quoted sentence**,
+> and 19 of the 22 `ad_pgfn`/`adn_cst` documents have a body of 0–3 blocks
+> against `MIN_SECTIONS_FOR_FULL_CONFIDENCE = 3`. `is_prose_form_header` fires
+> 18 times across the genre and **every hit is a signature**; 21 of 22
+> documents reject nothing at all, because nothing heading-shaped is ever
+> proposed. Unlike Cycle 3's soluções de consulta there is no title-case
+> skeleton being suppressed — **flat is the correct answer**, and no
+> `section_res` is recommended for `ato_declaratorio`.
+
 Confidence `0.00` is doing double duty here — it is emitted both when a
 document has no structure and when the evidence fusion found no *candidate* at
 all. Those are different facts, and the artifact does not separate them.
+
+> **Closed by Cycle 1 (2026-09-13), which also corrected this section's
+> proposed taxonomy — amendments A-1.2 through A-1.5.**
+>
+> Every flat tree now carries a `flat_cause` and a `span_coverage`. Measured
+> rules-only over all 233 documents, the partition is **`no_candidate` 52,
+> `all_rejected` 15, `too_few_sections` 8, `empty_body_span` 11** — all 86 flat
+> documents, none unexplained. Four corrections this section should be read
+> with:
+>
+> 1. **The proposed three-way split is not the corpus's shape.** There is no
+>    "single continuous prose run" bucket; the fourth real cause is an **empty
+>    body span**, which this section does not model.
+> 2. **A "scores too weak" cause is unreachable.** A solitary label is refused
+>    by `unify_levels` *before* it is scored, so across the 155 documents with
+>    assignments the lowest mean score is **0.7553**. Flatness from scoring is
+>    always damping.
+> 3. **"No candidate" mostly does not mean "unstructured."** 41 of the 52 have a
+>    body span of ≤6 blocks, and **82 of 86** flat documents have a span
+>    covering under half the document (median 9%). That is why the cause ships
+>    with `span_coverage` beside it.
+> 4. **`ad_pgfn` at 14/15 is not a recogniser gap** — see §1.2's genre table
+>    note below and A-1.5. The investigation found no skeleton to recognise.
+>
+> See the [report](20260913_212337_corpus_233_hardening_plan/20260913_231242_cycle_1_report.md).
 
 ### 1.3 Finding B — 24 documents carry a best-effort URN, in six distinct shapes
 

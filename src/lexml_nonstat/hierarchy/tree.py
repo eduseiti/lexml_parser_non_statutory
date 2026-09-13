@@ -766,6 +766,53 @@ def _confirm_prose_headers(
     return frozenset(confirmed)
 
 
+def _flat_cause(
+    flat: bool,
+    n_blocks: int,
+    candidates: Sequence[object],
+    assignments: Sequence[object],
+) -> str:
+    """Why this tree came back flat — one of :data:`~.evidence.FLAT_CAUSES`.
+
+    Derived from what :func:`build_tree` has already computed; nothing here
+    feeds back into inference, so no tree's *shape* depends on it. A structured
+    tree gets `""`: the field answers "why is this flat", and a tree that is not
+    flat has no such reason.
+
+    The order of the tests is the causal order — a document with no candidates
+    cannot have had them rejected, and one with no assignments cannot have been
+    damped — so the first match is the real cause rather than a coincidence.
+
+    Note what is *not* here: a "scores too weak" branch. A solitary label is
+    refused by :func:`~.unify.unify_levels` before it is ever scored, so an
+    assignment's score is always in the strong band and flatness with
+    assignments is always damping. :data:`~.evidence.FLAT_CAUSES` records the
+    corpus measurement behind that claim.
+    """
+    if not flat:
+        return ""
+    if not n_blocks:
+        # The span held nothing at all — either `segmentation.body is None`, or
+        # it resolved to blocks that were all empty. 11 corpus documents, and
+        # the samples `ad_srf_22` / `adn_cosit_19`, whose whole content is
+        # front and back matter.
+        return "empty_body_span"
+    if not any(getattr(c, "is_candidate", False) for c in candidates):
+        # Blocks, but nothing heading-shaped among them. Note the test is
+        # `is_candidate`, not `candidates` being empty: `collect_candidates`
+        # appends a `Candidate` for *every* non-empty paragraph and lets the
+        # property decide which ones could open a section, so the raw list is
+        # never empty when the span has blocks.
+        #
+        # Usually *not* "this document is unstructured": 41 of the corpus's 52
+        # have a span of six blocks or fewer, so the span was too small to
+        # contain a candidate. `span_coverage` separates the two for a reader.
+        return "no_candidate"
+    if not assignments:
+        return "all_rejected"
+    return "too_few_sections"
+
+
 def build_tree(
     blocks: Sequence[StyledPara | StyledTable],
     *,
@@ -790,7 +837,12 @@ def build_tree(
     blocks = [b for b in blocks if isinstance(b, StyledTable) or not b.is_empty]
     paras = [b for b in blocks if isinstance(b, StyledPara)]
     if not blocks:
-        return HierarchyTree(span=span)
+        # Cycle 1: an empty span is a *cause*, not an absence of one. Without
+        # this the honest answer for `ad_srf_22` would be an empty `flat_cause`
+        # on a flat tree, which reads as "no reason recorded".
+        return HierarchyTree(
+            span=span, signals=DocSignals(flat_cause="empty_body_span")
+        )
 
     analysis = analyse_quotation(paras)
     unit_heads = detect_unit_series(paras)
@@ -828,6 +880,7 @@ def build_tree(
         style_headings=sum(1 for a in assignments if a.style is not None),
         rejected=tuple(rejected),
         confidence=confidence,
+        flat_cause=_flat_cause(flat, len(blocks), candidates, assignments),
     )
 
     if flat:

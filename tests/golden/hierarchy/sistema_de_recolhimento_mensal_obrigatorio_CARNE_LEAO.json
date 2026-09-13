@@ -11,7 +11,9 @@
       "label_kinds": [],
       "style_headings": 6,
       "rejected": [],
-      "confidence": 0.9
+      "confidence": 0.9,
+      "flat_cause": "",
+      "span_coverage": 0.8304
     },
     "span": {
       "start": 0,

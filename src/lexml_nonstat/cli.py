@@ -368,6 +368,15 @@ def _parse_json(model, rendered, warnings, written) -> dict[str, Any]:
         "confidence": round(float(getattr(viability, "confidence", 0.0)), 4),
         "hierarchy_confidence": round(float(getattr(model.body, "confidence", 0.0)), 4),
         "flat": bool(getattr(model.body, "flat", True)),
+        # Cycle 1. `flat` alone cannot distinguish a document with no structure
+        # from one whose structure was not recognised; these two say which.
+        "flat_cause": str(
+            getattr(getattr(model.body, "signals", None), "flat_cause", "")
+        ),
+        "span_coverage": round(
+            float(getattr(getattr(model.body, "signals", None), "span_coverage", 0.0)),
+            4,
+        ),
         "referee": {
             "consulted": bool(getattr(viability, "referee_consulted", False)),
             "overrode": bool(getattr(viability, "referee_overrode", False)),

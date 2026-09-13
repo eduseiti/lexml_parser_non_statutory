@@ -11,7 +11,9 @@
       "label_kinds": [],
       "style_headings": 0,
       "rejected": [],
-      "confidence": 0.0
+      "confidence": 0.0,
+      "flat_cause": "no_candidate",
+      "span_coverage": 0.3333
     },
     "span": {
       "start": 3,

@@ -27,6 +27,7 @@ from ..model.nodes import Evidence
 
 __all__ = [
     "CONFIDENCE_THRESHOLD",
+    "FLAT_CAUSES",
     "DocSignals",
     "Evidence",
     "W_LABEL_SERIES",
@@ -70,6 +71,44 @@ W_SECTION_DECLARED = 0.8
 #: Below this, the tree is discarded and the body is emitted flat.
 CONFIDENCE_THRESHOLD = 0.5
 
+#: Why a tree came back flat — Cycle 1 of the corpus-233 hardening plan.
+#:
+#: Confidence `0.00` was doing double duty: it is emitted both when a document
+#: has no structure and when evidence fusion found no *candidate* at all, and
+#: the artifact did not separate them. A consumer could not tell a genuinely
+#: unstructured document from one whose structure was not recognised.
+#:
+#: A **closed** vocabulary, for the reason :data:`..warnings.WARNING_CODES` and
+#: :data:`..routing.BLOCKER_CODES` are closed: a diagnostic a caller cannot
+#: enumerate is a diagnostic a caller cannot act on.
+#:
+#: Every code here is *occupied* — measured over the 233-document corpus,
+#: rules-only: 52 `no_candidate`, 15 `all_rejected`, 8 `too_few_sections`,
+#: 11 `empty_body_span`, summing to all 86 flat documents with none left over.
+#:
+#: **There is deliberately no "scores too weak" code.** It cannot occur. A
+#: solitary label (`W_LABEL_SOLO`, 0.25) is refused by :func:`~.unify.unify_levels`
+#: at its `solitary`/`orphan` guards *before* `_score` is ever reached, so a
+#: weak score never becomes an assignment. Measured across all 155 corpus
+#: documents that have assignments, the lowest mean score is **0.7553** — the
+#: whole population sits in the 0.75–0.90 band, nowhere near the 0.5 threshold.
+#: Flatness from scoring is therefore always *damping* (too few sections), never
+#: weak scores, and shipping an unreachable code would invite a consumer to
+#: handle a case that cannot arise.
+FLAT_CAUSES: tuple[str, ...] = (
+    #: Nothing heading-shaped was proposed. Often means the body span was too
+    #: small to *contain* a candidate rather than that the document is
+    #: unstructured — read it with `DocSignals.span_coverage`.
+    "no_candidate",
+    #: Candidates were found and every one was refused; `rejected` says why.
+    "all_rejected",
+    #: Assigned, but too few sections to be a shape — `document_confidence`
+    #: damps below the threshold. Always `n_sections < 3` in the corpus.
+    "too_few_sections",
+    #: The body span contained no blocks at all, or there was no body span.
+    "empty_body_span",
+)
+
 #: A document does not have a *structure* on the strength of one heading. Fewer
 #: than this many sections and the mean score is damped towards zero.
 MIN_SECTIONS_FOR_FULL_CONFIDENCE = 3
@@ -92,6 +131,20 @@ class DocSignals:
     style_headings: int = 0
     rejected: tuple[str, ...] = ()
     confidence: float = 0.0
+    #: One of :data:`FLAT_CAUSES`, or `""` when the tree is **not** flat. The
+    #: field answers "why is this flat", so a structured tree has no such
+    #: reason to give — `""` is the absence of the question, not a code.
+    flat_cause: str = ""
+    #: Body blocks / the document's blocks, `0.0` when unknown. Recorded
+    #: beside the cause because `no_candidate` at 9% coverage and
+    #: `no_candidate` at 100% coverage are different facts: the first says the
+    #: span was too small to hold a candidate, the second that the document
+    #: genuinely offered none. Across the corpus 82 of 86 flat documents sit
+    #: below 0.5, median 0.089, so the distinction is the common case rather
+    #: than a corner. Computed in :func:`~..hierarchy.infer_hierarchy`, which
+    #: is the only place that can: :func:`~.tree.build_tree` receives an
+    #: already-sliced span and never sees the blocks outside it.
+    span_coverage: float = 0.0
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -102,6 +155,8 @@ class DocSignals:
             "style_headings": self.style_headings,
             "rejected": list(self.rejected),
             "confidence": round(self.confidence, 4),
+            "flat_cause": self.flat_cause,
+            "span_coverage": round(self.span_coverage, 4),
         }
 
     @classmethod
@@ -116,6 +171,8 @@ class DocSignals:
             style_headings=int(data.get("style_headings", 0)),
             rejected=tuple(data.get("rejected", ())),
             confidence=float(data.get("confidence", 0.0)),
+            flat_cause=str(data.get("flat_cause", "")),
+            span_coverage=float(data.get("span_coverage", 0.0)),
         )
 
 

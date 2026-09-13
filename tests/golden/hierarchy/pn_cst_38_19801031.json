@@ -17,7 +17,9 @@
       "rejected": [
         "orphan label '1.24.20.25 -' at block 2"
       ],
-      "confidence": 0.85
+      "confidence": 0.85,
+      "flat_cause": "",
+      "span_coverage": 0.8043
     },
     "span": {
       "start": 2,

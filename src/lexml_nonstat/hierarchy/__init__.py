@@ -44,7 +44,12 @@ from ..model.nodes import (
 )
 from ..profile import DocumentProfile, select_profile
 from ..segment import Segmentation, segment_document
-from .evidence import CONFIDENCE_THRESHOLD, DocSignals, document_confidence
+from .evidence import (
+    CONFIDENCE_THRESHOLD,
+    FLAT_CAUSES,
+    DocSignals,
+    document_confidence,
+)
 from .labels import Label, alpha_to_int, looks_like_heading, parse_label, roman_to_int
 from .quotation import (
     QuotationAnalysis,
@@ -77,6 +82,7 @@ from .unify import (
 
 __all__ = [
     "CONFIDENCE_THRESHOLD",
+    "FLAT_CAUSES",
     "AnnexHierarchy",
     "Assignment",
     "Candidate",
@@ -178,6 +184,27 @@ class HierarchyDoc:
         return cls.from_dict(json.loads(text))
 
 
+def _with_span_coverage(tree: "HierarchyTree", total_blocks: int) -> "HierarchyTree":
+    """Record what fraction of the document the body span covered (Cycle 1).
+
+    Applied to the **body** only. An annex is a different document travelling
+    with this one, so its size as a fraction of the whole file is not a
+    meaningful ratio — annexes keep the `0.0` default, the same reasoning that
+    gives them `section_res=()` at the call site.
+
+    A document with no blocks yields `0.0` rather than a division by zero;
+    `flat_cause` already says `empty_body_span` in that case.
+    """
+    from dataclasses import replace
+
+    if not total_blocks:
+        return tree
+    covered = tree.signals.n_blocks / total_blocks
+    return replace(
+        tree, signals=replace(tree.signals, span_coverage=round(covered, 4))
+    )
+
+
 def infer_hierarchy(
     doc: StyledDoc,
     *,
@@ -224,6 +251,12 @@ def infer_hierarchy(
         log=log,
         logger=logger,
     )
+    # Cycle 1. `build_tree` cannot compute this: it receives an already-sliced
+    # span and never sees the blocks outside it, and `Span` carries no total.
+    # Here both are in hand, and the ratio is what stops `no_candidate` from
+    # being read as "this document has no structure" when the real story is a
+    # body span covering 9% of the file — the corpus's common case, 82 of 86.
+    body = _with_span_coverage(body, len(doc.blocks))
     annexes = tuple(
         AnnexHierarchy(
             label=annex.label,

@@ -50,6 +50,7 @@ from .warnings import WARNING_CODES, collect_warnings
 __all__ = [
     "CorpusReport",
     "DocumentOutcome",
+    "genre_of",
     "render_corpus_report",
     "run_corpus",
     "walk_corpus",
@@ -61,6 +62,36 @@ __all__ = [
 #: added, and the drift would look like a corpus that simply has no files of
 #: that kind — silent, and indistinguishable from a correct empty result.
 SUPPORTED_SUFFIXES: tuple[str, ...] = tuple(sorted(READERS))
+
+
+def genre_of(source: str) -> str:
+    """The document's genre, read off its filename (Cycle 1).
+
+    The corpus names its documents `<genre>_<number>_<date>`, so the genre is
+    the stem up to the first digit-initial segment: `ad_pgfn_13_20111220` →
+    `ad_pgfn`, `sc_cosit_100_20200928` → `sc_cosit`.
+
+    **Why the filename and not the profile.** :func:`~.routing.genre_prior`
+    already keys off the *profile*, and that is the right axis for routing —
+    but it is the wrong one for this question. Plan §1.2's finding is that
+    `ad_pgfn` is flat 14 times out of 15, and `ad_pgfn` is not a profile: those
+    documents select `ato_declaratorio`, which also serves genres that are not
+    flat at all. Grouping by profile would average the signal away, which is
+    exactly what §1.2 says hid it ("fifteen unrelated documents" rather than a
+    pattern).
+
+    A name with no digit-initial segment is its own genre. The corpus's five
+    service descriptions (`declaracao_de_servicos_medicos_e_de_saude_DMED` and
+    friends) are the case; each is a singleton, and all five are non-flat, so
+    they do not disturb the ranking.
+    """
+    stem = Path(source).stem
+    out: list[str] = []
+    for part in stem.split("_"):
+        if part[:1].isdigit():
+            break
+        out.append(part)
+    return "_".join(out) if out else stem
 
 
 def _ranked(counter: Counter[str]) -> tuple[tuple[str, int], ...]:
@@ -95,6 +126,18 @@ class DocumentOutcome:
     emitter: str = ""
     confidence: float = 0.0
     flat: bool = True
+    #: Why the body came back flat — one of
+    #: :data:`~.hierarchy.evidence.FLAT_CAUSES`, or `""` when it did not
+    #: (Cycle 1). `flat` alone cannot tell a document that has no structure
+    #: from one whose structure was not recognised.
+    flat_cause: str = ""
+    #: What fraction of the document the body span covered. Read *with*
+    #: `flat_cause`: `no_candidate` at 9% coverage is a truncated span, not an
+    #: unstructured document.
+    span_coverage: float = 0.0
+    #: The filename-derived genre — see :func:`genre_of`. Carried per document
+    #: so the report can group flatness by it without re-deriving.
+    genre: str = ""
     documents: int = 0
     valid: bool | None = None
     blockers: tuple[str, ...] = ()
@@ -112,6 +155,9 @@ class DocumentOutcome:
             "emitter": self.emitter,
             "confidence": self.confidence,
             "flat": self.flat,
+            "flat_cause": self.flat_cause,
+            "span_coverage": self.span_coverage,
+            "genre": self.genre,
             "documents": self.documents,
             "valid": self.valid,
             "blockers": list(self.blockers),
@@ -175,6 +221,39 @@ class CorpusReport:
     def by_warning(self) -> tuple[tuple[str, int], ...]:
         return _ranked(Counter(c for o in self.outcomes for c in o.warnings))
 
+    def by_flat_cause(self) -> tuple[tuple[str, int], ...]:
+        """Why the flat documents are flat (Cycle 1, plan §1.2).
+
+        Counts **only** flat documents, so the tally sums to the flat count and
+        can be reconciled against it — a structured document has no cause and
+        must not appear here as an empty-string bucket.
+        """
+        return _ranked(
+            Counter(o.flat_cause for o in self.outcomes if o.ok and o.flat and o.flat_cause)
+        )
+
+    def by_genre_flatness(self) -> tuple[tuple[str, int, int], ...]:
+        """`(genre, total, flat)` per genre — plan Cycle 1 deliverable 2.
+
+        The plan's point: `ad_pgfn` at 14 of 15 is "the signal that matters",
+        and it is invisible when those documents are read one at a time. Sorted
+        flat-count descending then name, the determinism invariant #4 requires
+        of anything a report or a diff might touch.
+        """
+        totals: Counter[str] = Counter()
+        flats: Counter[str] = Counter()
+        for outcome in self.outcomes:
+            if not outcome.ok:
+                continue
+            genre = outcome.genre or genre_of(outcome.source)
+            totals[genre] += 1
+            if outcome.flat:
+                flats[genre] += 1
+        return tuple(
+            (genre, totals[genre], flats[genre])
+            for genre in sorted(totals, key=lambda g: (-flats[g], g))
+        )
+
     def check(self) -> str | None:
         """Return the first identity that fails, or ``None`` when all hold.
 
@@ -232,6 +311,8 @@ class CorpusReport:
             "by_emitter": [list(p) for p in self.by_emitter()],
             "by_blocker": [list(p) for p in self.by_blocker()],
             "by_warning": [list(p) for p in self.by_warning()],
+            "by_flat_cause": [list(p) for p in self.by_flat_cause()],
+            "by_genre_flatness": [list(t) for t in self.by_genre_flatness()],
             "decisions": self.decisions.to_dict(),
             "documents": [o.to_dict() for o in self.outcomes],
         }
@@ -354,6 +435,18 @@ def run_corpus(
                         float(getattr(viability, "confidence", 0.0)), 4
                     ),
                     flat=bool(getattr(model.body, "flat", True)),
+                    flat_cause=str(
+                        getattr(getattr(model.body, "signals", None), "flat_cause", "")
+                    ),
+                    span_coverage=round(
+                        float(
+                            getattr(
+                                getattr(model.body, "signals", None), "span_coverage", 0.0
+                            )
+                        ),
+                        4,
+                    ),
+                    genre=genre_of(source),
                     documents=len(rendered.documents),
                     # `_validate_documents` returns the first *bad* report, or
                     # None when every document passed — so "no report" means
@@ -424,10 +517,23 @@ def render_corpus_report(report: CorpusReport) -> str:
             pairs("Emitters:             ", report.by_emitter()),
             pairs("Blockers:             ", report.by_blocker()),
             pairs("Warnings:             ", report.by_warning()),
-            "",
-            render_report(report.decisions),
+            pairs("Flat because:         ", report.by_flat_cause()),
         ]
     )
+
+    # Plan Cycle 1 deliverable 2. Only genres that actually have a flat
+    # document are listed: at 37 genres the full table is mostly zeros, and the
+    # question this answers is "where is flatness concentrated".
+    flat_genres = [t for t in report.by_genre_flatness() if t[2]]
+    if flat_genres:
+        lines.append("")
+        lines.append("Flatness by genre:")
+        for genre, total, flat in flat_genres:
+            lines.append(
+                f"  {genre:<24} {flat:>4} / {total:<4} ({100.0 * flat / total:.0f}%)"
+            )
+
+    lines.extend(["", render_report(report.decisions)])
 
     problem = report.check()
     lines.extend(

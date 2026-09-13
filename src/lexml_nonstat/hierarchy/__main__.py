@@ -59,6 +59,18 @@ def _render_tree(tree: HierarchyTree, title: str, *, verbose: bool) -> str:
         f"confidence={tree.confidence}  sections={len(list(tree.walk()))}  "
         f"depth={tree.max_depth}  blocks={tree.signals.n_blocks}"
     ]
+    # Cycle 1. `--why` on a flat document asks "what did you throw away and
+    # why"; before the cause existed, a reader had `rejected` for the
+    # candidates-refused case and nothing at all for the other three. The
+    # coverage sits beside it because `no_candidate` at 9% of the document is a
+    # truncated span, not an unstructured document.
+    if tree.flat and tree.signals.flat_cause:
+        lines.append(
+            f"  flat because: {tree.signals.flat_cause}"
+            f"   (body span covers {tree.signals.span_coverage:.0%} of the document)"
+            if tree.signals.span_coverage
+            else f"  flat because: {tree.signals.flat_cause}"
+        )
     if tree.preamble:
         lines.append(f"  preamble ({len(tree.preamble)} nodes)")
         if verbose:

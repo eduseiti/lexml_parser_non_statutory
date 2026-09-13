@@ -13,7 +13,9 @@
       "rejected": [
         "top numeric series implausible: 5"
       ],
-      "confidence": 0.9
+      "confidence": 0.9,
+      "flat_cause": "",
+      "span_coverage": 0.9018
     },
     "span": {
       "start": 3,

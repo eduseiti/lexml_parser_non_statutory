@@ -13,7 +13,9 @@
       ],
       "style_headings": 0,
       "rejected": [],
-      "confidence": 0.85
+      "confidence": 0.85,
+      "flat_cause": "",
+      "span_coverage": 0.375
     },
     "span": {
       "start": 4,
