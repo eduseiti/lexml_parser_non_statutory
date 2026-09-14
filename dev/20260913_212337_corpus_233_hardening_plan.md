@@ -444,6 +444,25 @@ already holds output should be safe and cheap.
 **Exit criteria** — a batch survives every degenerate input the fixtures
 contain; no traceback reaches the user for any of them.
 
+> **Closed by Cycle 5 (2026-09-14), with three corrections — amendment A-5.1.**
+>
+> 1. **The fixtures already existed.** Predecessor Cycle 8 shipped every shape
+>    this deliverable names in `tests/fixtures/degenerate.py`. They are reused
+>    unmodified; no new builder was written.
+> 2. **No malformed file can exercise the §1.6 gap.** Every one of them fails
+>    inside `_read`, which was isolated *before* the measuring run's fix — so a
+>    batch of corrupt files, at any size, cannot tell the repaired code from the
+>    broken code. The gap lived in model building, rendering and validation, and
+>    is reached by injecting a failure into `_render`.
+> 3. **"Safe and cheap" is half true.** A re-run is byte-identical and
+>    count-stable (safe); nothing is skipped (not cheap). Both halves are
+>    asserted, the missing optimisation *pinned as missing*, and the story
+>    recorded in
+>    [`docs/20260914_115058_batch_resumability.md`](../docs/20260914_115058_batch_resumability.md).
+>
+> The "200" is read as a shape rather than a cardinality; the tests use 20 + 5.
+> See the [report](20260913_212337_corpus_233_hardening_plan/20260914_115058_cycle_5_report.md).
+
 ### Cycle 6 — Referee economics and reproducibility
 
 **Problem:** §1.8. The referee materially improves the corpus, which makes it a

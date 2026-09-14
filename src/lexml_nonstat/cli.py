@@ -333,6 +333,17 @@ def _write_bundle(
     service descriptions that shared one sentinel URN now carry distinct
     name-derived identities, so the corpus writes 233 distinct URNs and the
     disambiguation below is a safety net rather than a load-bearing mechanism.
+
+    **Re-running over a populated directory is safe, and is not cheap**
+    (Cycle 5). A second run rewrites every file with identical bytes — same
+    inputs, same output, invariant #4 — and the file count does not move,
+    because ``taken`` is seeded empty per invocation and therefore never reads
+    an already-written ``<slug>_<stem>.xml`` as a fresh collision to
+    disambiguate again. What does *not* happen is any skipping: every document
+    is read, modelled, rendered and validated a second time. There is no
+    resume flag and no staleness check, so the cost of a re-run is the cost of
+    the run. ``tests/regression/test_batch_robustness.py`` pins both halves,
+    including the unflattering one.
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     stem = Path(source or "documento").stem
