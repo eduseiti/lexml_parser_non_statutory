@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "O trecho é artefato de página: contém número de folha e código de localização (Fl. 60 DF COSIT RFB), não abre seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Fl. 60 DF COSIT RFB"
+  }
+}

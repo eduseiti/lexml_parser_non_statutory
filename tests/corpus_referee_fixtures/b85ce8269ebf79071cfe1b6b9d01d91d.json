@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho transcreve o art. 12 do Decreto-Lei nº 1.598/1977, norma externa citada no parágrafo anterior ('in verbis'), não sendo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 12. A receita bruta compreende: (Redação dada pela Lei nº 12.973, de 2014)"
+  }
+}

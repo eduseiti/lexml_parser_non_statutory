@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O parágrafo anterior anuncia e cita o art. 6º da Lei nº 8.134/1990, com dois-pontos introdutórios; o trecho reproduz literalmente dispositivo de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 6º O contribuinte que perceber rendimentos do trabalho não assalariado, inclusive os titulares dos serviços notariais e de registro, a que se refere o art. 236 da Constituição, e os leiloeiros, p"
+  }
+}

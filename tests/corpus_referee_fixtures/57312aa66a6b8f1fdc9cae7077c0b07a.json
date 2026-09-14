@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.98,
+    "rationale": "O trecho é artigo do próprio documento, pois integra a sequência de artigos (Art. 27, Art. 30) e faz referência interna a 'esta Instrução'."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 30. O imposto devido sobre os ganhos de capital de que trata esta Instrução"
+  }
+}

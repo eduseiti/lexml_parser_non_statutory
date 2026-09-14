@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.97,
+    "rationale": "RELATÓRIO é cabeçalho que abre divisão temática do documento (seção de relato dos fatos), conforme definição; não se enquadra em nenhuma exceção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RELATÓRIO"
+  }
+}

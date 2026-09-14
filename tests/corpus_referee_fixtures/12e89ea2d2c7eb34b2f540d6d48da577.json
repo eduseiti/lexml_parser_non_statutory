@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 8º da Lei nº 9.250/1995, norma externa citada no documento, conforme indicação no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 8º A base de cálculo do imposto devido no ano-calendário será a diferença entre as somas (grifou-se)"
+  }
+}

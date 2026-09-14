@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.98,
+    "rationale": "O trecho segue imediatamente a fórmula de sanção ('sanciono a seguinte Lei'), indicando que o Art. 1º é articulação própria do documento, não citação."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Exerce a representação comercial autônoma a pessoa jurídica ou a pessoa física, sem relação de emprego, que desempenha, em caráter não eventual por conta de uma ou mais pessoas, a mediação par"
+  }
+}

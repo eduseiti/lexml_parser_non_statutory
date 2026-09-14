@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O parágrafo anterior anuncia a transcrição de dispositivos da Constituição Federal; o trecho é o Art. 155 da CF, norma externa citada."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 155. Compete aos Estados e ao Distrito Federal instituir impostos sobre: (Redação dada pela Emenda Constitucional nº 3, de 1993) [...] II - operações relativas à circulação de mercadorias e sobre"
+  }
+}

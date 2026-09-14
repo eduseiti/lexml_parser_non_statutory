@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "Trata-se de identificação/título do documento (tipo, número e órgão), não de cabeçalho que abre seção temática como RELATÓRIO, FUNDAMENTOS ou CONCLUSÃO."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 264 – COSIT"
+  }
+}

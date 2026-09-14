@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "Trata-se de título de parte do julgado (VOTO), abrindo divisão temática do voto vencido em parte, seguido do nome do relator; não é artefato de página nem timbre."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "VOTO VENCIDO EM PARTE"
+  }
+}

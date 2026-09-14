@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 1.0,
+    "rationale": "O trecho \"CONCLUSÃO\" abre uma divisão temática do documento, típica de parecer/consulta, antecedendo a resposta final."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CONCLUSÃO"
+  }
+}

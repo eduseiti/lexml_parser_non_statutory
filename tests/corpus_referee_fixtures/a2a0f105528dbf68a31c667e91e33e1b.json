@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.98,
+    "rationale": "O trecho é o Art. 49 do mesmo regulamento, sequencial ao Art. 21, tratando de deduções, portanto artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 49. Podem ser deduzidas as importâncias pagas em dinheiro a título de pensão alimentícia em face das normas do direito de família, quando em cumprimento de decisão judicial ou acordo homologado j"
+  }
+}

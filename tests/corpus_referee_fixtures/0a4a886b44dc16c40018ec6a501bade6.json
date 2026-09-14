@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto indica transcrição de dispositivo da Instrução Normativa SRF nº 25/1996, norma externa citada, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 55. As pessoas físicas que se ausentarem do País sem requerer a certidão negativa para saída definitiva do território nacional terão seus rendimentos, durante os primeiros doze meses de ausência,"
+  }
+}

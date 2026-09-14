@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto anuncia a transcrição de dispositivos da mesma Instrução Normativa, norma externa ao documento; o Art. 30 é citação, não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 30 . O imposto devido sobre os ganhos de capital de que trata esta Instrução Normativa deve ser pago pelo:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "O trecho é título de norma citada (Decreto n.º 70.235/1972), não cabeçalho de seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DECRETO N.º 70.235, DE 1972:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia expressamente a Lei nº 8.981/1995; o Art. 21 transcrito é dispositivo dessa norma externa, logo citação."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 21. O ganho de capital percebido por pessoa física em decorrência da alienação de bens e direitos de qualquer natureza sujeita-se à incidência do Imposto de Renda, à alíquota de quinze por cento."
+  }
+}

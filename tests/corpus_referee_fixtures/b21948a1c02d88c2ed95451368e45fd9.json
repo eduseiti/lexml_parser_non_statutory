@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 1.0,
+    "rationale": "O trecho é o Art. 1º da própria Lei nº 12.402/2011, apresentada como documento, e não citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º As empresas integrantes de consórcio constituído nos termos do disposto nos arts. 278 e 279 da Lei nº 6.404, de 15 de dezembro de 1976, respondem pelos tributos devidos, em relação às operaçõe"
+  }
+}

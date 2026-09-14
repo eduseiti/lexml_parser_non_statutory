@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "Os arts. 43 e 121 integram o Código Tributário Nacional (CTN), indicando que o documento é o próprio CTN, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 121. Sujeito passivo da obrigação principal é a pessoa obrigada ao pagamento de tributo ou penalidade pecuniária."
+  }
+}

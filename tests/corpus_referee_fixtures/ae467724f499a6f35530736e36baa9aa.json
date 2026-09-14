@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "O trecho 'DJ 10.10.1994' é artefato de publicação/jurisprudência ou rodapé, não abre seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DJ 10.10.1994"
+  }
+}

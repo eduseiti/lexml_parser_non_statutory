@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O Art. 24 trata de ganho de capital em moeda estrangeira, tema distinto da consulta tributária dos arts. 18 e anteriores; corresponde ao art. 24 da Lei 8.981/1995, norma externa citada."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 24. O ganho de capital decorrente da alienação de bens ou direitos e da liquidação ou resgate de aplicações financeiras, de propriedade de pessoa física, adquiridos, a qualquer título, em moeda e"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.96,
+    "rationale": "O trecho é tópico temático da ementa (assunto e tese), não cabeçalho que abre seção do documento, como RELATÓRIO, FUNDAMENTOS, CONCLUSÃO, VOTO ou EMENTA."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "AUXÍLIO-CRECHE. NÃO-INCIDÊNCIA."
+  }
+}

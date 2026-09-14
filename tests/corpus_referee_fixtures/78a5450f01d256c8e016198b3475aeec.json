@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "DJ 21.03.1994 é referência de publicação no Diário da Justiça, artefato de data, não cabeçalho de seção temática."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DJ 21.03.1994"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "Trata-se de título/identificação da solução de consulta, não de divisão temática do raciocínio (como RELATÓRIO, FUNDAMENTOS, CONCLUSÃO)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 218 – COSIT"
+  }
+}

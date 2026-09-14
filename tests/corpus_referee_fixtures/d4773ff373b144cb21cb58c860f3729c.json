@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.85,
+    "rationale": "O trecho 'Art. 3º' interrompe a numeração interna (24.2) e remete a arts. 2º/8º/9º/10 de norma diversa, caracterizando citação de dispositivo externo."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º A restituição a que se refere o art. 2º poderá ser efetuada:"
+  }
+}

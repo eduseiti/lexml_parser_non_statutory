@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 3.º, sequencial ao Art. 2.º do contexto, indicando articulação própria do documento, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3.º Considera-se não-residente no Brasil, a pessoa física:"
+  }
+}

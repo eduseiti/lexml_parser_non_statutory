@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto indica que a Instrução Normativa RFB nº 1.700/2017 disciplina a matéria 'nos seguintes termos', introduzindo a transcrição do Art. 33 dessa norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 33. A base de cálculo do IRPJ, em cada mês, será determinada mediante a aplicação do percentual de 8% (oito por cento) sobre a receita bruta definida pelo art. 26, auferida na atividade, deduzida"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "Art. 117 é sequencial ao Art. 116 e faz referência interna ao 'artigo anterior', típico de articulação própria do mesmo diploma legal."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 117. Para os efeitos do inciso II do artigo anterior e salvo disposição de lei em contrário, os atos ou negócios jurídicos condicionais reputam-se perfeitos e acabados:"
+  }
+}

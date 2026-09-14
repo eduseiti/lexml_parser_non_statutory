@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto apresenta 'o Código Tributário Nacional preconiza', indicando citação direta de norma externa (CTN), não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 116. Salvo disposição de lei em contrário, considera-se ocorrido o fato gerador e existentes os seus efeitos:"
+  }
+}

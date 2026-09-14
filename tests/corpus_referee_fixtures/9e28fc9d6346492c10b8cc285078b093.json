@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 774 do RIR/2018, norma externa citada expressamente no parágrafo anterior como fundamento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 774. As pessoas físicas e jurídicas que desejarem fazer transferência para o exterior a título de lucros, dividendos, juros e amortizações, royalties, assistência técnica, científica, administrat"
+  }
+}

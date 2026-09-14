@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trata-se de título/identificação de norma citada (Solução de Consulta Cosit), não de cabeçalho que abre divisão temática do próprio documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 140 – COSIT"
+  }
+}

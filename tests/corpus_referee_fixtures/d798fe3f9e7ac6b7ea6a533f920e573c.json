@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trecho corresponde a nome de entidade/parte (CNTE), não a cabeçalho de seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "TRABALHADORES EM EDUCAÇÃO - CNTE"
+  }
+}

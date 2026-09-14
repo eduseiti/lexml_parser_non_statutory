@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.75,
+    "rationale": "O trecho 'ALIENAÇÃO' está isolado em caixa alta entre parágrafos, indicando abertura de divisão temática sobre alienação, sem corresponder às exceções listadas."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ALIENAÇÃO"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O trecho é transcrição do art. 55 do RIR/99, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 55. São também tributáveis:"
+  }
+}

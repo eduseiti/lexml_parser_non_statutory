@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.9,
+    "rationale": "O trecho dá sequência numérica ao art. 1º citado no contexto (Art. 2º), com texto articulado do próprio documento legal (Lei 7.713/1988), sem marcas de citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º O imposto de renda das pessoas físicas será devido, mensalmente, à medida em que os rendimentos e ganhos de capital forem percebidos."
+  }
+}

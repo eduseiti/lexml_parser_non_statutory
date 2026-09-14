@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.85,
+    "rationale": "O trecho é a linha de tópicos da ementa, não um cabeçalho que abre seção autônoma (como EMENTA). Trata-se de conteúdo temático, não de rótulo estrutural."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PREVIDENCIÁRIO. SALÁRIO-DE-CONTRIBUIÇÃO. AUXÍLIO-CRECHE."
+  }
+}

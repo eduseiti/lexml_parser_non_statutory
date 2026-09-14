@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz o art. 2º do Decreto-Lei nº 4.657/1942, norma externa citada no parágrafo anterior, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º (....)"
+  }
+}

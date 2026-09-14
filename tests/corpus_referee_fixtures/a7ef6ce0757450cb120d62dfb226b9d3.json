@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia 'o artigo 43 da Lei nº 5.172/1966 (CTN) assim dispõe:', indicando transcrição de norma externa, não articulação própria do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 43. O imposto, de competência da União, sobre a renda e proventos de qualquer natureza tem como fato gerador a aquisição da disponibilidade econômica ou jurídica:"
+  }
+}

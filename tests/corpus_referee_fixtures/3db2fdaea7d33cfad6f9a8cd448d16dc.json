@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho é transcrição de artigo do Decreto-Lei nº 1.381/1974, norma externa citada no parágrafo anterior, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 5º Para os efeitos de equiparação da pessoa física à pessoa jurídica, nos termos do artigo 3º, inciso II, será considerada habitualidade na comercialização de imóveis a alienação: (Redação dada p"
+  }
+}

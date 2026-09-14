@@ -6,16 +6,24 @@ Plan: [`20260913_212337_corpus_233_hardening_plan.md`](../20260913_212337_corpus
 > 233-document corpus at `../br-taxqa-r_v2.0/original/nao_articulados/`. See
 > plan §1 for the evidence.
 >
-> **Four of the six cycles are complete (2026-09-13): 4, 2, 3 and 1**, in the
-> order §3 suggests. The suite is fully green at **6 151 passed / 0 failed /
-> 4 skipped / 2 live-deselected**, up from the 6 021-with-3-failures the plan
-> was authored against. The baseline table below is preserved as written, as
-> the record of that original state.
+> **Five of the six cycles are complete: 4, 2, 3 and 1 (2026-09-13), and 6
+> (2026-09-14)**, in the order §3 suggests. Only **Cycle 5** remains. The suite
+> is fully green at **6 167 passed / 0 failed / 4 skipped / 2 live-deselected**,
+> up from the 6 021-with-3-failures the plan was authored against. The baseline
+> table below is preserved as written, as the record of that original state.
 >
 > Cycle 1 closes §1.2: every flat tree now names its cause and records how much
 > of the document its body span covered. It also **corrected the plan** in four
 > places (A-1.2 … A-1.5) — including finding that §1.2's "strongest
 > recogniser-gap signal", `ad_pgfn` at 14/15 flat, is not a gap at all.
+>
+> Cycle 6 closes §1.8 and answers §5.3. The measuring run's 625 referee answers
+> are published as `tests/corpus_referee_fixtures/`, so a refereed corpus run is
+> reproducible **offline, with zero network calls** — the dependency §1.8 warns
+> about is closed rather than noted. It also **corrected the plan twice more**:
+> the referee's flatness value is now **86 → 83** (three documents, not eight —
+> Cycle 3 absorbed the rest), and the 74 `nao`→`secao` overrides **should not**
+> become a rule, because 35 of them sit on texts that also appear as refusals.
 
 | Cycle | Title | Date | State | Tests | Spec | Report |
 |---|---|---|---|---|---|---|
@@ -24,9 +32,10 @@ Plan: [`20260913_212337_corpus_233_hardening_plan.md`](../20260913_212337_corpus
 | 3 | A `solucao_consulta` profile | 2026-09-13 | **complete** | 6082 pass / 0 fail / 4 skip / 2 live-deselected | [spec](20260913_224424_cycle_3_spec.md) | [report](20260913_224424_cycle_3_report.md) |
 | 4 | Repair the bare-checkout harness | 2026-09-13 | **complete** | 6028 pass / 0 fail / 4 skip / 2 live-deselected | [spec](20260913_220540_cycle_4_spec.md) | [report](20260913_220540_cycle_4_report.md) |
 | 5 | Batch robustness, negative cases | — | **not started** | — | — | — |
-| 6 | Referee economics and reproducibility | — | **not started** | — | — | — |
+| 6 | Referee economics and reproducibility | 2026-09-14 | **complete** | 6167 pass / 0 fail / 4 skip / 2 live-deselected | [spec](20260914_112449_cycle_6_spec.md) | [report](20260914_112449_cycle_6_report.md) |
 
-Suggested order (plan §3): **4 → 2 → 3 → 1 → 6 → 5**.
+Suggested order (plan §3): **4 → 2 → 3 → 1 → 6 → 5**. **Cycle 5 is the only one
+remaining.**
 
 ## Baseline at the time of writing
 
@@ -75,5 +84,9 @@ filenames on collision, the second only what happens after a failure.
 | **A-1.5** | 1 | 2026-09-13 | **§1.2's "strongest recogniser-gap signal" is not a recogniser gap.** `ad_pgfn` at 14/15 flat was investigated per Cycle 1 deliverable 3 and the verdict is **genuine absence of structure — flat is correct**. `is_prose_form_header` fires on exactly 18 paragraphs across the 22 `ad_pgfn`/`adn_cst` documents and **every one is a signature** at upper-ratio 1.000; the 8 near-misses are ementas, portal stamps and signature fragments, with no section heading among them. 21 of 22 documents reject *nothing*, and 19 have a body of 0–3 blocks against `MIN_SECTIONS_FOR_FULL_CONFIDENCE = 3`. Unlike Cycle 3's genre there is no skeleton to declare: **no `section_res` is recommended for `ato_declaratorio`**. Recorded in [`docs/20260913_232034_ad_pgfn_adn_cst_flatness_investigation.md`](../../docs/20260913_232034_ad_pgfn_adn_cst_flatness_investigation.md) |
 | **A-1.6** | 1 | 2026-09-13 | **Two segmentation defects found while measuring, deliberately not fixed (Q-4).** `adn_cst_20_19890821` and `adn_cst_29_19860625` have `body = None` because the front-matter hull absorbs their operative `DECLARA, em caráter normativo, …` paragraph, so the act's entire substance is classified as front matter; and `pn_cosit_1_20020924` has `body = None` despite **79 blocks** because segmentation read three ementa headings (`IRRF. RETENÇÃO EXCLUSIVA. RESPONSABILIDADE`, …) as *signatures*. Conservation holds in every case — every block lands somewhere — so no invariant fails and no test catches them. Both are **segmentation**, not hierarchy, and both would still be flat once repaired. Cycle 1 measures; a fix belongs in its own cycle with its own exit criteria |
 | **A-3.3** | 3 | 2026-09-13 | **§1.2's flatness figures are rules-only-versus-refereed, and the plan does not say which.** §1.1's 107/233 came from a refereed run; the rules-only figure at the same commit is **115/233** (`sc_cosit` 58/109, not 52). §1.8 already records the referee moving 115 → 107, so the two are consistent — but a cycle whose headline is a flatness delta needs the baseline named. Per the user's decision, Cycle 3 measures **rules-only** (`--referee=none`), which is what the suite pins (§9.3) and what is reproducible offline. Result: **115 → 86** overall, `sc_cosit` **58 → 33** |
+| **A-6.1** | 6 | 2026-09-14 | **§1.8's flatness consequence is stale: the referee now buys three documents, not eight.** The override table (74/50/3 across 53 documents) reproduces *exactly* offline — §1.8 is right about what the referee did. But it measured flatness **115 → 107** before Cycle 3 existed. Against Cycle 1's rules-only baseline of 86 the figure is **86 → 83**, and the three are `nota_pgfn_crj_1040_2015`, `parecer_pgfn_crj_701_2016`, `sc_cosit_200_20211214`. Five of §1.8's original eight are soluções de consulta now structured **rules-only** by A-3.1's `section_res`. Both measurements are correct at their own commit; the plan does not say which commit it measured — the same defect A-3.3 records about §1.2. *Decided with the user (Q-3)* |
+| **A-6.2** | 6 | 2026-09-14 | **The referee dependency §1.8 warns about is closed, not merely noted.** The measuring run's 625 recorded answers are published as `tests/corpus_referee_fixtures/` (247 KB, all `deepseek-v4-flash`). Replaying all 233 documents through the existing `RefereeCache(…, read_only=True)` seam answers **684 of 694** questions with **zero network calls**, and two replays produce a byte-identical `DecisionsReport`. The 10 non-hits are **abstentions**, which `api.py` deliberately never caches; every one is `rule=nao → final=nao`, so no outcome depends on them — asserted, not assumed. Warm-cache referee overhead is **+0.2 ms/document**. *Cache location and scope decided with the user (Q-1, Q-2)* |
+| **A-6.3** | 6 | 2026-09-14 | **§5.3 answered: the 74 `nao`→`secao` overrides should NOT become a rule.** 35 of the 74 sit on texts that also appear as *refusals* — `RELATÓRIO` 19 `secao` / 2 `nao`, `ORDEM DE INTIMAÇÃO` 7 / 1, and bare `I`/`II`/`III`/`IV` on both sides — so a text-keyed rule would fabricate 19 sections to rescue 35. The referee is reading position and neighbours (what `next_ctx` exists for, A-H.2), not applying a table. The 40 unambiguous confirmations are dominated by `FUNDAMENTOS` (17) and `CONCLUSÃO` (8), which A-3.1's `section_res` already admits **without a referee** — the learnable part is learned, and by declared profile data rather than a pattern fitted to 233 documents. Recorded in [`docs/20260914_112449_referee_override_rule_analysis.md`](../../docs/20260914_112449_referee_override_rule_analysis.md). *Decided with the user (Q-4)* |
+| **A-6.4** | 6 | 2026-09-14 | **The measuring run's cache existed only in volatile scratch space.** The 625 entries plan §1.1 records were never in the repository; they survived in a job temporary directory that is deleted with the job. Publishing them was made this cycle's first action, before any other work, because every economic and reproducibility claim in Cycle 6 depends on data that could not have been regenerated without paying for the run again — and `--referee=api` needs a key this environment does not have |
 
 Amendments to this plan are recorded here as `A-<cycle>.<n>`.

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz literalmente o art. 558 da Instrução Normativa RFB nº 2.121/2022, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 558. Observado o disposto no art. 563, fica suspenso o pagamento da Contribuição para o PIS/Pasep e da Cofins incidentes sobre a receita auferida por cerealistas na venda de produtos in natura de"
+  }
+}

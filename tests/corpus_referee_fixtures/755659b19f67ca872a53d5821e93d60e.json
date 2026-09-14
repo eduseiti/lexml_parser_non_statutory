@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "'ASSUNTO:' é rótulo de campo/ementa, não cabeçalho que abre divisão temática do raciocínio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ASSUNTO: NORMAS GERAIS DE DIREITO TRIBUTÁRIO"
+  }
+}

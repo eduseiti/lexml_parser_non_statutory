@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho usa 'desta Lei' e segue a numeração do próprio documento, indicando articulação interna, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 26. São considerados gastos eleitorais, sujeitos a registro"
+  }
+}

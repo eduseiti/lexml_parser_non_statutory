@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia a transcrição de artigos da IN SRF nº 118/2000, norma externa: 'da qual destaca-se o disposto nos artigos 1º, 17 e 18 a seguir transcritos'. Logo, o trecho é citação."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Relativamente aos fatos geradores ocorridos a partir de 1º de janeiro de 2000, o ganho de capital decorrente da alienação de bens ou direitos e da liquidação ou resgate de aplicações financeir"
+  }
+}

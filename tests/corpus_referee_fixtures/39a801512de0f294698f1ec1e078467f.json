@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "O trecho é o título/identificação da Nota SEI citada e transcrita, não um cabeçalho temático que abre divisão do documento jurídico."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "NOTA SEI Nº 48/2018/CRJ/PGACET/PGFN-MF"
+  }
+}

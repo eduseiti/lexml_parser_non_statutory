@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto indica citação do art. 43 do CTN, norma externa, e o trecho reproduz literalmente esse dispositivo legal."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 43. O imposto, de competência da União, sobre a renda e proventos de qualquer natureza tem como fato gerador a aquisição de disponibilidade econômica ou jurídica:"
+  }
+}

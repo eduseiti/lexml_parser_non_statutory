@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "CNPJ/CPF é rótulo de campo de formulário/identificação do interessado, não abre divisão temática do raciocínio jurídico."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CNPJ/CPF"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.82,
+    "rationale": "O contexto refere-se a 'art. 22 desta Lei', indicando que o documento é a própria lei; o 'Art. 24' dá continuidade à numeração interna, sendo articulação própria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 24. [...]"
+  }
+}

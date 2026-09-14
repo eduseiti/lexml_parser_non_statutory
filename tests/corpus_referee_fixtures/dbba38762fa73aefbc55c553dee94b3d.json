@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 105 da Constituição Federal de 1988, norma externa citada pelo documento, e não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 105. Compete ao Superior Tribunal de Justiça:"
+  }
+}

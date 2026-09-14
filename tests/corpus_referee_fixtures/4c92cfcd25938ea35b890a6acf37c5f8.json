@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.9,
+    "rationale": "FUNDAMENTOS é rótulo típico de divisão temática (fundamentação) do documento, abrindo seção interna entre a ementa/identificação e os parágrafos numerados."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

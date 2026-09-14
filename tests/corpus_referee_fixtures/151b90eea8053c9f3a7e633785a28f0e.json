@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto anuncia expressamente o teor do art. 19 da Lei nº 10.522/2002, norma externa citada pelo documento, não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 19. Fica a Procuradoria-Geral da Fazenda Nacional autorizada a não contestar, a não interpor recurso ou a desistir do que tenha sido interposto, desde que inexista outro fundamento relevante, na "
+  }
+}

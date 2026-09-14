@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "'SOLUÇÃO DE CONSULTA 82 – COSIT' é título/identificação de ato normativo, não cabeçalho de seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 82 – COSIT"
+  }
+}

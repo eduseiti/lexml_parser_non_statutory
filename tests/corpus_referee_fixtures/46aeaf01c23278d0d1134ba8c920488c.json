@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz o art. 43 do Decreto nº 3.000/1999, norma externa citada no parágrafo anterior, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 43. São tributáveis os rendimentos provenientes do trabalho assalariado, as remunerações por trabalho prestado no exercício de empregos, cargos e funções, e quaisquer proventos ou vantagens perce"
+  }
+}

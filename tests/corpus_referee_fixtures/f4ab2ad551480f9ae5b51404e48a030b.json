@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.9,
+    "rationale": "“ORDEM DE INTIMAÇÃO” abre uma seção temática do documento, separando a parte final de aprovação/intimação; não é artefato, timbre, rótulo ou título de norma."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ORDEM DE INTIMAÇÃO"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho reproduz o art. 156 do CTN, norma externa citada expressamente no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 156. Extinguem o crédito tributário:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho 'Art. 487...' é introduzido por 'Confira-se:' e cita o CPC (Lei 13.105/2015), norma externa ao documento, não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 487. Haverá resolução de mérito quando o juiz:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.95,
+    "rationale": "FUNDAMENTOS é rótulo temático que abre a seção de fundamentação do raciocínio jurídico, típico cabeçalho de seção em documento não articulado."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho é transcrito de norma externa: Instrução Normativa RFB nº 1.700/2017, citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 34. A base de cálculo da CSLL, em cada mês, será determinada mediante a aplicação do percentual de 12% (doze por cento) sobre a receita bruta definida pelo art. 26, auferida na atividade, deduzid"
+  }
+}

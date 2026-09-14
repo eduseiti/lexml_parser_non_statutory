@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.99,
+    "rationale": "O trecho \"FUNDAMENTOS\" introduz divisão temática do documento, separando o relatório da fundamentação jurídica, típico cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

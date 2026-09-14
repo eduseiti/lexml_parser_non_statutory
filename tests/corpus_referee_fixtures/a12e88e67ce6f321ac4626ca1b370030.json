@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.72,
+    "rationale": "Trecho é a identificação/título da norma citada (Solução de Consulta 75 – COSIT), referenciada no texto, não cabeçalho que abre divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 75 – COSIT"
+  }
+}

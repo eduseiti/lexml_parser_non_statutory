@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.99,
+    "rationale": "\"RELATÓRIO\" é cabeçalho que abre divisão temática típica de documento jurídico, separando a exposição dos fatos das demais seções."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RELATÓRIO"
+  }
+}

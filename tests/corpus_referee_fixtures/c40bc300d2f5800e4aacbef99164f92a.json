@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 1.0,
+    "rationale": "CONCLUSÃO é cabeçalho que abre divisão temática do documento, típico de parecer/voto, após fundamentação e antes do fecho."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CONCLUSÃO"
+  }
+}

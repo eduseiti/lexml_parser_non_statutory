@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto indica que o trecho é da Lei nº 9.250/1995, norma externa citada pelo documento, e não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 8º A base de cálculo do imposto devido no ano-calendário será a diferença entre as somas:"
+  }
+}

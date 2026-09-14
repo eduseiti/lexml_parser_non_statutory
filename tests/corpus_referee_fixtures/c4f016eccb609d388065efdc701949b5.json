@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho identifica o recurso e a origem (número e estado), funcionando como título/autuação do caso, não como cabeçalho de seção temática do raciocínio jurídico."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RECURSO EXTRAORDINÁRIO 855.091 RIO GRANDE DO SUL"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto anuncia 'o dispositivo constitucional ... tem o seguinte teor', introduzindo transcrição do art. 184 da Constituição, norma externa citada."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 184. Compete à União desapropriar por interesse social, para fins de reforma agrária, o imóvel rural que não esteja cumprindo sua função social, mediante prévia e justa indenização em títulos da "
+  }
+}

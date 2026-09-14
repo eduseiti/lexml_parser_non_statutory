@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia a reprodução do art. 20 da lei do FGTS 'apenas para fins ilustrativos', caracterizando citação de norma externa ao documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 20. A conta vinculada do trabalhador no FGTS poderá ser movimentada nas seguintes situações: I - despedida sem justa causa, inclusive a indireta, de culpa recíproca e de força maior; I-A - extinç"
+  }
+}

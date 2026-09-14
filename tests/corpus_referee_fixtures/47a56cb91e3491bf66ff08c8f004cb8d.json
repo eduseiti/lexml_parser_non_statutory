@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto é o art. 198, e o trecho é o art. 40, numeração que não segue a sequência do mesmo documento, indicando citação de outra norma."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 40. Ressalvado o disposto no inciso I do parágrafo único do art. 36, não integram as bases de cálculo de que tratam os arts. 33, 34 e 39:"
+  }
+}

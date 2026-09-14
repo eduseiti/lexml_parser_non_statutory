@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "Numeral romano isolado entre parágrafos, numera seção temática do parecer, abrindo a divisão conclusiva (parágrafo seguinte inicia 'Por todo o exposto')."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "III"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "O trecho é apenas número de processo, identificador administrativo, não abre divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PROCESSO 11080.736083/2021-85"
+  }
+}

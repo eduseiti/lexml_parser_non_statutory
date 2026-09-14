@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia a reprodução dos dispositivos do Decreto-Lei nº 3.365/1941; o art. 27 é transcrição de norma externa citada, não articulação própria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 27. O juiz indicará na sentença os fatos que motivaram o seu convencimento e deverá atender, especialmente, à estimação dos bens para efeitos fiscais; ao preço de aquisição e interesse que deles "
+  }
+}

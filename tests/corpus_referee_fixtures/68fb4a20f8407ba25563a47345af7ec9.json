@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "CTPS, entre NIT/PIS e CBO, é sigla/rótulo de campo ou dado identificador, não cabeçalho temático de seção do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CTPS"
+  }
+}

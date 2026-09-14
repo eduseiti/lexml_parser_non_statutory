@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "IV é apenas numeral romano, sem conteúdo temático; o cabeçalho de seção é o parágrafo seguinte."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "IV"
+  }
+}

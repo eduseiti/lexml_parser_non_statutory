@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz o caput do art. 39 da Lei nº 11.196/2005, norma externa citada no parágrafo anterior, não sendo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 39. Fica isento do imposto de renda o ganho auferido por pessoa física residente no País na venda de imóveis residenciais, desde que o alienante, no prazo de 180 (cento e oitenta) dias contado da"
+  }
+}

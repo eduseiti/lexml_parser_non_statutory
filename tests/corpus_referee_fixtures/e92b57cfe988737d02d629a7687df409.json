@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.9,
+    "rationale": "O trecho possui numeração própria ('Art. 76') e remete ao 'artigo anterior', sendo articulado do próprio documento; a menção à Lei 8.134/90 é apenas citação ao final."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 76. As deduções de que trata o artigo anterior não poderão exceder à receita mensal da respectiva atividade, sendo permitido o cômputo do excesso de deduções nos meses seguintes até dezembro (Lei"
+  }
+}

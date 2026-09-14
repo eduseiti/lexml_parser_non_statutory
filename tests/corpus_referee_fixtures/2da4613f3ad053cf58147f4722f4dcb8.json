@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.6,
+    "rationale": "Numeral romano isolado sem título temático; em documento não articulado configura marcador de item/numeração, não cabeçalho de seção nomeado (ex.: RELATÓRIO, VOTO)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "III"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto anuncia transcrição do art. 128 do RIR/2018 (Decreto 9.580/2018), norma externa citada pelo documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 128. Fica sujeita ao pagamento do imposto sobre a renda de que trata este Título a pessoa física que auferir ganhos de capital na alienação de bens ou direitos de qualquer natureza (Lei nº 7.713,"
+  }
+}

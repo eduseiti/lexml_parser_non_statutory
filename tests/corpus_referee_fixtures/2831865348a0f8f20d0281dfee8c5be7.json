@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.97,
+    "rationale": "FUNDAMENTOS é rótulo temático que abre a parte argumentativa do parecer/voto, entre o relatório e a fundamentação, caracterizando cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

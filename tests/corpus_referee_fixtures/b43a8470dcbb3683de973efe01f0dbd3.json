@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto indica expressamente citação da IN RFB nº 1.396/2013, com a fórmula 'in verbis'. O trecho transcreve o art. 1º dessa norma externa, não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Esta Instrução Normativa trata dos processos administrativos de consulta sobre interpretação da legislação tributária e aduaneira relativa aos tributos administrados pela Secretaria da Receita"
+  }
+}

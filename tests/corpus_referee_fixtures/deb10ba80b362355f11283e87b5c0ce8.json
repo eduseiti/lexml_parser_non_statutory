@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.9,
+    "rationale": "Art. 97 é do CTN e o contexto (Art. 150) também é do CTN, mas em ordem invertida, sugerindo citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 97. Somente a lei pode estabelecer:"
+  }
+}

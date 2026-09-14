@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 17 da Instrução Normativa SRF nº 84/2001, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 17. Podem integrar o custo de aquisição, quando comprovados com documentação hábil e idônea e discriminados na Declaração de Ajuste Anual, no caso de:"
+  }
+}

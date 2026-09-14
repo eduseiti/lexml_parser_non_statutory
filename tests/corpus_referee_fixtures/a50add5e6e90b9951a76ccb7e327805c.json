@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "O trecho é um título em maiúsculas que introduz uma divisão temática do documento (ordem de intimação), não se enquadrando nas exceções."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ORDEM DE INTIMAÇÃO"
+  }
+}

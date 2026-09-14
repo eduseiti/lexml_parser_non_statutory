@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "DJ 27.06.1994 é referência de publicação no Diário de Justiça, artefato de página ou dado processual, não abre seção temática."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DJ 27.06.1994"
+  }
+}

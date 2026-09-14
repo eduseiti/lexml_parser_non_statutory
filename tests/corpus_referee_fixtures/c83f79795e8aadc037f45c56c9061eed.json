@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto indica citação do art. 35 do RIR/2018 (Decreto 9.580/2018), norma externa ao documento; trata-se de transcrição de dispositivo de outra norma."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 35. São isentos ou não tributáveis:"
+  }
+}

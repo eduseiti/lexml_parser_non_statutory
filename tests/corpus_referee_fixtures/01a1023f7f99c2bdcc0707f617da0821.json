@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "PROCESSO 11080.736083/2021-85 é identificação/rótulo de campo com número de processo, artefato de cabeçalho administrativo, não abre divisão temática do raciocínio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PROCESSO 11080.736083/2021-85"
+  }
+}

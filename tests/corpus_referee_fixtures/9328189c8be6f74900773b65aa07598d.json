@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O trecho transcreve o art. 33 do Decreto 9.580/2018 (RIR/2018), com indicação de grifo e citação das leis de regência, caracterizando citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 33. Constituem rendimento bruto todo o produto do capital, do trabalho ou da combinação de ambos, os alimentos e as pensões percebidos em dinheiro, os proventos de qualquer natureza e os acréscim"
+  }
+}

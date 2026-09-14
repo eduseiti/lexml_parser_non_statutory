@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.95,
+    "rationale": "EMENTA é explicitamente listado como cabeçalho de seção temática, abrindo a síntese decisória do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "EMENTA: INEFICÁCIA PARCIAL DA CONSULTA."
+  }
+}

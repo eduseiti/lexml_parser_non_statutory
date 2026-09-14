@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "Trata-se de identificação/autuação do processo (classe, número e origem), não de cabeçalho de seção temática como EMENTA, RELATÓRIO ou VOTO."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "AÇÃO DIRETA DE INCONSTITUCIONALIDADE 5.422 DISTRITO FEDERAL"
+  }
+}

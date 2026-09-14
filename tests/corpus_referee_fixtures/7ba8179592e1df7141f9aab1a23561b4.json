@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "O trecho \"DJ 21.11.1994\" é data de publicação, artefato de página/registro, não um cabeçalho que abre seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DJ 21.11.1994"
+  }
+}

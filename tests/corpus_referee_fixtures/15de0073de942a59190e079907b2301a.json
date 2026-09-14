@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trata-se de identificação/título da norma ou ato (Solução de Consulta 224 – COSIT), não de cabeçalho de seção temática do raciocínio (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO etc.)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 224 – COSIT"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "Trata-se de artefato de página e código de localização (Fl. 9, DF, COSIT, RFB), não de cabeçalho que abre divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Fl. 9 DF COSIT RFB"
+  }
+}

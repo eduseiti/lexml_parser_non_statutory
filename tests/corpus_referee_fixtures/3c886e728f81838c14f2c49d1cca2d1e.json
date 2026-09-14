@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho é citado da Instrução Normativa RFB nº 1.500/2014, norma externa mencionada no contexto, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 101. Podem ser deduzidas as importâncias pagas em dinheiro a título de pensão alimentícia em face das normas do direito de família, quando em cumprimento de decisão judicial, inclusive a prestaçã"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "\"CÓPIA\" é artefato de reprodução do documento (carimbo/indicação de cópia), não abre divisão temática do raciocínio, como RELATÓRIO ou FUNDAMENTOS."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CÓPIA"
+  }
+}

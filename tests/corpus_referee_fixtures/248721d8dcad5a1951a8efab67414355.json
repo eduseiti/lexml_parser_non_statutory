@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho 'XXXXX' é um marcador de anonimização/placeholder, sem conteúdo temático que caracterize abertura de seção do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "XXXXX"
+  }
+}

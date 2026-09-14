@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "boundary",
+    "confidence": 0.95,
+    "rationale": "O trecho inicia a transcrição da Lei 8.981/1995, art. 21, norma diferente das anteriores, conforme anunciado no parágrafo."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "quotation_boundary",
+    "excerpt": "Lei 8.981, de 1995, \"Art. 21. O ganho de capital percebido por pessoa física em decorrência da alienação de bens e direitos de qualquer natureza sujeita-se à incidência do imposto de renda à alíquota "
+  }
+}

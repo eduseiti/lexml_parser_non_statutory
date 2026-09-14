@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "CNPJ/CPF é rótulo de campo de formulário no bloco de identificação (Interessado/Assunto), não abre seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CNPJ/CPF"
+  }
+}

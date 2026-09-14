@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho é a identificação/autuação do recurso (número, origem, registro), não abre divisão temática do raciocínio como RELATÓRIO, FUNDAMENTOS, CONCLUSÃO, VOTO ou EMENTA."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RECURSO ESPECIAL nº 118.360 - SP (1997/0007988-0)"
+  }
+}

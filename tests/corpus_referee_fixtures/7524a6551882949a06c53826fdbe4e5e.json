@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto anterior é o art. 3º do próprio documento; o trecho é art. 9º, com salto numérico, indicando citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 9º Ressalvado o disposto no art. 8º, o sujeito passivo que promoveu retenção indevida ou a maior de tributo administrado pela RFB no pagamento ou crédito a pessoa física ou jurídica poderá deduzi"
+  }
+}

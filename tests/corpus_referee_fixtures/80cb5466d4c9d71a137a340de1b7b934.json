@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.62,
+    "rationale": "Salto de numeração (do art. 3º para o art. 27) indica transição para dispositivo de outra norma, típico de citação legal, e não de articulado próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 27 . O ganho de capital sujeita-se à incidência do imposto de renda, sob a forma de tributação definitiva, à alíquota de quinze por cento"
+  }
+}

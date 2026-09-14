@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.55,
+    "rationale": "Numeral romano isolado entre a epígrafe do processo e o início do relato ('Cuida-se...'), funcionando como marcador numerado de seção temática do documento (I, II, ...)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "I"
+  }
+}

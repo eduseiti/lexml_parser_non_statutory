@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.92,
+    "rationale": "\"ORDEM DE INTIMAÇÃO\" introduz divisão temática do documento, relativa à intimação do consulente, e não se enquadra nas exclusões."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ORDEM DE INTIMAÇÃO"
+  }
+}

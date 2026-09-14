@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto afirma que se reproduzem os artigos de interesse da IN RFB n.º 1.500/2014; logo, o Art. 6º é citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 6º São isentos ou não se sujeitam ao imposto sobre a renda, os seguintes rendimentos originários pagos por previdências: I - os provenientes de aposentadoria e pensão, de transferência para a res"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto afirma que o documento transcreve os arts. 1º, 17 e 18 da Instrução Normativa SRF nº 118/2000, norma externa citada."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 18. Observado o disposto no artigo anterior, na determinação do ganho de capital sujeito à incidência do imposto, a isenção dos ganhos de capital decorrentes de operações de valor igual ou inferi"
+  }
+}

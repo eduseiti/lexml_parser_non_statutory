@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "Artefato de página: indica folha ('Fl. 13') e código de localização/unidade (DF COSIT RFB), sem abrir divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Fl. 13 DF COSIT RFB"
+  }
+}

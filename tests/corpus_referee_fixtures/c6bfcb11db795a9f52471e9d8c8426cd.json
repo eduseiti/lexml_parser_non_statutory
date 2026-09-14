@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.9,
+    "rationale": "O contexto cita a Lei nº 10.406/2002 (Código Civil), e o trecho trata de imposto de renda, típico de outra norma (ex.: Regulamento do IR), sendo citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 128. Fica sujeita ao pagamento do imposto sobre a renda de que trata este Título"
+  }
+}

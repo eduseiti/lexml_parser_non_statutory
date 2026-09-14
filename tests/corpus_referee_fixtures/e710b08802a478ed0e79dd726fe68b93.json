@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho transcreve o art. 133 do RIR/2018 (Decreto nº 9.580/2018), norma externa citada no documento, e não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 133. Fica isento do imposto sobre a renda o ganho de capital auferido na (Lei nº 9.250, de 1995, art. 22 e art. 23 ; e Lei nº 11.196, de 2005, art. 39):"
+  }
+}

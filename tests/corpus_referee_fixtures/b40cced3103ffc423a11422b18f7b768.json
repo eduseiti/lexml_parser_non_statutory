@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "O trecho é apenas a identificação do número de processo, um dado de cabeçalho documental, e não abre divisão temática do raciocínio jurídico."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PROCESSO 11080.736083/2021-85"
+  }
+}

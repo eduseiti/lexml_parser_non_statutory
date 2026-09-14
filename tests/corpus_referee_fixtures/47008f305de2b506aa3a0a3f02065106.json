@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto anuncia a transcrição dos arts. 33 e 34 do RIR/2018; o trecho é citação de norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 34. A tributação independe da denominação dos rendimentos, dos títulos ou dos direitos, da localização, da condição jurídica ou da nacionalidade da fonte, da origem dos bens produtores da renda e"
+  }
+}

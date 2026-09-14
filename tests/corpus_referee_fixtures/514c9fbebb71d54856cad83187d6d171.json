@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 1.0,
+    "rationale": "O trecho \"RELATÓRIO\" é cabeçalho que abre uma seção temática típica de documento jurídico não articulado, conforme definição fornecida."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RELATÓRIO"
+  }
+}

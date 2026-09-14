@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "“CÓPIA” não abre divisão temática do raciocínio; é marca/artefato de reprodução documental, não cabeçalho de seção como RELATÓRIO, FUNDAMENTOS ou CONCLUSÃO."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CÓPIA"
+  }
+}

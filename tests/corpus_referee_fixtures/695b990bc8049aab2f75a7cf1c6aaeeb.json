@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "Trata-se de título de norma citada (IN SRF nº 84/2001), não de cabeçalho de seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "IN SRF Nº 84, DE 2001"
+  }
+}

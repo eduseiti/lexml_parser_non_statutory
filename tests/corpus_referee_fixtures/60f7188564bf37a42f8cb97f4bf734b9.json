@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho transcreve o art. 996 do RIR/2018, norma externa citada no parágrafo anterior, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 996. Na hipótese de consulta eficaz, formulada anteriormente ao vencimento do débito, não incidirão encargos moratórios desde o seu protocolo até o trigésimo dia subsequente à data da ciência de "
+  }
+}

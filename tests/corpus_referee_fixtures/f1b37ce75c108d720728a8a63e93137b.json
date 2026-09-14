@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o Decreto nº 9.580/2018, citado expressamente no parágrafo anterior como norma externa (verbis)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 35. São isentos ou não tributáveis: [...] VI - os seguintes rendimentos obtidos na alienação de bens e direitos: [...] d) o valor correspondente ao percentual anual fixo de redução do ganho de ca"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.85,
+    "rationale": "Após o Art. 10, que remete à legislação anterior da COFINS, o 'Art. 3º' citado é de outra norma (define faturamento via DL 1.598/77), não articulado próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º O faturamento a que se refere o art. 2º compreende a receita bruta de que trata o art. 12 do Decreto-Lei nº 1.598, de 26 de dezembro de 1977."
+  }
+}

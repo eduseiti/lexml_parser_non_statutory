@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "O numeral 'I' isola-se em linha própria e precede a exposição do objeto do parecer, funcionando como cabeçalho da primeira seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "I"
+  }
+}

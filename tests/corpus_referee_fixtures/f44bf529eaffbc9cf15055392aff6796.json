@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.9,
+    "rationale": "O parágrafo anterior anuncia expressamente a transcrição de dispositivo da Lei nº 9.249/1995, de modo que o trecho é citação de norma externa, não articulação própria do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 16 . Na hipótese de integralização de capital mediante a entrega de bens ou direitos, considera-se custo de aquisição da participação adquirida o valor dos bens ou direitos transferidos, constant"
+  }
+}

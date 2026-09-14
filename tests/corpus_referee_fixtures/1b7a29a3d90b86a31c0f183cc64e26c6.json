@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "O trecho 'Fl. 26 DF COSIT RFB' é artefato de página/código de localização, não abre divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Fl. 26 DF COSIT RFB"
+  }
+}

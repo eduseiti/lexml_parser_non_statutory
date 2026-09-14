@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.8,
+    "rationale": "O trecho funciona como título de seção que introduz a ordem de intimação, uma divisão temática do documento, não sendo artefato, timbre, assinatura ou rótulo de formulário."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ORDEM DE INTIMAÇÃO"
+  }
+}

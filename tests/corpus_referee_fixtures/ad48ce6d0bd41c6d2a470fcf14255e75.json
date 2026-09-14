@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.99,
+    "rationale": "RELATÓRIO é exemplo expresso de cabeçalho que abre divisão temática do documento (relato dos fatos), não se enquadrando nas exclusões."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RELATÓRIO"
+  }
+}

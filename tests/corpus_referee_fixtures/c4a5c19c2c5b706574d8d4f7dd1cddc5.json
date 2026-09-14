@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia a transcrição de dispositivos do Decreto-Lei nº 3.365/1941, norma externa citada pelo documento; o Art. 1º transcrito pertence a essa lei."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º A desapropriação por utilidade pública regular-se-á por esta lei, em todo o território nacional."
+  }
+}

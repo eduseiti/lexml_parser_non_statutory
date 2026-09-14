@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia 'Confira-se a redação do citado dispositivo' referindo-se ao art. 97 do Decreto-Lei nº 5.844/1943; o trecho é transcrição de norma externa citada."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 97. Sofrerão o desconto do impôsto à razão de 15% os rendimentos percebidos. (Redação dada pela Lei nº 154, de 1947)"
+  }
+}

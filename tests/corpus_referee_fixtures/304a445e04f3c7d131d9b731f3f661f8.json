@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O trecho transcreve o art. 787 do RIR/2018, norma externa citada no parágrafo anterior, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 787. Ressalvados os prazos específicos previstos neste Regulamento, o imposto sobre a renda retido na fonte deverá ser recolhido nos prazos a que se refere o art. 930."
+  }
+}

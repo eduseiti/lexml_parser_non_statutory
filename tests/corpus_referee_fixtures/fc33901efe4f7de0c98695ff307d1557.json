@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto indica 'Lei nº 10.406... (Código Civil)', seguido do Art. 1.565, caracterizando citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1.565. Pelo casamento, homem e mulher assumem mutuamente a condição de consortes, companheiros e responsáveis pelos encargos da família."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto indica que o dispositivo está sendo transcrito da Instrução Normativa RFB nº 1.700/2017, norma externa citada."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 215. O lucro presumido será determinado mediante aplicação dos percentuais de que tratam o caput e os §§ 1º e 2º do art. 33 sobre a receita bruta definida pelo art. 26, relativa a cada atividade,"
+  }
+}

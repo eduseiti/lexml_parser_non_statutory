@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 3º da Lei Complementar nº 118/2005, norma externa citada no contexto para análise."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º Para efeito de interpretação do inciso I do art. 168 da Lei nº 5.172, de 25 de outubro de 1966 – Código Tributário Nacional, a extinção do crédito tributário ocorre, no caso de tributo sujeito"
+  }
+}

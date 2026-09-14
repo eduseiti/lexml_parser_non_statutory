@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz o art. 111 do Código Tributário Nacional, norma externa citada no parágrafo anterior, e não um artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 111. Interpreta-se literalmente a legislação tributária que disponha sobre:"
+  }
+}

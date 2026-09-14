@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 1.0,
+    "rationale": "O trecho é o art. 1º da própria Instrução Normativa RFB nº 1.199/2011, que apenas faz remissão à Lei nº 6.404/1976."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º O consórcio constituído nos termos do disposto nos arts. 278 e 279 da Lei nº 6.404, de 15 de dezembro de 1976, e as pessoas jurídicas consorciadas deverão, para efeitos dos tributos administra"
+  }
+}

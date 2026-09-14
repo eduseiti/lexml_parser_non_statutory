@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.72,
+    "rationale": "O trecho 'ACÓRDÃOS PARADIGMAS' é um título em destaque que introduz e rotula um bloco temático de precedentes citados no documento, funcionando como cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ACÓRDÃOS PARADIGMAS"
+  }
+}

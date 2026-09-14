@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "Trata-se de título/identificação de ato normativo ou do próprio documento, não de cabeçalho que abre seção temática do raciocínio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 218 – COSIT"
+  }
+}

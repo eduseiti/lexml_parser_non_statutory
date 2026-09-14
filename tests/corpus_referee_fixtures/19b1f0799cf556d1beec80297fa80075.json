@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto 'Reza a Instrução Normativa SRF nº 208, de 2002:' indica que o Art. 6º seguinte é citação dessa norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 6º A pessoa física que passar à condição de residente no Brasil está sujeita às normas vigentes na legislação tributária aplicáveis aos demais residentes no Brasil a partir da data em que se cara"
+  }
+}

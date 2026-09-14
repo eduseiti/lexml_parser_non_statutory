@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.85,
+    "rationale": "O trecho é o Art. 10, sequencial ao Art. 8º do próprio documento, com a mesma estrutura redacional, indicando articulação interna e não citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 10. Permanecem sujeitas às normas da legislação da COFINS, vigentes anteriormente a esta Lei, não se lhes aplicando as disposições dos arts. 1º a 8º:"
+  }
+}

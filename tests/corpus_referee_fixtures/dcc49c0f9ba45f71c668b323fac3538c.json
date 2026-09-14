@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 45 do CTN, sequencial ao Art. 43 citado como contexto, indicando que o documento é a própria norma e não uma citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 45. Contribuinte do imposto é o titular da disponibilidade a que se refere o artigo 43, sem prejuízo de atribuir a lei essa condição ao possuidor, a qualquer título, dos bens produtores de renda "
+  }
+}

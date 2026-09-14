@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho reproduz o art. 3º da Lei nº 9.430/1996, norma externa citada; o documento em contexto possui artigos nº 150 e 153."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º Estão sujeitas à apuração de ganho de capital as operações que importem: [...] II - transferência a herdeiros e legatários na sucessão causa mortis, a donatários na doação, inclusive em adiant"
+  }
+}

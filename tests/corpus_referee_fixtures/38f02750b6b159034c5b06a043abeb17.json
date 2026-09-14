@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.95,
+    "rationale": "FUNDAMENTOS é rótulo de divisão temática do raciocínio jurídico (após questionamentos/preliminar), típico cabeçalho de seção, não artefato de página, timbre ou título de norma."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

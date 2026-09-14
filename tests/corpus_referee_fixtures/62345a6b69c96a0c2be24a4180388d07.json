@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 29 da própria Instrução Normativa SRF nº 15/2001, indicada no contexto como o documento em análise, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 29. A pessoa física pode optar pela Declaração Simplificada, independentemente do montante dos rendimentos recebidos e da quantidade de fontes pagadoras."
+  }
+}

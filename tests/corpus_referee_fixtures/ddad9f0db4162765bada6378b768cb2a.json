@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.97,
+    "rationale": "RELATÓRIO abre divisão temática típica do raciocínio jurídico (relatório, fundamentos, conclusão), sendo cabeçalho de seção válido."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RELATÓRIO"
+  }
+}

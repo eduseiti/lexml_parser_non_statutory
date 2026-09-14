@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho transcreve o art. 3º da Portaria Conjunta PGFN/RFB nº 1/2014, citada no parágrafo anterior como norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º. Na hipótese de decisão desfavorável à Fazenda Nacional, proferida na forma prevista nos arts. 543-B e 543-C do CPC, a PGFN informará à RFB, por meio de Nota Explicativa, sobre a inclusão ou n"
+  }
+}

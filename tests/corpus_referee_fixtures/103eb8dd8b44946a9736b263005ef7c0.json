@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Número identificador de processo administrativo, dado de autuação/identificação, não abre divisão temática do raciocínio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PROCESSO 11080.736083/2021-85"
+  }
+}

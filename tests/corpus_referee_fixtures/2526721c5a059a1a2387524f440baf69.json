@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.92,
+    "rationale": "“ASSUNTO:” é rótulo de campo de identificação/assunto, não cabeçalho que abre divisão temática do raciocínio (como RELATÓRIO ou FUNDAMENTOS)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ASSUNTO: CONTRIBUIÇÕES SOCIAIS PREVIDENCIÁRIAS"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto introduz expressamente a Lei nº 10.168/2000, e o trecho transcreve o art. 2º dessa lei, sendo citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º Para fins de atendimento ao Programa de que trata o artigo anterior, fica instituída contribuição de intervenção no domínio econômico, devida pela pessoa jurídica detentora de licença de uso o"
+  }
+}

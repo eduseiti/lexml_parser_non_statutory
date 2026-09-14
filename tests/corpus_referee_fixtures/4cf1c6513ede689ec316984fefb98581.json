@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.85,
+    "rationale": "O contexto apresenta a referência 'Lei nº 6.404, de 1976', indicando citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 278. As companhias e quaisquer outras sociedades, sob o mesmo controle ou não, podem constituir consórcio para executar determinado empreendimento, observado o disposto neste Capítulo."
+  }
+}

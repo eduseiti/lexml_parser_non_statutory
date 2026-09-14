@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto anuncia 'como se depreende do art. 2º da Circular nº 3.691/2013', indicando transcrição de norma externa citada pelo documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º As pessoas físicas e as pessoas jurídicas podem comprar e vender moeda estrangeira ou realizar transferências internacionais em reais, de qualquer natureza, sem limitação de valor, sendo contr"
+  }
+}

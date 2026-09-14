@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trata-se do título/identificação do próprio ato (Solução de Consulta), não de divisão temática interna do raciocínio; não abre seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 218 – COSIT"
+  }
+}

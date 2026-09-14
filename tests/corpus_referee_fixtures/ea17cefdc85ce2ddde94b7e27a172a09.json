@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto afirma que a hipótese foi estabelecida no art. 23 da Lei nº 9.249/1995, e o trecho reproduz literalmente esse artigo de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 23. As pessoas físicas poderão transferir a pessoas jurídicas, a título de integralização de capital, bens e direitos pelo valor constante da respectiva declaração de bens ou pelo valor de mercad"
+  }
+}

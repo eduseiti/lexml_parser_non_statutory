@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "Art. 179 pertence à Lei 6.404/76 (Lei das S.A.), norma externa citada no contexto sobre classificação de contas."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 179. As contas serão classificadas do seguinte modo:"
+  }
+}

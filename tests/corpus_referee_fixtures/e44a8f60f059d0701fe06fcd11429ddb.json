@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "“DJ 15.08.1994” é artefato de publicação/data no rodapé ou cabeçalho, não abre divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DJ 15.08.1994"
+  }
+}

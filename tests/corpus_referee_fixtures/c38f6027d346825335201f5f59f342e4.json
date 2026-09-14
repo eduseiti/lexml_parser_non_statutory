@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto anuncia 'É o que determina o artigo 620 do RIR... in verbis', introduzindo transcrição literal de norma externa (Decreto 3.000/1999)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art.620 - Os rendimentos de que trata este Capítulo estão sujeitos à incidência do imposto na fonte, mediante aplicação de alíquotas progressivas, de acordo com as seguintes tabelas em Reais:"
+  }
+}

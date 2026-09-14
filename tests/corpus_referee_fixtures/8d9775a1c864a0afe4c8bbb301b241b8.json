@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é um artigo numerado do próprio documento (Art. 12), na sequência do Art. 3.º, com remissão interna aos arts. 17 e 18."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 12 . A pessoa física ausente no exterior a serviço do Brasil em autarquias ou repartições do Governo brasileiro situadas no exterior mantém a condição de residente no Brasil e sujeita-se à aprese"
+  }
+}

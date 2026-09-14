@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.65,
+    "rationale": "O parágrafo anterior é o art. 3º, com dois-pontos, e o trecho salta para o art. 10, com remissões internas aos arts. 8º e 9º. A descontinuidade numérica indica transcrição de outra norma, não articulação própria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 10. Não ocorrendo a devolução prevista no art. 8º ou a dedução nos termos do art. 9º, a restituição do indébito de imposto sobre a renda retido sobre rendimentos sujeitos ao ajuste anual, bem com"
+  }
+}

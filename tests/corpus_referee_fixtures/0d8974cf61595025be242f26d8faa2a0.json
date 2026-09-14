@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto afirma que os arts. 741 e 746 do RIR/2018 serão transcritos; logo, o trecho é citação de norma externa (Decreto nº 9.580/2018), não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 741. Ficam sujeitos à incidência do imposto sobre a renda na fonte, observado o disposto neste Capítulo, a renda e os proventos de qualquer natureza provenientes de fontes situadas no País, quand"
+  }
+}

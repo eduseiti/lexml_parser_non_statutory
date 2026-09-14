@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trecho é identificação/numeração de processo, não abre divisão temática do raciocínio (RELATÓRIO, VOTO etc.)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PROCESSO 11080.736083/2021-85"
+  }
+}

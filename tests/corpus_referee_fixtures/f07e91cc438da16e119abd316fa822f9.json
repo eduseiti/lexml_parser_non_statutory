@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.9,
+    "rationale": "O trecho 'AUXÍLIO-CRECHE.' funciona como cabeçalho temático, introduzindo a discussão sobre auxílio-creche no documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "AUXÍLIO-CRECHE."
+  }
+}

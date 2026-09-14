@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "Trata-se de artefato de página: \"Fl. 22\" é número de folha e \"DF COSIT RFB\" é código de localização, não abrindo seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Fl. 22 DF COSIT RFB"
+  }
+}

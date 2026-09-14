@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "“CÓPIA” não abre divisão temática; é artefato/rótulo de cópia, não seção como RELATÓRIO, FUNDAMENTOS, CONCLUSÃO ou EMENTA."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CÓPIA"
+  }
+}

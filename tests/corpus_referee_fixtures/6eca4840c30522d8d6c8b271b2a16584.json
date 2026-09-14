@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "O trecho é um código/rótulo de item (MNTPF) seguido de título temático, típico de manual ou formulário, não um cabeçalho de seção do raciocínio jurídico (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO, VOTO, EMENTA)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "MNTPF 1.28.20.00 – DEDUÇÕES DA CÉDULA D"
+  }
+}

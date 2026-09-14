@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "O numeral romano 'II' isola-se entre a síntese da consulta e o exame da controvérsia, abrindo a segunda seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "II"
+  }
+}

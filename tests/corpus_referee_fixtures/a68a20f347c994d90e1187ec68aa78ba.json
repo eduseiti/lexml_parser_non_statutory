@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto anuncia a transcrição dos arts. 11 e 12 do DL nº 1.598/1977; o trecho é citação de norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 12. A receita bruta compreende: (Redação dada pela Lei nº 12.973, de 2014)"
+  }
+}

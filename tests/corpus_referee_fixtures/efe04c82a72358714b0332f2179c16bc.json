@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "O trecho \"ASSUNTO: NORMAS DE ADMINISTRAÇÃO TRIBUTÁRIA\" é cabeçalho temático típico de ementa em acórdãos e soluções de consulta, iniciando a seção de assunto."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ASSUNTO: NORMAS DE ADMINISTRAÇÃO TRIBUTÁRIA"
+  }
+}

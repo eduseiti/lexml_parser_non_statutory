@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto anuncia expressamente o art. 4º da Lei Complementar nº 73/1993 como fundamento, indicando citação de norma externa ao documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 4º - São atribuições do Advogado-Geral da União:"
+  }
+}

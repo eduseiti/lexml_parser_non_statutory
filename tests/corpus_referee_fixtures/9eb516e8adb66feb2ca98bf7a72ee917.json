@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "boundary",
+    "confidence": 0.95,
+    "rationale": "O trecho inicia com o cabeçalho 'Lei 8.134, de 1990', indicando a transcrição de norma diversa da anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "quotation_boundary",
+    "excerpt": "Lei 8.134, de 1990 - \"Art. 2º - O imposto de renda das pessoas físicas será devido à medida em que os rendimentos e ganhos de capital forem percebidos, sem prejuízo do ajuste estabelecido no artigo 11"
+  }
+}

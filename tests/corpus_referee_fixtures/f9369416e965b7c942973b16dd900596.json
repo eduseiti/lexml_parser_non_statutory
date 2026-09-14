@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 24 da Lei 7.713/1988, mesma norma do Art. 3º contextual, logo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 24. No caso de desapropriação, considera-se realizada a alienação na data em que se completar o pagamento integral da indenização, fixada em acordo ou sentença judicial."
+  }
+}

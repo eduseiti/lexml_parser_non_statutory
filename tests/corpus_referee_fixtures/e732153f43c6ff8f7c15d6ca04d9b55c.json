@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trata-se de identificação/título da Solução de Consulta, não de divisão temática do documento (como relatório, fundamentos ou conclusão)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 161 – COSIT"
+  }
+}

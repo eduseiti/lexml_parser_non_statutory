@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trata-se de título/identificação do próprio documento (Solução de Consulta), não de cabeçalho que abre divisão temática do raciocínio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 82 – COSIT"
+  }
+}

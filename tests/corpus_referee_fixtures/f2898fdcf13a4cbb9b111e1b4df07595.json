@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto introduz o Código Tributário Nacional (Lei nº 5.172/1966) e o trecho transcreve o art. 105 desse diploma, sendo citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 105. A legislação tributária aplica-se imediatamente aos fatos geradores futuros e aos pendentes, assim entendidos aqueles cuja ocorrência tenha tido início, mas não esteja completa nos termos do"
+  }
+}

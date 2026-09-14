@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.9,
+    "rationale": "O contexto introduz a Lei nº 7.713/1988 como norma citada; o Art. 16 integra essa lei externa, não o documento analisado."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 16 - O custo de aquisição dos bens e direitos será o preço ou valor pago, e, na ausência deste, conforme o caso:"
+  }
+}

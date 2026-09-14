@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto anuncia expressamente a citação do art. 150 do RIR/1999, norma externa ao documento, transcrevendo seu teor."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art.150. As empresas individuais, para os efeitos do imposto de renda, são equiparadas às pessoas jurídicas (Decreto-Lei nº 1.706, de 23 de outubro de 1979, art. 2º)."
+  }
+}

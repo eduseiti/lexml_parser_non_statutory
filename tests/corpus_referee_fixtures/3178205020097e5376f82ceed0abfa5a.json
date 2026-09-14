@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.85,
+    "rationale": "O contexto remete a 'nesta Lei', indicando que o Art. 45 integra a articulação própria do documento, não citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 45. [...]"
+  }
+}

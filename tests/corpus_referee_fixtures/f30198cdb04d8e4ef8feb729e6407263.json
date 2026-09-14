@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia a transcrição do art. 12, §4º, do Decreto-Lei 1.598/1977 (reproduzido no Decreto 9.580/2018), logo o trecho é citação de norma externa, não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 12. A receita bruta compreende: (Redação dada pela Lei nº 12.973, de 2014) I - o produto da venda de bens nas operações de conta própria; (Incluído pela Lei nº 12.973, de 2014) II - o preço da pr"
+  }
+}

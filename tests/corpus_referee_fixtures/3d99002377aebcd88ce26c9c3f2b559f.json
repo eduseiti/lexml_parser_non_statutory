@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.85,
+    "rationale": "A sequência numérica (Art. 21 seguido de Art. 23) e a ausência de remissão a norma externa indicam articulação própria do documento, não citação."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 23. [...]"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto indica que o trecho é reprodução da Instrução Normativa RFB nº 1.700/2017, citada como norma externa que disciplina a matéria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 26. A receita bruta compreende:"
+  }
+}

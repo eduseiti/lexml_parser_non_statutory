@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto indica expressamente que se trata de dispositivo do RIR/2018 (arts. 994 e 997), norma externa citada pelo documento, e não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 997. Os créditos tributários da União não pagos até a data do vencimento serão acrescidos de juros de mora equivalentes à variação da taxa Selic, para títulos federais, acumulada mensalmente, a p"
+  }
+}

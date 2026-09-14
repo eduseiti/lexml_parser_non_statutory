@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 10 do Decreto nº 4.195/2002, norma externa citada no parágrafo anterior, não sendo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 10. A contribuição de que trata o art. 2ºo da Lei nº 10.168, de 2000, incidirá sobre as importâncias pagas, creditadas, entregues, empregadas ou remetidas, a cada mês, a residentes ou domiciliado"
+  }
+}

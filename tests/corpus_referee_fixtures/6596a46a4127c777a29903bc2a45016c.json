@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 35 do mesmo documento, referenciando internamente os arts. 4º e 8º, sem indicar citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 35. Para efeito do disposto nos arts. 4º, inciso III, e 8º, inciso II, alínea c, poderão ser considerados como dependentes:"
+  }
+}

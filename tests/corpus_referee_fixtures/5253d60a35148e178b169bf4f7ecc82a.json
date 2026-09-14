@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz literalmente o art. 25 da Lei nº 9.430/1996, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 25. O lucro presumido será o montante determinado pela soma das seguintes parcelas:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.85,
+    "rationale": "\"GOIÁS\" é nome de estado, provavelmente em bloco de assinatura, timbre ou indicação de origem, não abrindo divisão temática do raciocínio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "GOIÁS"
+  }
+}

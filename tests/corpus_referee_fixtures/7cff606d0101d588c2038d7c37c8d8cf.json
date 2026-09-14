@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.6,
+    "rationale": "O numeral romano isolado 'II' marca a abertura de uma divisão temática do raciocínio no documento não articulado, antecedendo o parágrafo de análise sobre a Nota Cosit."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "II"
+  }
+}

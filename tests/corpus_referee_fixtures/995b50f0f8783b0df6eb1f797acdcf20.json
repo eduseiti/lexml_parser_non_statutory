@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia expressamente a Lei nº 6.404/1976, e o art. 252 é transcrito como citação dessa norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 252. A incorporação de todas as ações do capital social ao patrimônio de outra companhia brasileira, para convertê-la em subsidiária integral, será submetida à deliberação da assembléia-geral das"
+  }
+}

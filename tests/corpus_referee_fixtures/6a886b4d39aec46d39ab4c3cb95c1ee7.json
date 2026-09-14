@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.97,
+    "rationale": "RELATÓRIO é cabeçalho que abre divisão temática do documento, seguido de parágrafo narrativo dos fatos; não é artefato de página, timbre ou rótulo de formulário."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "RELATÓRIO"
+  }
+}

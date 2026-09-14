@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.7,
+    "rationale": "Trata-se da identificação/título do próprio ato (Solução de Consulta) que precede a ementa, não de uma divisão temática do raciocínio (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 75 – COSIT"
+  }
+}

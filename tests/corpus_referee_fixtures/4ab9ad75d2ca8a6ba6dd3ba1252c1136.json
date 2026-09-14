@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "CPF é rótulo de campo/forma de dado pessoal, não abre divisão temática do documento; integra lista de informações tratadas."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CPF"
+  }
+}

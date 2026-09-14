@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "\"CÓPIA\" é artefato de reprodução/autenticação, não cabeçalho de seção temática; não introduz divisão do raciocínio jurídico."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CÓPIA"
+  }
+}

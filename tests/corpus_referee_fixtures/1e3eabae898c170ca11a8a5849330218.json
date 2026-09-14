@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho é rótulo de campo de identificação (Origem), típico de formulário/cabeçalho administrativo, e não abre seção temática do raciocínio jurídico."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Origem COORDENAÇÃO­GERAL DE FISCALIZAÇÃO (COFIS)"
+  }
+}

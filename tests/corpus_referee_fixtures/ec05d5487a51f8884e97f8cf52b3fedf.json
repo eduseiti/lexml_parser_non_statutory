@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia que o Regulamento do Imposto sobre a Renda (Decreto 3.000/1999) define a declaração em conjunto, sendo o Art. 8º citação dessa norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 8º Os cônjuges poderão optar pela tributação em conjunto de seus rendimentos, inclusive quando provenientes de bens gravados com cláusula de incomunicabilidade ou inalienabilidade, da atividade r"
+  }
+}

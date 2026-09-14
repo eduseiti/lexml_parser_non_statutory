@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "Art. 34 integra o próprio documento (ex.: Decreto 9.580/2018); a menção ao CTN e à Lei 7.713 é apenas fundamento legal."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 34. A tributação independe da denominação dos rendimentos, dos títulos ou dos direitos, da localização, da condição jurídica ou da nacionalidade da fonte, da origem dos bens produtores da renda e"
+  }
+}

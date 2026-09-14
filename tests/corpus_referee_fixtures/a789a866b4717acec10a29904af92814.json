@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.7,
+    "rationale": "Linha em caixa alta e isolada, entre o 'ASSUNTO' e o texto decisório, que titula e abre a divisão temática seguinte (bolsa de pesquisa/tributação). Não se enquadra nas exclusões listadas."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "BOLSA DE PESQUISA. TRIBUTAÇÃO. RETENÇÃO NA FONTE."
+  }
+}

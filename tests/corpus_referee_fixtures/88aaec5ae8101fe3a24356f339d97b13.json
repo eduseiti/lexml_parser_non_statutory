@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é um artigo numerado do próprio documento (Art. 8º) e remete ao art. 3º citado no contexto, indicando continuidade normativa interna."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 8º O sujeito passivo que promoveu retenção indevida ou a maior de tributo administrado pela RFB no pagamento ou crédito a pessoa física ou jurídica, efetuou o recolhimento do valor retido e devol"
+  }
+}

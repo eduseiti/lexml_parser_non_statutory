@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "O trecho identifica a Solução de Consulta Cosit citada, funcionando como título da norma/transcrição, não como cabeçalho de seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SC COSIT Nº 291, DE 2017:"
+  }
+}

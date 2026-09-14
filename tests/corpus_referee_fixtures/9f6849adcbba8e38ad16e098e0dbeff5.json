@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.9,
+    "rationale": "O contexto 'nesta Lei' indica que o documento é a própria norma, e 'Art. 37' é articulação interna."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 37. Nos bens cujo uso dependa de cessão ou permissão"
+  }
+}

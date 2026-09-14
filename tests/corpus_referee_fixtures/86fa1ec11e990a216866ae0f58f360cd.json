@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.97,
+    "rationale": "O trecho identifica o título/número do ato normativo ou solução de consulta, não uma divisão temática do raciocínio jurídico do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 82 – COSIT"
+  }
+}

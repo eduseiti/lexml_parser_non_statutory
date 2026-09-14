@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 4º da IN SRF nº 118/00, norma externa citada no contexto, não sendo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 4º Na hipótese de bens e direitos adquiridos e aplicações financeiras realizadas em moeda estrangeira com rendimentos auferidos originariamente em moeda estrangeira, o ganho de capital correspond"
+  }
+}

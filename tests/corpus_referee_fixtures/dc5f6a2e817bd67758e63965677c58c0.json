@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O termo 'CÓPIA' não abre divisão temática do raciocínio; trata-se de artefato de reprodução/certificação, não de cabeçalho de seção como RELATÓRIO ou FUNDAMENTOS."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CÓPIA"
+  }
+}

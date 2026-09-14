@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto afirma expressamente: 'Eis a redação do § 1º do art. 13 da Lei nº 8.212, de 1991'. Trata-se de citação de norma externa, não de artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 13. O servidor civil ocupante de cargo efetivo ou o militar da União, dos Estados, do Distrito Federal ou dos Municípios, bem como o das respectivas autarquias e fundações, são excluídos do Regim"
+  }
+}

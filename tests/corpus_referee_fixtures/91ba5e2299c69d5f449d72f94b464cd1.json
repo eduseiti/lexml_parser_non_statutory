@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho transcreve o art. 1º da Portaria nº 3.296/1986, norma externa citada no parágrafo anterior, não sendo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Ficam as empresas e empregadores autorizados a adotar o sistema de Reembolso-Creche, em substituição à exigência contida no § 1º, do art. 389, da CLT, desde que obedeçam as seguintes exigência"
+  }
+}

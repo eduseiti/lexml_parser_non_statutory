@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto introduz a Instrução Normativa SRF nº 15/2001 e o trecho transcreve seu art. 5º, sendo citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 5º Estão isentos ou não se sujeitam ao imposto de renda os seguintes rendimentos:"
+  }
+}

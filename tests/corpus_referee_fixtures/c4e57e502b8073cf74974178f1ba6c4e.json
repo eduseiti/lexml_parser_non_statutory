@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "O trecho identifica o próprio ato/norma (Solução de Consulta), não uma divisão temática do raciocínio, como relatório, fundamentos ou conclusão."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 123 – COSIT"
+  }
+}

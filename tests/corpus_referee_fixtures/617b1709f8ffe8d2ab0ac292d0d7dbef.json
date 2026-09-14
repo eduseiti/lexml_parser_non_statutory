@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.85,
+    "rationale": "O trecho corresponde exatamente ao Art. 7º da Lei 8.023/1990, indicando citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 7º Considera-se despesa de custeio aquela necessária à percepção dos rendimentos da atividade rural e à manutenção da fonte pagadora, relacionada com a natureza das atividades rurais exercidas."
+  }
+}

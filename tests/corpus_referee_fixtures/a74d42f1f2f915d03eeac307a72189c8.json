@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto anuncia a verificação do que o Decreto nº 1.041/1994 preceituava; o artigo transcrito é dispositivo desse decreto, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 14. Os residentes ou domiciliados no Brasil que se retirarem em caráter definitivo do território nacional no curso de um ano-calendário, além da declaração correspondente aos rendimentos do ano-c"
+  }
+}

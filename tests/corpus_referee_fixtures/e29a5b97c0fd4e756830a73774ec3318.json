@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "“CÓPIA” não abre divisão temática do raciocínio jurídico; é artefato/rótulo de reprodução documental, não cabeçalho de seção (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO etc.)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CÓPIA"
+  }
+}

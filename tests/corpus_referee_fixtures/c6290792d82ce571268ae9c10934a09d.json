@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.7,
+    "rationale": "O contexto 'e aos limites fixados nesta Lei:' introduz o dispositivo transcrito, indicando citação do art. 43 da Lei 9.504/97, e não articulação própria do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 43. É permitida, até a antevéspera das eleições, a divulgação paga, na imprensa escrita, de propaganda eleitoral, no espaço máximo, por edição, para cada candidato, partido ou coligação,"
+  }
+}

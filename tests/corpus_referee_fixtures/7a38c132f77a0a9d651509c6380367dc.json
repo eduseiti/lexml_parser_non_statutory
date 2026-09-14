@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.97,
+    "rationale": "CONCLUSÃO é rótulo temático típico que abre a divisão conclusiva do parecer, listado como exemplo de cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CONCLUSÃO"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é numerado como Art. 56 do próprio documento; a menção à Lei nº 8.023/1990, art. 4º, é citação externa ao final, não o artigo citado em si."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 56. Considera-se resultado da atividade rural a diferença entre o valor da receita bruta recebida e o das despesas de custeio e de investimentos pagos no ano- calendário, correspondentes a todos "
+  }
+}

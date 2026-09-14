@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 1.0,
+    "rationale": "O trecho 'Art. 22' segue sequencialmente o 'Art. 21' do próprio documento, indicando articulação interna, não citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 22. [...]"
+  }
+}

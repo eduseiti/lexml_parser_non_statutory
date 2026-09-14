@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O trecho reproduz o art. 11 da Lei nº 7.713/1988, norma externa citada no parágrafo anterior, e não articulação própria do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 11. Os titulares dos serviços notariais e de registro a que se refere o art. 236 da Constituição da República, desde que mantenham escrituração das receitas e das despesas, poderão deduzir dos em"
+  }
+}

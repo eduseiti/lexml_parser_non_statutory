@@ -293,6 +293,21 @@ three), 2 deselected.
 
 ### 1.8 Finding G — the referee earns its place, and the rules are uncertain a lot
 
+> **Corrected by Cycle 6 (amendment A-6.1, 2026-09-14): the flatness figures
+> below are pre-Cycle-3 and no longer hold.** The override table is exactly
+> right and reproduces to the number offline — but its *consequence* has moved.
+> Measured against Cycle 1's rules-only baseline of 86, the referee now takes
+> flatness **86 → 83**: **three** documents gain structure, not eight. Five of
+> the original eight were soluções de consulta that Cycle 3's `section_res`
+> (A-3.1) now admits **with no referee at all**.
+>
+> The dependency this section warns about is also **closed**: Cycle 6 publishes
+> the run's 625 recorded answers as `tests/corpus_referee_fixtures/`, so a
+> refereed corpus run is reproducible offline, at zero marginal cost, with zero
+> network calls.
+>
+> See the [report](20260913_212337_corpus_233_hardening_plan/20260914_112449_cycle_6_report.md).
+
 691 rule decisions were flagged as uncertain across the corpus. The referee
 overrode **127** of them in 53 documents:
 
@@ -306,6 +321,10 @@ Eight documents gained structure they did not have in the rules-only pass:
 `nota_pgfn_crj_1040_2015`, `parecer_pgfn_crj_701_2016`, `sc_cosit_140_20230714`,
 `sc_cosit_159_20230807`, `sc_cosit_17_20220420`, `sc_cosit_181_20230818`,
 `sc_cosit_200_20211214`, `sc_cosit_98_20230510` (flat: 115 → 107).
+
+> **Post-Cycle-3 this is three, not eight** (A-6.1): `nota_pgfn_crj_1040_2015`,
+> `parecer_pgfn_crj_701_2016` and `sc_cosit_200_20211214`. The five `sc_cosit`
+> documents in the list are now structured **rules-only**, by `section_res`.
 
 Read the other way: **74 prose headers** the rules called "not a section" were
 real sections, and **50 paragraphs** the rules called quoted material were the
@@ -482,3 +501,11 @@ designed against what remains rather than against the current picture.
 3. **Cycle 6.3** — if the 74 `nao`→`secao` overrides can be captured as a rule,
    should they be? It trades referee cost for a rule tuned on 233 documents,
    which is exactly the generalisation risk §10 of the predecessor plan warns about.
+
+   > **Answered by Cycle 6 (A-6.3, 2026-09-14): no.** 35 of the 74 confirmations
+   > sit on texts that *also* appear as refusals (`RELATÓRIO` 19 `secao` / 2
+   > `nao`; bare `I`/`II`/`III` on both sides), so a text-keyed rule would be
+   > wrong in both directions. The separable remainder is dominated by
+   > `FUNDAMENTOS`/`CONCLUSÃO`, which Cycle 3's `section_res` already admits
+   > deterministically. Evidence in
+   > [`docs/20260914_112449_referee_override_rule_analysis.md`](../docs/20260914_112449_referee_override_rule_analysis.md).

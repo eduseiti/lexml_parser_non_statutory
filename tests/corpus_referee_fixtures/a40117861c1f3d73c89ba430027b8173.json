@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto anuncia a transcrição do art. 24 da MP nº 2.158/2001, norma externa citada pelo documento, e não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 24. O ganho de capital decorrente da alienação de bens ou direitos e da liquidação ou resgate de aplicações financeiras, de propriedade de pessoa física, adquiridos, a qualquer título, em moeda e"
+  }
+}

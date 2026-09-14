@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 1.0,
+    "rationale": "O trecho é o Art. 52 do próprio Decreto N.º 70.235/1972, conforme indicado no cabeçalho do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 52. Não produzirá efeito a consulta formulada:"
+  }
+}

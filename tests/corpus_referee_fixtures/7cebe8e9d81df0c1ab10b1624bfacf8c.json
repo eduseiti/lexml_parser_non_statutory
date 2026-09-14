@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "DJ 20.02.1995 é data de publicação/jurisprudência, artefato de identificação, não abre divisão temática como RELATÓRIO, FUNDAMENTOS ou CONCLUSÃO."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DJ 20.02.1995"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "DISIT/SRRF08 é sigla de unidade administrativa/órgão emissor, não cabeçalho temático; aparece em bloco de identificação, sem abrir divisão do raciocínio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DISIT/SRRF08"
+  }
+}

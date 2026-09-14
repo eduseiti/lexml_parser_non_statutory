@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho 'III' é apenas numeral de ordenação, não um título temático de seção; o cabeçalho seria 'Delimitação do julgado'."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "III"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O trecho pertence ao art. 5º da IN referida, norma externa citada no documento, conforme indicado no parágrafo anterior. A expressão 'nesta Instrução Normativa' confirma ser texto da própria IN."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 5º Para fins do disposto nesta Instrução Normativa, considera-se:"
+  }
+}

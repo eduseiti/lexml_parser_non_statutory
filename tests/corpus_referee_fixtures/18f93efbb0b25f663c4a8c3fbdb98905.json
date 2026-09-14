@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.75,
+    "rationale": "O contexto 'nesta Lei' indica referência interna ao próprio diploma, sugerindo que o Art. 30 integra a mesma norma, e não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 30. [...]"
+  }
+}

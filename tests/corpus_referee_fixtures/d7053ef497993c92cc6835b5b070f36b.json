@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.7,
+    "rationale": "Trecho 'Art. 12.' é uma referência isolada, sem texto, típica de citação de artigo externo; contexto anterior é artigo 18 do próprio documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 12."
+  }
+}

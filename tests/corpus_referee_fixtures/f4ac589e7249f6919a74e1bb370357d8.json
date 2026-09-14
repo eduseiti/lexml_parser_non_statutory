@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.96,
+    "rationale": "O contexto anuncia a Lei nº 7.713/1988 e o trecho transcreve seu Art. 1º, sendo citação de norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Os rendimentos e ganhos de capital percebidos a partir de 1º de janeiro de 1989, por pessoas físicas residentes ou domiciliados no Brasil, serão tributados pelo imposto de renda na forma da le"
+  }
+}

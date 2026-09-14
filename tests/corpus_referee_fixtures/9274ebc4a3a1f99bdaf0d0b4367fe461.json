@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho transcreve o art. 12 da Lei nº 8.212/1991, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 12. São segurados obrigatórios da Previdência Social as seguintes pessoas físicas:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.72,
+    "rationale": "O trecho é frase inicial do texto/ementa (matéria e objeto da ação), não rótulo de seção temática como EMENTA, RELATÓRIO ou VOTO."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PROCESSO CIVIL. AÇÃO DECLARATÓRIA DE UNIÃO HOMOAFETIVA."
+  }
+}

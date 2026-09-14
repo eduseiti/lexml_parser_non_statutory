@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho é transcrição do art. 901 do Decreto nº 1.041/1994, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 901. O pagamento do imposto, nos casos de saída definitiva do País e de encerramento de espólio, deverá ser efetuado na data prevista para a entrega da respectiva declaração de rendimentos (Lei n"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho reproduz o Art. 3º do Decreto-Lei nº 1.381/1974, citado no parágrafo anterior como exemplo de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º Serão consideradas empresas individuais, para os fins do artigo 1º, as pessoas físicas que: (Redação dada pelo Decreto-Lei nº 1.510, de 1976)"
+  }
+}

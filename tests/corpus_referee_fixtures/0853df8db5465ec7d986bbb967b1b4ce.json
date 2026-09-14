@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.72,
+    "rationale": "O trecho segue a numeração sequencial do próprio diploma (Art. 3º ao Art. 28), sem remissão expressa a outra norma, indicando articulação interna do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 28. Não incide o imposto sobre o ganho de capital decorrente de:"
+  }
+}

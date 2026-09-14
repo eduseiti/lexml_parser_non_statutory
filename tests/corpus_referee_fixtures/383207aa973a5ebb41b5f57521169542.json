@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz literalmente o art. 930 do RIR/2018, norma externa citada no parágrafo anterior, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 930. O recolhimento do imposto sobre a renda retido na fonte deverá ser efetuado (Lei nº 11.196, de 2005, art. 70, caput, inciso I):"
+  }
+}

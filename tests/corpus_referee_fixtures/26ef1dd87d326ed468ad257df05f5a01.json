@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 3º do próprio documento, que define o termo 'faturamento' e apenas cita o art. 12 do Decreto-Lei nº 1.598/1977 como referência externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º O faturamento a que se refere o art. 2º compreende a receita bruta de que trata o art. 12 do Decreto-Lei nº 1.598, de 26 de dezembro de 1977. (Redação dada pela Lei nº 12.973, de 2014)”"
+  }
+}

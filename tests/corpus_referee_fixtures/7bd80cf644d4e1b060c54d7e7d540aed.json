@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O contexto indica que o Decreto nº 3.000/1999 (RIR/1999) será citado; o Art. 682 é dispositivo dessa norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 682. Estão sujeitos ao imposto na fonte, de acordo com o disposto neste Capítulo, a renda e os proventos de qualquer natureza provenientes de fontes situadas no País, quando percebidos:"
+  }
+}

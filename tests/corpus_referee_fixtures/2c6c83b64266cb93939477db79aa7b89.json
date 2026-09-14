@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.97,
+    "rationale": "'ORDEM DE INTIMAÇÃO' é cabeçalho de seção final típico de Solução de Consulta, que separa o ato de aprovação e ciência do restante do texto."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ORDEM DE INTIMAÇÃO"
+  }
+}

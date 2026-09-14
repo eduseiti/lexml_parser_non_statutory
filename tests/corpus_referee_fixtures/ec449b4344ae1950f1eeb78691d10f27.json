@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.9,
+    "rationale": "A referência 'nesta Lei' no contexto indica que o documento é a própria norma, e o 'Art. 30-A' é um artigo interno, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 30-A. Qualquer partido político ou coligação poderá"
+  }
+}

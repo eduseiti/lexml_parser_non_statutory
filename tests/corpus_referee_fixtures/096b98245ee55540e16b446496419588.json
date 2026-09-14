@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.97,
+    "rationale": "O contexto anuncia a transcrição dos principais dispositivos do Decreto-Lei nº 3.365/1941, norma externa citada; logo o art. 2º é citação, não articulação própria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º Mediante declaração de utilidade pública, todos os bens poderão ser desapropriados pela União, pelos Estados, Municípios, Distrito Federal e Territórios."
+  }
+}

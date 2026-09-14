@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O artigo 28 integra o próprio documento, pois o contexto menciona 'nesta Lei', referindo-se à norma em análise."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 28. [...]"
+  }
+}

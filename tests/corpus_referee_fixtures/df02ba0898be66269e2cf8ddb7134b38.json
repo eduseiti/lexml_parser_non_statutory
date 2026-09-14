@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 3º que remete ao Art. 2º do mesmo diploma (Lei 10.101/2000), sendo articulação própria e sequencial do documento, não citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º A participação de que trata o art. 2º não substitui ou complementa a remuneração devida a qualquer empregado, nem constitui base de incidência de qualquer encargo trabalhista, não se lhe aplic"
+  }
+}

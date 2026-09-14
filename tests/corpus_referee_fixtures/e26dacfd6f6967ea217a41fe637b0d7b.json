@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz o art. 6º do Decreto-Lei nº 3.365/1941, norma externa citada no contexto, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 6º A declaração de utilidade pública far-se-á por decreto do Presidente da República, Governador, Interventor ou Prefeito."
+  }
+}

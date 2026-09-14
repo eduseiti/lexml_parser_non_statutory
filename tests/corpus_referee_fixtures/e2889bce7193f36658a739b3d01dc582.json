@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho é precedido pela referência ao Ato Declaratório Interpretativo SRF nº 8/2003, indicando citação de norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º O crédito de rendimentos relativos a aplicação financeira, inclusive depósito remunerado, realizada em moeda estrangeira por pessoa física residente no Brasil, implica a apuração de ganho de c"
+  }
+}

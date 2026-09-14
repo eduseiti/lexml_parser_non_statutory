@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.85,
+    "rationale": "O parágrafo anterior termina em dois-pontos remetendo a 'esta Lei', indicando que o Art. 39 é articulação própria do mesmo documento, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 39. [...]"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho 'IRRF?' é sigla de tributo, provável continuação da frase anterior ('isento do IRRF'), não cabeçalho de seção temática."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "IRRF?"
+  }
+}

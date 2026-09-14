@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "boundary",
+    "confidence": 0.95,
+    "rationale": "O trecho traz cabeçalho de artigo da Lei 8.383/91, norma distinta das anteriormente transcritas; inicia novo bloco normativo."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "quotation_boundary",
+    "excerpt": "Lei 8.383, de 1991, Art. 12. .............................................................."
+  }
+}

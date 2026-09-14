@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "Trata-se da identificação/título da própria Solução de Consulta, não de uma divisão temática interna do documento, como ementa, relatório, fundamentos ou conclusão."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 173 – COSIT"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "O trecho identifica o ato/ documento (Solução de Consulta 173 – COSIT), não abre divisão temática do raciocínio como RELATÓRIO, FUNDAMENTOS, CONCLUSÃO, VOTO ou EMENTA."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 173 – COSIT"
+  }
+}

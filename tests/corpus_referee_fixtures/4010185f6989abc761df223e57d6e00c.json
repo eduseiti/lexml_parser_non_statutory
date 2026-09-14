@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.85,
+    "rationale": "O trecho 'III' é numeração de item de lista (inciso/alinea), não abre divisão temática do documento; contextualmente integra enumeração de proposta de inclusão em lista."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "III"
+  }
+}

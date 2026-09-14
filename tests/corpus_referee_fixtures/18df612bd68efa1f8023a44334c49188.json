@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.93,
+    "rationale": "Trecho é timbre/órgão emissor no alto da página (SECRETARIA DA RECEITA FEDERAL), com artefato '0' precedente; não abre divisão temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "0 SECRETARIA DA RECEITA FEDERAL"
+  }
+}

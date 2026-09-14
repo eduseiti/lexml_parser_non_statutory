@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Título de norma/identificação do documento, não abre divisão temática do raciocínio; 'FUNDAMENTOS' seguinte é que é cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 224 – COSIT"
+  }
+}

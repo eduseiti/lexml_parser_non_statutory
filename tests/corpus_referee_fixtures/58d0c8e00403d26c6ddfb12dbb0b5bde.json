@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trecho 'XVIII2.' é fragmento de texto/numeração, provavelmente continuação de 'século XVIII' ou artefato, não abre seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "XVIII2."
+  }
+}

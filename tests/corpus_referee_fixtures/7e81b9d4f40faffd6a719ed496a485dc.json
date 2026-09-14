@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho reproduz literalmente o art. 741 do RIR/2018, norma externa citada no parágrafo anterior; não é artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 741. Ficam sujeitos à incidência do imposto sobre a renda na fonte, observado o disposto neste Capítulo, a renda e os proventos de qualquer natureza provenientes de fontes situadas no País, quand"
+  }
+}

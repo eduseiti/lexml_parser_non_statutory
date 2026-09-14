@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.8,
+    "rationale": "O trecho 'DEDUÇÃO' está isolado e em caixa alta, introduzindo o tema tratado no parágrafo seguinte, o que caracteriza um cabeçalho de seção temática."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DEDUÇÃO"
+  }
+}

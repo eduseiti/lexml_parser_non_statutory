@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.8,
+    "rationale": "\"II\" é apenas um numeral de seção, sem conteúdo temático; o cabeçalho temático é o parágrafo seguinte (\"Breve relato da controvérsia\")."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "II"
+  }
+}

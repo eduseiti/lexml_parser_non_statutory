@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.72,
+    "rationale": "Trata-se do título/identificador do próprio documento (número do Parecer), situado entre o timbre do órgão emissor e a ementa; não abre divisão temática do raciocínio (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "PARECER PGFN/CRJ/No 701/2016"
+  }
+}

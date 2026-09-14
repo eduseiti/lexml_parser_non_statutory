@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.97,
+    "rationale": "O Art. 3º é articulação própria do mesmo documento, sequencial ao Art. 1º, e faz referência interna a 'desta Lei'."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º O imposto incidirá sobre o rendimento bruto, sem qualquer dedução, ressalvado o disposto nos arts. 9º a 14 desta Lei."
+  }
+}

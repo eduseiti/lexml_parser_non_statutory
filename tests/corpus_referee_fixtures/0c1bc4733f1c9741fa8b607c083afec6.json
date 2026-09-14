@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O parágrafo anterior afirma que a Lei nº 9.250/1995, em seu art. 8º, 'assim estatui', introduzindo transcrição literal de norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 8º A base de cálculo do imposto devido no ano-calendário será a diferença entre as somas:"
+  }
+}

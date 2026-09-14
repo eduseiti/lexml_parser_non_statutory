@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.8,
+    "rationale": "O numeral III antecede o título 'Encaminhamentos', indicando a abertura de uma seção temática no documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "III"
+  }
+}

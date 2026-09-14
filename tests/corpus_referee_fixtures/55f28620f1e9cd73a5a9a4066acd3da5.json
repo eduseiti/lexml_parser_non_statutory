@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.8,
+    "rationale": "O trecho inicia com 'Art. 137' e contém texto normativo, sem elementos de citação, indicando artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 137. Podem integrar o custo de aquisição de imóveis, desde que comprovados com documentação hábil e idônea e discriminados na declaração de bens:"
+  }
+}

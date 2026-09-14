@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "Ambos os artigos (3º e 27) pertencem à mesma norma (Lei 8.981/1995), indicando que o trecho é artigo do próprio documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 27. O ganho de capital sujeita-se à incidência do imposto de renda, sob a forma de tributação definitiva, à alíquota de quinze por cento."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho transcreve o art. 4º da Instrução Normativa RFB nº 2.121/2022, norma externa citada no parágrafo anterior, e não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 4º Para efeitos desta Instrução Normativa, considera-se industrialização, nos termos definidos na legislação do Imposto sobre Produtos Industrializados (IPI), as operações de:"
+  }
+}

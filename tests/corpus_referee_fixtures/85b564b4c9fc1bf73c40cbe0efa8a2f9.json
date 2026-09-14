@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto anuncia transcrição do Decreto n.º 70.235/1972 ('in verbis'), e o Art. 46 integra esse decreto, tratando-se de citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 46. O sujeito passivo poderá formular consulta sobre dispositivos da legislação"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 2º da própria Instrução Normativa RFB nº 1.199/2011; apenas cita os arts. 278 e 279 da Lei nº 6.404/1976 como referência externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º As empresas integrantes de consórcio constituído nos termos dos arts. 278 e 279 da Lei nº 6.404, de 1976, respondem pelos tributos devidos, em relação às operações praticadas pelo consórcio, n"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.98,
+    "rationale": "Art. 628 é artigo do próprio documento, que apenas cita a Lei nº 7.713/1988 como fundamento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 628. Estão sujeitos à incidência do imposto na fonte, calculado na forma do art. 620, os rendimentos do trabalho não-assalariado, pagos por pessoas jurídicas, inclusive por cooperativas e pessoas"
+  }
+}

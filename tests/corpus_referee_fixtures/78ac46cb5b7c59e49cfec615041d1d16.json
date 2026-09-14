@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.93,
+    "rationale": "FUNDAMENTOS abre a divisão temática de fundamentação, situada entre o relatório (item 6) e o desenvolvimento argumentativo (item 7), típica de documento jurídico não articulado."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

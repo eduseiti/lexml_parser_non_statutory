@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "Trata-se de artefato de página: \"Fl. 24\" indica número de folha e \"DF COSIT RFB\" é código de localização/unidade emissora, não abrindo seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "Fl. 24 DF COSIT RFB"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.9,
+    "rationale": "A expressão 'nesta Lei' e a numeração 'Art. 94-A' indicam que o dispositivo pertence ao próprio documento normativo."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 94-A. Os órgãos e entidades da Administração Pública"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "Numeral romano isolado 'IV' antecede parágrafo numerado '45.', indicando abertura de seção temática em documento jurídico não articulado."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "IV"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O contexto indica que o trecho reproduz dispositivos da Lei nº 10.637/2002, sendo citação de norma externa, não artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 3º Do valor apurado na forma do art. 2º a pessoa jurídica poderá descontar créditos calculados em relação a:"
+  }
+}

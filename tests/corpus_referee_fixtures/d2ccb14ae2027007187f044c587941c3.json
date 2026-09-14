@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto anuncia a transcrição de dispositivos da Lei nº 10.522/2002 e da Portaria Conjunta PGFN/RFB nº 1/2014 ('que assim estabelecem'), logo o Art. 1º é citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º A Procuradoria-Geral da Fazenda Nacional (PGFN) cientificará a Secretaria da Receita Federal do Brasil (RFB) acerca das matérias de interesse da Fazenda Nacional submetidas pelo Supremo Tribun"
+  }
+}

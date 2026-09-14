@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.9,
+    "rationale": "O trecho é um artigo numerado do próprio documento, sem citação a norma externa, indicando articulação própria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 28 . Não incide o imposto sobre o ganho de capital decorrente de:"
+  }
+}

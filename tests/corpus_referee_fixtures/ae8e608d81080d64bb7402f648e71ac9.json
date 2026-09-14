@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "DOMICÍLIO FISCAL é rótulo de campo de formulário, não cabeçalho que abre seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "DOMICÍLIO FISCAL"
+  }
+}

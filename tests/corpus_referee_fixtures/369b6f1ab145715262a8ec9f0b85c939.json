@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.7,
+    "rationale": "O trecho 'I' é apenas um numeral romano isolado, provavelmente artefato de paginação/numeração, sem título temático que abra divisão do raciocínio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "I"
+  }
+}

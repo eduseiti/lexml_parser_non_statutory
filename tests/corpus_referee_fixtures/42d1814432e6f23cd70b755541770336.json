@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.99,
+    "rationale": "“STJ.” completa a expressão “SÚMULA 182 DO STJ.”, integrando citação no texto, não abrindo seção temática do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "STJ."
+  }
+}

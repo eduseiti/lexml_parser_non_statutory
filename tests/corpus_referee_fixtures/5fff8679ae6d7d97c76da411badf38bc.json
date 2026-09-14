@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.95,
+    "rationale": "O trecho é um artigo numerado ('Art. 50') que veicula norma de aplicação e remete a artigos internos, sendo articulado próprio do documento, não citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 50. Aplicam-se à apuração da base de cálculo da CSLL as disposições contidas nos arts. 2ºa 8º, 10 a 42 e 44 a 49."
+  }
+}

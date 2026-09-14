@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 0.98,
+    "rationale": "O Art. 8º dialoga diretamente com o Art. 2º do mesmo documento, referindo-se aos seus incisos I e II, o que indica continuidade normativa própria, não citação externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 8º Os RRA que não decorram do previsto nos incisos I e II do art. 2º estarão sujeitos:"
+  }
+}

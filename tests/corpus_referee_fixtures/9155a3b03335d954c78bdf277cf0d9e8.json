@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.95,
+    "rationale": "O trecho 'FUNDAMENTOS' abre uma divisão temática do documento, típica de pareceres e soluções de consulta, antecedendo a fundamentação jurídica."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "FUNDAMENTOS"
+  }
+}

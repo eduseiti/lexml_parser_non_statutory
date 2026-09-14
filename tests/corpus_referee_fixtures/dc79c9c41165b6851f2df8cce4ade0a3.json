@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho é transcrição do art. 1º do Ato Declaratório Interpretativo SRF nº 9/2004, norma externa citada no parágrafo anterior."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Os Delegados e Inspetores da Receita Federal deverão rever de ofício os lançamentos referentes ao Imposto sobre a Renda incidente sobre valores pagos a título de abono assiduidade e ausências "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O trecho é o Art. 226 da Constituição Federal de 1988, precedido do título da norma, configurando citação de texto externo ao documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 226. A família, base da sociedade, tem especial proteção do Estado."
+  }
+}

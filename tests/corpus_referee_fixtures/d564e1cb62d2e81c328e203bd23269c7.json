@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.98,
+    "rationale": "O trecho sucede menção à Lei nº 7.713/1988 e lista regras dela, indicando citação de norma externa."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 22. Na determinação do ganho de capital serão excluídos:"
+  }
+}

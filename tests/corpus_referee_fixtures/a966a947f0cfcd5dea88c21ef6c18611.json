@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O contexto indica que o trecho é transcrição do art. 1º da Instrução Normativa SRF nº 599/2005, norma externa citada no documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1º Fica isento do imposto de renda o ganho de capital auferido por pessoa física na alienação de bens e direitos de pequeno valor, cujo preço unitário de alienação, no mês em que esta se realizar"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O contexto anuncia que a Instrução Normativa SRF nº 599 veio dispor em seu art. 2º (sublinhou-se), logo o trecho transcreve norma externa citada, não artigo próprio."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 2º Fica isento do imposto de renda o ganho auferido por pessoa física residente no País na venda de imóveis residenciais, desde que o alienante, no prazo de 180 (cento e oitenta) dias contado da "
+  }
+}

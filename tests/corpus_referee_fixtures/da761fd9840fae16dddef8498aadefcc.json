@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "own",
+    "confidence": 1.0,
+    "rationale": "O trecho é o Art. 746 do próprio regulamento, em sequência ao Art. 741; a menção à Lei nº 9.779 é apenas citação da fonte, não texto transcrito de outra norma."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 746. Os rendimentos do trabalho, com ou sem vínculo empregatício, de aposentadoria, de pensão e os rendimentos da prestação de serviços, pagos, creditados, entregues, empregados ou remetidos a re"
+  }
+}

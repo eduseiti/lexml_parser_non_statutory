@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "Trata-se de título/identificação do ato administrativo, não de divisão temática do raciocínio (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO, VOTO, EMENTA)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "SOLUÇÃO DE CONSULTA 224 – COSIT"
+  }
+}

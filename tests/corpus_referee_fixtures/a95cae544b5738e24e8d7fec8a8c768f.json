@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "secao",
+    "confidence": 0.85,
+    "rationale": "O trecho está em caixa alta e introduz divisão temática sobre a condição de residente ou não-residente, sendo desenvolvido no parágrafo seguinte."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "CONDIÇÃO DE RESIDENTE OU NÃO-RESIDENTE."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "O trecho 'Art. 22' surge após o Art. 27 do documento, indicando citação de norma externa, não sequência própria."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 22. Nas alienações de bens comuns, decorrentes do regime de casamento, o ganho"
+  }
+}

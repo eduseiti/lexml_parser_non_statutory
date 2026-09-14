@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.95,
+    "rationale": "Contexto anterior cita a Lei nº 10.406/2002 entre parênteses, indicando citação de norma externa. O teor do artigo não corresponde ao Código Civil, mas a lei tributária."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 151. Nas alienações a prazo, o ganho de capital deverá ser apurado como venda à"
+  }
+}

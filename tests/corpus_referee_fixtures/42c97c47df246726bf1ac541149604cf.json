@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.92,
+    "rationale": "\"ASSUNTO:\" é rótulo de campo/identificação temática da ementa, não abre divisão do raciocínio do documento (relatório, fundamentos, conclusão, voto, ementa)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ASSUNTO: CONTRIBUIÇÃO PARA O PIS/PASEP"
+  }
+}

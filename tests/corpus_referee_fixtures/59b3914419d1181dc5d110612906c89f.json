@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.78,
+    "rationale": "Trata-se de ato/determinação processual, não de divisão temática do raciocínio (relatório, fundamentos, conclusão etc.)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ORDEM DE INTIMAÇÃO"
+  }
+}

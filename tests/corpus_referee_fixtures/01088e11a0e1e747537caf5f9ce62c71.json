@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.95,
+    "rationale": "“ASSUNTO:” é rótulo de campo/identificação da matéria, não cabeçalho que abre divisão temática do raciocínio (RELATÓRIO, FUNDAMENTOS, CONCLUSÃO etc.)."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ASSUNTO: CONTRIBUIÇÃO PARA O PIS/PASEP"
+  }
+}

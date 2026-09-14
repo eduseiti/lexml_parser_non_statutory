@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 0.99,
+    "rationale": "O trecho é artigo do Código Civil (Lei 10.406/2002), norma externa citada no documento, conforme o contexto."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 1.568. Os cônjuges são obrigados a concorrer, na proporção de seus bens e dos rendimentos do trabalho, para o sustento da família e a educação dos filhos, qualquer que seja o regime patrimonial."
+  }
+}

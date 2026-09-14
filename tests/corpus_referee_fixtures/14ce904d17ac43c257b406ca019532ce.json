@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.65,
+    "rationale": "O trecho é apenas o numeral romano 'III', sem rótulo temático; não nomeia divisão do raciocínio (RELATÓRIO, FUNDAMENTOS etc.), funcionando como mera numeração de item."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "III"
+  }
+}

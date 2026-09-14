@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "quoted",
+    "confidence": 1.0,
+    "rationale": "O trecho transcreve o art. 6º da Lei nº 7.713/1988, norma externa expressamente citada no contexto, não sendo artigo próprio do documento."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "own_articulation",
+    "excerpt": "Art. 6º Ficam isentos do imposto de renda os seguinte rendimentos percebidos por pessoas físicas:"
+  }
+}

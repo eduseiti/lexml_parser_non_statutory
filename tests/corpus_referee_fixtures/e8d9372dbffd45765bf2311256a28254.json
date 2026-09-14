@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.9,
+    "rationale": "ANEXO não abre divisão temática do raciocínio jurídico do documento; indica material anexo, não seção como relatório, fundamentos ou conclusão."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "ANEXO"
+  }
+}

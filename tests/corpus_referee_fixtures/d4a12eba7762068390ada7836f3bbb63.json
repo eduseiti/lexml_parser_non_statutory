@@ -1,0 +1,12 @@
+{
+  "verdict": {
+    "verdict": "nao",
+    "confidence": 0.98,
+    "rationale": "Trata-se de timbre/órgão emissor no alto da primeira página, expressamente excluído do conceito de cabeçalho de seção."
+  },
+  "meta": {
+    "model": "deepseek-v4-flash",
+    "kind": "heading",
+    "excerpt": "MINISTÉRIO DA FAZENDA"
+  }
+}
