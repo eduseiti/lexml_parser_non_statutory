@@ -525,6 +525,79 @@ def _find_epigraph(
     return None, None, None, None
 
 
+# "06/06/2022 PLENÁRIO" — a court cover's judgment-date stamp. The remainder
+# must be one of the profile's órgão-julgador names, matched in full.
+_DECISION_STAMP_RE = re.compile(r"^\s*(\d{1,2}/\d{1,2}/\d{4})\s+(\S.*?)\s*$")
+
+# The acórdão heading that proves the document *is* the court's decision rather
+# than, say, a vote or a report filed under the same cover. Matched with all
+# whitespace removed, because covers letter-space it (`A C Ó R D Ã O`).
+_ACORDAO_HEADING_RE = re.compile(r"^acordao$")
+
+
+@dataclass(frozen=True)
+class _CourtCover:
+    para: StyledPara
+    sigla: str
+    number: str | None
+    date: UrnDate | None
+    body: str
+    court: str | None
+    is_acordao: bool
+
+
+def _find_court_cover(
+    paras: list[StyledPara], profile: DocumentProfile
+) -> _CourtCover | None:
+    """Recognise a court-decision cover (``06/06/2022 PLENÁRIO`` + class line).
+
+    Both lines are required, stamp first, within the first few paragraphs: the
+    stamp alone is an ordinary date, and a class line alone is how any ruling
+    *cites* a case. Returns ``None`` for every profile that declares no
+    ``decision_class_res``.
+    """
+    if not profile.decision_class_res:
+        return None
+    head = paras[:6]
+    for i, stamp in enumerate(head[:3]):
+        m = _DECISION_STAMP_RE.match(stamp.text)
+        if not m:
+            continue
+        body_text = _fold(m.group(2))
+        if not any(r.fullmatch(body_text) for r in profile.decision_body_res):
+            continue
+        for para in head[i + 1 :]:
+            folded = _fold(para.text)
+            for pattern, sigla in profile.decision_class_res:
+                cm = pattern.match(folded)
+                if not cm:
+                    continue
+                front = paras[:_FRONT_MATTER_BLOCKS]
+                court = next(
+                    (
+                        slug
+                        for p in front
+                        for r, slug in profile.court_res
+                        if r.search(_fold(p.text))
+                    ),
+                    None,
+                )
+                return _CourtCover(
+                    para=para,
+                    sigla=sigla,
+                    number=_normalise_number(cm.group("num")),
+                    date=parse_pt_date(m.group(1)),
+                    body=slugify_authority(m.group(2)),
+                    court=court,
+                    is_acordao=any(
+                        _ACORDAO_HEADING_RE.match(re.sub(r"\s+", "", _fold(p.text)))
+                        for p in front
+                    ),
+                )
+        return None
+    return None
+
+
 def _extract_fields(
     paras: list[StyledPara], profile: DocumentProfile
 ) -> tuple[ProprietaryField, ...]:
@@ -602,6 +675,13 @@ def extract_metadata(
 
     epi_para, epi_type, number, epi_date = _find_epigraph(paras)
 
+    # A court-decision cover outranks the generic epigraph scan: it is a
+    # two-line structural signal, where the scan accepts the first line that
+    # merely looks like "<tipo> nº <n>".
+    cover = _find_court_cover(paras, prof)
+    if cover is not None:
+        epi_para, number, epi_date = cover.para, cover.number, cover.date
+
     # --- doc_type: the profile's URN vocabulary wins over the epigraph's
     # wording, so "Ato Declaratório Normativo Cosit" and "Ato Declaratório SRF"
     # both yield `ato.declaratorio` rather than two spellings of one type.
@@ -612,11 +692,16 @@ def extract_metadata(
     doc_type = prof.urn_type_for(epi_text) if epi_type or prof.name != "generic" else None
     if epi_type and prof.name == "generic":
         doc_type = slugify_authority(epi_type) or prof.urn_type
+    if cover is not None and cover.is_acordao:
+        doc_type = f"acordao;{cover.sigla}"
 
     # --- authority chain: epigraph sigla → preamble opener → profile default.
     authority: str | None = None
     authority_source: str | None = None
-    if epi_para is not None:
+    if cover is not None and cover.court:
+        authority = f"{cover.court};{cover.body}" if cover.body else cover.court
+        authority_source = "cover"
+    if authority is None and epi_para is not None:
         authority = _authority_from_epigraph(epi_para.text, prof)
         if authority:
             authority_source = "epigraph"
@@ -637,6 +722,8 @@ def extract_metadata(
     # on the year, so a stray date elsewhere on the page cannot overwrite the
     # epigraph's.
     date, date_source = epi_date, ("epigraph" if epi_date else None)
+    if cover is not None and epi_date is not None:
+        date_source = "cover"
 
     def _consider(candidate: UrnDate | None, label: str) -> bool:
         """Accept ``candidate`` if it fills a gap or sharpens a year-only date."""
@@ -675,8 +762,13 @@ def extract_metadata(
     # a well-formed filename number corrects it. `number_source` records which
     # branch fired, so a filename-derived component is never mistaken for a
     # document-derived one.
-    number_source = "epigraph" if number else None
-    if number and epi_para is not None and _number_looks_like_citation(epi_para.text):
+    number_source = ("cover" if cover is not None else "epigraph") if number else None
+    if (
+        number
+        and cover is None
+        and epi_para is not None
+        and _number_looks_like_citation(epi_para.text)
+    ):
         corrected = _number_from_filename(source)
         if corrected:
             number, number_source = corrected, "filename:corrected"

@@ -170,6 +170,10 @@ def find_ementa(
         text = para.text.strip()
         if not text or _is_no_ementa_artifact(text):
             return None
+        # A bare `EMENTA` heading (court covers, sometimes letter-spaced) is a
+        # section header, not the summary; claiming it strips the body of it.
+        if re.sub(r"\s+", "", fold(text)).rstrip(".") == "ementa":
+            return None
         if any(r.match(text) for r in _PREAMBLE_RES):
             return None
         if any(r.match(text) for r in profile.enacting_res):

@@ -154,7 +154,8 @@ GROUND_TRUTH: dict[str, dict[str, tuple[int, int] | None]] = {
     },
     "REsp_1306393": {
         "epigraph": (2, 2),
-        "ementa": (5, 5),
+        # Block 5 is the bare `EMENTA` heading, not the summary (2026-09-16).
+        "ementa": None,
         "preamble": (12, 12),
         "enacting_formula": None,
     },

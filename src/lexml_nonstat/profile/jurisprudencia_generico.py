@@ -50,6 +50,41 @@ JURISPRUDENCIA_GENERICO = DocumentProfile(
         re.compile(r"^\s*agravo\s+regimental\b"),
         re.compile(r"^\s*acordao\s+n"),
         re.compile(r"^\s*habeas\s+corpus\b"),
+        # STF covers (`adi_5422_STF`, `re_855091_tema_808`) state the class and
+        # the case number with no `nº`. The number is required so a sentence
+        # merely opening with a class name does not claim the genre.
+        re.compile(
+            r"^\s*(?:acao\s+direta\s+de\s+inconstitucionalidade(?:\s+por\s+omissao)?"
+            r"|acao\s+declaratoria\s+de\s+constitucionalidade"
+            r"|arguicao\s+de\s+descumprimento\s+de\s+preceito\s+fundamental"
+            r"|recurso\s+extraordinario(?:\s+com\s+agravo)?)"
+            r"\s+(?:n[.o]*\s*)?\d"
+        ),
+    ),
+    # Most specific first: "… por omissão" before the bare ADI, "… com agravo"
+    # before the bare RE.
+    decision_class_res=tuple(
+        (re.compile(rf"^\s*{name}\s+(?:n[.o]*\s*)?(?P<num>\d[\d.]*)"), sigla)
+        for name, sigla in (
+            (r"acao\s+direta\s+de\s+inconstitucionalidade\s+por\s+omissao", "ado"),
+            (r"acao\s+direta\s+de\s+inconstitucionalidade", "adi"),
+            (r"acao\s+declaratoria\s+de\s+constitucionalidade", "adc"),
+            (r"arguicao\s+de\s+descumprimento\s+de\s+preceito\s+fundamental", "adpf"),
+            (r"recurso\s+extraordinario\s+com\s+agravo", "are"),
+            (r"recurso\s+extraordinario", "re"),
+            (r"recurso\s+especial", "resp"),
+            (r"mandado\s+de\s+seguranca", "ms"),
+            (r"habeas\s+corpus", "hc"),
+            (r"reclamacao", "rcl"),
+        )
+    ),
+    decision_body_res=(
+        re.compile(r"plenario|tribunal\s+pleno|corte\s+especial"),
+        re.compile(r"(?:primeira|segunda|terceira|quarta|quinta|sexta)\s+(?:turma|secao)"),
+    ),
+    court_res=(
+        (re.compile(r"supremo\s+tribunal\s+federal"), "supremo.tribunal.federal"),
+        (re.compile(r"superior\s+tribunal\s+de\s+justica"), "superior.tribunal.justica"),
     ),
     # **Deliberately left unanchored** — Cycle 3 tried to anchor these the way
     # Cycle 2 anchored `servico`'s (m-6) and reverted it, on evidence:

@@ -118,6 +118,27 @@ class DocumentProfile:
     annex_res: tuple[re.Pattern[str], ...] = ()
     #: Local/date closing lines ("Brasília, 19 de dezembro de 2018.").
     closing_res: tuple[re.Pattern[str], ...] = ()
+    #: Court-decision cover (``docs/20260916_204656_stf_acordao_cover_urn_and_
+    #: ementa_heading.md``). A court acórdão identifies itself by a *cover*,
+    #: not by an epigraph:
+    #:
+    #:     06/06/2022 PLENÁRIO
+    #:     AÇÃO DIRETA DE INCONSTITUCIONALIDADE 5.422 DISTRITO FEDERAL
+    #:
+    #: — a judgment-date stamp naming the órgão julgador, then the procedural
+    #: class and case number with no ``nº``. LexML names such a document
+    #: ``urn:lex:br:<tribunal>;<órgão>:acordao;<classe>:<data>;<número>``.
+    #:
+    #: ``decision_class_res`` maps a class-line pattern (folded text; group
+    #: ``num`` is the case number) to the class sigla; first match wins.
+    decision_class_res: tuple[tuple[re.Pattern[str], str], ...] = ()
+    #: Órgão-julgador names allowed on the date stamp ("plenario",
+    #: "primeira turma"), matched in full against the folded stamp remainder.
+    decision_body_res: tuple[re.Pattern[str], ...] = ()
+    #: Court name → authority slug, searched in the front matter **only** once
+    #: a cover has been recognised — never as a general preamble rule, since
+    #: rulings and notes routinely *mention* courts they were not issued by.
+    court_res: tuple[tuple[re.Pattern[str], str], ...] = ()
     #: Floor score, so `generic` can win when nothing else matches at all.
     base_score: float = 0.0
 

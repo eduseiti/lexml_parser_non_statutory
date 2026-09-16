@@ -65,8 +65,14 @@ requires_corpus = pytest.mark.skipif(
 EXPECTED_ENTRIES = 625
 
 #: The measured replay, 2026-09-14. Asserted rather than described.
-EXPECTED_QUESTIONS = 694
-EXPECTED_HITS = 684
+#:
+#: 2026-09-16: 694/684 → 691/681. The STF court-cover fix
+#: (`docs/20260916_204656_stf_acordao_cover_urn_and_ementa_heading.md`) reads the
+#: class lines of `adi_5422_STF` and `re_855091_tema_808` as epigraphs, so
+#: three header questions (`adi_5422` p#1, `re_855091` p#1 and p#3) are no
+#: longer asked. All three had been answered `nao`, so no outcome moved.
+EXPECTED_QUESTIONS = 691
+EXPECTED_HITS = 681
 EXPECTED_MISSES = 10
 
 #: Plan §1.8's override table, which reproduces exactly from the cache.
@@ -220,7 +226,7 @@ def test_a_refereed_corpus_run_makes_no_network_call():
 
 @requires_corpus
 def test_the_cache_answers_almost_every_question():
-    """684 of 694, and the ten that miss are abstentions (see below)."""
+    """681 of 691, and the ten that miss are abstentions (see below)."""
     _log, _shapes, _referee, cache = refereed_replay()
     assert cache.hits == EXPECTED_HITS
     assert cache.misses == EXPECTED_MISSES
