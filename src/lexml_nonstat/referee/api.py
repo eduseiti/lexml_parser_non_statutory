@@ -32,7 +32,13 @@ from .cache import RefereeCache, cache_key
 from .prompts import VOCABULARIES, build_prompt
 from .protocol import Verdict
 
-__all__ = ["DEFAULT_BASE_URL", "DEFAULT_MODEL", "CachedAPIReferee", "Transport"]
+__all__ = [
+    "DEFAULT_BASE_URL",
+    "DEFAULT_MODEL",
+    "CachedAPIReferee",
+    "Transport",
+    "TransportHTTPError",
+]
 
 #: ``(url, headers, payload, timeout) -> parsed JSON response``
 Transport = Callable[[str, dict, dict, float], dict]
@@ -47,12 +53,44 @@ DEFAULT_MODEL = "deepseek-v4-flash"
 TEMPERATURE = 0.0
 
 
+class TransportHTTPError(RuntimeError):
+    """A non-2xx answer, carrying the provider's error body.
+
+    ``httpx.HTTPStatusError`` names only the status and URL; the reason a
+    provider rejected a request (``"Unsupported value: 'temperature'…"``) lives
+    in the body. Transports raise this so the abstention says *why*, and so
+    :class:`CachedAPIReferee` can recognise a rejected sampling parameter
+    without importing ``httpx``.
+    """
+
+    def __init__(self, status_code: int, body: str, url: str = "") -> None:
+        self.status_code = status_code
+        self.body = body
+        self.url = url
+        super().__init__(f"HTTP {status_code} for {url}: {body[:300]}")
+
+
+def _rejects_temperature(exc: Exception) -> bool:
+    """Whether ``exc`` is a provider refusing the ``temperature`` parameter.
+
+    OpenAI's reasoning models (``gpt-5.x``, ``o``-series) accept only the
+    default temperature and answer ``temperature: 0`` with a 400 whose
+    ``error.param`` is ``"temperature"``.
+    """
+    return (
+        isinstance(exc, TransportHTTPError)
+        and exc.status_code == 400
+        and "temperature" in exc.body
+    )
+
+
 def _httpx_transport(url: str, headers: dict, payload: dict, timeout: float) -> dict:
     """The default transport. Imports ``httpx`` only when actually called."""
     import httpx  # local, so the extra stays optional
 
     response = httpx.post(url, headers=headers, json=payload, timeout=timeout)
-    response.raise_for_status()
+    if response.is_error:
+        raise TransportHTTPError(response.status_code, response.text, url)
     return response.json()
 
 
@@ -93,6 +131,10 @@ class CachedAPIReferee:
         self.calls = 0
         #: Whether the last answer came from the cache, for `DecisionRecord`.
         self.last_cache_hit = False
+        #: Cleared the first time the provider rejects ``temperature`` (see
+        #: `_rejects_temperature`); later requests omit it instead of paying a
+        #: failed round-trip each. Determinism then rests on the cache alone.
+        self.send_temperature = True
 
     name = "api"
 
@@ -149,7 +191,7 @@ class CachedAPIReferee:
         except KeyError:
             return Verdict.abstain(f"no prompt template for decision kind {kind!r}")
 
-        payload = {
+        payload: dict[str, Any] = {
             "model": self.model,
             "temperature": TEMPERATURE,
             "response_format": {"type": "json_object"},
@@ -158,16 +200,27 @@ class CachedAPIReferee:
                 {"role": "user", "content": user},
             ],
         }
+        if not self.send_temperature:
+            del payload["temperature"]
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
         }
 
+        url = f"{self.base_url}/chat/completions"
         self.calls += 1
         try:
-            response = self.transport(
-                f"{self.base_url}/chat/completions", headers, payload, self.timeout
-            )
+            try:
+                response = self.transport(url, headers, payload, self.timeout)
+            except Exception as exc:  # noqa: BLE001 - narrowed just below
+                if not (self.send_temperature and _rejects_temperature(exc)):
+                    raise
+                # The model only samples at its default temperature. Retry
+                # once without the parameter and stop sending it.
+                self.send_temperature = False
+                del payload["temperature"]
+                self.calls += 1
+                response = self.transport(url, headers, payload, self.timeout)
         except ImportError as exc:
             return Verdict.abstain(f"referee transport unavailable: {exc}")
         except Exception as exc:  # noqa: BLE001 - constraint 5 is total

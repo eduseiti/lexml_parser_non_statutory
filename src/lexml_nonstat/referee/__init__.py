@@ -13,7 +13,13 @@ kept — see its docstring for the constraint-by-constraint mapping.
 """
 
 from .adjudicate import adjudicate
-from .api import DEFAULT_BASE_URL, DEFAULT_MODEL, CachedAPIReferee, Transport
+from .api import (
+    DEFAULT_BASE_URL,
+    DEFAULT_MODEL,
+    CachedAPIReferee,
+    Transport,
+    TransportHTTPError,
+)
 from .cache import RefereeCache, cache_key
 from .local import DEFAULT_BINARY, LocalReferee, Runner
 from .null import NullReferee
@@ -57,6 +63,7 @@ __all__ = [
     "RefereeCache",
     "Runner",
     "Transport",
+    "TransportHTTPError",
     "Verdict",
     "adjudicate",
     "build_prompt",

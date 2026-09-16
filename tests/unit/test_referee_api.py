@@ -52,6 +52,7 @@ from lexml_nonstat.referee import (
     SYSTEM_PROMPT,
     CachedAPIReferee,
     RefereeCache,
+    TransportHTTPError,
     Verdict,
     cache_key,
 )
@@ -649,6 +650,70 @@ def test_a_trailing_slash_in_the_base_url_does_not_double():
     ).ask("own_articulation", "Art. 2º…")
 
     assert transport.seen[0]["url"] == "https://api.deepseek.com/v1/chat/completions"
+
+
+#: OpenAI's verbatim 400 for ``temperature: 0`` on a reasoning model.
+OPENAI_TEMPERATURE_400 = json.dumps(
+    {
+        "error": {
+            "message": "Unsupported value: 'temperature' does not support 0.0 "
+            "with this model. Only the default (1) value is supported.",
+            "type": "invalid_request_error",
+            "param": "temperature",
+            "code": "unsupported_value",
+        }
+    }
+)
+
+
+def rejects_temperature():
+    """A transport that answers like OpenAI's ``gpt-5.x``: no ``temperature``."""
+    seen: list[dict] = []
+
+    def transport(url: str, headers: dict, payload: dict, timeout: float) -> dict:
+        seen.append(dict(payload))
+        if "temperature" in payload:
+            raise TransportHTTPError(400, OPENAI_TEMPERATURE_400, url)
+        return chat_response()
+
+    transport.seen = seen  # type: ignore[attr-defined]
+    return transport
+
+
+def test_a_model_that_rejects_temperature_is_retried_without_it():
+    """OpenAI reasoning models 400 on ``temperature: 0``; that must not abstain.
+
+    The first request still carries temperature 0 — providers that honour it
+    keep invariant #4 on a miss. On the rejection the referee retries once
+    without it and remembers, so the next question costs one request, not two.
+    """
+    transport = rejects_temperature()
+    referee = CachedAPIReferee(api_key=API_KEY, transport=transport)
+
+    first = referee.ask("own_articulation", "Art. 2º…")
+    assert not first.abstained
+    assert [("temperature" in p) for p in transport.seen] == [True, False]
+    assert referee.calls == 2
+
+    second = referee.ask("own_articulation", "Art. 3º…")
+    assert not second.abstained
+    assert "temperature" not in transport.seen[2]
+    assert len(transport.seen) == 3
+    assert referee.calls == 3
+
+
+def test_other_400s_still_abstain_and_name_the_provider_reason():
+    """Only a temperature rejection is retried; the rest abstain with the body."""
+    body = '{"error": {"message": "Invalid model gpt-nope", "param": "model"}}'
+    referee = CachedAPIReferee(
+        api_key=API_KEY, transport=explodes(TransportHTTPError(400, body, "u"))
+    )
+    verdict = referee.ask("own_articulation", "Art. 2º…")
+
+    assert verdict.abstained
+    assert "Invalid model gpt-nope" in verdict.rationale
+    assert referee.send_temperature, "an unrelated 400 must not drop temperature"
+    assert referee.calls == 1
 
 
 @pytest.mark.parametrize(
