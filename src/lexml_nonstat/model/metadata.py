@@ -30,6 +30,7 @@ __all__ = [
     "METADATA_SOURCE_URI",
     "Metadata",
     "ProprietaryField",
+    "declare_urn",
     "extract_metadata",
     "parse_pt_date",
 ]
@@ -807,3 +808,35 @@ def extract_metadata(
         proprietary=fields,
         source=source,
     )
+
+
+def declare_urn(metadata: Metadata, urn: str) -> Metadata:
+    """``metadata`` with its URN components replaced by a declared ``urn``.
+
+    For a corpus whose identities are known from outside the text (a reviewed
+    stem → URN table), the inferred authority/type/date/number are only a
+    guess, and a wrong guess breaks every cross-reference to the document.
+    The declared value wins outright; the ``*_source`` fields say so, so a
+    reader of the decision trail can tell a declared identity from an inferred
+    one. A URN with a fragment (``!anexo1``) is refused: annex URNs are derived
+    from the document's.
+    """
+    from dataclasses import replace
+
+    from .urn import parse_urn
+
+    parts = parse_urn(urn)
+    if parts.fragment:
+        raise ValueError(f"declared URN must not carry a fragment: {urn!r}")
+    return replace(
+        metadata,
+        locality=parts.locality,
+        authority=parts.authority,
+        doc_type=parts.doc_type,
+        date=parts.date,
+        number=parts.number,
+        authority_source="declared",
+        date_source="declared",
+        number_source="declared",
+    )
+

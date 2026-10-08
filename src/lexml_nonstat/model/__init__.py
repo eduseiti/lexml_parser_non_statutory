@@ -21,6 +21,7 @@ from .metadata import (
     METADATA_SOURCE_URI,
     Metadata,
     ProprietaryField,
+    declare_urn,
     extract_metadata,
     parse_pt_date,
 )
@@ -54,6 +55,7 @@ __all__ = [
     "UrnParts",
     "build_model",
     "build_urn",
+    "declare_urn",
     "extract_metadata",
     "is_valid_urn",
     "node_from_dict",

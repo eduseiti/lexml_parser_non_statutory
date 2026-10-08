@@ -444,6 +444,46 @@ def _parse_text_summary(model, rendered, written) -> str:
     return "\n".join(lines)
 
 
+def _declared_urns(args, stderr) -> tuple[dict[str, str] | None, bool]:
+    """``--urn`` / ``--metadata`` → {source stem: declared URN}.
+
+    ``--urn`` names one document's identity, so it needs exactly one path.
+    ``--metadata`` is a TSV with a header that has ``stem`` and ``urn``
+    columns; stems it does not list keep their inferred URN.
+    """
+    from .model.urn import is_valid_urn
+
+    if args.urn and args.metadata:
+        print("error: --urn and --metadata are mutually exclusive", file=stderr)
+        return None, False
+    if args.urn:
+        if len(args.paths) != 1:
+            print("error: --urn needs exactly one source document", file=stderr)
+            return None, False
+        table = {Path(args.paths[0]).stem: args.urn}
+    elif args.metadata:
+        try:
+            lines = args.metadata.read_text(encoding="utf-8").splitlines()
+        except OSError as exc:
+            print(f"error: --metadata: {exc}", file=stderr)
+            return None, False
+        rows = [ln.split("\t") for ln in lines if ln.strip() and not ln.startswith("#")]
+        header, rows = rows[0], rows[1:]
+        if "stem" not in header or "urn" not in header:
+            print("error: --metadata needs a header with 'stem' and 'urn' columns",
+                  file=stderr)
+            return None, False
+        i, j = header.index("stem"), header.index("urn")
+        table = {r[i]: r[j] for r in rows if len(r) > max(i, j) and r[j]}
+    else:
+        return None, True
+    bad = [u for u in table.values() if not is_valid_urn(u) or "!" in u]
+    if bad:
+        print(f"error: not a document URN: {bad[0]!r}", file=stderr)
+        return None, False
+    return table, True
+
+
 def _cmd_parse(args, streams) -> int:
     stdout, stderr = streams
     log = DecisionLog()
@@ -466,6 +506,10 @@ def _cmd_parse(args, streams) -> int:
         print(f"error: emitter {args.emitter!r} is unavailable here", file=stderr)
         return _MISUSE
 
+    declared, ok = _declared_urns(args, stderr)
+    if not ok:
+        return _MISUSE
+
     status = _OK
     warned = False
     #: Base slugs already written by this run, so a degraded URN shared by two
@@ -482,7 +526,7 @@ def _cmd_parse(args, streams) -> int:
             status = _FAILED
             continue
 
-        from .model import build_model
+        from .model import build_model, declare_urn, extract_metadata
 
         # **Per-document isolation.** `_read` already isolates an unreadable
         # source, but everything after it — model building, rendering,
@@ -494,8 +538,15 @@ def _cmd_parse(args, streams) -> int:
         # most. `--stop-on-error` has no counterpart here: the failure is
         # reported and the exit code is already `1`.
         try:
+            metadata = None
+            urn = declared.get(path.stem) if declared is not None else None
+            if urn is not None:
+                metadata = declare_urn(
+                    extract_metadata(doc, profile=profile, filename=path.name), urn
+                )
             model = build_model(
-                doc, filename=path.name, profile=profile, log=log, referee=referee
+                doc, filename=path.name, profile=profile, metadata=metadata,
+                log=log, referee=referee,
             )
             rendered = _render(model, args.emitter, linker=linker)
 
@@ -999,6 +1050,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--strict", action="store_true",
         help="exit non-zero if anything warned (default: warn and continue)",
+    )
+    p.add_argument(
+        "--urn", default=None,
+        help="declared document URN (one source only); overrides the inferred one",
+    )
+    p.add_argument(
+        "--metadata", type=Path, default=None,
+        help="TSV with 'stem' and 'urn' columns: declared URN per source stem",
     )
 
     p = subs.add_parser("dump-styled", help="what ingestion saw")
