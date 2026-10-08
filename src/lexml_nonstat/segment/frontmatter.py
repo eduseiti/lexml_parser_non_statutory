@@ -63,6 +63,18 @@ _PREAMBLE_RES = (
     re.compile(r"^\s*[oa]\s+[a-zçãéíóúâêô\-]+.*,\s*no\s+uso\b", re.I),
     re.compile(r"^\s*[oa]\s+[a-zçãéíóúâêô\-]+.*,\s*tendo\s+em\s+vista\b", re.I),
     re.compile(r"^\s*[oa]s?\s+(ministr|secretari|procurador|coordenador|advogad)", re.I),
+    # Presidential decrees: "O PRESIDENTE DA REPÚBLICA[ DOS ESTADOS UNIDOS DO BRASIL]," / ":"
+    re.compile(r"^\s*o\s+presidente\s+da\s+rep[úu]blica\b", re.I),
+)
+
+#: Editorial lines that portals print between the epigraph and the ementa: Planalto's
+#: "Vide …" / "Texto compilado" / "Download para anexo" links and Receita's
+#: "Norma Federal - Publicado no DO em …" note. Skipped when looking for an unlabelled ementa.
+_EDITORIAL_RES = (
+    re.compile(r"^\s*\(?\s*vide\b"),
+    re.compile(r"^\s*texto\s+(compilado|original|para\s+impressao)\b"),
+    re.compile(r"^\s*download\b"),
+    re.compile(r"^\s*(norma\s+federal\s*-\s*)?publicad[oa]\s+no\s+d\.?o"),
 )
 
 #: An ementa is a summary, not a whole argument. `parecer_93`'s runs long, but
@@ -165,7 +177,10 @@ def find_ementa(
             end = following.index
         return Span(para.index, end)
 
-    # 2. Unlabelled: the line after the epigraph, if it is not something else.
+    # 2. Unlabelled: the line after the epigraph (portal editorial lines skipped), if it is not
+    #    something else.
+    while heads and any(r.match(fold(heads[0].text)) for r in _EDITORIAL_RES):
+        heads = heads[1:]
     for para in heads[:1]:
         text = para.text.strip()
         if not text or _is_no_ementa_artifact(text):

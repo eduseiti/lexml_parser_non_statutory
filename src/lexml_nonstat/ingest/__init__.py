@@ -48,6 +48,7 @@ __all__ = [
     "read_document",
     "read_html",
     "read_txt",
+    "unwrap_layout_tables",
 ]
 
 #: Filename suffix → the reader that handles it. Lowercase keys; the lookup
@@ -122,4 +123,46 @@ def read_document(path: str | Path, **kwargs: Any) -> StyledDoc:
         raise UnsupportedFormatError(
             f"unsupported format {suffix!r} for {path.name}; supported: {supported}"
         )
-    return reader(path, **_accepted_kwargs(reader, kwargs))
+    return unwrap_layout_tables(reader(path, **_accepted_kwargs(reader, kwargs)))
+
+
+#: How many leading blocks :func:`unwrap_layout_tables` looks at: the front-matter window
+#: (``segment.frontmatter.FRONT_WINDOW``).
+LAYOUT_WINDOW = 12
+
+
+def unwrap_layout_tables(doc: StyledDoc, window: int = LAYOUT_WINDOW) -> StyledDoc:
+    """Replace one-row tables near the top of the document by the paragraphs of their cells.
+
+    Planalto pages put the ementa of older decrees in a one-row, two-cell table whose first
+    cell is empty (an indentation device), and some put the masthead or the whole preamble in
+    a one-row table. These are layout, not data: read as tables, the ementa is invisible to
+    front-matter detection, and the paragraph after it (the preamble) is taken as the ementa.
+    A one-row table among the first ``window`` blocks is therefore unwrapped: each non-empty
+    cell becomes **one** paragraph (a cell is one text box; its line breaks are layout), in
+    reading order, with the first paragraph's properties and the inlines of all its paragraphs
+    joined by a space. Block indices are renumbered densely. Tables with more than one row, and
+    every table after the window, are untouched.
+    """
+    from dataclasses import replace
+
+    blocks: list[Block] = []
+    changed = False
+    for position, block in enumerate(doc.blocks):
+        if position < window and isinstance(block, StyledTable) and len(block.rows) == 1:
+            for cell in block.rows[0].cells:
+                paras = [p for p in cell.paras if not p.is_empty]
+                if not paras:
+                    continue
+                inlines: list[Inline] = []
+                for p in paras:
+                    if inlines:
+                        inlines.append(Inline(text=" "))
+                    inlines += p.inlines
+                blocks.append(replace(paras[0], inlines=tuple(inlines)))
+            changed = True
+        else:
+            blocks.append(block)
+    if not changed:
+        return doc
+    return replace(doc, blocks=tuple(replace(b, index=i) for i, b in enumerate(blocks)))
